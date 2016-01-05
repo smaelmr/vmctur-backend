@@ -1,0 +1,16 @@
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\obj\Debug\VMCTur.Bussiness.csprojResolveAssemblyReference.cache
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Bussiness.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Bussiness.pdb
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Common.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Domain.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Infra.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\EntityFramework.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\MySql.Data.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Common.pdb
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Domain.pdb
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\VMCTur.Infra.pdb
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\EntityFramework.xml
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\bin\Debug\pt-BR\VMCTur.Common.resources.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\obj\Debug\VMCTur.Bussiness.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Bussiness\obj\Debug\VMCTur.Bussiness.pdb

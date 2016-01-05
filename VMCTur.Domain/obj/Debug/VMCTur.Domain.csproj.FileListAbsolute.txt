@@ -1,0 +1,16 @@
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\obj\Debug\VMCTur.Domain.csprojResolveAssemblyReference.cache
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\VMCTur.Domain.dll
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\VMCTur.Domain.pdb
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\VMCTur.Common.dll
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\VMCTur.Common.pdb
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\pt-BR\VMCTur.Common.resources.dll
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\obj\Debug\VMCTur.Domain.dll
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\obj\Debug\VMCTur.Domain.pdb
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\bin\Debug\VMCTur.Domain.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\bin\Debug\VMCTur.Domain.pdb
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\bin\Debug\VMCTur.Common.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\bin\Debug\VMCTur.Common.pdb
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\bin\Debug\pt-BR\VMCTur.Common.resources.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\obj\Debug\VMCTur.Domain.csprojResolveAssemblyReference.cache
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\obj\Debug\VMCTur.Domain.dll
+C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Domain\obj\Debug\VMCTur.Domain.pdb

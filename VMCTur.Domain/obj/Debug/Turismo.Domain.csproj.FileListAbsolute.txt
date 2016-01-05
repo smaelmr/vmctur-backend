@@ -1,0 +1,8 @@
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\Turismo.Domain.dll
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\Turismo.Domain.pdb
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\obj\Debug\Turismo.Domain.csprojResolveAssemblyReference.cache
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\obj\Debug\Turismo.Domain.dll
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\obj\Debug\Turismo.Domain.pdb
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\Turismo.Common.dll
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\Turismo.Common.pdb
+C:\Users\smael\OneDrive\Projetos\Turismo\Turismo\Turismo.Domain\bin\Debug\pt-BR\Turismo.Common.resources.dll
