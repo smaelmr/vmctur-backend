@@ -10,7 +10,7 @@ using VMCTur.Api.Attributes;
 
 namespace VMCTur.Api.Controllers
 {
-    [RoutePrefix("api/users")]
+    [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
         private IUserService _service;
@@ -20,6 +20,11 @@ namespace VMCTur.Api.Controllers
             this._service = service;
         }
 
+        /// <summary>
+        /// Registra um novo usuário na aplicação.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("")]
         public Task<HttpResponseMessage> Post(RegisterUserModel model)
@@ -63,6 +68,11 @@ namespace VMCTur.Api.Controllers
             return tsc.Task;
         }
 
+        /// <summary>
+        /// Altera a senha do usuário.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         [Route("changepassword")]
@@ -85,6 +95,11 @@ namespace VMCTur.Api.Controllers
             return tsc.Task;
         }
 
+        /// <summary>
+        /// Recria a senha do usuário caso ele esqueça.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("resetpassword")]
         public Task<HttpResponseMessage> ResetPassword(ResetPasswordModel model)
@@ -106,6 +121,10 @@ namespace VMCTur.Api.Controllers
             return tsc.Task;
         }
 
+        /// <summary>
+        /// Lista os usuários cadastros na aplicação.
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         [Route("")]

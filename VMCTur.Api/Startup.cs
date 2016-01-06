@@ -24,6 +24,9 @@ namespace VMCTur.Api
             DependencyResolver.Resolve(container);
             config.DependencyResolver = new UnityResolver(container);
 
+            // Swagger
+            SwaggerConfig.Register(config);
+
             ConfigureWebApi(config);
             ConfigureOAuth(app, container.Resolve<IUserService>());
 
