@@ -99,7 +99,6 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\roslyn\vbc.exe
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\roslyn\VBCSCompiler.exe
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.dll.config
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Swagger.XML
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.pdb
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Antlr3.Runtime.dll
@@ -177,3 +176,7 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\pt-BR\VMCTur.Comm
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.csprojResolveAssemblyReference.cache
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.pdb
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.XML
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.xml

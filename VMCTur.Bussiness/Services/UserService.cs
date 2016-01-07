@@ -56,7 +56,7 @@ namespace VMCTur.Bussiness.Services
             if (hasUser != null)
                 throw new Exception(Errors.DuplicateEmail);
 
-            var user = new User(empresaId, name, email);
+            var user = new User(empresaId, 0, name, email);
             user.SetPassword(password, confirmPassword);
             user.Validate();
 

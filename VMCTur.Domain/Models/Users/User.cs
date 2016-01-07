@@ -9,7 +9,7 @@ namespace VMCTur.Domain.Models.Users
         #region Properties
 
         public int EmpresaId { get; private set; }
-        public Guid Id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
@@ -20,10 +20,10 @@ namespace VMCTur.Domain.Models.Users
 
         protected User() { }
 
-        public User(int empresaId, string name, string email)
+        public User(int empresaId, int id, string name, string email)
         {
             EmpresaId = empresaId;
-            this.Id = Guid.NewGuid();
+            this.Id = id;
             this.Name = name;
             this.Email = email;
 

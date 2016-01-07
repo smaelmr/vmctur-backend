@@ -21,7 +21,7 @@ namespace VMCTur.Infra.Repositories
             return _context.Users.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
         }
 
-        public User Get(Guid id)
+        public User Get(int id)
         {
             return _context.Users.Where(x => x.Id == id).FirstOrDefault();
         }
