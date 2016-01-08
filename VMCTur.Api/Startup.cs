@@ -17,6 +17,7 @@ namespace VMCTur.Api
     {
         public void Configuration(IAppBuilder app)
         {
+
             HttpConfiguration config = new HttpConfiguration();
 
             // Configure Dependency Injection
@@ -36,6 +37,8 @@ namespace VMCTur.Api
 
         public static void ConfigureWebApi(HttpConfiguration config)
         {
+            config.EnableCors();
+
             // Remove o XML
             var formatters = config.Formatters;
             formatters.Remove(formatters.XmlFormatter);
@@ -62,7 +65,7 @@ namespace VMCTur.Api
         {
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
-                AllowInsecureHttp = true,
+                AllowInsecureHttp = false,
                 TokenEndpointPath = new PathString("/api/security/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
                 Provider = new AuthorizationServerProvider(service)

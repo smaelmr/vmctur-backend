@@ -46,6 +46,7 @@
     <Compile Include="Contracts\Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\Services\INotification.cs" />
     <Compile Include="Contracts\Services\IUserService.cs" />
+    <Compile Include="Models\Customers\Customer.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

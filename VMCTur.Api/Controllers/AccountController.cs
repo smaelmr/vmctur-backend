@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
+using System.Web.Http.Cors;
+using WebApi.OutputCache.V2;
 
 namespace VMCTur.Api.Controllers
 {
@@ -27,6 +29,7 @@ namespace VMCTur.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("")]
+        [EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
         public Task<HttpResponseMessage> Post(RegisterUserModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -49,6 +52,7 @@ namespace VMCTur.Api.Controllers
         [Authorize]
         [HttpPut]
         [Route("")]
+        [EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
         public Task<HttpResponseMessage> Put(ChangeInformationModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -76,6 +80,7 @@ namespace VMCTur.Api.Controllers
         [Authorize]
         [HttpPost]
         [Route("changepassword")]
+        [EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
         public Task<HttpResponseMessage> ChangePassword(ChangePasswordModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -102,6 +107,7 @@ namespace VMCTur.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("resetpassword")]
+        [EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
         public Task<HttpResponseMessage> ResetPassword(ResetPasswordModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -128,8 +134,9 @@ namespace VMCTur.Api.Controllers
         [Authorize]
         [HttpGet]
         [Route("")]
-        //[DeflateCompression]
-        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        [DeflateCompression]
+        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        [EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
         public Task<HttpResponseMessage> Get()
         {
             HttpResponseMessage response = new HttpResponseMessage();

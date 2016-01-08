@@ -22,7 +22,6 @@ C:\Users\smael\OneDrive\Projetos\VMCTur\VMCTur\VMCTur.Common\obj\Debug\VMCTur.Co
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\bin\Debug\VMCTur.Common.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\bin\Debug\VMCTur.Common.pdb
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\bin\Debug\pt-BR\VMCTur.Common.resources.dll
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.Common.csprojResolveAssemblyReference.cache
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.Common.Resources.Errors.resources
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.Common.Resources.Messages.resources
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.Common.Resources.Errors.pt-BR.resources

@@ -180,3 +180,7 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.XML
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Cors.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebApi.OutputCache.Core.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebApi.OutputCache.V2.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Cors.xml
