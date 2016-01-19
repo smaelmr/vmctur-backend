@@ -1,4 +1,4 @@
-﻿using Microsoft.Owin;
+using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
@@ -6,6 +6,7 @@ using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using VMCTur.Api.Helpers;
 using VMCTur.Api.Security;
 using VMCTur.Domain.Contracts.Services;
@@ -18,7 +19,7 @@ namespace VMCTur.Api
         public void Configuration(IAppBuilder app)
         {
 
-            HttpConfiguration config = new HttpConfiguration();
+            HttpConfiguration config = new HttpConfiguration();            
 
             // Configure Dependency Injection
             var container = new UnityContainer();
@@ -30,14 +31,19 @@ namespace VMCTur.Api
 
             ConfigureWebApi(config);
             ConfigureOAuth(app, container.Resolve<IUserService>());
-
+           
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
             app.UseWebApi(config);
         }
 
         public static void ConfigureWebApi(HttpConfiguration config)
-        {
-            config.EnableCors();
+        {            
+            var corsAttr = new EnableCorsAttribute("*",
+                                                   "Origin, Content-Type, Accept",
+                                                   "GET, PUT, POST, DELETE, OPTIONS");
+            config.EnableCors(corsAttr);
+            //config.EnableCors();
 
             // Remove o XML
             var formatters = config.Formatters;
@@ -68,7 +74,7 @@ namespace VMCTur.Api
                 AllowInsecureHttp = false,
                 TokenEndpointPath = new PathString("/api/security/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
-                Provider = new AuthorizationServerProvider(service)
+                Provider = new AuthorizationServerProvider(service),                               
             };
 
             // Token Generation

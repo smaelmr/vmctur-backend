@@ -2,7 +2,7 @@
 using System.Data.Entity.ModelConfiguration;
 using VMCTur.Domain.Models.Users;
 
-namespace SpaUserControl.Infra.Data.Map
+namespace VMCTur.Infra.Data.Map
 {
     public class UserMap : EntityTypeConfiguration<User>
     {
@@ -11,7 +11,8 @@ namespace SpaUserControl.Infra.Data.Map
             ToTable("User");
 
             Property(x => x.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .IsRequired();            
 
             Property(x => x.Name)
                 .HasMaxLength(60)

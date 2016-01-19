@@ -70,6 +70,15 @@ namespace VMCTur.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid birthday..
+        /// </summary>
+        public static string InvalidBirthDate {
+            get {
+                return ResourceManager.GetString("InvalidBirthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail or password invalid..
         /// </summary>
         public static string InvalidCredentials {
@@ -84,6 +93,15 @@ namespace VMCTur.Common.Resources {
         public static string InvalidEmail {
             get {
                 return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Name..
+        /// </summary>
+        public static string InvalidName {
+            get {
+                return ResourceManager.GetString("InvalidName", resourceCulture);
             }
         }
         
@@ -106,6 +124,15 @@ namespace VMCTur.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid phone number..
+        /// </summary>
+        public static string InvalidPhoneNumber {
+            get {
+                return ResourceManager.GetString("InvalidPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User name is invalid..
         /// </summary>
         public static string InvalidUserName {
@@ -124,7 +151,7 @@ namespace VMCTur.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User not found.
+        ///   Looks up a localized string similar to User not found..
         /// </summary>
         public static string UserNotFound {
             get {

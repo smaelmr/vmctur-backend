@@ -6,7 +6,6 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Http.Cors;
 
 namespace VMCTur.Api.Security
 {
@@ -42,7 +41,6 @@ namespace VMCTur.Api.Security
 
                 identity.AddClaim(new Claim(ClaimTypes.Name, user.Email));
                 identity.AddClaim(new Claim(ClaimTypes.GivenName, user.Name));
-                identity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
 
                 GenericPrincipal principal = new GenericPrincipal(identity, null);
                 Thread.CurrentPrincipal = principal;

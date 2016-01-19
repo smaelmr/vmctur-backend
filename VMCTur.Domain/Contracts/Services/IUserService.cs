@@ -13,7 +13,7 @@ namespace VMCTur.Domain.Contracts.Services
 
         User GetByEmail(string email);
 
-        void Register(int empresaId, string name, string email, string password, string confirmPassword);
+        void Register(int companyId, string name, string email, string password, string confirmPassword);
 
         void ChangeInformation(string email, string name);
 

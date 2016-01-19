@@ -250,8 +250,6 @@
     <Content Include="Metadata\apiDefinition.swagger.json" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
-    <None Include="Properties\PublishProfiles\Jelastic Auto.pubxml" />
-    <None Include="Properties\PublishProfiles\Jelastic.pubxml" />
     <None Include="Properties\PublishProfiles\vmcturapi - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\vmcturapi - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">

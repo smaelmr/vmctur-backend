@@ -99,12 +99,14 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\roslyn\vbc.exe
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\roslyn\VBCSCompiler.exe
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.dll.config
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.XML
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.pdb
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Antlr3.Runtime.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\EntityFramework.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\EntityFramework.SqlServer.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Ionic.Zip.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Owin.Cors.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Owin.dll
@@ -121,9 +123,11 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\MySql.Data.Entity
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Newtonsoft.Json.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Owin.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Swashbuckle.Core.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Net.Http.Formatting.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Cors.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Helpers.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Cors.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Owin.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.WebHost.dll
@@ -138,6 +142,8 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Common.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Domain.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Startup.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebActivatorEx.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebApi.OutputCache.Core.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebApi.OutputCache.V2.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebGrease.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Infra.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Bussiness.pdb
@@ -159,7 +165,9 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practic
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practices.Unity.xml
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Helpers.xml
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Cors.xml
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Owin.xml
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Mvc.xml
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Optimization.xml
@@ -176,11 +184,3 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\pt-BR\VMCTur.Comm
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.csprojResolveAssemblyReference.cache
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.pdb
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\VMCTur.Api.XML
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.xml
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Cors.dll
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebApi.OutputCache.Core.dll
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\WebApi.OutputCache.V2.dll
-C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\System.Web.Http.Cors.xml

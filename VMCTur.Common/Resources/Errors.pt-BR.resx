@@ -120,17 +120,26 @@
   <data name="DuplicateEmail" xml:space="preserve">
     <value>E-mail já existente.</value>
   </data>
+  <data name="InvalidBirthDate" xml:space="preserve">
+    <value>Data de nascimento inválida.</value>
+  </data>
   <data name="InvalidCredentials" xml:space="preserve">
     <value>Usuário ou senha inválidos.</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>E-mail é inválido.</value>
   </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Nome inválido.</value>
+  </data>
   <data name="InvalidPassword" xml:space="preserve">
     <value>Senha Inválida.</value>
   </data>
   <data name="InvalidPasswordConfirmation" xml:space="preserve">
     <value>Confirmação de senha inválida.</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>Telefone inválido</value>
   </data>
   <data name="InvalidUserName" xml:space="preserve">
     <value>Nome de usuário é inválido.</value>
