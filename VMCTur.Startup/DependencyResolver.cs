@@ -12,9 +12,13 @@ namespace VMCTur.Startup
         public static void Resolve(UnityContainer container)
         {
             container.RegisterType<AppDataContext, AppDataContext>(new HierarchicalLifetimeManager());
+
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
-            
+
+            container.RegisterType<ICustomerRepository, CustomerRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICustomerService, CustomerService>(new HierarchicalLifetimeManager());
+
         }
     
     }

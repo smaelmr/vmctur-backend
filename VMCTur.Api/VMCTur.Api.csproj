@@ -229,6 +229,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Models\Customer\CreateCustomerModel.cs" />
+    <Compile Include="Models\Customer\UpdateCustomerModel.cs" />
     <Compile Include="SwaggerConfig.cs" />
     <Compile Include="Attributes\DeflateCompressionAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -280,6 +283,7 @@
       <Name>VMCTur.Startup</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

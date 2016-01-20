@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
-using VMCTur.Domain.Models.Customers;
-using VMCTur.Domain.Models.Users;
+using VMCTur.Domain.Entities.Customers;
+using VMCTur.Domain.Entities.Users;
 using VMCTur.Infra.Data.Map;
 
 namespace VMCTur.Infra.Data

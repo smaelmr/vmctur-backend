@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
-using VMCTur.Domain.Models.Users;
+using VMCTur.Domain.Entities.Users;
 
 namespace VMCTur.Infra.Repositories
 {

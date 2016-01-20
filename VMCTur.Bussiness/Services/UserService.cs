@@ -7,7 +7,7 @@ using VMCTur.Common.Resources;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
-using VMCTur.Domain.Models.Users;
+using VMCTur.Domain.Entities.Users;
 
 namespace VMCTur.Bussiness.Services
 {

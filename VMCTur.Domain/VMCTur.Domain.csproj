@@ -48,9 +48,10 @@
     <Compile Include="Contracts\Services\ICustomerService.cs" />
     <Compile Include="Contracts\Services\INotification.cs" />
     <Compile Include="Contracts\Services\IUserService.cs" />
+    <Compile Include="Entities\Drivers\Driver.cs" />
     <Compile Include="Enums\AgeRange.cs" />
-    <Compile Include="Models\Customers\Customer.cs" />
-    <Compile Include="Models\Users\User.cs" />
+    <Compile Include="Entities\Customers\Customer.cs" />
+    <Compile Include="Entities\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

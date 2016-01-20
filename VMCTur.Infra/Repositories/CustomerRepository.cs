@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
-using VMCTur.Domain.Models.Customers;
+using VMCTur.Domain.Entities.Customers;
 using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
@@ -46,6 +47,11 @@ namespace VMCTur.Infra.Repositories
         public List<Customer> Get(int skip, int take)
         {
             return _context.Customers.OrderBy(x => x.Name).Skip(skip).Take(take).ToList();
-        }       
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
     }
 }

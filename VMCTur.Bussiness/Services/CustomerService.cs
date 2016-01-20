@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
-using VMCTur.Domain.Models.Customers;
+using VMCTur.Domain.Entities.Customers;
 
 namespace VMCTur.Bussiness.Services
 {
@@ -36,22 +33,35 @@ namespace VMCTur.Bussiness.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var customer = _customerRepository.Get(id);
+
+            _customerRepository.Update(customer);
         }
 
         public Customer GetById(int id)
         {
-            throw new NotImplementedException();
+            var customer = _customerRepository.Get(id);
+
+            return customer;
         }
 
         public List<Customer> GetByRange(int skip, int take)
         {
-            throw new NotImplementedException();
+            var customers = _customerRepository.Get(skip, take);
+
+            return customers;
         }
 
         public List<Customer> GetBySearch(string search)
         {
-            throw new NotImplementedException();
+            var customers = _customerRepository.Get(search);
+
+            return customers;
         }
+
+        public void Dispose()
+        {
+            _customerRepository.Dispose();
+        }     
     }
 }

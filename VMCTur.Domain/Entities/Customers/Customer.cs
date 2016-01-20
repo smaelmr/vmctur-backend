@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VMCTur.Common.Resources;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Enums;
 
-namespace VMCTur.Domain.Models.Customers
+namespace VMCTur.Domain.Entities.Customers
 {
     public class Customer
     {

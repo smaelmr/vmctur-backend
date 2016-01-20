@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using VMCTur.Domain.Models.Users;
+using VMCTur.Domain.Entities.Users;
 
 namespace VMCTur.Infra.Data.Map
 {

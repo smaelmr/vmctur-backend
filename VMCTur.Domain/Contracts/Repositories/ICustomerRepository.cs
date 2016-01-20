@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VMCTur.Domain.Models.Customers;
+using VMCTur.Domain.Entities.Customers;
 
 namespace VMCTur.Domain.Contracts.Repositories
 {
-    public interface ICustomerRepository
+    public interface ICustomerRepository : IDisposable
     {
         List<Customer> Get(string search);
         Customer Get(int id);

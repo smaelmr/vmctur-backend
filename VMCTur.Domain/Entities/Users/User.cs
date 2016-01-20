@@ -2,7 +2,7 @@
 using VMCTur.Common.Validation;
 using VMCTur.Common.Resources;
 
-namespace VMCTur.Domain.Models.Users
+namespace VMCTur.Domain.Entities.Users
 {
     public class User
     {

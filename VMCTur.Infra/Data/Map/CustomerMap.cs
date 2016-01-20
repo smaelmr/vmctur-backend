@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations.Schema;
-using VMCTur.Domain.Models.Customers;
+using VMCTur.Domain.Entities.Customers;
 
 namespace VMCTur.Infra.Data.Map
 {
