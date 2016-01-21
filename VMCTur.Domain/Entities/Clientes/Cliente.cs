@@ -3,43 +3,43 @@ using VMCTur.Common.Resources;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Enums;
 
-namespace VMCTur.Domain.Entities.Customers
+namespace VMCTur.Domain.Entities.Clientes
 {
-    public class Customer
+    public class Cliente
     {
         #region Atributes
 
         public int Id { get; private set; }
-        public int CompanyId { get; private set; }
-        public string Name { get; private set; }
+        public int EmpresaId { get; private set; }
+        public string Nome { get; private set; }
         public string Email { get; private set; }
-        public string PhoneNumber { get; private set; }
+        public string Fone { get; private set; }
         public string Rg { get; private set; }
         public string Cpf { get; private set; }
-        public DateTime BirthDate { get; private set; }
-        public string Comments { get; private set; }
+        public DateTime DataNascimento { get; private set; }
+        public string Obs { get; private set; }
 
-        public AgeRange AgeRangeCustomer
+        public FaixaEtaria FaixaEtariaCliente
         {
             get
             {
-                return AgeRangeManager();
+                return VerificaFaixaEtaria();
             }
         
         }
 
         /// <summary>
-        /// Smael: calculates the student's age.
+        /// Smael: Calcula a idade do cliente a partir da data de nascimento.
         /// </summary>
-        public int Age
+        public int Idade
         {
             get
             {
                 int idade = 0;
 
-                int anos = (DateTime.Today.Year - 1) - BirthDate.Year;
-                int meses = (DateTime.Today.Month) - BirthDate.Month;
-                int dias = (DateTime.Today.Day) - BirthDate.Day;
+                int anos = (DateTime.Today.Year - 1) - DataNascimento.Year;
+                int meses = (DateTime.Today.Month) - DataNascimento.Month;
+                int dias = (DateTime.Today.Day) - DataNascimento.Day;
 
                 if (meses < 0) //Smael: se meses for menor que zero signifia que o aluno ainda não fez aniversário no ano corrente.                
                     idade = anos;
@@ -63,19 +63,20 @@ namespace VMCTur.Domain.Entities.Customers
 
         #region Ctor
 
-        protected Customer()
+        protected Cliente()
         { }
 
-        public Customer(int id, int companyId, string name, string email, string phoneNumber, string rg, string cpf, DateTime birthDate, string comments)
+        public Cliente(int id, int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime dataNascimento, string obs)
         {
             Id = id;
-            Name = name;
+            EmpresaId = empresaId;
+            Nome = nome;
             Email = email;
-            PhoneNumber = phoneNumber;
+            Fone = fone;
             Rg = rg;
             Cpf = cpf;
-            BirthDate = birthDate;
-            Comments = comments;
+            DataNascimento = dataNascimento;
+            Obs = obs;
         }
 
         #endregion
@@ -84,20 +85,20 @@ namespace VMCTur.Domain.Entities.Customers
 
         public void Validate()
         {
-            AssertionConcern.AssertArgumentLength(this.Name, 3, 100, Errors.InvalidName);
+            AssertionConcern.AssertArgumentLength(this.Nome, 3, 100, Errors.InvalidName);
             EmailAssertionConcern.AssertIsValid(this.Email);
-            PhoneNumberAssertionConcern.AssertIsValid(this.PhoneNumber);
-            BirthdayAssertionConcern.AssertIsValid(this.BirthDate);
+            PhoneNumberAssertionConcern.AssertIsValid(this.Fone);
+            BirthdayAssertionConcern.AssertIsValid(this.DataNascimento);
         }
 
-        public AgeRange AgeRangeManager()
+        public FaixaEtaria VerificaFaixaEtaria()
         {
-            if (Age <= 12)
-                return AgeRange.Child;
-            else if (Age > 12 && Age < 60)
-                return AgeRange.Adult;
+            if (Idade <= 12)
+                return FaixaEtaria.Crianca;
+            else if (Idade > 12 && Idade < 60)
+                return FaixaEtaria.Adulto;
             else
-                return AgeRange.Old;            
+                return FaixaEtaria.Idoso;            
             
         }
 

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VMCTur.Domain.Entities.Customers;
+using VMCTur.Domain.Entities.Clientes;
 
 namespace VMCTur.Domain.Contracts.Services
 {
-    public interface ICustomerService : IDisposable
+    public interface IClienteService : IDisposable
     {
         void Create(int companyId, string name, string email, string phoneNumber, string rg, string cpf, DateTime birthDate, string comments);
 
@@ -15,11 +12,11 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Delete(int id);
 
-        List<Customer> GetByRange(int skip, int take);
+        List<Cliente> GetByRange(int skip, int take);
 
-        List<Customer> GetBySearch(string search);
+        List<Cliente> GetBySearch(string search);
 
-        Customer GetById(int id);
+        Cliente GetById(int id);
 
     }
 }

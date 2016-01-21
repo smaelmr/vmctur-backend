@@ -61,11 +61,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AppDataContext.cs" />
-    <Compile Include="Data\Map\CustomerMap.cs" />
+    <Compile Include="Data\Map\ClienteMap.cs" />
+    <Compile Include="Data\Map\GuiaMap.cs" />
     <Compile Include="Data\Map\UserMap.cs" />
+    <Compile Include="Data\Map\VeiculoMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\GuiaRepository.cs" />
+    <Compile Include="Repositories\VeiculoRepository.cs" />
+    <Compile Include="Repositories\ClienteRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

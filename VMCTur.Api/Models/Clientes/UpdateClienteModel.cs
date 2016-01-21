@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace VMCTur.Api.Models.Customer
+namespace VMCTur.Api.Models.Clientes
 {
-    public class UpdateCustomerModel
+    public class UpdateClienteModel
     {
         public int Id { get; set; }
         public int CompanyId { get; set; }

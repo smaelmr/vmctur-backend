@@ -43,14 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\Repositories\ICustomerRepository.cs" />
+    <Compile Include="Contracts\Repositories\IClienteRepository.cs" />
+    <Compile Include="Contracts\Repositories\IGuiaRepository.cs" />
     <Compile Include="Contracts\Repositories\IUserRepository.cs" />
-    <Compile Include="Contracts\Services\ICustomerService.cs" />
+    <Compile Include="Contracts\Repositories\IVeiculoRepository.cs" />
+    <Compile Include="Contracts\Services\IClienteService.cs" />
+    <Compile Include="Contracts\Services\IGuiaService.cs" />
     <Compile Include="Contracts\Services\INotification.cs" />
     <Compile Include="Contracts\Services\IUserService.cs" />
-    <Compile Include="Entities\Drivers\Driver.cs" />
-    <Compile Include="Enums\AgeRange.cs" />
-    <Compile Include="Entities\Customers\Customer.cs" />
+    <Compile Include="Contracts\Services\IVeiculoService.cs" />
+    <Compile Include="Entities\Guias\Guia.cs" />
+    <Compile Include="Enums\TipoVinculoGuia.cs" />
+    <Compile Include="Enums\TipoVinculoVeiculo.cs" />
+    <Compile Include="Entities\Veiculos\Veiculo.cs" />
+    <Compile Include="Enums\FaixaEtaria.cs" />
+    <Compile Include="Entities\Clientes\Cliente.cs" />
     <Compile Include="Entities\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

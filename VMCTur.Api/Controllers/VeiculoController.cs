@@ -4,38 +4,38 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
-using VMCTur.Api.Models.Customer;
+using VMCTur.Api.Models.Veiculos;
 using VMCTur.Domain.Contracts.Services;
 using WebApi.OutputCache.V2;
 
 namespace VMCTur.Api.Controllers
 {
-    [RoutePrefix("api/customer")]
-    public class CustomerController : ApiController
+    [RoutePrefix("api/veiculo")]
+    public class VeiculoController : ApiController
     {
-        private ICustomerService _service;
+        private IVeiculoService _service;
 
-        public CustomerController(ICustomerService service)
+        public VeiculoController(IVeiculoService service)
         {
             this._service = service;
         }
 
         /// <summary>
-        /// Create a new customer.
+        /// Cria um novo Veiculo
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPost]
-        [Route("")]        
-        public Task<HttpResponseMessage> Post(CreateCustomerModel model)
+        [Route("")]
+        public Task<HttpResponseMessage> Post(CreateVeiculoModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Create(model.CompanyId, model.Name, model.Email, model.PhoneNumber, model.Rg, model.Cpf, model.BirthDate, model.Comments);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name, email = model.Email });
+                _service.Create(model.EmpresaId, model.Placa, model.Ano, model.Modelo, model.CapacidadePassageiros, model.Inativo, model.Vinculo, model.Obs);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Modelo });
             }
             catch (Exception ex)
             {
@@ -48,21 +48,21 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Update customer's data.
+        /// Atualiza os dados do Veiculo
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPut]
         [Route("")]
-        public Task<HttpResponseMessage> Put(UpdateCustomerModel model)
+        public Task<HttpResponseMessage> Put(UpdateVeiculoModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Update(model.Id, model.CompanyId, model.Name, model.Email, model.PhoneNumber, model.Rg, model.Cpf, model.BirthDate, model.Comments);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name });
+                _service.Update(model.Id, model.EmpresaId, model.Placa, model.Ano, model.Modelo, model.CapacidadePassageiros, model.Inativo, model.Vinculo, model.Obs);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Modelo });
             }
             catch (Exception ex)
             {
@@ -75,7 +75,34 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Get customers added.
+        /// Delete Veiculo.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpDelete]
+        [Route("")]
+        public Task<HttpResponseMessage> Delete(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                _service.Delete(id);
+                response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Busca o veiculo conforme id.
         /// </summary>
         /// <returns></returns>
         [Authorize]
@@ -103,7 +130,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Get customers by range.
+        /// Busca os veiculos passando parametros de paginação.
         /// </summary>
         /// <returns></returns>
         [Authorize]
@@ -131,7 +158,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Get customers by search value.
+        /// Busca os veiculos passando um valor para pesquisa, pesquisando apenas no campo nome.
         /// </summary>
         /// <returns></returns>
         [Authorize]

@@ -16,8 +16,14 @@ namespace VMCTur.Startup
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<ICustomerRepository, CustomerRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<ICustomerService, CustomerService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IClienteRepository, ClienteRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IClienteService, ClienteService>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IVeiculoRepository, VeiculoRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IVeiculoService, VeiculoService>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IGuiaRepository, GuiaRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IGuiaService, GuiaService>(new HierarchicalLifetimeManager());
 
         }
     
