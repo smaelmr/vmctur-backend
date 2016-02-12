@@ -25,6 +25,9 @@ namespace VMCTur.Startup
             container.RegisterType<IGuiaRepository, GuiaRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IGuiaService, GuiaService>(new HierarchicalLifetimeManager());
 
+            container.RegisterType<IPasseioRepository, PasseioRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IPasseioService, PasseioService>(new HierarchicalLifetimeManager());
+
         }
     
     }

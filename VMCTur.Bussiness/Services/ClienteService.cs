@@ -23,9 +23,9 @@ namespace VMCTur.Bussiness.Services
             _customerRepository.Create(customer);
         }
 
-        public void Update(int id, int companyId, string name, string email, string phoneNumber, string rg, string cpf, DateTime birthDate, string comments)
+        public void Update(int id, int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime dataNascimento, string obs)
         {
-            var customer = new Cliente(id, companyId, name, email, phoneNumber, rg, cpf, birthDate, comments);
+            var customer = new Cliente(id, empresaId, nome, email, fone, rg, cpf, dataNascimento, obs);
             customer.Validate();
 
             _customerRepository.Update(customer);
@@ -35,7 +35,7 @@ namespace VMCTur.Bussiness.Services
         {
             var customer = _customerRepository.Get(id);
 
-            _customerRepository.Update(customer);
+            _customerRepository.Delete(customer);
         }
 
         public Cliente GetById(int id)

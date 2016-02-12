@@ -4,64 +4,37 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
-using VMCTur.Api.Models.Clientes;
+using VMCTur.Api.Models.Passeios;
 using VMCTur.Domain.Contracts.Services;
 using WebApi.OutputCache.V2;
 
 namespace VMCTur.Api.Controllers
 {
-    [RoutePrefix("api/cliente")]
-    public class ClienteController : ApiController
+    [RoutePrefix("api/passeio")]
+    public class PasseioController : ApiController
     {
-        private IClienteService _service;
+        private IPasseioService _service;
 
-        public ClienteController(IClienteService service)
+        public PasseioController(IPasseioService service)
         {
             this._service = service;
         }
 
         /// <summary>
-        /// Cria um novo Cliente.
+        /// Cria um novo passeio
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPost]
-        [Route("")]        
-        public Task<HttpResponseMessage> Post(CreateClienteModel model)
-        {
-            HttpResponseMessage response = new HttpResponseMessage();
-
-            try
-            {
-                _service.Create(model.EmpresaId, model.Nome, model.Email, model.Fone, model.Rg, model.Cpf, model.DataNascimento, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome, email = model.Email });
-            }
-            catch (Exception ex)
-            {
-                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-
-            var tsc = new TaskCompletionSource<HttpResponseMessage>();
-            tsc.SetResult(response);
-            return tsc.Task;
-        }
-
-        /// <summary>
-        /// Atualiza os dados do cliente.
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPut]
         [Route("")]
-        public Task<HttpResponseMessage> Put(UpdateClienteModel model)
+        public Task<HttpResponseMessage> Post(CreatePasseioModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Update(model.Id, model.EmpresaId, model.Nome, model.Email, model.Fone, model.Rg, model.Cpf, model.DataNascimento, model.Obs);
+                _service.Create(model.EmpresaId, model.Nome, model.Roteiro, model.HorarioAbertura, model.HorarioFechamento, model.Inativo, model.Obs);
                 response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
             }
             catch (Exception ex)
@@ -75,7 +48,34 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Delete Cliente.
+        /// Atualiza os dados do passeio
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPut]
+        [Route("")]
+        public Task<HttpResponseMessage> Put(UpdatePasseioModel model)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                _service.Update(model.Id, model.EmpresaId, model.Nome, model.Roteiro, model.HorarioAbertura, model.HorarioFechamento, model.Inativo, model.Obs);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Delete passeio.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -102,7 +102,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Busca o cliente conforme id.
+        /// Busca o passeio conforme id.
         /// </summary>
         /// <returns></returns>
         [Authorize]
@@ -130,7 +130,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Busca os clientes passando parametros de paginação.
+        /// Busca os passeios passando parametros de paginação.
         /// </summary>
         /// <returns></returns>
         [Authorize]
@@ -158,7 +158,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Busca os veiculos passando campo para pesquisa, no momento somente pelo nome.
+        /// Busca os passeios passando um valor para pesquisa, pesquisando apenas no campo nome.
         /// </summary>
         /// <returns></returns>
         [Authorize]

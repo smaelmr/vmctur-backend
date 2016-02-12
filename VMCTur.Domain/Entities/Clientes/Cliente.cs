@@ -7,7 +7,7 @@ namespace VMCTur.Domain.Entities.Clientes
 {
     public class Cliente
     {
-        #region Atributes
+        #region Properties
 
         public int Id { get; private set; }
         public int EmpresaId { get; private set; }
@@ -81,7 +81,7 @@ namespace VMCTur.Domain.Entities.Clientes
 
         #endregion
 
-        #region Properties
+        #region Atributes
 
         public void Validate()
         {
@@ -101,10 +101,7 @@ namespace VMCTur.Domain.Entities.Clientes
                 return FaixaEtaria.Idoso;            
             
         }
-
-        
-        
-
+             
         #endregion
 
     }

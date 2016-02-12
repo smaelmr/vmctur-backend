@@ -109,7 +109,7 @@ namespace VMCTur.Api.Controllers
         [HttpGet]
         [Route("getbyid")]
         [DeflateCompression]
-        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
         public Task<HttpResponseMessage> GetById(int id)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -137,7 +137,7 @@ namespace VMCTur.Api.Controllers
         [HttpGet]
         [Route("getbyrange/{skip:int:min(0)}/{take:int:min(1)}")]
         [DeflateCompression]
-        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
         public Task<HttpResponseMessage> GetByRange(int skip, int take)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -165,7 +165,7 @@ namespace VMCTur.Api.Controllers
         [HttpGet]
         [Route("getbysearch")]
         [DeflateCompression]
-        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
         public Task<HttpResponseMessage> Get(string search)
         {
             HttpResponseMessage response = new HttpResponseMessage();

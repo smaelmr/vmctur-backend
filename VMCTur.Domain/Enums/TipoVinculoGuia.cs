@@ -4,8 +4,8 @@ namespace VMCTur.Domain.Entities.Enum
 {
     public enum TipoVinculoGuia
     {
-        [Description("Funcionario")]
-        Proprio,
+        [Description("Funcionário")]
+        Funcionario,
 
         [Description("Terceirizado")]
         Terceirizado

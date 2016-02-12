@@ -26,6 +26,9 @@ namespace VMCTur.Domain.Entities.Veiculos
 
         #region Ctor
 
+        protected Veiculo()
+        { }
+
         public Veiculo(int id, int empresaId, string placa, int ano, string modelo, int capacidadePassageiros, 
                        bool inativo, TipoVinculoVeiculo tipoAquisicao, string obs)
         {

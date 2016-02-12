@@ -10,10 +10,11 @@ namespace VMCTur.Common.Validation
 {
     public class PhoneNumberAssertionConcern
     {
-        public static void AssertIsValid(string email)
+        public static void AssertIsValid(string fone)
         {
-            if (!Regex.IsMatch(email, @"^(\(11\) [9][0-9]{4}-[0-9]{4})|(\(1[2-9]\) [5-9][0-9]{3}-[0-9]{4})|(\([2-9][1-9]\) [5-9][0-9]{3}-[0-9]{4})$", RegexOptions.IgnoreCase))
-                throw new Exception(Errors.InvalidPhoneNumber);
+            if (!Regex.IsMatch(fone, @"^(\(11\) [9][0-9]{4}-[0-9]{4})|(\(1[2-9]\) [5-9][0-9]{3}-[0-9]{4})|(\([2-9][1-9]\) [1-9][0-9]{3}-[0-9]{4})$", RegexOptions.IgnoreCase))
+                throw new Exception("err2");
+            //throw new Exception(Errors.InvalidPhoneNumber);
         }
     }
 }

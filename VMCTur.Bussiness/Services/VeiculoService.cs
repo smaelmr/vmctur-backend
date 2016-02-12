@@ -40,16 +40,16 @@ namespace VMCTur.Bussiness.Services
 
         public void Delete(int id)
         {
-            var customer = _repository.Get(id);
+            var veiculo = _repository.Get(id);
 
-            _repository.Update(customer);
+            _repository.Delete(veiculo);
         }
 
         public Veiculo GetById(int id)
         {
-            var customer = _repository.Get(id);
+            var veiculo = _repository.Get(id);
 
-            return customer;
+            return veiculo;
         }
 
         public List<Veiculo> GetByRange(int skip, int take)

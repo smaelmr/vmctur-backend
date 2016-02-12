@@ -40,7 +40,7 @@ namespace VMCTur.Bussiness.Services
         {
             var guia = _repository.Get(id);
 
-            _repository.Update(guia);
+            _repository.Delete(guia);
         }
 
         public Guia GetById(int id)

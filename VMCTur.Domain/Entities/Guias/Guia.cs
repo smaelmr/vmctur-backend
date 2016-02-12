@@ -22,6 +22,9 @@ namespace VMCTur.Domain.Entities.Guias
 
         #region Ctor
 
+        protected Guia()
+        { }
+
         public Guia(int id, int empresaId, string nome, string cpf, TipoVinculoGuia tipoVinculo, string obs)
         {
             Id = id;
