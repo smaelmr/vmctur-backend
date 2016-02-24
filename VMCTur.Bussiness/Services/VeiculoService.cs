@@ -22,6 +22,7 @@ namespace VMCTur.Bussiness.Services
             TipoVinculoVeiculo vinculo = (TipoVinculoVeiculo)Enum.Parse(typeof(TipoVinculoVeiculo), tipoVinculo);
 
             var veiculo = new Veiculo(0, empresaId, placa, ano, modelo, capacidadePassageiros, inativo, vinculo, obs);
+
             veiculo.Validate();
 
             _repository.Create(veiculo);

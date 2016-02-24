@@ -30,3 +30,4 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.C
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\pt-BR\VMCTur.Common.resources.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.Common.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.Common.pdb
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Debug\VMCTur.Common.csprojResolveAssemblyReference.cache

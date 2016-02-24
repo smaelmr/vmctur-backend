@@ -8,6 +8,6 @@ namespace VMCTur.Domain.Entities.Enum
         Proprio,
 
         [Description("Terceirizado")]
-        Terceirizado
+        Terceirizado        
     }
 }

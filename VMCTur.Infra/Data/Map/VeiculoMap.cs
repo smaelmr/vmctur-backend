@@ -20,7 +20,7 @@ namespace VMCTur.Infra.Data.Map
                 .IsRequired();
 
             Property(x => x.Placa)
-                .HasMaxLength(7)
+                .HasMaxLength(8)
                 .IsRequired();
 
             Property(x => x.Modelo)

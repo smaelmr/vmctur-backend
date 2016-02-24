@@ -5,6 +5,10 @@ namespace VMCTur.Common.Validation
 {
     public class AssertionConcern
     {
+        protected AssertionConcern()
+        {
+        }
+
         public static void AssertArgumentEquals(object object1, object object2, string message)
         {
             if (!object1.Equals(object2))
@@ -132,8 +136,16 @@ namespace VMCTur.Common.Validation
             }
         }
 
-        protected AssertionConcern()
+        public static void AssertIsGreaterThan(int value1, int value2, string message)
         {
+            if (!(value1 > value2))
+                throw new InvalidOperationException(message);
+        }
+
+        public static void AssertIsLowerOrEqualThan(int value1, int value2, string message)
+        {
+            if (!(value1 <= value2))
+                throw new InvalidOperationException(message);
         }
 
         protected void SelfAssertArgumentEquals(object object1, object object2, string message)

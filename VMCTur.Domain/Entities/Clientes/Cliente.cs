@@ -81,7 +81,7 @@ namespace VMCTur.Domain.Entities.Clientes
 
         #endregion
 
-        #region Atributes
+        #region Methods
 
         public void Validate()
         {

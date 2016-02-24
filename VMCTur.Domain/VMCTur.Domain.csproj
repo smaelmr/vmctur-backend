@@ -43,11 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Repositories\IPacoteRepository.cs" />
     <Compile Include="Contracts\Repositories\IClienteRepository.cs" />
     <Compile Include="Contracts\Repositories\IGuiaRepository.cs" />
     <Compile Include="Contracts\Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\Repositories\IPasseioRepository.cs" />
     <Compile Include="Contracts\Repositories\IVeiculoRepository.cs" />
+    <Compile Include="Contracts\Services\IPacoteService.cs" />
     <Compile Include="Contracts\Services\IClienteService.cs" />
     <Compile Include="Contracts\Services\IGuiaService.cs" />
     <Compile Include="Contracts\Services\INotification.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Contracts\Services\IVeiculoService.cs" />
     <Compile Include="Entities\Guias\Guia.cs" />
     <Compile Include="Entities\Pacotes\Pacote.cs" />
+    <Compile Include="Entities\Pacotes\Participantes.cs" />
     <Compile Include="Entities\Passeios\Passeio.cs" />
     <Compile Include="Enums\TipoVinculoGuia.cs" />
     <Compile Include="Enums\TipoVinculoVeiculo.cs" />

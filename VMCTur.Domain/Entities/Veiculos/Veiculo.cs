@@ -50,10 +50,10 @@ namespace VMCTur.Domain.Entities.Veiculos
         public void Validate()
         {
             AssertionConcern.AssertArgumentNotEmpty(this.Placa, "A placa do veículo deve ser informada.");
-            AssertionConcern.AssertArgumentLength(this.Placa, 7, 7, "Placa inválida.");
+            AssertionConcern.AssertArgumentLength(this.Placa, 8, 8, "Placa inválida.");
             AssertionConcern.AssertArgumentNotEmpty(this.Modelo, "A modelo do veículo deve ser informada.");
             AssertionConcern.AssertArgumentRange(this.Ano, DateTime.Today.Year - 50, DateTime.Today.Year + 1, "O ano do veículo é inválido.");
-            AssertionConcern.AssertArgumentRange(this.CapacidadePassageiros, 1, 100, "O ano do veículo é inválido.");
+            AssertionConcern.AssertArgumentRange(this.CapacidadePassageiros, 1, 100, "A capacidade de passageiros é inválido!.");
         }
     
         #endregion
