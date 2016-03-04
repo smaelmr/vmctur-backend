@@ -21,7 +21,7 @@ namespace VMCTur.Infra.Data.Map
             Property(x => x.ClienteId)                
                 .IsRequired();
 
-            Property(x => x.GuiaPasseioId)                        
+            Property(x => x.GuiaPasseioId)              
                 .IsRequired();
 
             Property(x => x.VeiculoUtilizadoId)

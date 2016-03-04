@@ -22,7 +22,8 @@ namespace VMCTur.Infra.Data.Map
 
             Property(x => x.Email)
                 .HasMaxLength(160)               
-                .IsRequired();         
+                .IsRequired();
+
         }
     }
 }

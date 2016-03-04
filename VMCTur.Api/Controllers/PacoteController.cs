@@ -1,41 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
-using VMCTur.Api.Models.Clientes;
+using VMCTur.Api.Models.Pacotes;
 using VMCTur.Domain.Contracts.Services;
 using WebApi.OutputCache.V2;
 
 namespace VMCTur.Api.Controllers
 {
-    [RoutePrefix("api/cliente")]
-    public class ClienteController : ApiController
+    [RoutePrefix("api/pacote")]
+    public class PacoteController : ApiController
     {
-        private IClienteService _service;
+        private IPacoteService _service;
 
-        public ClienteController(IClienteService service)
+        public PacoteController(IPacoteService service)
         {
             this._service = service;
         }
 
         /// <summary>
-        /// Cria um novo Cliente.
+        /// Cria um novo Pacote.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="body"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPost]
-        [Route("")]        
-        public Task<HttpResponseMessage> Post(CreateClienteModel model)
+        [Route("")]
+        public Task<HttpResponseMessage> Post([FromBody]dynamic body)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Create(model.EmpresaId, model.Nome, model.Email, model.Fone, model.Rg, model.Cpf, model.DataNascimento, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome, email = model.Email });
+                _service.Create(body.EmpresaId, body.ClienteId, body.Participantes.ToObject<List<ParticipanteModel>>(), 
+                    body.Passeios.ToObject<List<ParticipanteModel>>(), body.DatahoraPartida, body.HotelHospedagem,
+                    body.QuantidadeBilhetes, body.VeiculoUtilizadoId, body.GuiaPasseioId, body.ValorTotal, 
+                    body.DataPagamentoSinal, body.ValorPagamentoSinal, body.CondicãoPagamentoRestante, 
+                    body.ReservasAdicionais, body.Observacoes);
+
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = "", email = "" });
             }
             catch (Exception ex)
             {
@@ -48,21 +54,26 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Atualiza os dados do cliente.
+        /// Atualiza os dados do pacote.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="body"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPut]
         [Route("")]
-        public Task<HttpResponseMessage> Put(UpdateClienteModel model)
+        public Task<HttpResponseMessage> Put([FromBody]dynamic body)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Update(model.Id, model.EmpresaId, model.Nome, model.Email, model.Fone, model.Rg, model.Cpf, model.DataNascimento, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
+                _service.Update(body.Id, body.EmpresaId, body.ClienteId, body.Participantes.ToObject<List<ParticipanteModel>>(),
+                    body.Passeios.ToObject<List<ParticipanteModel>>(), body.DatahoraPartida, body.HotelHospedagem,
+                    body.QuantidadeBilhetes, body.VeiculoUtilizadoId, body.GuiaPasseioId, body.ValorTotal,
+                    body.DataPagamentoSinal, body.ValorPagamentoSinal, body.CondicãoPagamentoRestante,
+                    body.ReservasAdicionais, body.Observacoes);
+
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = "" });
             }
             catch (Exception ex)
             {
@@ -75,7 +86,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Delete Cliente.
+        /// Deleta Pacote.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -102,7 +113,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Busca o cliente conforme id.
+        /// Busca o pacote conforme id.
         /// </summary>
         /// <returns></returns>
         [Authorize]
@@ -130,7 +141,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Busca os clientes passando parametros de paginação.
+        /// Busca os pacotes passando parametros de paginação.
         /// </summary>
         /// <returns></returns>
         [Authorize]
@@ -158,7 +169,7 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Busca os clientes passando campo para pesquisa, no momento somente pelo nome.
+        /// Busca os pacotes passando campo para pesquisa, no momento somente pelo nome.
         /// </summary>
         /// <returns></returns>
         [Authorize]

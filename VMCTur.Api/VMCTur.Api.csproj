@@ -226,17 +226,24 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\GuiaController.cs" />
+    <Compile Include="Controllers\PacoteController.cs" />
     <Compile Include="Controllers\PasseioController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Models\Clientes\CreateClienteModel.cs" />
     <Compile Include="Models\Clientes\UpdateClienteModel.cs" />
     <Compile Include="Models\Guias\CreateGuiaModel.cs" />
     <Compile Include="Models\Guias\UpdateGuiaModel.cs" />
+    <Compile Include="Models\Pacotes\CreatePacoteModel.cs" />
+    <Compile Include="Models\Pacotes\ParticipanteModel.cs" />
+    <Compile Include="Models\Pacotes\PasseioModel.cs" />
+    <Compile Include="Models\Pacotes\UpdatePacoteModel.cs" />
     <Compile Include="Models\Passeios\CreatePasseioModel.cs" />
     <Compile Include="Models\Passeios\UpdatePasseioModel.cs" />
     <Compile Include="Models\Veiculos\CreateVeiculoModel.cs" />
@@ -294,6 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Guia\" />
+    <Folder Include="Views\Pacote\" />
     <Folder Include="Views\Passeio\" />
     <Folder Include="Views\Veiculo\" />
   </ItemGroup>

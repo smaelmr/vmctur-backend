@@ -7,13 +7,13 @@ namespace VMCTur.Domain.Contracts.Services
 {
     public interface IPacoteService : IDisposable
     {
-        void Create(int empresaId, int clienteId, List<Participantes> participantes, List<Passeio> passeio,
+        void Create(int empresaId, int clienteId, List<Participante> participantes, List<Passeio> passeio,
                     DateTime datahoraPartida, string hotelHospedagem, string quantidadeBilhetes,
                     int veiculoUtilizadoId, int guiaPasseioId, double valorTotal, DateTime dataPgamentoSinal,
                     double valorPagamentoSinal, string condicãoPagamentoRestante,
                     string reservasAdicionais, string observações);
 
-        void Update(int id, int empresaId, int clienteId, List<Participantes> participantes, List<Passeio> passeio,
+        void Update(int id, int empresaId, int clienteId, List<Participante> participantes, List<Passeio> passeio,
                     DateTime datahoraPartida, string hotelHospedagem, string quantidadeBilhetes,
                     int veiculoUtilizadoId, int guiaPasseioId, double valorTotal, DateTime dataPgamentoSinal,
                     double valorPagamentoSinal, string condicãoPagamentoRestante,

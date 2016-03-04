@@ -8,7 +8,7 @@ using VMCTur.Common.Validation;
 
 namespace VMCTur.Domain.Entities.Pacotes
 {
-    public class Participantes
+    public class Participante
     {
         #region Properties
 
@@ -23,10 +23,10 @@ namespace VMCTur.Domain.Entities.Pacotes
 
         #region Ctor
 
-        protected Participantes()
+        protected Participante()
         { }
 
-        public Participantes(int id, string nome, string nroDocumento, DateTime dataNascimento, int pacoteId)
+        public Participante(int id, string nome, string nroDocumento, DateTime dataNascimento, int pacoteId)
         {
             Id = id;
             Nome = nome;
