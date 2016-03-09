@@ -31,6 +31,7 @@ namespace VMCTur.Domain.Entities.Guias
             EmpresaId = empresaId;
             Nome = nome;
             Cpf = cpf;
+            TipoVinculo = tipoVinculo;
             Obs = obs;
         }
 

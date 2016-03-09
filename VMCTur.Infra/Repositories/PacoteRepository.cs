@@ -13,6 +13,11 @@ namespace VMCTur.Infra.Repositories
     {
         private AppDataContext _context;
 
+        public PacoteRepository(AppDataContext context)
+        {
+            this._context = context;
+        }
+
         public void Create(Pacote pacote)
         {
             _context.Pacotes.Add(pacote);

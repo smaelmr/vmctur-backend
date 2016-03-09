@@ -34,11 +34,13 @@ namespace VMCTur.Infra.Data
 
             modelBuilder.Configurations.Add(new VeiculoMap());
 
-            modelBuilder.Configurations.Add(new GuiaMap());
+            modelBuilder.Configurations.Add(new GuiaMap());            
 
             modelBuilder.Configurations.Add(new PasseioMap());
 
             modelBuilder.Configurations.Add(new PacoteMap());
+
+            
         }
     }
 }

@@ -5,9 +5,9 @@ namespace VMCTur.Domain.Entities.Enum
     public enum TipoVinculoVeiculo
     {
         [Description("Próprio")]
-        Proprio,
+        Proprio = 1,
 
         [Description("Terceirizado")]
-        Terceirizado        
+        Terceirizado = 2        
     }
 }
