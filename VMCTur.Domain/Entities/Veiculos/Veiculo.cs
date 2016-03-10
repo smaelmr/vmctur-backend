@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VMCTur.Common.Standard;
 using VMCTur.Common.Validation;
-using VMCTur.Domain.Entities.Enum;
+using VMCTur.Domain.Entities.Enums;
 
 namespace VMCTur.Domain.Entities.Veiculos
 {
@@ -21,6 +22,14 @@ namespace VMCTur.Domain.Entities.Veiculos
         public TipoVinculoVeiculo TipoAquisicao { get; private set; }
         public bool Inativo { get; private set; }
         public string Obs { get; private set; }
+
+        public string TipoVinculoDisplay
+        {
+            get
+            {
+                return Standard.ObterDescricaoEnum(TipoAquisicao);
+            }
+        }
 
         #endregion
 

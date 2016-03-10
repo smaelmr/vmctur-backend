@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VMCTur.Domain.Contracts.Repositories;
-using VMCTur.Domain.Entities.Pacotes;
+using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
@@ -18,37 +18,37 @@ namespace VMCTur.Infra.Repositories
             this._context = context;
         }
 
-        public void Create(Pacote pacote)
+        public void Create(TravelPackage package)
         {
-            _context.Pacotes.Add(pacote);
+            _context.Pacotes.Add(package);
             _context.SaveChanges();
         }
 
-        public void Update(Pacote pacote)
+        public void Update(TravelPackage package)
         {
-            _context.Entry<Pacote>(pacote).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry<TravelPackage>(package).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
         }
 
-        public void Delete(Pacote pacote)
+        public void Delete(TravelPackage package)
         {
-            _context.Pacotes.Remove(pacote);
+            _context.Pacotes.Remove(package);
             _context.SaveChanges();
         }
 
-        public Pacote Get(int id)
+        public TravelPackage Get(int id)
         {
             return _context.Pacotes.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<Pacote> Get(string search)
+        public List<TravelPackage> Get(string search)
         {
-            return _context.Pacotes.Where(x => x.Observacoes == search).ToList();
+            return _context.Pacotes.Where(x => x.Comments == search).ToList();
         }
 
-        public List<Pacote> Get(int skip, int take)
+        public List<TravelPackage> Get(int skip, int take)
         {
-            return _context.Pacotes.OrderBy(x => x.DatahoraPartida).Skip(skip).Take(take).ToList();
+            return _context.Pacotes.OrderBy(x => x.DateHourStart).Skip(skip).Take(take).ToList();
         }               
 
         public void Dispose()

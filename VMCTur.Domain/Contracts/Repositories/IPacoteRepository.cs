@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Entities.Pacotes;
+using VMCTur.Domain.Entities.TravelPackages;
 
 namespace VMCTur.Domain.Contracts.Repositories
 {
     public interface IPacoteRepository : IDisposable
     {
-        List<Pacote> Get(string search);
-        Pacote Get(int id);
-        List<Pacote> Get(int skip, int take);
+        List<TravelPackage> Get(string search);
+        TravelPackage Get(int id);
+        List<TravelPackage> Get(int skip, int take);
 
-        void Create(Pacote pacote);
-        void Update(Pacote pacote);
-        void Delete(Pacote pacote);
+        void Create(TravelPackage pacote);
+        void Update(TravelPackage pacote);
+        void Delete(TravelPackage pacote);
     }
 }

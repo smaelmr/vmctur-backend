@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using VMCTur.Domain.Entities.Clientes;
 using VMCTur.Domain.Entities.Guias;
-using VMCTur.Domain.Entities.Pacotes;
+using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Domain.Entities.Passeios;
 using VMCTur.Domain.Entities.Users;
 using VMCTur.Domain.Entities.Veiculos;
@@ -23,15 +23,14 @@ namespace VMCTur.Infra.Data
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Guia> Guias { get; set; }
         public DbSet<Passeio> Passeios { get; set; }
-        public DbSet<Pacote> Pacotes { get; set; }
+        public DbSet<TravelPackage> Pacotes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserMap());
 
             modelBuilder.Configurations.Add(new ClienteMap());
-            //modelBuilder.Entity<Cliente>().Ignore(d => d.Idade);
-
+            
             modelBuilder.Configurations.Add(new VeiculoMap());
 
             modelBuilder.Configurations.Add(new GuiaMap());            

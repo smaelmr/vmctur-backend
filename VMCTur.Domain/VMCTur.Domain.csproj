@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\TravelPackageCommands\Create\CreateTravelPackageCommand.cs" />
+    <Compile Include="Commands\TravelPackageCommands\Create\CreateParticipantCommand.cs" />
+    <Compile Include="Commands\TravelPackageCommands\Create\CreateTourCommand.cs" />
+    <Compile Include="Commands\TravelPackageCommands\Update\UpdateParticipantCommand.cs" />
+    <Compile Include="Commands\TravelPackageCommands\Update\UpdateTourCommand.cs" />
+    <Compile Include="Commands\TravelPackageCommands\Update\UpdateTravelPackageCommand.cs" />
     <Compile Include="Contracts\Repositories\IPacoteRepository.cs" />
     <Compile Include="Contracts\Repositories\IClienteRepository.cs" />
     <Compile Include="Contracts\Repositories\IGuiaRepository.cs" />
@@ -57,8 +63,9 @@
     <Compile Include="Contracts\Services\IPasseioService.cs" />
     <Compile Include="Contracts\Services\IVeiculoService.cs" />
     <Compile Include="Entities\Guias\Guia.cs" />
-    <Compile Include="Entities\Pacotes\Pacote.cs" />
-    <Compile Include="Entities\Pacotes\Participante.cs" />
+    <Compile Include="Entities\TravelPackages\TourTravelPackage.cs" />
+    <Compile Include="Entities\TravelPackages\TravelPackage.cs" />
+    <Compile Include="Entities\TravelPackages\ParticipantTravelPackage.cs" />
     <Compile Include="Entities\Passeios\Passeio.cs" />
     <Compile Include="Enums\TipoVinculoGuia.cs" />
     <Compile Include="Enums\TipoVinculoVeiculo.cs" />

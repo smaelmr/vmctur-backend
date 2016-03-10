@@ -64,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.pt-BR.resx</DependentUpon>
     </Compile>
+    <Compile Include="Stand\Standard.cs" />
     <Compile Include="Validation\AssertionConcern.cs" />
     <Compile Include="Validation\BirthdayAssertionConcern.cs" />
     <Compile Include="Validation\EmailAssertionConcern.cs" />

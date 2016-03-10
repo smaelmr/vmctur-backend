@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VMCTur.Domain.Commands.TravelPackageCommands.Create;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
-using VMCTur.Domain.Entities.Pacotes;
-using VMCTur.Domain.Entities.Passeios;
+using VMCTur.Domain.Entities.TravelPackages;
+using VMCTur.Domain.Commands.TravelPackageCommands.Update;
 
 namespace VMCTur.Bussiness.Services
 {
@@ -19,30 +20,49 @@ namespace VMCTur.Bussiness.Services
             _pacoteRepository = pacoteRepository;
         }
 
-        public void Create(int empresaId, int clienteId, List<Participante> participantes, List<Passeio> passeios, DateTime datahoraPartida, string hotelHospedagem, 
-                           string quantidadeBilhetes, int veiculoUtilizadoId, int guiaPasseioId, double valorTotal, DateTime dataPagamentoSinal, 
-                           double valorPagamentoSinal, string condicaoPagamentoRestante, string reservasAdicionais, string observacoes)
+        public void Create(CreateTravelPackageCommand travelPackageCreate)
         {
-            var pacote = new Pacote(0, empresaId, clienteId, participantes, passeios, datahoraPartida, hotelHospedagem,
-                                    quantidadeBilhetes, veiculoUtilizadoId, guiaPasseioId, valorTotal, dataPagamentoSinal,
-                                    valorPagamentoSinal, condicaoPagamentoRestante, reservasAdicionais, observacoes);
+            List<ParticipantTravelPackage> participants = new List<ParticipantTravelPackage>();
+            List<TourTravelPackage> tours = new List<TourTravelPackage>();
 
-            pacote.Validate();
+            foreach (CreateParticipantCommand p in travelPackageCreate.Participants)
+                participants.Add(new ParticipantTravelPackage(0, p.Name, p.NumberDocument, p.BirthDate, 0));
 
-            _pacoteRepository.Create(pacote);
+            foreach (CreateTourCommand p in travelPackageCreate.Tours)
+                tours.Add(new TourTravelPackage(0, p.Name, p.Comments, 0));
+
+
+            var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId,  participants, tours,
+                                           travelPackageCreate.DateHourStart, travelPackageCreate.Host, travelPackageCreate.QuantityTickets,
+                                           travelPackageCreate.VehicleUsedId, travelPackageCreate.GuideTourId, travelPackageCreate.PaymentAmount,
+                                           travelPackageCreate.PayDayFirst, travelPackageCreate.PaymentFirst, travelPackageCreate.PaymentTermsRemaining,
+                                           travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments);
+
+            travelPackage.Validate();
+
+            _pacoteRepository.Create(travelPackage);
         }
 
-        public void Update(int id, int empresaId, int clienteId, List<Participante> participantes, List<Passeio> passeios, DateTime datahoraPartida, 
-                           string hotelHospedagem, string quantidadeBilhetes, int veiculoUtilizadoId, int guiaPasseioId, double valorTotal, DateTime dataPagamentoSinal, 
-                           double valorPagamentoSinal, string condicaoPagamentoRestante, string reservasAdicionais, string observacoes)
+        public void Update(UpdateTravelPackageCommand travelPackageUpdate)
         {
-            var pacote = new Pacote(id, empresaId, clienteId, participantes, passeios, datahoraPartida, hotelHospedagem,
-                                    quantidadeBilhetes, veiculoUtilizadoId, guiaPasseioId, valorTotal, dataPagamentoSinal,
-                                    valorPagamentoSinal, condicaoPagamentoRestante, reservasAdicionais, observacoes);
+            List<ParticipantTravelPackage> participants = new List<ParticipantTravelPackage>();
+            List<TourTravelPackage> tours = new List<TourTravelPackage>();
 
-            pacote.Validate();
+            foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)
+                participants.Add(new ParticipantTravelPackage(0, p.Name, p.NumberDocument, p.BirthDate, 0));
 
-            _pacoteRepository.Create(pacote);
+            foreach (UpdateTourCommand p in travelPackageUpdate.Tours)
+                tours.Add(new TourTravelPackage(0, p.Name, p.Comments, 0));
+
+            var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, participants, tours,
+                                           travelPackageUpdate.DateHourStart, travelPackageUpdate.HostLocal, travelPackageUpdate.QuantityTickets,
+                                           travelPackageUpdate.VehicleUsedId, travelPackageUpdate.GuideTourId, travelPackageUpdate.PaymentAmount,
+                                           travelPackageUpdate.PayDayFirst, travelPackageUpdate.PaymentFirst, travelPackageUpdate.PaymentTermsRemaining,
+                                           travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments);
+
+            travelPackage.Validate();
+
+            _pacoteRepository.Create(travelPackage);
         }
 
         public void Delete(int id)
@@ -52,21 +72,21 @@ namespace VMCTur.Bussiness.Services
             _pacoteRepository.Delete(pacote);
         }                
 
-        public Pacote GetById(int id)
+        public TravelPackage GetById(int id)
         {
             var pacote = _pacoteRepository.Get(id);
 
             return pacote;
         }
 
-        public List<Pacote> GetByRange(int skip, int take)
+        public List<TravelPackage> GetByRange(int skip, int take)
         {
             var pacote = _pacoteRepository.Get(skip, take);
 
             return pacote;
         }
 
-        public List<Pacote> GetBySearch(string search)
+        public List<TravelPackage> GetBySearch(string search)
         {
             var pacote = _pacoteRepository.Get(search);
 

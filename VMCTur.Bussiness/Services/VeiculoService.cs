@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
-using VMCTur.Domain.Entities.Enum;
+using VMCTur.Domain.Entities.Enums;
 using VMCTur.Domain.Entities.Veiculos;
 
 namespace VMCTur.Bussiness.Services

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VMCTur.Domain.Entities.Guias;
-using VMCTur.Domain.Entities.Enum;
+using VMCTur.Domain.Entities.Enums;
 
 namespace VMCTur.Infra.Data.Map
 {
@@ -23,6 +23,9 @@ namespace VMCTur.Infra.Data.Map
             Property(x => x.Nome)
                 .HasMaxLength(60)
                 .IsRequired();
+
+            Ignore(x => x.TipoVinculoDisplay);
+                
 
         }
     }

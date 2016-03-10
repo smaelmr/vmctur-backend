@@ -24,6 +24,8 @@ namespace VMCTur.Infra.Data.Map
                 .HasMaxLength(160)               
                 .IsRequired();
 
+            Ignore(x => x.Idade);
+
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using VMCTur.Common.Resources;
+﻿using System;
+using VMCTur.Common.Resources;
+using VMCTur.Common.Standard;
 using VMCTur.Common.Validation;
-using VMCTur.Domain.Entities.Enum;
+using VMCTur.Domain.Entities.Enums;
 
 namespace VMCTur.Domain.Entities.Guias
 {
@@ -17,6 +19,15 @@ namespace VMCTur.Domain.Entities.Guias
         public string Cpf { get; private set; }
         public TipoVinculoGuia TipoVinculo { get; private set; }
         public string Obs { get; private set; }
+
+        public string TipoVinculoDisplay
+        {
+            get
+            {
+                return Standard.ObterDescricaoEnum(TipoVinculo);
+            }
+        
+        }
 
         #endregion
 

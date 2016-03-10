@@ -5,9 +5,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
-using VMCTur.Api.Models.Pacotes;
+using VMCTur.Domain.Commands.TravelPackageCommands.Create;
+using VMCTur.Domain.Commands.TravelPackageCommands.Update;
 using VMCTur.Domain.Contracts.Services;
-using WebApi.OutputCache.V2;
+//using WebApi.OutputCache.V2;
 
 namespace VMCTur.Api.Controllers
 {
@@ -24,22 +25,18 @@ namespace VMCTur.Api.Controllers
         /// <summary>
         /// Cria um novo Pacote.
         /// </summary>
-        /// <param name="body"></param>
+        /// <param name="package"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPost]
         [Route("")]
-        public Task<HttpResponseMessage> Post([FromBody]dynamic body)
+        public Task<HttpResponseMessage> Post(CreateTravelPackageCommand package)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Create(body.EmpresaId, body.ClienteId, body.Participantes.ToObject<List<ParticipanteModel>>(), 
-                    body.Passeios.ToObject<List<ParticipanteModel>>(), body.DatahoraPartida, body.HotelHospedagem,
-                    body.QuantidadeBilhetes, body.VeiculoUtilizadoId, body.GuiaPasseioId, body.ValorTotal, 
-                    body.DataPagamentoSinal, body.ValorPagamentoSinal, body.CondicãoPagamentoRestante, 
-                    body.ReservasAdicionais, body.Observacoes);
+                _service.Create(package);
 
                 response = Request.CreateResponse(HttpStatusCode.OK, new { name = "", email = "" });
             }
@@ -56,22 +53,18 @@ namespace VMCTur.Api.Controllers
         /// <summary>
         /// Atualiza os dados do pacote.
         /// </summary>
-        /// <param name="body"></param>
+        /// <param name="package"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPut]
         [Route("")]
-        public Task<HttpResponseMessage> Put([FromBody]dynamic body)
+        public Task<HttpResponseMessage> Put(UpdateTravelPackageCommand package)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Update(body.Id, body.EmpresaId, body.ClienteId, body.Participantes.ToObject<List<ParticipanteModel>>(),
-                    body.Passeios.ToObject<List<ParticipanteModel>>(), body.DatahoraPartida, body.HotelHospedagem,
-                    body.QuantidadeBilhetes, body.VeiculoUtilizadoId, body.GuiaPasseioId, body.ValorTotal,
-                    body.DataPagamentoSinal, body.ValorPagamentoSinal, body.CondicãoPagamentoRestante,
-                    body.ReservasAdicionais, body.Observacoes);
+                _service.Update(package);
 
                 response = Request.CreateResponse(HttpStatusCode.OK, new { name = "" });
             }

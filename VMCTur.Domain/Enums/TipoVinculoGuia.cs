@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VMCTur.Domain.Entities.Enum
+namespace VMCTur.Domain.Entities.Enums
 {
     public enum TipoVinculoGuia
     {

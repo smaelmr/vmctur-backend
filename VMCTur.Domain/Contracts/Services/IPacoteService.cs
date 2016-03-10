@@ -1,31 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Entities.Pacotes;
-using VMCTur.Domain.Entities.Passeios;
+using VMCTur.Domain.Commands.TravelPackageCommands.Create;
+using VMCTur.Domain.Commands.TravelPackageCommands.Update;
+using VMCTur.Domain.Entities.TravelPackages;
 
 namespace VMCTur.Domain.Contracts.Services
 {
     public interface IPacoteService : IDisposable
     {
-        void Create(int empresaId, int clienteId, List<Participante> participantes, List<Passeio> passeio,
-                    DateTime datahoraPartida, string hotelHospedagem, string quantidadeBilhetes,
-                    int veiculoUtilizadoId, int guiaPasseioId, double valorTotal, DateTime dataPgamentoSinal,
-                    double valorPagamentoSinal, string condicãoPagamentoRestante,
-                    string reservasAdicionais, string observações);
+        void Create(CreateTravelPackageCommand travelPackage);
 
-        void Update(int id, int empresaId, int clienteId, List<Participante> participantes, List<Passeio> passeio,
-                    DateTime datahoraPartida, string hotelHospedagem, string quantidadeBilhetes,
-                    int veiculoUtilizadoId, int guiaPasseioId, double valorTotal, DateTime dataPgamentoSinal,
-                    double valorPagamentoSinal, string condicãoPagamentoRestante,
-                    string reservasAdicionais, string observações);
+        void Update(UpdateTravelPackageCommand travelPackage);
 
         void Delete(int id);
 
-        List<Pacote> GetByRange(int skip, int take);
+        List<TravelPackage> GetByRange(int skip, int take);
 
-        List<Pacote> GetBySearch(string search);
+        List<TravelPackage> GetBySearch(string search);
 
-        Pacote GetById(int id);
+        TravelPackage GetById(int id);
 
     }
 }

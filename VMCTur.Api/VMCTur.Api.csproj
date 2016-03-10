@@ -240,10 +240,6 @@
     <Compile Include="Models\Clientes\UpdateClienteModel.cs" />
     <Compile Include="Models\Guias\CreateGuiaModel.cs" />
     <Compile Include="Models\Guias\UpdateGuiaModel.cs" />
-    <Compile Include="Models\Pacotes\CreatePacoteModel.cs" />
-    <Compile Include="Models\Pacotes\ParticipanteModel.cs" />
-    <Compile Include="Models\Pacotes\PasseioModel.cs" />
-    <Compile Include="Models\Pacotes\UpdatePacoteModel.cs" />
     <Compile Include="Models\Passeios\CreatePasseioModel.cs" />
     <Compile Include="Models\Passeios\UpdatePasseioModel.cs" />
     <Compile Include="Models\Veiculos\CreateVeiculoModel.cs" />
