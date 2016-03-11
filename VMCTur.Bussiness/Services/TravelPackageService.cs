@@ -11,13 +11,13 @@ using VMCTur.Domain.Commands.TravelPackageCommands.Update;
 
 namespace VMCTur.Bussiness.Services
 {
-    public class PacoteService : IPacoteService
+    public class TravelPackageService : ITravelPackageService
     {
-        private IPacoteRepository _pacoteRepository;
+        private ITravelPackageRepository _repository;
 
-        public PacoteService(IPacoteRepository pacoteRepository)
+        public TravelPackageService(ITravelPackageRepository repository)
         {
-            _pacoteRepository = pacoteRepository;
+            _repository = repository;
         }
 
         public void Create(CreateTravelPackageCommand travelPackageCreate)
@@ -40,7 +40,7 @@ namespace VMCTur.Bussiness.Services
 
             travelPackage.Validate();
 
-            _pacoteRepository.Create(travelPackage);
+            _repository.Create(travelPackage);
         }
 
         public void Update(UpdateTravelPackageCommand travelPackageUpdate)
@@ -62,40 +62,40 @@ namespace VMCTur.Bussiness.Services
 
             travelPackage.Validate();
 
-            _pacoteRepository.Create(travelPackage);
+            _repository.Create(travelPackage);
         }
 
         public void Delete(int id)
         {
-            var pacote = _pacoteRepository.Get(id);
+            var travelPackage = _repository.Get(id);
 
-            _pacoteRepository.Delete(pacote);
+            _repository.Delete(travelPackage);
         }                
 
         public TravelPackage GetById(int id)
         {
-            var pacote = _pacoteRepository.Get(id);
+            var travelPackage = _repository.Get(id);
 
-            return pacote;
+            return travelPackage;
         }
 
         public List<TravelPackage> GetByRange(int skip, int take)
         {
-            var pacote = _pacoteRepository.Get(skip, take);
+            var travelPackage = _repository.Get(skip, take);
 
-            return pacote;
+            return travelPackage;
         }
 
         public List<TravelPackage> GetBySearch(string search)
         {
-            var pacote = _pacoteRepository.Get(search);
+            var travelPackage = _repository.Get(search);
 
-            return pacote;
+            return travelPackage;
         }        
 
         public void Dispose()
         {
-            _pacoteRepository.Dispose();
+            _repository.Dispose();
         }
     }
 }

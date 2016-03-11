@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations.Schema;
-using VMCTur.Domain.Entities.Clientes;
+using VMCTur.Domain.Entities.Customers;
 
 namespace VMCTur.Infra.Data.Map
 {
-    public class ClienteMap : EntityTypeConfiguration<Cliente>
+    public class ClienteMap : EntityTypeConfiguration<Customer>
     {
         public ClienteMap()
         {
-            ToTable("cliente");
+            ToTable("Customer");
 
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)

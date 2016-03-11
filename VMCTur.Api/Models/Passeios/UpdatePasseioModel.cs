@@ -1,4 +1,4 @@
-﻿namespace VMCTur.Api.Models.Passeios
+﻿namespace VMCTur.Api.Models.Tours
 {
     public class UpdatePasseioModel
     {     

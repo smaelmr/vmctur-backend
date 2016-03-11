@@ -49,29 +49,29 @@
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateParticipantCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateTourCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateTravelPackageCommand.cs" />
-    <Compile Include="Contracts\Repositories\IPacoteRepository.cs" />
+    <Compile Include="Contracts\Repositories\ITravelPackageRepository.cs" />
     <Compile Include="Contracts\Repositories\IClienteRepository.cs" />
     <Compile Include="Contracts\Repositories\IGuiaRepository.cs" />
     <Compile Include="Contracts\Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\Repositories\IPasseioRepository.cs" />
     <Compile Include="Contracts\Repositories\IVeiculoRepository.cs" />
-    <Compile Include="Contracts\Services\IPacoteService.cs" />
+    <Compile Include="Contracts\Services\ITravelPackageService.cs" />
     <Compile Include="Contracts\Services\IClienteService.cs" />
     <Compile Include="Contracts\Services\IGuiaService.cs" />
     <Compile Include="Contracts\Services\INotification.cs" />
     <Compile Include="Contracts\Services\IUserService.cs" />
     <Compile Include="Contracts\Services\IPasseioService.cs" />
     <Compile Include="Contracts\Services\IVeiculoService.cs" />
-    <Compile Include="Entities\Guias\Guia.cs" />
+    <Compile Include="Entities\TourGuide\TourGuide.cs" />
     <Compile Include="Entities\TravelPackages\TourTravelPackage.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackage.cs" />
     <Compile Include="Entities\TravelPackages\ParticipantTravelPackage.cs" />
-    <Compile Include="Entities\Passeios\Passeio.cs" />
+    <Compile Include="Entities\Tours\Tour.cs" />
     <Compile Include="Enums\TipoVinculoGuia.cs" />
     <Compile Include="Enums\TipoVinculoVeiculo.cs" />
-    <Compile Include="Entities\Veiculos\Veiculo.cs" />
+    <Compile Include="Entities\Vehicles\Vehicle.cs" />
     <Compile Include="Enums\FaixaEtaria.cs" />
-    <Compile Include="Entities\Clientes\Cliente.cs" />
+    <Compile Include="Entities\Customers\Customer.cs" />
     <Compile Include="Entities\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,7 +81,9 @@
       <Name>VMCTur.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\CustomerCommands\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

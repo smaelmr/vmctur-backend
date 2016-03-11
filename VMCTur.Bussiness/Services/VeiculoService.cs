@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
 using VMCTur.Domain.Entities.Enums;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Bussiness.Services
 {
@@ -21,7 +21,7 @@ namespace VMCTur.Bussiness.Services
         {
             TipoVinculoVeiculo vinculo = (TipoVinculoVeiculo)Enum.Parse(typeof(TipoVinculoVeiculo), tipoVinculo);
 
-            var veiculo = new Veiculo(0, empresaId, placa, ano, modelo, capacidadePassageiros, inativo, vinculo, obs);
+            var veiculo = new Vehicle(0, empresaId, placa, ano, modelo, capacidadePassageiros, inativo, vinculo, obs);
 
             veiculo.Validate();
 
@@ -33,7 +33,7 @@ namespace VMCTur.Bussiness.Services
         {
             TipoVinculoVeiculo vinculo = (TipoVinculoVeiculo)Enum.Parse(typeof(TipoVinculoVeiculo), tipoVinculo);
 
-            var veiculo = new Veiculo(id, empresaId, placa, ano, modelo, capacidadePassageiros, inativo, vinculo, obs);
+            var veiculo = new Vehicle(id, empresaId, placa, ano, modelo, capacidadePassageiros, inativo, vinculo, obs);
             veiculo.Validate();
 
             _repository.Update(veiculo);
@@ -46,21 +46,21 @@ namespace VMCTur.Bussiness.Services
             _repository.Delete(veiculo);
         }
 
-        public Veiculo GetById(int id)
+        public Vehicle GetById(int id)
         {
             var veiculo = _repository.Get(id);
 
             return veiculo;
         }
 
-        public List<Veiculo> GetByRange(int skip, int take)
+        public List<Vehicle> GetByRange(int skip, int take)
         {
             var veiculo = _repository.Get(skip, take);
 
             return veiculo;
         }
 
-        public List<Veiculo> GetBySearch(string search)
+        public List<Vehicle> GetBySearch(string search)
         {
             var veiculo = _repository.Get(search);
 

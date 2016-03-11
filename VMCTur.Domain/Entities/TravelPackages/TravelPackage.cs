@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VMCTur.Common.Validation;
-using VMCTur.Domain.Entities.Clientes;
-using VMCTur.Domain.Entities.Guias;
-using VMCTur.Domain.Entities.Passeios;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Customers;
+using VMCTur.Domain.Entities.TourGuides;
+using VMCTur.Domain.Entities.Tours;
+using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Domain.Entities.TravelPackages
 {
@@ -18,7 +18,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public int Id { get; private set; }
         public int CompanyId { get; private set; }
 
-        public Cliente Customer { get; private set; }
+        public Customer Customer { get; private set; }
         public int CustomerId { get; private set; }
 
         public List<ParticipantTravelPackage> Participants { get; private set; }
@@ -29,10 +29,10 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string QuantityTickets { get; private set; }
 
         public int VehicleUsedId { get; private set; }
-        public Veiculo VehicleUsed { get; private set; }
+        public Vehicle VehicleUsed { get; private set; }
 
         public int GuideTourId { get; private set; }
-        public Guia GuideTour { get; private set; }
+        public TourGuide GuideTour { get; private set; }
 
         public double PaymentAmount { get; private set; }
         public DateTime PayDayFirst { get; private set; }

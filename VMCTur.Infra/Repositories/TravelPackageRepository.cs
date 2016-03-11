@@ -9,18 +9,18 @@ using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
 {
-    public class PacoteRepository : IPacoteRepository
+    public class TravelPackageRepository : ITravelPackageRepository
     {
         private AppDataContext _context;
 
-        public PacoteRepository(AppDataContext context)
+        public TravelPackageRepository(AppDataContext context)
         {
             this._context = context;
         }
 
         public void Create(TravelPackage package)
         {
-            _context.Pacotes.Add(package);
+            _context.TravelPackages.Add(package);
             _context.SaveChanges();
         }
 
@@ -32,23 +32,23 @@ namespace VMCTur.Infra.Repositories
 
         public void Delete(TravelPackage package)
         {
-            _context.Pacotes.Remove(package);
+            _context.TravelPackages.Remove(package);
             _context.SaveChanges();
         }
 
         public TravelPackage Get(int id)
         {
-            return _context.Pacotes.Where(x => x.Id == id).FirstOrDefault();
+            return _context.TravelPackages.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public List<TravelPackage> Get(string search)
         {
-            return _context.Pacotes.Where(x => x.Comments == search).ToList();
+            return _context.TravelPackages.Where(x => x.Comments == search).ToList();
         }
 
         public List<TravelPackage> Get(int skip, int take)
         {
-            return _context.Pacotes.OrderBy(x => x.DateHourStart).Skip(skip).Take(take).ToList();
+            return _context.TravelPackages.OrderBy(x => x.DateHourStart).Skip(skip).Take(take).ToList();
         }               
 
         public void Dispose()

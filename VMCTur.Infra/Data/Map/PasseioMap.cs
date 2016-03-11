@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using VMCTur.Domain.Entities.Passeios;
+using VMCTur.Domain.Entities.Tours;
 
 namespace VMCTur.Infra.Data.Map
 {
-    public class PasseioMap : EntityTypeConfiguration<Passeio>
+    public class PasseioMap : EntityTypeConfiguration<Tour>
     {
         public PasseioMap()
         {
-            ToTable("passeio");
+            ToTable("Tour");
 
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)

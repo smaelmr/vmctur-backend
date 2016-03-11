@@ -13,11 +13,11 @@ using VMCTur.Domain.Contracts.Services;
 namespace VMCTur.Api.Controllers
 {
     [RoutePrefix("api/pacote")]
-    public class PacoteController : ApiController
+    public class TravelPackageController : ApiController
     {
-        private IPacoteService _service;
+        private ITravelPackageService _service;
 
-        public PacoteController(IPacoteService service)
+        public TravelPackageController(ITravelPackageService service)
         {
             this._service = service;
         }

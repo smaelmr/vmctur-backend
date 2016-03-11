@@ -6,7 +6,7 @@ using VMCTur.Domain.Entities.TravelPackages;
 
 namespace VMCTur.Domain.Contracts.Services
 {
-    public interface IPacoteService : IDisposable
+    public interface ITravelPackageService : IDisposable
     {
         void Create(CreateTravelPackageCommand travelPackage);
 

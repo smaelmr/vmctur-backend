@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VMCTur.Domain.Entities.Guias;
+using VMCTur.Domain.Entities.TourGuides;
 
 namespace VMCTur.Domain.Contracts.Repositories
 {
     public interface IGuiaRepository : IDisposable
     {
-        List<Guia> Get(string search);
-        Guia Get(int id);
-        List<Guia> Get(int skip, int take);
+        List<TourGuide> Get(string search);
+        TourGuide Get(int id);
+        List<TourGuide> Get(int skip, int take);
 
-        void Create(Guia guia);
-        void Update(Guia guia);
-        void Delete(Guia guia);
+        void Create(TourGuide guia);
+        void Update(TourGuide guia);
+        void Delete(TourGuide guia);
     }
 }

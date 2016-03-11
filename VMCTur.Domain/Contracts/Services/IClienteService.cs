@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Entities.Clientes;
+using VMCTur.Domain.Entities.Customers;
 
 namespace VMCTur.Domain.Contracts.Services
 {
@@ -12,11 +12,11 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Delete(int id);
 
-        List<Cliente> GetByRange(int skip, int take);
+        List<Customer> GetByRange(int skip, int take);
 
-        List<Cliente> GetBySearch(string search);
+        List<Customer> GetBySearch(string search);
 
-        Cliente GetById(int id);
+        Customer GetById(int id);
 
     }
 }

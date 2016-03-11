@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
-using VMCTur.Domain.Entities.Clientes;
+using VMCTur.Domain.Entities.Customers;
 using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
@@ -16,37 +16,37 @@ namespace VMCTur.Infra.Repositories
             this._context = context;
         }
 
-        public void Create(Cliente customer)
+        public void Create(Customer customer)
         {
-            _context.Clientes.Add(customer);
+            _context.Customers.Add(customer);
             _context.SaveChanges();
         }
 
-        public void Update(Cliente customer)
+        public void Update(Customer customer)
         {
-            _context.Entry<Cliente>(customer).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry<Customer>(customer).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
         }
 
-        public void Delete(Cliente customer)
+        public void Delete(Customer customer)
         {
-            _context.Clientes.Remove(customer);
+            _context.Customers.Remove(customer);
             _context.SaveChanges();
         }
 
-        public Cliente Get(int id)
+        public Customer Get(int id)
         {
-            return _context.Clientes.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Customers.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<Cliente> Get(string search)
+        public List<Customer> Get(string search)
         {
-            return _context.Clientes.Where(x => x.Nome == search).ToList();
+            return _context.Customers.Where(x => x.Nome == search).ToList();
         }
 
-        public List<Cliente> Get(int skip, int take)
+        public List<Customer> Get(int skip, int take)
         {
-            return _context.Clientes.OrderBy(x => x.Nome).Skip(skip).Take(take).ToList();
+            return _context.Customers.OrderBy(x => x.Nome).Skip(skip).Take(take).ToList();
         }
 
         public void Dispose()

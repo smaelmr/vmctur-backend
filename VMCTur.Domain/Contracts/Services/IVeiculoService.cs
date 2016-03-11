@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Domain.Contracts.Services
 {
@@ -14,10 +14,10 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Delete(int id);
 
-        List<Veiculo> GetByRange(int skip, int take);
+        List<Vehicle> GetByRange(int skip, int take);
 
-        List<Veiculo> GetBySearch(string search);
+        List<Vehicle> GetBySearch(string search);
 
-        Veiculo GetById(int id);
+        Vehicle GetById(int id);
     }
 }

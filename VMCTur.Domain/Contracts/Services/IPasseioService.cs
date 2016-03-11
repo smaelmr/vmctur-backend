@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Entities.Passeios;
+using VMCTur.Domain.Entities.Tours;
 
 namespace VMCTur.Domain.Contracts.Services
 {
@@ -14,10 +14,10 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Delete(int id);
 
-        List<Passeio> GetByRange(int skip, int take);
+        List<Tour> GetByRange(int skip, int take);
 
-        List<Passeio> GetBySearch(string search);
+        List<Tour> GetBySearch(string search);
 
-        Passeio GetById(int id);
+        Tour GetById(int id);
     }
 }

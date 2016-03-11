@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Entities.Guias;
+using VMCTur.Domain.Entities.TourGuides;
 
 namespace VMCTur.Domain.Contracts.Services
 {
@@ -12,10 +12,10 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Delete(int id);
 
-        List<Guia> GetByRange(int skip, int take);
+        List<TourGuide> GetByRange(int skip, int take);
 
-        List<Guia> GetBySearch(string search);
+        List<TourGuide> GetBySearch(string search);
 
-        Guia GetById(int id);
+        TourGuide GetById(int id);
     }
 }

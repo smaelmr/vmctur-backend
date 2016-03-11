@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using VMCTur.Common.Resources;
 using VMCTur.Common.Validation;
 
-namespace VMCTur.Domain.Entities.Passeios
+namespace VMCTur.Domain.Entities.Tours
+
 {
-    public class Passeio
+    public class Tour
     {
         #region Properties
 
@@ -25,10 +26,10 @@ namespace VMCTur.Domain.Entities.Passeios
 
         #region Ctor
 
-        protected Passeio()
+        protected Tour()
         { }
 
-        public Passeio(int id, int empresaId, string nome, string roteiro, TimeSpan horarioAbertura,
+        public Tour(int id, int empresaId, string nome, string roteiro, TimeSpan horarioAbertura,
                        TimeSpan horarioFechamento, bool inativo, string obs)
         {
             Id = id;

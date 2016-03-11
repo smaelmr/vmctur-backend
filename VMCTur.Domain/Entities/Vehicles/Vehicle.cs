@@ -7,9 +7,9 @@ using VMCTur.Common.Standard;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.Enums;
 
-namespace VMCTur.Domain.Entities.Veiculos
+namespace VMCTur.Domain.Entities.Vehicles
 {
-    public class Veiculo
+    public class Vehicle
     {
         #region Properties
 
@@ -35,10 +35,10 @@ namespace VMCTur.Domain.Entities.Veiculos
 
         #region Ctor
 
-        protected Veiculo()
+        protected Vehicle()
         { }
 
-        public Veiculo(int id, int empresaId, string placa, int ano, string modelo, int capacidadePassageiros, 
+        public Vehicle(int id, int empresaId, string placa, int ano, string modelo, int capacidadePassageiros, 
                        bool inativo, TipoVinculoVeiculo tipoAquisicao, string obs)
         {
             Id = id;

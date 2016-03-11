@@ -28,8 +28,8 @@ namespace VMCTur.Startup
             container.RegisterType<IPasseioRepository, PasseioRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IPasseioService, PasseioService>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<IPacoteRepository, PacoteRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<IPacoteService, PacoteService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITravelPackageRepository, TravelPackageRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITravelPackageService, TravelPackageService>(new HierarchicalLifetimeManager());
 
         }
     

@@ -233,7 +233,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\GuiaController.cs" />
-    <Compile Include="Controllers\PacoteController.cs" />
+    <Compile Include="Controllers\TravelPackageController.cs" />
     <Compile Include="Controllers\PasseioController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Models\Clientes\CreateClienteModel.cs" />

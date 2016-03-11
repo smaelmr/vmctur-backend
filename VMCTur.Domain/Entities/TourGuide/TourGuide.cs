@@ -4,12 +4,12 @@ using VMCTur.Common.Standard;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.Enums;
 
-namespace VMCTur.Domain.Entities.Guias
+namespace VMCTur.Domain.Entities.TourGuides
 {
     /// <summary>
     /// Smael: guia também pode ser o motorista.
     /// </summary>
-    public class Guia
+    public class TourGuide
     {
         #region Properties
 
@@ -33,10 +33,10 @@ namespace VMCTur.Domain.Entities.Guias
 
         #region Ctor
 
-        protected Guia()
+        protected TourGuide()
         { }
 
-        public Guia(int id, int empresaId, string nome, string cpf, TipoVinculoGuia tipoVinculo, string obs)
+        public TourGuide(int id, int empresaId, string nome, string cpf, TipoVinculoGuia tipoVinculo, string obs)
         {
             Id = id;
             EmpresaId = empresaId;

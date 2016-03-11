@@ -5,16 +5,16 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VMCTur.Domain.Entities.Guias;
+using VMCTur.Domain.Entities.TourGuides;
 using VMCTur.Domain.Entities.Enums;
 
 namespace VMCTur.Infra.Data.Map
 {
-    public class GuiaMap : EntityTypeConfiguration<Guia>
+    public class GuiaMap : EntityTypeConfiguration<TourGuide>
     {
         public GuiaMap()
         {
-            ToTable("guia");
+            ToTable("TourGuide");
 
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
-using VMCTur.Domain.Entities.Passeios;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Tours;
+using VMCTur.Domain.Entities.Vehicles;
 using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
@@ -17,37 +17,37 @@ namespace VMCTur.Infra.Repositories
             this._context = context;
         }
 
-        public void Create(Passeio passeio)
+        public void Create(Tour passeio)
         {
-            _context.Passeios.Add(passeio);
+            _context.Tours.Add(passeio);
             _context.SaveChanges();
         }
 
-        public void Update(Passeio passeios)
+        public void Update(Tour passeios)
         {
-            _context.Entry<Passeio>(passeios).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry<Tour>(passeios).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
         }
 
-        public void Delete(Passeio passeios)
+        public void Delete(Tour passeios)
         {
-            _context.Passeios.Remove(passeios);
+            _context.Tours.Remove(passeios);
             _context.SaveChanges();
         }
 
-        public Passeio Get(int id)
+        public Tour Get(int id)
         {
-            return _context.Passeios.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Tours.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<Passeio> Get(string search)
+        public List<Tour> Get(string search)
         {
-            return _context.Passeios.Where(x => x.Nome == search).ToList();
+            return _context.Tours.Where(x => x.Nome == search).ToList();
         }
 
-        public List<Passeio> Get(int skip, int take)
+        public List<Tour> Get(int skip, int take)
         {
-            return _context.Passeios.OrderBy(x => x.Nome).Skip(skip).Take(take).ToList();
+            return _context.Tours.OrderBy(x => x.Nome).Skip(skip).Take(take).ToList();
         }
 
         public void Dispose()

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
 using VMCTur.Domain.Entities.Enums;
-using VMCTur.Domain.Entities.Passeios;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Tours;
+using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Bussiness.Services
 {
@@ -23,7 +23,7 @@ namespace VMCTur.Bussiness.Services
             TimeSpan horarioAb = TimeSpan.Parse(horarioAbertura);
             TimeSpan horarioFe = TimeSpan.Parse(horarioFechamento);
 
-            var paseio = new Passeio(0, empresaId, nome, roteiro, horarioAb, horarioFe, inativo, obs);
+            var paseio = new Tour(0, empresaId, nome, roteiro, horarioAb, horarioFe, inativo, obs);
             paseio.Validate();
 
             _repository.Create(paseio);
@@ -35,7 +35,7 @@ namespace VMCTur.Bussiness.Services
             TimeSpan horarioAb = TimeSpan.Parse(horarioAbertura);
             TimeSpan horarioFe = TimeSpan.Parse(horarioFechamento);
 
-            var passeio = new Passeio(id, empresaId, nome, roteiro, horarioAb, horarioFe, inativo, obs);
+            var passeio = new Tour(id, empresaId, nome, roteiro, horarioAb, horarioFe, inativo, obs);
             passeio.Validate();
 
             _repository.Update(passeio);
@@ -48,21 +48,21 @@ namespace VMCTur.Bussiness.Services
             _repository.Delete(passeio);
         }
 
-        public Passeio GetById(int id)
+        public Tour GetById(int id)
         {
             var passeio = _repository.Get(id);
 
             return passeio;
         }
 
-        public List<Passeio> GetByRange(int skip, int take)
+        public List<Tour> GetByRange(int skip, int take)
         {
             var passeio = _repository.Get(skip, take);
 
             return passeio;
         }
 
-        public List<Passeio> GetBySearch(string search)
+        public List<Tour> GetBySearch(string search)
         {
             var passeio = _repository.Get(search);
 

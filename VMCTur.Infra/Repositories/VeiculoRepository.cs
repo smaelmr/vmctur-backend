@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Vehicles;
 using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
@@ -16,37 +16,37 @@ namespace VMCTur.Infra.Repositories
             this._context = context;
         }
 
-        public void Create(Veiculo veiculo)
+        public void Create(Vehicle veiculo)
         {
-            _context.Veiculos.Add(veiculo);
+            _context.Vehicles.Add(veiculo);
             _context.SaveChanges();
         }
 
-        public void Update(Veiculo veiculo)
+        public void Update(Vehicle veiculo)
         {
-            _context.Entry<Veiculo>(veiculo).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry<Vehicle>(veiculo).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
         }
 
-        public void Delete(Veiculo veiculo)
+        public void Delete(Vehicle veiculo)
         {
-            _context.Veiculos.Remove(veiculo);
+            _context.Vehicles.Remove(veiculo);
             _context.SaveChanges();
         }
 
-        public Veiculo Get(int id)
+        public Vehicle Get(int id)
         {
-            return _context.Veiculos.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Vehicles.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<Veiculo> Get(string search)
+        public List<Vehicle> Get(string search)
         {
-            return _context.Veiculos.Where(x => x.Placa == search).ToList();
+            return _context.Vehicles.Where(x => x.Placa == search).ToList();
         }
 
-        public List<Veiculo> Get(int skip, int take)
+        public List<Vehicle> Get(int skip, int take)
         {
-            return _context.Veiculos.OrderBy(x => x.Placa).Skip(skip).Take(take).ToList();
+            return _context.Vehicles.OrderBy(x => x.Placa).Skip(skip).Take(take).ToList();
         }
 
         public void Dispose()

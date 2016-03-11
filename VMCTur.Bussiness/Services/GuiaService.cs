@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
 using VMCTur.Domain.Entities.Enums;
-using VMCTur.Domain.Entities.Guias;
+using VMCTur.Domain.Entities.TourGuides;
 
 namespace VMCTur.Bussiness.Services
 {
@@ -20,7 +20,7 @@ namespace VMCTur.Bussiness.Services
         {
             TipoVinculoGuia vinculo = (TipoVinculoGuia)Enum.Parse(typeof(TipoVinculoGuia), tipoVinculo);
 
-            var guia = new Guia(0, empresaId, nome, cpf, vinculo, obs);
+            var guia = new TourGuide(0, empresaId, nome, cpf, vinculo, obs);
             guia.Validate();
 
             _repository.Create(guia);
@@ -30,7 +30,7 @@ namespace VMCTur.Bussiness.Services
         {
             TipoVinculoGuia vinculo = (TipoVinculoGuia)Enum.Parse(typeof(TipoVinculoGuia), tipoVinculo);
 
-            var guia = new Guia(id, empresaId, nome, cpf, vinculo, obs);
+            var guia = new TourGuide(id, empresaId, nome, cpf, vinculo, obs);
             guia.Validate();
 
             _repository.Update(guia);
@@ -43,21 +43,21 @@ namespace VMCTur.Bussiness.Services
             _repository.Delete(guia);
         }
 
-        public Guia GetById(int id)
+        public TourGuide GetById(int id)
         {
             var guia = _repository.Get(id);
 
             return guia;
         }
 
-        public List<Guia> GetByRange(int skip, int take)
+        public List<TourGuide> GetByRange(int skip, int take)
         {
             var customers = _repository.Get(skip, take);
 
             return customers;
         }
 
-        public List<Guia> GetBySearch(string search)
+        public List<TourGuide> GetBySearch(string search)
         {
             var customers = _repository.Get(search);
 

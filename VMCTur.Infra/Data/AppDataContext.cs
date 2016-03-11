@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
-using VMCTur.Domain.Entities.Clientes;
-using VMCTur.Domain.Entities.Guias;
+using VMCTur.Domain.Entities.Customers;
+using VMCTur.Domain.Entities.TourGuides;
 using VMCTur.Domain.Entities.TravelPackages;
-using VMCTur.Domain.Entities.Passeios;
+using VMCTur.Domain.Entities.Tours;
 using VMCTur.Domain.Entities.Users;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Vehicles;
 using VMCTur.Infra.Data.Map;
 
 namespace VMCTur.Infra.Data
@@ -15,31 +15,25 @@ namespace VMCTur.Infra.Data
         public AppDataContext() : base("AppConnectionString")
         {
             Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
+            Configuration.LazyLoadingEnabled = false;        
+                        
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Veiculo> Veiculos { get; set; }
-        public DbSet<Guia> Guias { get; set; }
-        public DbSet<Passeio> Passeios { get; set; }
-        public DbSet<TravelPackage> Pacotes { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<TourGuide> TourGuides { get; set; }
+        public DbSet<Tour> Tours { get; set; }
+        public DbSet<TravelPackage> TravelPackages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserMap());
-
             modelBuilder.Configurations.Add(new ClienteMap());
-            
             modelBuilder.Configurations.Add(new VeiculoMap());
-
             modelBuilder.Configurations.Add(new GuiaMap());            
-
             modelBuilder.Configurations.Add(new PasseioMap());
-
-            modelBuilder.Configurations.Add(new PacoteMap());
-
-            
+            modelBuilder.Configurations.Add(new TravelPackageMap());            
         }
     }
 }

@@ -5,15 +5,15 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VMCTur.Domain.Entities.Veiculos;
+using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Infra.Data.Map
 {
-    public class VeiculoMap : EntityTypeConfiguration<Veiculo>
+    public class VeiculoMap : EntityTypeConfiguration<Vehicle>
     {
         public VeiculoMap()
         {
-            ToTable("veiculo");
+            ToTable("Vehicle");
 
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)

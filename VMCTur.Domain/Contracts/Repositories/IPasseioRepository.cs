@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Entities.Passeios;
+using VMCTur.Domain.Entities.Tours;
 
 namespace VMCTur.Domain.Contracts.Repositories
 {
     public interface IPasseioRepository : IDisposable
     {
-        List<Passeio> Get(string search);
-        Passeio Get(int id);
-        List<Passeio> Get(int skip, int take);
+        List<Tour> Get(string search);
+        Tour Get(int id);
+        List<Tour> Get(int skip, int take);
 
-        void Create(Passeio veiculo);
-        void Update(Passeio veiculo);
-        void Delete(Passeio veiculo);
+        void Create(Tour veiculo);
+        void Update(Tour veiculo);
+        void Delete(Tour veiculo);
     }
 }

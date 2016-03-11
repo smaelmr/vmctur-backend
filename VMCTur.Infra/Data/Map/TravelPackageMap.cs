@@ -7,10 +7,11 @@ using VMCTur.Domain.Entities.TravelPackages;
 
 namespace VMCTur.Infra.Data.Map
 {
-    public class PacoteMap : EntityTypeConfiguration<TravelPackage>
+    public class TravelPackageMap : EntityTypeConfiguration<TravelPackage>
     {
-        public PacoteMap()
+        public TravelPackageMap()
         {
+            
             ToTable("TravelPackage");
 
             Property(x => x.Id)

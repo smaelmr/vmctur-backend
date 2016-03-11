@@ -3,9 +3,9 @@ using VMCTur.Common.Resources;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Enums;
 
-namespace VMCTur.Domain.Entities.Clientes
+namespace VMCTur.Domain.Entities.Customers
 {
-    public class Cliente
+    public class Customer
     {
         #region Properties
 
@@ -63,10 +63,10 @@ namespace VMCTur.Domain.Entities.Clientes
 
         #region Ctor
 
-        protected Cliente()
+        protected Customer()
         { }
 
-        public Cliente(int id, int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime dataNascimento, string obs)
+        public Customer(int id, int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime dataNascimento, string obs)
         {
             Id = id;
             EmpresaId = empresaId;
