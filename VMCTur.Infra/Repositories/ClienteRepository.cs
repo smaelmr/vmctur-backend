@@ -7,7 +7,7 @@ using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
 {
-    public class ClienteRepository : IClienteRepository
+    public class ClienteRepository : ICustomerRepository
     {
         private AppDataContext _context;
 
@@ -41,12 +41,12 @@ namespace VMCTur.Infra.Repositories
 
         public List<Customer> Get(string search)
         {
-            return _context.Customers.Where(x => x.Nome == search).ToList();
+            return _context.Customers.Where(x => x.Name.Contains(search)).ToList();
         }
 
         public List<Customer> Get(int skip, int take)
         {
-            return _context.Customers.OrderBy(x => x.Nome).Skip(skip).Take(take).ToList();
+            return _context.Customers.OrderBy(x => x.Name).Skip(skip).Take(take).ToList();
         }
 
         public void Dispose()

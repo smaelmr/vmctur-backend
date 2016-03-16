@@ -4,7 +4,7 @@ using VMCTur.Domain.Entities.Tours;
 
 namespace VMCTur.Domain.Contracts.Services
 {
-    public interface IPasseioService : IDisposable
+    public interface ITourService : IDisposable
     {
         void Create(int empresaId, string nome, string roteiro, string horarioAbertura,
                        string horarioFechamento, bool inativo, string obs);

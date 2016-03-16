@@ -6,11 +6,11 @@ using VMCTur.Domain.Entities.Customers;
 
 namespace VMCTur.Bussiness.Services
 {
-    public class ClienteService : IClienteService
+    public class ClienteService : ICustomerService
     {
-        private IClienteRepository _customerRepository;
+        private ICustomerRepository _customerRepository;
 
-        public ClienteService(IClienteRepository customerRepository)
+        public ClienteService(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
         }

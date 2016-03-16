@@ -4,7 +4,7 @@ using VMCTur.Domain.Entities.TourGuides;
 
 namespace VMCTur.Domain.Contracts.Services
 {
-    public interface IGuiaService : IDisposable
+    public interface IGuideService : IDisposable
     {
         void Create(int empresaId, string cpf, string nome, string tipoVinculo, string obs);
 

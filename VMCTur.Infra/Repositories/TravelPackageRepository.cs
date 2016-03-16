@@ -43,7 +43,7 @@ namespace VMCTur.Infra.Repositories
 
         public List<TravelPackage> Get(string search)
         {
-            return _context.TravelPackages.Where(x => x.Comments == search).ToList();
+            return _context.TravelPackages.Where(x => x.Comments.Contains(search)).ToList();
         }
 
         public List<TravelPackage> Get(int skip, int take)

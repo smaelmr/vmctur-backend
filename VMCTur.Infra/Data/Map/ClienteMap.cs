@@ -16,7 +16,7 @@ namespace VMCTur.Infra.Data.Map
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
 
-            Property(x => x.Nome)
+            Property(x => x.Name)
                 .HasMaxLength(60)
                 .IsRequired();
 
@@ -24,7 +24,7 @@ namespace VMCTur.Infra.Data.Map
                 .HasMaxLength(160)               
                 .IsRequired();
 
-            Ignore(x => x.Idade);
+            Ignore(x => x.Age);
 
         }
     }

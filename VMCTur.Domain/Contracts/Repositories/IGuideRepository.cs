@@ -7,7 +7,7 @@ using VMCTur.Domain.Entities.TourGuides;
 
 namespace VMCTur.Domain.Contracts.Repositories
 {
-    public interface IGuiaRepository : IDisposable
+    public interface IGuideRepository : IDisposable
     {
         List<TourGuide> Get(string search);
         TourGuide Get(int id);

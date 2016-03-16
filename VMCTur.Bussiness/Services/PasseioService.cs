@@ -8,11 +8,11 @@ using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Bussiness.Services
 {
-    public class PasseioService : IPasseioService
+    public class PasseioService : ITourService
     {
-        private IPasseioRepository _repository;
+        private ITourRepository _repository;
 
-        public PasseioService(IPasseioRepository repository)
+        public PasseioService(ITourRepository repository)
         {
             _repository = repository;
         }

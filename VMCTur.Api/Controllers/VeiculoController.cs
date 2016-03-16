@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
-using VMCTur.Api.Models.Veiculos;
+using VMCTur.Domain.Commands.VehicleCommands;
 using VMCTur.Domain.Contracts.Services;
 using WebApi.OutputCache.V2;
 
@@ -13,9 +13,9 @@ namespace VMCTur.Api.Controllers
     [RoutePrefix("api/veiculo")]
     public class VeiculoController : ApiController
     {
-        private IVeiculoService _service;
+        private IVehicleService _service;
 
-        public VeiculoController(IVeiculoService service)
+        public VeiculoController(IVehicleService service)
         {
             this._service = service;
         }
@@ -23,19 +23,19 @@ namespace VMCTur.Api.Controllers
         /// <summary>
         /// Cria um novo Veiculo
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="vehicle"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPost]
         [Route("")]
-        public Task<HttpResponseMessage> Post(CreateVeiculoModel model)
+        public Task<HttpResponseMessage> Post(CreateVehicleCommand vehicle)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Create(model.EmpresaId, model.Placa, model.Ano, model.Modelo, model.CapacidadePassageiros, model.Inativo, model.Vinculo, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Modelo });
+                _service.Create(vehicle);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = vehicle.Model });
             }
             catch (Exception ex)
             {
@@ -50,19 +50,19 @@ namespace VMCTur.Api.Controllers
         /// <summary>
         /// Atualiza os dados do Veiculo
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="vehicle"></param>
         /// <returns></returns>
         [Authorize]
         [HttpPut]
         [Route("")]
-        public Task<HttpResponseMessage> Put(UpdateVeiculoModel model)
+        public Task<HttpResponseMessage> Put(UpdateVehicleCommand vehicle)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Update(model.Id, model.EmpresaId, model.Placa, model.Ano, model.Modelo, model.CapacidadePassageiros, model.Inativo, model.Vinculo, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Modelo });
+                _service.Update(vehicle);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = vehicle.Model });
             }
             catch (Exception ex)
             {

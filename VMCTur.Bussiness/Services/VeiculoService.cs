@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VMCTur.Domain.Commands.VehicleCommands;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
 using VMCTur.Domain.Entities.Enums;
@@ -7,33 +8,34 @@ using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Bussiness.Services
 {
-    public class VeiculoService : IVeiculoService
+    public class VeiculoService : IVehicleService
     {
-        private IVeiculoRepository _repository;
+        private IVehicleRepository _repository;
 
-        public VeiculoService(IVeiculoRepository repository)
+        public VeiculoService(IVehicleRepository repository)
         {
             _repository = repository;
         }
 
-        public void Create(int empresaId, string placa, int ano, string modelo, int capacidadePassageiros,
-                       bool inativo, string tipoVinculo, string obs)
+        public void Create(CreateVehicleCommand vehicleCommand)
         {
-            TipoVinculoVeiculo vinculo = (TipoVinculoVeiculo)Enum.Parse(typeof(TipoVinculoVeiculo), tipoVinculo);
+            TypeAcquisition typeAcquisition = (TypeAcquisition)Enum.Parse(typeof(TypeAcquisition), vehicleCommand.TypeAcquisition);
 
-            var veiculo = new Vehicle(0, empresaId, placa, ano, modelo, capacidadePassageiros, inativo, vinculo, obs);
+            var vehicle = new Vehicle(0, vehicleCommand.CompanyId, vehicleCommand.Plate, vehicleCommand.Year, vehicleCommand.Model, 
+                vehicleCommand.NumberOfPassengers, vehicleCommand.Inactive, typeAcquisition, vehicleCommand.Comments);
 
-            veiculo.Validate();
+            vehicle.Validate();
 
-            _repository.Create(veiculo);
+            _repository.Create(vehicle);
         }
 
-        public void Update(int id, int empresaId, string placa, int ano, string modelo, int capacidadePassageiros,
-                       bool inativo, string tipoVinculo, string obs)
+        public void Update(UpdateVehicleCommand vehicleCommand)
         {
-            TipoVinculoVeiculo vinculo = (TipoVinculoVeiculo)Enum.Parse(typeof(TipoVinculoVeiculo), tipoVinculo);
+            TypeAcquisition typeAcquisition = (TypeAcquisition)Enum.Parse(typeof(TypeAcquisition), vehicleCommand.TypeAcquisition);
 
-            var veiculo = new Vehicle(id, empresaId, placa, ano, modelo, capacidadePassageiros, inativo, vinculo, obs);
+            var veiculo = new Vehicle(vehicleCommand.Id, vehicleCommand.CompanyId, vehicleCommand.Plate, vehicleCommand.Year, vehicleCommand.Model,
+                vehicleCommand.NumberOfPassengers, vehicleCommand.Inactive, typeAcquisition, vehicleCommand.Comments);
+
             veiculo.Validate();
 
             _repository.Update(veiculo);
@@ -41,30 +43,30 @@ namespace VMCTur.Bussiness.Services
 
         public void Delete(int id)
         {
-            var veiculo = _repository.Get(id);
+            var vehicle = _repository.Get(id);
 
-            _repository.Delete(veiculo);
+            _repository.Delete(vehicle);
         }
 
         public Vehicle GetById(int id)
         {
-            var veiculo = _repository.Get(id);
+            var vehicle = _repository.Get(id);
 
-            return veiculo;
+            return vehicle;
         }
 
         public List<Vehicle> GetByRange(int skip, int take)
         {
-            var veiculo = _repository.Get(skip, take);
+            var vehicle = _repository.Get(skip, take);
 
-            return veiculo;
+            return vehicle;
         }
 
         public List<Vehicle> GetBySearch(string search)
         {
-            var veiculo = _repository.Get(search);
+            var vehicle = _repository.Get(search);
 
-            return veiculo;
+            return vehicle;
         }
 
         public void Dispose()

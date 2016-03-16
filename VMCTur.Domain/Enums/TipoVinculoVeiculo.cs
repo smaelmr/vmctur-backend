@@ -2,7 +2,7 @@
 
 namespace VMCTur.Domain.Entities.Enums
 {
-    public enum TipoVinculoVeiculo
+    public enum TypeAcquisition
     {
         [Description("Próprio")]
         Proprio = 1,

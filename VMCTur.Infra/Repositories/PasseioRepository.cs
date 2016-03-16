@@ -8,7 +8,7 @@ using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
 {
-    public class PasseioRepository : IPasseioRepository
+    public class PasseioRepository : ITourRepository
     {
         private AppDataContext _context;
 
@@ -42,7 +42,7 @@ namespace VMCTur.Infra.Repositories
 
         public List<Tour> Get(string search)
         {
-            return _context.Tours.Where(x => x.Nome == search).ToList();
+            return _context.Tours.Where(x => x.Nome.Contains(search)).ToList();
         }
 
         public List<Tour> Get(int skip, int take)

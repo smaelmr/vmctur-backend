@@ -17,7 +17,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public int Id { get; private set; }
         public int CompanyId { get; private set; }
-
+        public DateTime CreationDate { get; private set; }
         public Customer Customer { get; private set; }
         public int CustomerId { get; private set; }
 
@@ -47,13 +47,15 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         protected TravelPackage() { }
 
-        public TravelPackage(int id, int companyId, int customerId, List<ParticipantTravelPackage> participants, List<TourTravelPackage> tours,
-                      DateTime dateHourStart, string host, string quantityTickets,
-                      int vehicleUsedId, int guideTourId, double paymentAmount, DateTime payDayFirst,
-                      double paymentFirst, string paymentTermsRemaining, string addictionalReservs, string comments)
+        public TravelPackage(int id, int companyId, int customerId,  
+                        List<ParticipantTravelPackage> participants, List<TourTravelPackage> tours,
+                        DateTime dateHourStart, string host, string quantityTickets,
+                        int vehicleUsedId, int guideTourId, double paymentAmount, DateTime payDayFirst,
+                        double paymentFirst, string paymentTermsRemaining, string addictionalReservs, string comments)
         {
             Id = id;
             CompanyId = companyId;
+            CreationDate = DateTime.Now;
             CustomerId = customerId;
             Participants = participants;
             Tours = tours;

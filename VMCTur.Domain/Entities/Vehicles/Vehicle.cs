@@ -19,7 +19,7 @@ namespace VMCTur.Domain.Entities.Vehicles
         public int Ano { get; private set; }
         public string Modelo { get; private set; }
         public int CapacidadePassageiros { get; private set; }
-        public TipoVinculoVeiculo TipoAquisicao { get; private set; }
+        public TypeAcquisition TipoAquisicao { get; private set; }
         public bool Inativo { get; private set; }
         public string Obs { get; private set; }
 
@@ -39,7 +39,7 @@ namespace VMCTur.Domain.Entities.Vehicles
         { }
 
         public Vehicle(int id, int empresaId, string placa, int ano, string modelo, int capacidadePassageiros, 
-                       bool inativo, TipoVinculoVeiculo tipoAquisicao, string obs)
+                       bool inativo, TypeAcquisition tipoAquisicao, string obs)
         {
             Id = id;
             EmpresaId = empresaId;

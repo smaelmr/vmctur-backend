@@ -7,11 +7,11 @@ using VMCTur.Domain.Entities.TourGuides;
 
 namespace VMCTur.Bussiness.Services
 {
-    public class GuiaService : IGuiaService
+    public class GuiaService : IGuideService
     {
-        private IGuiaRepository _repository;
+        private IGuideRepository _repository;
 
-        public GuiaService(IGuiaRepository customerRepository)
+        public GuiaService(IGuideRepository customerRepository)
         {
             _repository = customerRepository;
         }

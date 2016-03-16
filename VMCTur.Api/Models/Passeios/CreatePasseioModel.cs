@@ -2,12 +2,12 @@
 {
     public class CreatePasseioModel
     {
-        public int EmpresaId { get; set; }
-        public string Nome { get; set; }
-        public string Roteiro { get; set; }
-        public string HorarioAbertura { get; set; }
-        public string HorarioFechamento { get; set; }
-        public bool Inativo { get; set; }
-        public string Obs { get; set; }
+        public int CompanyId { get; set; }
+        public string Name { get; set; }
+        public string Route { get; set; }
+        public string OpenHour { get; set; }
+        public string CloseHour { get; set; }
+        public bool Inactive { get; set; }
+        public string Comments { get; set; }
     }
 }

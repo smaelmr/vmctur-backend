@@ -4,7 +4,7 @@ using VMCTur.Domain.Entities.Customers;
 
 namespace VMCTur.Domain.Contracts.Services
 {
-    public interface IClienteService : IDisposable
+    public interface ICustomerService : IDisposable
     {
         void Create(int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime dataNascimento, string obs);
 

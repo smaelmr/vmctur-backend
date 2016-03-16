@@ -13,9 +13,9 @@ namespace VMCTur.Api.Controllers
     [RoutePrefix("api/guia")]
     public class GuiaController : ApiController
     {
-        private IGuiaService _service;
+        private IGuideService _service;
 
-        public GuiaController(IGuiaService service)
+        public GuiaController(IGuideService service)
         {
             this._service = service;
         }
@@ -34,8 +34,8 @@ namespace VMCTur.Api.Controllers
 
             try
             {
-                _service.Create(model.EmpresaId, model.Nome, model.Cpf, model.Vinculo, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
+                _service.Create(model.CompanyId, model.Name, model.Cpf, model.Bond, model.Comments);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name });
             }
             catch (Exception ex)
             {
@@ -61,8 +61,8 @@ namespace VMCTur.Api.Controllers
 
             try
             {
-                _service.Update(model.Id, model.EmpresaId, model.Nome, model.Cpf, model.Vinculo, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
+                _service.Update(model.Id, model.EmpresaId, model.Name, model.Cpf, model.Bond, model.Comments);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name });
             }
             catch (Exception ex)
             {

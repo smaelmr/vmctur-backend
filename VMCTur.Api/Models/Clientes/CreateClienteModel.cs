@@ -7,13 +7,13 @@ namespace VMCTur.Api.Models.Clientes
 {
     public class CreateClienteModel
     {
-        public int EmpresaId { get; set; }
-        public string Nome { get; set; }
+        public int CompanyId { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
-        public string Fone { get; set; }
+        public string Phone { get; set; }
         public string Rg { get; set; }
         public string Cpf { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public string Obs { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Comments { get; set; }
     }
 }

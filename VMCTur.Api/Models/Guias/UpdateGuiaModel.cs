@@ -9,9 +9,9 @@ namespace VMCTur.Api.Models.Guias
     {
         public int Id { get; set; }
         public int EmpresaId { get; set; }
-        public string Nome { get; set; }
+        public string Name { get; set; }
         public string Cpf { get; set; }
-        public string Vinculo { get; set; }
-        public string Obs { get; set; }
+        public string Bond { get; set; }
+        public string Comments { get; set; }
     }
 }

@@ -13,9 +13,9 @@ namespace VMCTur.Api.Controllers
     [RoutePrefix("api/passeio")]
     public class PasseioController : ApiController
     {
-        private IPasseioService _service;
+        private ITourService _service;
 
-        public PasseioController(IPasseioService service)
+        public PasseioController(ITourService service)
         {
             this._service = service;
         }
@@ -34,8 +34,8 @@ namespace VMCTur.Api.Controllers
 
             try
             {
-                _service.Create(model.EmpresaId, model.Nome, model.Roteiro, model.HorarioAbertura, model.HorarioFechamento, model.Inativo, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
+                _service.Create(model.CompanyId, model.Name, model.Route, model.OpenHour, model.CloseHour, model.Inactive, model.Comments);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name });
             }
             catch (Exception ex)
             {
@@ -61,8 +61,8 @@ namespace VMCTur.Api.Controllers
 
             try
             {
-                _service.Update(model.Id, model.EmpresaId, model.Nome, model.Roteiro, model.HorarioAbertura, model.HorarioFechamento, model.Inativo, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
+                _service.Update(model.Id, model.CompanyId, model.Name, model.Route, model.OpenHour, model.CloseHour, model.Inactive, model.Comments);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name });
             }
             catch (Exception ex)
             {

@@ -4,7 +4,7 @@ using VMCTur.Domain.Entities.Tours;
 
 namespace VMCTur.Domain.Contracts.Repositories
 {
-    public interface IPasseioRepository : IDisposable
+    public interface ITourRepository : IDisposable
     {
         List<Tour> Get(string search);
         Tour Get(int id);

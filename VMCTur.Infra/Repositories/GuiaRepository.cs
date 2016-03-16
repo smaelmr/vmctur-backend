@@ -8,7 +8,7 @@ using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
 {
-    public class GuiaRepository : IGuiaRepository
+    public class GuiaRepository : IGuideRepository
     {
         private AppDataContext _context;
 
@@ -42,7 +42,7 @@ namespace VMCTur.Infra.Repositories
 
         public List<TourGuide> Get(string search)
         {
-            return _context.TourGuides.Where(x => x.Nome == search).ToList();
+            return _context.TourGuides.Where(x => x.Nome.Contains(search)).ToList();
         }
 
         public List<TourGuide> Get(int skip, int take)

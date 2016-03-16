@@ -9,7 +9,7 @@ namespace VMCTur.Infra.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "VMCTur.Infra.Data.AppDataContext";
         }
 

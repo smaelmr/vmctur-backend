@@ -32,7 +32,7 @@ namespace VMCTur.Bussiness.Services
                 tours.Add(new TourTravelPackage(0, p.Name, p.Comments, 0));
 
 
-            var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId,  participants, tours,
+            var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, participants, tours,
                                            travelPackageCreate.DateHourStart, travelPackageCreate.Host, travelPackageCreate.QuantityTickets,
                                            travelPackageCreate.VehicleUsedId, travelPackageCreate.GuideTourId, travelPackageCreate.PaymentAmount,
                                            travelPackageCreate.PayDayFirst, travelPackageCreate.PaymentFirst, travelPackageCreate.PaymentTermsRemaining,

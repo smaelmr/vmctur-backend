@@ -13,9 +13,9 @@ namespace VMCTur.Api.Controllers
     [RoutePrefix("api/cliente")]
     public class ClienteController : ApiController
     {
-        private IClienteService _service;
+        private ICustomerService _service;
 
-        public ClienteController(IClienteService service)
+        public ClienteController(ICustomerService service)
         {
             this._service = service;
         }
@@ -34,8 +34,8 @@ namespace VMCTur.Api.Controllers
 
             try
             {
-                _service.Create(model.EmpresaId, model.Nome, model.Email, model.Fone, model.Rg, model.Cpf, model.DataNascimento, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome, email = model.Email });
+                _service.Create(model.CompanyId, model.Name, model.Email, model.Phone, model.Rg, model.Cpf, model.BirthDate, model.Comments);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name, email = model.Email });
             }
             catch (Exception ex)
             {
@@ -61,8 +61,8 @@ namespace VMCTur.Api.Controllers
 
             try
             {
-                _service.Update(model.Id, model.EmpresaId, model.Nome, model.Email, model.Fone, model.Rg, model.Cpf, model.DataNascimento, model.Obs);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Nome });
+                _service.Update(model.Id, model.CompanyId, model.Name, model.Email, model.Phone, model.Rg, model.Cpf, model.BirthDate, model.Comments);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name });
             }
             catch (Exception ex)
             {

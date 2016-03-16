@@ -7,7 +7,7 @@ using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
 {
-    public class VeiculoRepository : IVeiculoRepository
+    public class VeiculoRepository : IVehicleRepository
     {
         private AppDataContext _context;
 
@@ -41,7 +41,7 @@ namespace VMCTur.Infra.Repositories
 
         public List<Vehicle> Get(string search)
         {
-            return _context.Vehicles.Where(x => x.Placa == search).ToList();
+            return _context.Vehicles.Where(x => x.Modelo.Contains(search)).ToList();
         }
 
         public List<Vehicle> Get(int skip, int take)
