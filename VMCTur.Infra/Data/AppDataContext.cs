@@ -29,10 +29,10 @@ namespace VMCTur.Infra.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserMap());
-            modelBuilder.Configurations.Add(new ClienteMap());
-            modelBuilder.Configurations.Add(new VeiculoMap());
-            modelBuilder.Configurations.Add(new GuiaMap());            
-            modelBuilder.Configurations.Add(new PasseioMap());
+            modelBuilder.Configurations.Add(new CustomerMap());
+            modelBuilder.Configurations.Add(new VehicleMap());
+            modelBuilder.Configurations.Add(new TourGuideMap());            
+            modelBuilder.Configurations.Add(new TourMap());
             modelBuilder.Configurations.Add(new TravelPackageMap());            
         }
     }

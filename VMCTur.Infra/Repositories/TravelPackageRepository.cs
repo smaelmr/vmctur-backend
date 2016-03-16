@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Infra.Data;

@@ -16,17 +16,17 @@ namespace VMCTur.Startup
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<ICustomerRepository, ClienteRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<ICustomerService, ClienteService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICustomerRepository, CustomerRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICustomerService, CustomerService>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<IVehicleRepository, VeiculoRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<IVehicleService, VeiculoService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IVehicleRepository, VehicleRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IVehicleService, VehicleService>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<IGuideRepository, GuiaRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<IGuideService, GuiaService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IGuideRepository, TourGuideRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IGuideService, TourGuideService>(new HierarchicalLifetimeManager());
 
-            container.RegisterType<ITourRepository, PasseioRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<ITourService, PasseioService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITourRepository, TourRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITourService, TourService>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ITravelPackageRepository, TravelPackageRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITravelPackageService, TravelPackageService>(new HierarchicalLifetimeManager());

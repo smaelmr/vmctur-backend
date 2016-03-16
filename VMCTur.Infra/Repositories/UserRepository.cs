@@ -1,5 +1,4 @@
 ﻿using VMCTur.Infra.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;

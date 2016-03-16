@@ -22,3 +22,11 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\bin\Debug\pt-BR\VM
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.csprojResolveAssemblyReference.cache
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.pdb
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Domain.dll
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Domain.pdb
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Common.dll
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Common.pdb
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Debug\pt-BR\VMCTur.Common.resources.dll
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.csprojResolveAssemblyReference.cache
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.dll
+C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.pdb

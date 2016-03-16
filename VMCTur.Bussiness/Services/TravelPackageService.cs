@@ -31,9 +31,10 @@ namespace VMCTur.Bussiness.Services
             foreach (CreateTourCommand p in travelPackageCreate.Tours)
                 tours.Add(new TourTravelPackage(0, p.Name, p.Comments, 0));
 
+            DateTime dateHourStart = new DateTime(travelPackageCreate.DateStart.Year, travelPackageCreate.DateStart.Month, travelPackageCreate.DateStart.Day, travelPackageCreate.HourStart.Hours, travelPackageCreate.HourStart.Minutes, 0);
 
             var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, participants, tours,
-                                           travelPackageCreate.DateHourStart, travelPackageCreate.Host, travelPackageCreate.QuantityTickets,
+                                           dateHourStart, travelPackageCreate.Host, travelPackageCreate.QuantityTickets,
                                            travelPackageCreate.VehicleUsedId, travelPackageCreate.GuideTourId, travelPackageCreate.PaymentAmount,
                                            travelPackageCreate.PayDayFirst, travelPackageCreate.PaymentFirst, travelPackageCreate.PaymentTermsRemaining,
                                            travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments);
@@ -54,8 +55,10 @@ namespace VMCTur.Bussiness.Services
             foreach (UpdateTourCommand p in travelPackageUpdate.Tours)
                 tours.Add(new TourTravelPackage(0, p.Name, p.Comments, 0));
 
+            DateTime dateHourStart = new DateTime(travelPackageUpdate.DateStart.Year, travelPackageUpdate.DateStart.Month, travelPackageUpdate.DateStart.Day, travelPackageUpdate.HourStart.Hours, travelPackageUpdate.HourStart.Minutes, 0);
+
             var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, participants, tours,
-                                           travelPackageUpdate.DateHourStart, travelPackageUpdate.HostLocal, travelPackageUpdate.QuantityTickets,
+                                           dateHourStart, travelPackageUpdate.HostLocal, travelPackageUpdate.QuantityTickets,
                                            travelPackageUpdate.VehicleUsedId, travelPackageUpdate.GuideTourId, travelPackageUpdate.PaymentAmount,
                                            travelPackageUpdate.PayDayFirst, travelPackageUpdate.PaymentFirst, travelPackageUpdate.PaymentTermsRemaining,
                                            travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments);

@@ -2,7 +2,7 @@
 
 namespace VMCTur.Domain.Entities.Enums
 {
-    public enum TipoVinculoGuia
+    public enum TypeBondGuide
     {
         [Description("Funcionário")]
         Funcionario = 1,

@@ -45,10 +45,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TravelPackageService.cs" />
-    <Compile Include="Services\PasseioService.cs" />
-    <Compile Include="Services\VeiculoService.cs" />
-    <Compile Include="Services\GuiaService.cs" />
-    <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\TourService.cs" />
+    <Compile Include="Services\VehicleService.cs" />
+    <Compile Include="Services\TourGuideService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

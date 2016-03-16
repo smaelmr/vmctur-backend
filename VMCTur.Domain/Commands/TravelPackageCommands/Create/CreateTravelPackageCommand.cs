@@ -11,9 +11,11 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Create
         public List<CreateParticipantCommand> Participants { get; private set; }
         public List<CreateTourCommand> Tours { get; private set; }
 
-        public DateTime DateHourStart { get; private set; }
+        public DateTime DateStart { get; private set; }
+        public TimeSpan HourStart { get; private set; }
+
         public string Host { get; private set; }
-        public string QuantityTickets { get; private set; }
+        public int QuantityTickets { get; private set; }
 
         public int VehicleUsedId { get; private set; }
         public int GuideTourId { get; private set; }

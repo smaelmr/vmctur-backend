@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VMCTur.Common.Resources;
 using VMCTur.Common.Validation;
 
@@ -14,13 +10,13 @@ namespace VMCTur.Domain.Entities.Tours
         #region Properties
 
         public int Id { get; private set; }
-        public int EmpresaId { get; private set; }
-        public string Nome { get; private set; }
-        public string Roteiro { get; private set; }
-        public TimeSpan HorarioAbertura { get; private set; }
-        public TimeSpan HorarioFechamento { get; private set; }
-        public bool Inativo { get; private set; }
-        public string Obs { get; private set; }
+        public int CompanyId { get; private set; }
+        public string Name { get; private set; }
+        public string Route { get; private set; }
+        public TimeSpan OpenHour { get; private set; }
+        public TimeSpan CloseHour { get; private set; }
+        public bool Inactive { get; private set; }
+        public string Comments { get; private set; }
 
         #endregion
 
@@ -33,13 +29,13 @@ namespace VMCTur.Domain.Entities.Tours
                        TimeSpan horarioFechamento, bool inativo, string obs)
         {
             Id = id;
-            EmpresaId = empresaId;
-            Nome = nome;
-            Roteiro = roteiro;
-            HorarioAbertura = horarioAbertura;
-            HorarioFechamento = horarioFechamento;
-            Inativo = inativo;
-            Obs = obs;
+            CompanyId = empresaId;
+            Name = nome;
+            Route = roteiro;
+            OpenHour = horarioAbertura;
+            CloseHour = horarioFechamento;
+            Inactive = inativo;
+            Comments = obs;
         }
 
         #endregion
@@ -48,7 +44,7 @@ namespace VMCTur.Domain.Entities.Tours
 
         public void Validate()
         {
-            AssertionConcern.AssertArgumentLength(this.Nome, 3, 100, Errors.InvalidName);
+            AssertionConcern.AssertArgumentLength(this.Name, 3, 100, Errors.InvalidName);
         }
 
         #endregion

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.Customers;
 using VMCTur.Domain.Entities.TourGuides;
-using VMCTur.Domain.Entities.Tours;
 using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Domain.Entities.TravelPackages
@@ -26,7 +22,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public DateTime DateHourStart { get; private set; }
         public string Host { get; private set; }
-        public string QuantityTickets { get; private set; }
+        public int QuantityTickets { get; private set; }
 
         public int VehicleUsedId { get; private set; }
         public Vehicle VehicleUsed { get; private set; }
@@ -41,6 +37,24 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string AddictionalReservs { get; private set; }
         public string Comments { get; private set; }
 
+        //Smael: return just date of tha datetime
+        public DateTime DateStart
+        {
+            get
+            {
+                return DateHourStart.Date;
+            }
+        }
+
+        //Smael: return just time of tha datetime
+        public TimeSpan HourStart
+        {
+            get
+            {
+                return new TimeSpan(DateHourStart.Hour, DateHourStart.Minute, 0);
+            }
+        }
+
         #endregion
 
         #region Ctor
@@ -49,7 +63,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, int customerId,  
                         List<ParticipantTravelPackage> participants, List<TourTravelPackage> tours,
-                        DateTime dateHourStart, string host, string quantityTickets,
+                        DateTime dateHourStart, string host, int quantityTickets,
                         int vehicleUsedId, int guideTourId, double paymentAmount, DateTime payDayFirst,
                         double paymentFirst, string paymentTermsRemaining, string addictionalReservs, string comments)
         {

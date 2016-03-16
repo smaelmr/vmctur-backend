@@ -1,7 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations.Schema;
 using VMCTur.Domain.Entities.TravelPackages;
 
@@ -29,6 +26,9 @@ namespace VMCTur.Infra.Data.Map
 
             HasMany(x => x.Participants)
                 .WithRequired(x => x.TravelPackage);
+
+            Ignore(x => x.DateStart);
+            Ignore(x => x.HourStart);
         }
     }
 }

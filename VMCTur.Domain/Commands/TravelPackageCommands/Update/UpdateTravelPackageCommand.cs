@@ -12,9 +12,11 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public List<UpdateParticipantCommand> Participants { get; private set; }
         public List<UpdateTourCommand> Tours { get; private set; }
 
-        public DateTime DateHourStart { get; private set; }
+        public DateTime DateStart { get; private set; }
+        public TimeSpan HourStart { get; private set; }
+
         public string HostLocal { get; private set; }
-        public string QuantityTickets { get; private set; }
+        public int QuantityTickets { get; private set; }
 
         public int VehicleUsedId { get; private set; }
         public int GuideTourId { get; private set; }
