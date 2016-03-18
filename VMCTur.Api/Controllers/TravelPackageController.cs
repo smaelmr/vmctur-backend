@@ -38,7 +38,7 @@ namespace VMCTur.Api.Controllers
             {
                 _service.Create(package);
 
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = "", email = "" });
+                response = Request.CreateResponse(HttpStatusCode.OK, new { message = "Pacote cadastrado com sucesso" });
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace VMCTur.Api.Controllers
             {
                 _service.Update(package);
 
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = "" });
+                response = Request.CreateResponse(HttpStatusCode.OK, new { message = "Pacote alterado com sucesso" });
             }
             catch (Exception ex)
             {

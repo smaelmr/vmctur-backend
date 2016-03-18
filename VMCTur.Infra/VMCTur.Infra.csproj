@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AppDataContext.cs" />
+    <Compile Include="Data\Map\TravelPackageParticipantMap.cs" />
+    <Compile Include="Data\Map\TravelPackageTourMap.cs" />
     <Compile Include="Data\Map\TravelPackageMap.cs" />
     <Compile Include="Data\Map\CustomerMap.cs" />
     <Compile Include="Data\Map\TourGuideMap.cs" />

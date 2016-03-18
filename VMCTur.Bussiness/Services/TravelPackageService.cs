@@ -22,14 +22,14 @@ namespace VMCTur.Bussiness.Services
 
         public void Create(CreateTravelPackageCommand travelPackageCreate)
         {
-            List<ParticipantTravelPackage> participants = new List<ParticipantTravelPackage>();
-            List<TourTravelPackage> tours = new List<TourTravelPackage>();
+            List<TravelPackageParticipant> participants = new List<TravelPackageParticipant>();
+            List<TravelPackageTour> tours = new List<TravelPackageTour>();
 
             foreach (CreateParticipantCommand p in travelPackageCreate.Participants)
-                participants.Add(new ParticipantTravelPackage(0, p.Name, p.NumberDocument, p.BirthDate, 0));
+                participants.Add(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, 0));
 
             foreach (CreateTourCommand p in travelPackageCreate.Tours)
-                tours.Add(new TourTravelPackage(0, p.Name, p.Comments, 0));
+                tours.Add(new TravelPackageTour(0, p.TourId, 0));
 
             DateTime dateHourStart = new DateTime(travelPackageCreate.DateStart.Year, travelPackageCreate.DateStart.Month, travelPackageCreate.DateStart.Day, travelPackageCreate.HourStart.Hours, travelPackageCreate.HourStart.Minutes, 0);
 
@@ -46,14 +46,14 @@ namespace VMCTur.Bussiness.Services
 
         public void Update(UpdateTravelPackageCommand travelPackageUpdate)
         {
-            List<ParticipantTravelPackage> participants = new List<ParticipantTravelPackage>();
-            List<TourTravelPackage> tours = new List<TourTravelPackage>();
+            List<TravelPackageParticipant> participants = new List<TravelPackageParticipant>();
+            List<TravelPackageTour> tours = new List<TravelPackageTour>();
 
             foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)
-                participants.Add(new ParticipantTravelPackage(0, p.Name, p.NumberDocument, p.BirthDate, 0));
+                participants.Add(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, 0));
 
             foreach (UpdateTourCommand p in travelPackageUpdate.Tours)
-                tours.Add(new TourTravelPackage(0, p.Name, p.Comments, 0));
+                tours.Add(new TravelPackageTour(p.Id, p.TourId, p.TravelPackageId));
 
             DateTime dateHourStart = new DateTime(travelPackageUpdate.DateStart.Year, travelPackageUpdate.DateStart.Month, travelPackageUpdate.DateStart.Day, travelPackageUpdate.HourStart.Hours, travelPackageUpdate.HourStart.Minutes, 0);
 

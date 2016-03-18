@@ -33,7 +33,9 @@ namespace VMCTur.Infra.Data
             modelBuilder.Configurations.Add(new VehicleMap());
             modelBuilder.Configurations.Add(new TourGuideMap());            
             modelBuilder.Configurations.Add(new TourMap());
-            modelBuilder.Configurations.Add(new TravelPackageMap());            
+            modelBuilder.Configurations.Add(new TravelPackageMap());
+            modelBuilder.Configurations.Add(new TravelPackageTourMap());
+            modelBuilder.Configurations.Add(new TravelPackageParticipantMap());
         }
     }
 }

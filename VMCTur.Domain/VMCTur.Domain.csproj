@@ -65,9 +65,9 @@
     <Compile Include="Contracts\Services\ITourService.cs" />
     <Compile Include="Contracts\Services\IVehicleService.cs" />
     <Compile Include="Entities\TourGuide\TourGuide.cs" />
-    <Compile Include="Entities\TravelPackages\TourTravelPackage.cs" />
+    <Compile Include="Entities\TravelPackages\TravelPackageTour.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackage.cs" />
-    <Compile Include="Entities\TravelPackages\ParticipantTravelPackage.cs" />
+    <Compile Include="Entities\TravelPackages\TravelPackageParticipant.cs" />
     <Compile Include="Entities\Tours\Tour.cs" />
     <Compile Include="Enums\TipoVinculoGuia.cs" />
     <Compile Include="Enums\TipoVinculoVeiculo.cs" />

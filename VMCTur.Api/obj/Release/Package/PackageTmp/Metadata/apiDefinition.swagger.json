@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VMCTur.Api</name>
+    </assembly>
+    <members>
+        <member name="M:VMCTur.Api.Controllers.AccountController.Post(VMCTur.Api.Models.Account.RegisterUserModel)">
+            <summary>
+            Registra um novo usuário na aplicação.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.AccountController.ChangePassword(VMCTur.Api.Models.Account.ChangePasswordModel)">
+            <summary>
+            Altera a senha do usuário.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.AccountController.ResetPassword(VMCTur.Api.Models.Account.ResetPasswordModel)">
+            <summary>
+            Recria a senha do usuário caso ele esqueça.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.AccountController.Get">
+            <summary>
+            Lista os usuários cadastros na aplicação.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

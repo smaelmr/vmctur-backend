@@ -17,8 +17,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public Customer Customer { get; private set; }
         public int CustomerId { get; private set; }
 
-        public List<ParticipantTravelPackage> Participants { get; private set; }
-        public List<TourTravelPackage> Tours { get; private set; }
+        public List<TravelPackageParticipant> Participants { get; private set; }
+        public List<TravelPackageTour> Tours { get; private set; }
 
         public DateTime DateHourStart { get; private set; }
         public string Host { get; private set; }
@@ -62,7 +62,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         protected TravelPackage() { }
 
         public TravelPackage(int id, int companyId, int customerId,  
-                        List<ParticipantTravelPackage> participants, List<TourTravelPackage> tours,
+                        List<TravelPackageParticipant> participants, List<TravelPackageTour> tours,
                         DateTime dateHourStart, string host, int quantityTickets,
                         int vehicleUsedId, int guideTourId, double paymentAmount, DateTime payDayFirst,
                         double paymentFirst, string paymentTermsRemaining, string addictionalReservs, string comments)
@@ -92,12 +92,12 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public void Validate()
         {
-            AssertionConcern.AssertIsLowerOrEqualThan(CustomerId, 0, "Cliente inválido.");
-            AssertionConcern.AssertIsLowerOrEqualThan(VehicleUsedId, 0, "Veículo inválido.");
-            AssertionConcern.AssertIsLowerOrEqualThan(GuideTourId, 0, "Guia inválido.");
+            AssertionConcern.AssertIsGreaterThan(CustomerId, 0, "Cliente inválido.");
+            AssertionConcern.AssertIsGreaterThan(VehicleUsedId, 0, "Veículo inválido.");
+            AssertionConcern.AssertIsGreaterThan(GuideTourId, 0, "Guia inválido.");
         }
 
-        public void AddParticipante(ParticipantTravelPackage participant)
+        public void AddParticipante(TravelPackageParticipant participant)
         {
             participant.Validate();
 

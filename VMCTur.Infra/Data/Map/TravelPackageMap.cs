@@ -27,6 +27,13 @@ namespace VMCTur.Infra.Data.Map
             HasMany(x => x.Participants)
                 .WithRequired(x => x.TravelPackage);
 
+            HasMany(x => x.Tours)
+                .WithRequired(x => x.TravelPackage);
+
+            HasRequired(x => x.GuideTour);
+            HasRequired(x => x.Customer);
+            HasRequired(x => x.VehicleUsed);
+
             Ignore(x => x.DateStart);
             Ignore(x => x.HourStart);
         }

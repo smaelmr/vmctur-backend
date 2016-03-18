@@ -1,0 +1,11 @@
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\bin\Release\VMCTur.Common.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\bin\Release\VMCTur.Common.pdb
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\bin\Release\pt-BR\VMCTur.Common.resources.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Errors.resources
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Messages.resources
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Errors.pt-BR.resources
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Messages.pt-BR.resources
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.csproj.GenerateResource.Cache
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\pt-BR\VMCTur.Common.resources.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.pdb

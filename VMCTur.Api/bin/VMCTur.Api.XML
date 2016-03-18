@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VMCTur.Api</name>
+    </assembly>
+    <members>
+        <member name="M:VMCTur.Api.Controllers.CustomerController.Post(VMCTur.Api.Models.Clientes.CreateClienteModel)">
+            <summary>
+            Cria um novo Cliente.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.CustomerController.Put(VMCTur.Api.Models.Clientes.UpdateClienteModel)">
+            <summary>
+            Atualiza os dados do cliente.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.CustomerController.Delete(System.Int32)">
+            <summary>
+            Delete Cliente.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.CustomerController.GetById(System.Int32)">
+            <summary>
+            Busca o cliente conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.CustomerController.GetByRange(System.Int32,System.Int32)">
+            <summary>
+            Busca os clientes passando parametros de paginação.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.CustomerController.Get(System.String)">
+            <summary>
+            Busca os clientes passando campo para pesquisa, no momento somente pelo nome.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourGuideController.Post(VMCTur.Api.Models.Guias.CreateGuiaModel)">
+            <summary>
+            Cria um novo Guia/Motorista
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourGuideController.Put(VMCTur.Api.Models.Guias.UpdateGuiaModel)">
+            <summary>
+            Atualiza os dados do Guia/Motorista
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourGuideController.Delete(System.Int32)">
+            <summary>
+            Delete Guia/Motorista.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourGuideController.GetById(System.Int32)">
+            <summary>
+            Busca o guia conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourGuideController.GetByRange(System.Int32,System.Int32)">
+            <summary>
+            Busca os guias passando parametros de paginação.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourGuideController.Get(System.String)">
+            <summary>
+            Busca os guias passando um valor para pesquisa, pesquisando apenas no campo nome.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TravelPackageController.Post(VMCTur.Domain.Commands.TravelPackageCommands.Create.CreateTravelPackageCommand)">
+            <summary>
+            Cria um novo Pacote.
+            </summary>
+            <param name="package"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TravelPackageController.Put(VMCTur.Domain.Commands.TravelPackageCommands.Update.UpdateTravelPackageCommand)">
+            <summary>
+            Atualiza os dados do pacote.
+            </summary>
+            <param name="package"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TravelPackageController.Delete(System.Int32)">
+            <summary>
+            Deleta Pacote.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TravelPackageController.GetById(System.Int32)">
+            <summary>
+            Busca o pacote conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TravelPackageController.GetByRange(System.Int32,System.Int32)">
+            <summary>
+            Busca os pacotes passando parametros de paginação.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TravelPackageController.Get(System.String)">
+            <summary>
+            Busca os pacotes passando campo para pesquisa, no momento somente pelo nome.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourController.Post(VMCTur.Api.Models.Tours.CreatePasseioModel)">
+            <summary>
+            Cria um novo passeio
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourController.Put(VMCTur.Api.Models.Tours.UpdatePasseioModel)">
+            <summary>
+            Atualiza os dados do passeio
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourController.Delete(System.Int32)">
+            <summary>
+            Delete passeio.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourController.GetById(System.Int32)">
+            <summary>
+            Busca o passeio conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourController.GetByRange(System.Int32,System.Int32)">
+            <summary>
+            Busca os passeios passando parametros de paginação.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourController.Get(System.String)">
+            <summary>
+            Busca os passeios passando um valor para pesquisa, pesquisando apenas no campo nome.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.VehicleController.Post(VMCTur.Domain.Commands.VehicleCommands.CreateVehicleCommand)">
+            <summary>
+            Cria um novo Veiculo
+            </summary>
+            <param name="vehicle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.VehicleController.Put(VMCTur.Domain.Commands.VehicleCommands.UpdateVehicleCommand)">
+            <summary>
+            Atualiza os dados do Veiculo
+            </summary>
+            <param name="vehicle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.VehicleController.Delete(System.Int32)">
+            <summary>
+            Delete Veiculo.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.VehicleController.GetById(System.Int32)">
+            <summary>
+            Busca o veiculo conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.VehicleController.GetByRange(System.Int32,System.Int32)">
+            <summary>
+            Busca os veiculos passando parametros de paginação.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.VehicleController.Get(System.String)">
+            <summary>
+            Busca os veiculos passando um valor para pesquisa, pesquisando apenas no campo nome.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.AccountController.Post(VMCTur.Api.Models.Account.RegisterUserModel)">
+            <summary>
+            Registra um novo usuário na aplicação.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.AccountController.ChangePassword(VMCTur.Api.Models.Account.ChangePasswordModel)">
+            <summary>
+            Altera a senha do usuário.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.AccountController.ResetPassword(VMCTur.Api.Models.Account.ResetPasswordModel)">
+            <summary>
+            Recria a senha do usuário caso ele esqueça.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.AccountController.Get">
+            <summary>
+            Lista os usuários cadastros na aplicação.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
