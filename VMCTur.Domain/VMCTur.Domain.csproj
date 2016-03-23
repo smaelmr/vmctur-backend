@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BillCommands\BillReceiveCommands\Create\CreateBillReceiveCommmand.cs" />
+    <Compile Include="Commands\BillCommands\BillReceiveCommands\Create\CreateReceiptCommand.cs" />
+    <Compile Include="Commands\BillCommands\BillReceiveCommands\Update\UpdateBillReceiveCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTravelPackageCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateParticipantCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTourCommand.cs" />
@@ -51,6 +54,7 @@
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateTravelPackageCommand.cs" />
     <Compile Include="Commands\VehicleCommands\Create\CreateVehicleCommand.cs" />
     <Compile Include="Commands\VehicleCommands\Update\UpdateVehicleCommand.cs" />
+    <Compile Include="Contracts\Repositories\IBillReceiveRepository.cs" />
     <Compile Include="Contracts\Repositories\ITravelPackageRepository.cs" />
     <Compile Include="Contracts\Repositories\ICustomerRepository.cs" />
     <Compile Include="Contracts\Repositories\IGuideRepository.cs" />
@@ -64,6 +68,8 @@
     <Compile Include="Contracts\Services\IUserService.cs" />
     <Compile Include="Contracts\Services\ITourService.cs" />
     <Compile Include="Contracts\Services\IVehicleService.cs" />
+    <Compile Include="Entities\Financial\BillsReceive\BillReceive.cs" />
+    <Compile Include="Entities\Financial\BillsReceive\Receipt.cs" />
     <Compile Include="Entities\TourGuide\TourGuide.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackageTour.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackage.cs" />

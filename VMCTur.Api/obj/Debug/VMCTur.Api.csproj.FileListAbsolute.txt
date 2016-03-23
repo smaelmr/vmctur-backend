@@ -181,7 +181,6 @@ C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practices.S
 C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practices.Unity.xml
 C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
-C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\Microsoft.Web.Infrastructure.xml
 C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\Newtonsoft.Json.xml
 C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.pdb
 C:\Users\smrosa\Source\Repos\vmctur-backend\VMCTur.Api\bin\System.IdentityModel.Tokens.Jwt.xml
