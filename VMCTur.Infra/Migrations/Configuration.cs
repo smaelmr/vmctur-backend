@@ -8,6 +8,7 @@ namespace VMCTur.Infra.Migrations
         {
             AutomaticMigrationsEnabled = true;
             ContextKey = "VMCTur.Infra.Data.AppDataContext";
+            
         }
 
         protected override void Seed(VMCTur.Infra.Data.AppDataContext context)

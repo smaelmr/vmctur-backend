@@ -26,11 +26,14 @@ namespace VMCTur.Domain.Entities.TravelPackages
                 return Tour.Name;
             }
         }
-    
+
 
         #endregion
 
         #region Ctor
+
+        protected TravelPackageTour()
+        { }
 
         public TravelPackageTour(int id, int tourId, int travelPackageId)
         {

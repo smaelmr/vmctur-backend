@@ -35,7 +35,13 @@ namespace VMCTur.Infra.Repositories
 
         public TravelPackage Get(int id)
         {
-            return _context.TravelPackages.Where(x => x.Id == id).FirstOrDefault();
+            return _context.TravelPackages
+                                .Include("Participants")
+                                .Include("Tours").Include("Tours.Tour")
+                                .Include("VehicleUsed")
+                                .Include("GuideTour")
+                                .Include("Customer")
+                                .Where(x => x.Id == id).FirstOrDefault();
         }
 
         public List<TravelPackage> Get(string search)
@@ -45,7 +51,8 @@ namespace VMCTur.Infra.Repositories
 
         public List<TravelPackage> Get(int skip, int take)
         {
-            return _context.TravelPackages.OrderBy(x => x.DateHourStart).Skip(skip).Take(take).ToList();
+            return _context.TravelPackages                                
+                                .OrderBy(x => x.DateHourStart).Skip(skip).Take(take).ToList();
         }               
 
         public void Dispose()

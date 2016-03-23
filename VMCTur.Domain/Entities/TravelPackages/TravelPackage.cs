@@ -25,7 +25,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public int QuantityTickets { get; private set; }
 
         public int VehicleUsedId { get; private set; }
-        public Vehicle VehicleUsed { get; private set; }
+        public virtual Vehicle VehicleUsed { get; private set; }
 
         public int GuideTourId { get; private set; }
         public TourGuide GuideTour { get; private set; }
