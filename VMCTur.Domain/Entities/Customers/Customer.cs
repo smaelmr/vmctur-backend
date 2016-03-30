@@ -18,7 +18,7 @@ namespace VMCTur.Domain.Entities.Customers
         public string Cpf { get; private set; }
         public DateTime BirthDate { get; private set; }
         public string Comments { get; private set; }
-        public bool Inactive { get; private set; }
+        public bool Avaliable { get; private set; }
         public FaixaEtaria FaixaEtariaCliente
         {
             get

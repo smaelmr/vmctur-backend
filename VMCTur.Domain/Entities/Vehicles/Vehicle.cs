@@ -14,16 +14,16 @@ namespace VMCTur.Domain.Entities.Vehicles
         public string Plate { get; private set; }
         public int Year { get; private set; }
         public string Model { get; private set; }
-        public TypeAcquisition TypeAcquisition { get; private set; }
+        public TypeAcquisition AcquisitionType { get; private set; }
         public int NumberOfPassengers { get; private set; }
-        public bool Inactive { get; private set; }        
+        public bool Available { get; private set; }        
         public string Comments { get; private set; }
 
-        public string TypeAcquisitionDisplay
+        public string AcquisitionTypeDisplay
         {
             get
             {
-                return Standard.ObterDescricaoEnum(TypeAcquisition);
+                return Standard.ObterDescricaoEnum(AcquisitionType);
             }
         }
 
@@ -34,18 +34,18 @@ namespace VMCTur.Domain.Entities.Vehicles
         protected Vehicle()
         { }
 
-        public Vehicle(int id, int empresaId, string placa, int ano, string modelo, int capacidadePassageiros, 
-                       bool inativo, TypeAcquisition tipoAquisicao, string obs)
+        public Vehicle(int id, int companyId, string plate, int year, string model, int numberOfPassengers, 
+                       bool available, TypeAcquisition acquisitionType, string comments)
         {
             Id = id;
-            CompanyId = empresaId;
-            Plate = placa;
-            Year = ano;
-            Model = modelo;
-            NumberOfPassengers = capacidadePassageiros;
-            TypeAcquisition = tipoAquisicao;
-            Inactive = inativo;
-            Comments = obs;
+            CompanyId = companyId;
+            Plate = plate;
+            Year = year;
+            Model = model;
+            NumberOfPassengers = numberOfPassengers;
+            AcquisitionType = acquisitionType;
+            Available = available;
+            Comments = comments;
         }
 
         #endregion

@@ -18,6 +18,7 @@ namespace VMCTur.Domain.Entities.TourGuides
         public string Cpf { get; private set; }
         public TypeBondGuide BondType { get; private set; }
         public string Comments { get; private set; }
+        public bool Available { get; private set; }
 
         public string BondTypeDisplay
         {
@@ -35,14 +36,15 @@ namespace VMCTur.Domain.Entities.TourGuides
         protected TourGuide()
         { }
 
-        public TourGuide(int id, int empresaId, string nome, string cpf, TypeBondGuide tipoVinculo, string obs)
+        public TourGuide(int id, int companyId, string name, string cpf, TypeBondGuide bondType, bool available, string comments)
         {
             Id = id;
-            CompanyId = empresaId;
-            Name = nome;
+            CompanyId = companyId;
+            Name = name;
             Cpf = cpf;
-            BondType = tipoVinculo;
-            Comments = obs;
+            BondType = bondType;
+            Available = available;
+            Comments = comments;
         }
 
         #endregion

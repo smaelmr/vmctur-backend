@@ -36,8 +36,7 @@ namespace VMCTur.Infra.Data.Map
             HasRequired(x => x.Customer);
             HasRequired(x => x.VehicleUsed);
 
-            Ignore(x => x.DateStart);
-            Ignore(x => x.HourStart);
+            
         }
     }
 }

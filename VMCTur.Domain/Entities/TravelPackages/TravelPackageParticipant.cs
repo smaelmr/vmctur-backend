@@ -42,8 +42,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
             AssertionConcern.AssertArgumentNotEmpty(this.NumberDocument, "Número do documento deve ser informado.");
         }
     
-
-
         #endregion
     }
 }

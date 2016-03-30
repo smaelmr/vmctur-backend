@@ -28,15 +28,20 @@ namespace VMCTur.Bussiness.Services
             foreach (CreateParticipantCommand p in travelPackageCreate.Participants)
                 participants.Add(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, 0));
 
-            foreach (CreateTourCommand p in travelPackageCreate.Tours)
-                tours.Add(new TravelPackageTour(0, p.TourId, 0));
+            
 
-            DateTime dateHourStart = new DateTime(travelPackageCreate.DateStart.Year, travelPackageCreate.DateStart.Month, travelPackageCreate.DateStart.Day, travelPackageCreate.HourStart.Hours, travelPackageCreate.HourStart.Minutes, 0);
+            foreach (CreateTourCommand p in travelPackageCreate.Tours)
+            {
+                DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
+
+                tours.Add(new TravelPackageTour(0, p.TourId, 0, dateHourStart));
+
+            }
 
             var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, participants, tours,
-                                           dateHourStart, travelPackageCreate.Host, travelPackageCreate.QuantityTickets,
-                                           travelPackageCreate.VehicleUsedId, travelPackageCreate.GuideTourId, travelPackageCreate.PaymentAmount,
-                                           travelPackageCreate.PayDayFirst, travelPackageCreate.PaymentFirst, travelPackageCreate.PaymentTermsRemaining,
+                                           travelPackageCreate.Host, travelPackageCreate.QuantityTickets, travelPackageCreate.VehicleUsedId, 
+                                           travelPackageCreate.GuideTourId, travelPackageCreate.PaymentAmount, travelPackageCreate.PayDayFirst, 
+                                           travelPackageCreate.PaymentFirst, travelPackageCreate.PaymentTermsRemaining,
                                            travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments);
 
             travelPackage.Validate();
@@ -53,14 +58,16 @@ namespace VMCTur.Bussiness.Services
                 participants.Add(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, 0));
 
             foreach (UpdateTourCommand p in travelPackageUpdate.Tours)
-                tours.Add(new TravelPackageTour(p.Id, p.TourId, p.TravelPackageId));
+            {
+                DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-            DateTime dateHourStart = new DateTime(travelPackageUpdate.DateStart.Year, travelPackageUpdate.DateStart.Month, travelPackageUpdate.DateStart.Day, travelPackageUpdate.HourStart.Hours, travelPackageUpdate.HourStart.Minutes, 0);
+                tours.Add(new TravelPackageTour(p.Id, p.TourId, p.TravelPackageId, dateHourStart));
+            }
 
             var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, participants, tours,
-                                           dateHourStart, travelPackageUpdate.HostLocal, travelPackageUpdate.QuantityTickets,
-                                           travelPackageUpdate.VehicleUsedId, travelPackageUpdate.GuideTourId, travelPackageUpdate.PaymentAmount,
-                                           travelPackageUpdate.PayDayFirst, travelPackageUpdate.PaymentFirst, travelPackageUpdate.PaymentTermsRemaining,
+                                           travelPackageUpdate.HostLocal, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
+                                           travelPackageUpdate.GuideTourId, travelPackageUpdate.PaymentAmount, travelPackageUpdate.PayDayFirst, 
+                                           travelPackageUpdate.PaymentFirst, travelPackageUpdate.PaymentTermsRemaining,
                                            travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments);
 
             travelPackage.Validate();

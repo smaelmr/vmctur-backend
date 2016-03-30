@@ -52,7 +52,7 @@ namespace VMCTur.Infra.Repositories
         public List<TravelPackage> Get(int skip, int take)
         {
             return _context.TravelPackages                                
-                                .OrderBy(x => x.DateHourStart).Skip(skip).Take(take).ToList();
+                                .OrderBy(x => x.CreationDate).Skip(skip).Take(take).ToList();
         }               
 
         public void Dispose()

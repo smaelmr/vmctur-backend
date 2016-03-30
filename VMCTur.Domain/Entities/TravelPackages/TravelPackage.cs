@@ -19,8 +19,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public List<TravelPackageParticipant> Participants { get; private set; }
         public List<TravelPackageTour> Tours { get; private set; }
-
-        public DateTime DateHourStart { get; private set; }
+        
         public string Host { get; private set; }
         public int QuantityTickets { get; private set; }
 
@@ -35,25 +34,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public double PaymentFirst { get; private set; }
         public string PaymentTermsRemaining { get; private set; }
         public string AddictionalReservs { get; private set; }
-        public string Comments { get; private set; }
-
-        //Smael: return just date of tha datetime
-        public DateTime DateStart
-        {
-            get
-            {
-                return DateHourStart.Date;
-            }
-        }
-
-        //Smael: return just time of tha datetime
-        public TimeSpan HourStart
-        {
-            get
-            {
-                return new TimeSpan(DateHourStart.Hour, DateHourStart.Minute, 0);
-            }
-        }
+        public string Comments { get; private set; }        
 
         #endregion
 
@@ -63,17 +44,15 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, int customerId,  
                         List<TravelPackageParticipant> participants, List<TravelPackageTour> tours,
-                        DateTime dateHourStart, string host, int quantityTickets,
-                        int vehicleUsedId, int guideTourId, double paymentAmount, DateTime payDayFirst,
-                        double paymentFirst, string paymentTermsRemaining, string addictionalReservs, string comments)
+                        string host, int quantityTickets, int vehicleUsedId, int guideTourId, double paymentAmount, 
+                        DateTime payDayFirst, double paymentFirst, string paymentTermsRemaining, string addictionalReservs, string comments)
         {
             Id = id;
             CompanyId = companyId;
             CreationDate = DateTime.Now;
             CustomerId = customerId;
             Participants = participants;
-            Tours = tours;
-            DateHourStart = dateHourStart;
+            Tours = tours;            
             Host = host;
             QuantityTickets = quantityTickets;
             VehicleUsedId = vehicleUsedId;
@@ -97,13 +76,19 @@ namespace VMCTur.Domain.Entities.TravelPackages
             AssertionConcern.AssertIsGreaterThan(GuideTourId, 0, "Guia inválido.");
         }
 
-        public void AddParticipante(TravelPackageParticipant participant)
+        public void AddParticipant(TravelPackageParticipant participant)
         {
             participant.Validate();
 
             Participants.Add(participant);
         }
-    
+
+        public void AddTour(TravelPackageTour tour)
+        {
+            tour.Validate();
+
+            Tours.Add(tour);
+        }
 
         #endregion
     }

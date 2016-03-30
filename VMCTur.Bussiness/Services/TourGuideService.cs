@@ -20,7 +20,7 @@ namespace VMCTur.Bussiness.Services
         {
             TypeBondGuide vinculo = (TypeBondGuide)Enum.Parse(typeof(TypeBondGuide), tipoVinculo);
 
-            var guia = new TourGuide(0, companyId, nome, cpf, vinculo, obs);
+            var guia = new TourGuide(0, companyId, nome, cpf, vinculo, true, obs);
             guia.Validate();
 
             _repository.Create(guia);
@@ -30,7 +30,7 @@ namespace VMCTur.Bussiness.Services
         {
             TypeBondGuide vinculo = (TypeBondGuide)Enum.Parse(typeof(TypeBondGuide), tipoVinculo);
 
-            var guia = new TourGuide(id, empresaId, nome, cpf, vinculo, obs);
+            var guia = new TourGuide(id, empresaId, nome, cpf, vinculo, true, obs);
             guia.Validate();
 
             _repository.Update(guia);

@@ -16,6 +16,8 @@ namespace VMCTur.Infra.Data.Map
                 .IsRequired();
 
             Ignore(x => x.TourName);
+            Ignore(x => x.DateStart);
+            Ignore(x => x.HourStart);
         }
     }
 }

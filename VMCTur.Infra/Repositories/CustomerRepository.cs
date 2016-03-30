@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Entities.Customers;
@@ -51,6 +52,21 @@ namespace VMCTur.Infra.Repositories
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        public List<Customer> GetBithDayOfMonth()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Customer> GetBithDayOfWeek()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Customer> GetBithDayOfDay()
+        {
+            throw new NotImplementedException();
         }
     }
 }
