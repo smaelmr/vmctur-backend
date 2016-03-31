@@ -12,8 +12,9 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Delete(int id);
 
+        List<Customer> GetBithDayOfMonth();
+        List<Customer> GetBithDayOfDay();
         List<Customer> GetByRange(int skip, int take);
-
         List<Customer> GetBySearch(string search);
 
         Customer GetById(int id);

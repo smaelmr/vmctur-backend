@@ -4,6 +4,45 @@
         <name>VMCTur.Api</name>
     </assembly>
     <members>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Post(VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create.CreateBillReceiveCommand)">
+            <summary>
+            Cria uma nova conta a receber.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Put(VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update.UpdateBillReceiveCommand)">
+            <summary>
+            Atualiza os dados da conta.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Delete(System.Int32)">
+            <summary>
+            Delete conta.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetById(System.Int32)">
+            <summary>
+            Busca a conta conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetByRange(System.Int32,System.Int32)">
+            <summary>
+            Busca as contas passando parametros de paginação.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Get(System.String)">
+            <summary>
+            Busca as contas passando um valor para pesquisa, pesquisando pelo status.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:VMCTur.Api.Controllers.CustomerController.Post(VMCTur.Api.Models.Clientes.CreateClienteModel)">
             <summary>
             Cria um novo Cliente.

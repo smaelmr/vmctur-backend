@@ -27,7 +27,7 @@ namespace VMCTur.Api.Controllers
         /// <returns></returns>
         [Authorize]
         [HttpPost]
-        [Route("")]        
+        [Route("")]
         public Task<HttpResponseMessage> Post(CreateClienteModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -184,6 +184,57 @@ namespace VMCTur.Api.Controllers
             tsc.SetResult(response);
             return tsc.Task;
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("")]
+        [DeflateCompression]
+        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        //[EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
+        public Task<HttpResponseMessage> GetBithDayOfDay()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetBithDayOfDay();
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("")]
+        [DeflateCompression]
+        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        //[EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
+        public Task<HttpResponseMessage> GetBithDayOfMonth()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetBithDayOfMonth();
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
 
         protected override void Dispose(bool disposing)
         {

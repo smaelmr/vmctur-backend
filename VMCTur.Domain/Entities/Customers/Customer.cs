@@ -19,7 +19,7 @@ namespace VMCTur.Domain.Entities.Customers
         public DateTime BirthDate { get; private set; }
         public string Comments { get; private set; }
         public bool Avaliable { get; private set; }
-        public FaixaEtaria FaixaEtariaCliente
+        public AgeGroup FaixaEtariaCliente
         {
             get
             {
@@ -91,14 +91,14 @@ namespace VMCTur.Domain.Entities.Customers
             BirthdayAssertionConcern.AssertIsValid(this.BirthDate);
         }
 
-        public FaixaEtaria VerificaFaixaEtaria()
+        public AgeGroup VerificaFaixaEtaria()
         {
             if (Age <= 12)
-                return FaixaEtaria.Crianca;
+                return AgeGroup.Crianca;
             else if (Age > 12 && Age < 60)
-                return FaixaEtaria.Adulto;
+                return AgeGroup.Adulto;
             else
-                return FaixaEtaria.Idoso;            
+                return AgeGroup.Idoso;            
             
         }
              

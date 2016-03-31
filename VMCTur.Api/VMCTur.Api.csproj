@@ -245,6 +245,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BillReceiveController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\TourGuideController.cs" />
     <Compile Include="Controllers\TravelPackageController.cs" />
@@ -312,6 +313,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\BillReceive\" />
     <Folder Include="Views\Guia\" />
     <Folder Include="Views\Pacote\" />
     <Folder Include="Views\Passeio\" />

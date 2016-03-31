@@ -17,8 +17,8 @@ namespace VMCTur.Domain.Contracts.Services
         List<BillReceive> GetWinningTodayBills();
         List<BillReceive> GetReceivedBills();
 
-        void Create(CreateBillReceiveCommand cliente);
-        void Update(UpdateBillReceiveCommand cliente);
+        void Create(CreateBillReceiveCommand bill);
+        void Update(UpdateBillReceiveCommand bill);
         void Delete(int id);
     }
 }

@@ -8,14 +8,13 @@ namespace VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create
 {
     public class CreateBillReceiveCommand
     {
-        public int CustomerId { get; set; }
+        public int TravelPackageId { get; set; }
         public decimal Amount { get; set; }
-        public decimal Extra { get; set; }
-        public decimal Discount { get; set; }
+        public decimal AmountReceived { get; set; }
+        public string Concerning { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime DueDate { get; set; }
+        public DateTime PayDay { get; set; }
         public string Comments { get; set; }
-
-        public List<CreateReceiptCommand> Receipts { get; set; }
     }
 }

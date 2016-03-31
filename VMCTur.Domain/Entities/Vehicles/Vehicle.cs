@@ -14,7 +14,7 @@ namespace VMCTur.Domain.Entities.Vehicles
         public string Plate { get; private set; }
         public int Year { get; private set; }
         public string Model { get; private set; }
-        public TypeAcquisition AcquisitionType { get; private set; }
+        public TypeAcquisitionVehicle AcquisitionType { get; private set; }
         public int NumberOfPassengers { get; private set; }
         public bool Available { get; private set; }        
         public string Comments { get; private set; }
@@ -35,7 +35,7 @@ namespace VMCTur.Domain.Entities.Vehicles
         { }
 
         public Vehicle(int id, int companyId, string plate, int year, string model, int numberOfPassengers, 
-                       bool available, TypeAcquisition acquisitionType, string comments)
+                       bool available, TypeAcquisitionVehicle acquisitionType, string comments)
         {
             Id = id;
             CompanyId = companyId;

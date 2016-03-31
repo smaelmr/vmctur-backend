@@ -142,6 +142,12 @@ namespace VMCTur.Common.Validation
                 throw new InvalidOperationException(message);
         }
 
+        public static void AssertIsGreaterThan(decimal value1, decimal value2, string message)
+        {
+            if (!(value1 > value2))
+                throw new InvalidOperationException(message);
+        }
+
         /// <summary>
         /// Smael: if createtion date is great due date, return error.
         /// </summary>

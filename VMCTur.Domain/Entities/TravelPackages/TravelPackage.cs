@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.Customers;
+using VMCTur.Domain.Entities.Financial.BillsReceive;
 using VMCTur.Domain.Entities.TourGuides;
 using VMCTur.Domain.Entities.Vehicles;
 
@@ -19,7 +20,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public List<TravelPackageParticipant> Participants { get; private set; }
         public List<TravelPackageTour> Tours { get; private set; }
-        
+        public List<BillReceive> Bills { get; private set; }
+
         public string Host { get; private set; }
         public int QuantityTickets { get; private set; }
 
@@ -28,13 +30,14 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public int GuideTourId { get; private set; }
         public TourGuide GuideTour { get; private set; }
-
-        public double PaymentAmount { get; private set; }
-        public DateTime PayDayFirst { get; private set; }
-        public double PaymentFirst { get; private set; }
-        public string PaymentTermsRemaining { get; private set; }
+        public double TotalAmount { get; private set; }
         public string AddictionalReservs { get; private set; }
-        public string Comments { get; private set; }        
+        public string Comments { get; private set; }
+
+        //public DateTime PayDayFirst { get; private set; }
+        //public double PaymentFirst { get; private set; }
+        //public string PaymentTermsRemaining { get; private set; }
+
 
         #endregion
 
@@ -42,10 +45,9 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         protected TravelPackage() { }
 
-        public TravelPackage(int id, int companyId, int customerId,  
-                        List<TravelPackageParticipant> participants, List<TravelPackageTour> tours,
-                        string host, int quantityTickets, int vehicleUsedId, int guideTourId, double paymentAmount, 
-                        DateTime payDayFirst, double paymentFirst, string paymentTermsRemaining, string addictionalReservs, string comments)
+        public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants, 
+                             List<TravelPackageTour> tours, List<BillReceive> Bills, string host, int quantityTickets, 
+                             int vehicleUsedId, int guideTourId, double totalAmount, string addictionalReservs, string comments)
         {
             Id = id;
             CompanyId = companyId;
@@ -57,10 +59,10 @@ namespace VMCTur.Domain.Entities.TravelPackages
             QuantityTickets = quantityTickets;
             VehicleUsedId = vehicleUsedId;
             GuideTourId = guideTourId;
-            PaymentAmount = paymentAmount;
-            PayDayFirst = payDayFirst;
-            PaymentFirst = paymentFirst;
-            PaymentTermsRemaining = paymentTermsRemaining;
+            TotalAmount = totalAmount;
+            //PayDayFirst = payDayFirst;
+            //PaymentFirst = paymentFirst;
+            //PaymentTermsRemaining = paymentTermsRemaining;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
     }
@@ -88,6 +90,13 @@ namespace VMCTur.Domain.Entities.TravelPackages
             tour.Validate();
 
             Tours.Add(tour);
+        }
+
+        public void AddBillReceive(BillReceive bill)
+        {
+            bill.Validate();
+
+            Bills.Add(bill);
         }
 
         #endregion

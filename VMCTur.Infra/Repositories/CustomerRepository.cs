@@ -49,24 +49,25 @@ namespace VMCTur.Infra.Repositories
             return _context.Customers.OrderBy(x => x.Name).Skip(skip).Take(take).ToList();
         }
 
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
-
         public List<Customer> GetBithDayOfMonth()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Customer> GetBithDayOfWeek()
-        {
-            throw new NotImplementedException();
+            return (from itens in _context.Customers
+                    where (itens.BirthDate.Month == DateTime.Today.Month)
+                    orderby itens.Name ascending
+                    select itens).ToList<Customer>();
         }
 
         public List<Customer> GetBithDayOfDay()
         {
-            throw new NotImplementedException();
+            return (from itens in _context.Customers
+                    where (itens.BirthDate.Month == DateTime.Today.Month && itens.BirthDate.Day == DateTime.Today.Day)
+                    orderby itens.Name ascending
+                    select itens).ToList<Customer>();
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

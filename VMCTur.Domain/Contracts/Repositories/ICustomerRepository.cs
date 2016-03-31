@@ -11,7 +11,6 @@ namespace VMCTur.Domain.Contracts.Repositories
         List<Customer> Get(int skip, int take);
 
         List<Customer> GetBithDayOfMonth();
-        List<Customer> GetBithDayOfWeek();
         List<Customer> GetBithDayOfDay();
 
         void Create(Customer cliente);

@@ -44,8 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BillCommands\BillReceiveCommands\Create\CreateBillReceiveCommand.cs" />
-    <Compile Include="Commands\BillCommands\BillReceiveCommands\Create\CreateReceiptCommand.cs" />
-    <Compile Include="Commands\BillCommands\BillReceiveCommands\Update\UpdateReceiptCommand.cs" />
     <Compile Include="Commands\BillCommands\BillReceiveCommands\Update\UpdateBillReceiveCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTravelPackageCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateParticipantCommand.cs" />
@@ -71,17 +69,17 @@
     <Compile Include="Contracts\Services\ITourService.cs" />
     <Compile Include="Contracts\Services\IVehicleService.cs" />
     <Compile Include="Entities\Financial\BillsReceive\BillReceive.cs" />
-    <Compile Include="Entities\Financial\BillsReceive\Receipt.cs" />
     <Compile Include="Entities\TourGuide\TourGuide.cs" />
     <Compile Include="Entities\TravelPackages\TourSchedule.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackageTour.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackage.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackageParticipant.cs" />
     <Compile Include="Entities\Tours\Tour.cs" />
-    <Compile Include="Enums\TipoVinculoGuia.cs" />
-    <Compile Include="Enums\TipoVinculoVeiculo.cs" />
+    <Compile Include="Enums\BillStatus.cs" />
+    <Compile Include="Enums\TypeBondGuide.cs" />
+    <Compile Include="Enums\TypeAcquisitionVehicle.cs" />
     <Compile Include="Entities\Vehicles\Vehicle.cs" />
-    <Compile Include="Enums\FaixaEtaria.cs" />
+    <Compile Include="Enums\AgeGroup.cs" />
     <Compile Include="Entities\Customers\Customer.cs" />
     <Compile Include="Entities\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

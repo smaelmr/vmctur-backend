@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
 
 namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
 {
@@ -11,6 +12,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
 
         public List<UpdateParticipantCommand> Participants { get; set; }
         public List<UpdateTourCommand> Tours { get; set; }
+        public List<UpdateBillReceiveCommand> Bills { get; set; }
 
         public DateTime DateStart { get; set; }
         public TimeSpan HourStart { get; set; }

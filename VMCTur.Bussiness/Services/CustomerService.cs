@@ -59,6 +59,16 @@ namespace VMCTur.Bussiness.Services
             return customers;
         }
 
+        public List<Customer> GetBithDayOfMonth()
+        {
+            return _customerRepository.GetBithDayOfMonth();
+        }
+
+        public List<Customer> GetBithDayOfDay()
+        {
+            return _customerRepository.GetBithDayOfDay();
+        }
+
         public void Dispose()
         {
             _customerRepository.Dispose();
