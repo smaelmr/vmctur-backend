@@ -73,6 +73,7 @@
     <Compile Include="Entities\Financial\BillsReceive\BillReceive.cs" />
     <Compile Include="Entities\Financial\BillsReceive\Receipt.cs" />
     <Compile Include="Entities\TourGuide\TourGuide.cs" />
+    <Compile Include="Entities\TravelPackages\TourSchedule.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackageTour.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackage.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackageParticipant.cs" />

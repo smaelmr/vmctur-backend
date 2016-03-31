@@ -13,7 +13,7 @@ namespace VMCTur.Domain.Commands.VehicleCommands
         public int Year { get; set; }
         public int NumberOfPassengers { get; set; }
         public bool Inactive { get; set; }
-        public string TypeAcquisition { get; set; }
+        public string AcquisitionType { get; set; }
         public string Comments { get; set; }
     }
 }

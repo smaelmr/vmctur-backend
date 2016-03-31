@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TourGuideRepository.cs" />
     <Compile Include="Repositories\TourRepository.cs" />
+    <Compile Include="Repositories\TourScheduleRepository.cs" />
     <Compile Include="Repositories\TravelPackageRepository.cs" />
     <Compile Include="Repositories\VehicleRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />

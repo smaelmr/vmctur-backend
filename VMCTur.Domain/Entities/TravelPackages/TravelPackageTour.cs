@@ -58,7 +58,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         {
             TourId = tourId;
             TravelPackageId = travelPackageId;
-            DateHourStart = DateHourStart;
+            DateHourStart = dateHourStart;
         }
 
         #endregion

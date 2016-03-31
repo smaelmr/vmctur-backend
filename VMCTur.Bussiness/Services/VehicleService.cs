@@ -19,7 +19,7 @@ namespace VMCTur.Bussiness.Services
 
         public void Create(CreateVehicleCommand vehicleCommand)
         {
-            TypeAcquisition typeAcquisition = (TypeAcquisition)Enum.Parse(typeof(TypeAcquisition), vehicleCommand.TypeAcquisition);
+            TypeAcquisition typeAcquisition = (TypeAcquisition)Enum.Parse(typeof(TypeAcquisition), vehicleCommand.AcquisitionType);
 
             var vehicle = new Vehicle(0, vehicleCommand.CompanyId, vehicleCommand.Plate, vehicleCommand.Year, vehicleCommand.Model, 
                 vehicleCommand.NumberOfPassengers, vehicleCommand.Inactive, typeAcquisition, vehicleCommand.Comments);
@@ -31,7 +31,7 @@ namespace VMCTur.Bussiness.Services
 
         public void Update(UpdateVehicleCommand vehicleCommand)
         {
-            TypeAcquisition typeAcquisition = (TypeAcquisition)Enum.Parse(typeof(TypeAcquisition), vehicleCommand.TypeAcquisition);
+            TypeAcquisition typeAcquisition = (TypeAcquisition)Enum.Parse(typeof(TypeAcquisition), vehicleCommand.AcquisitionType);
 
             var veiculo = new Vehicle(vehicleCommand.Id, vehicleCommand.CompanyId, vehicleCommand.Plate, vehicleCommand.Year, vehicleCommand.Model,
                 vehicleCommand.NumberOfPassengers, vehicleCommand.Inactive, typeAcquisition, vehicleCommand.Comments);
