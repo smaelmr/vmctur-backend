@@ -14,19 +14,13 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public List<UpdateTourCommand> Tours { get; set; }
         public List<UpdateBillReceiveCommand> Bills { get; set; }
 
-        public DateTime DateStart { get; set; }
-        public TimeSpan HourStart { get; set; }
-
-        public string HostLocal { get; set; }
+        public string Host { get; set; }
         public int QuantityTickets { get; set; }
 
         public int VehicleUsedId { get; set; }
         public int GuideTourId { get; set; }
 
-        public double PaymentAmount { get; set; }
-        public DateTime PayDayFirst { get; set; }
-        public double PaymentFirst { get; set; }
-        public string PaymentTermsRemaining { get; set; }
+        public double TotalAmount { get; set; }
         public string AddictionalReservs { get; set; }
         public string Comments { get; set; }
     }

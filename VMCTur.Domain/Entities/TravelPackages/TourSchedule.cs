@@ -10,12 +10,12 @@ namespace VMCTur.Domain.Entities.TravelPackages
     {
         #region Properties
 
-        public DateTime DateHourTour { get; private set; }
-        public string CustomerName { get; private set; }
-        public int QuantityParticipants { get; private set; }
-        public string TourNamePasseio { get; private set; }
-        public string TourGuidename { get; private set; }
-        public string VehicleModel { get; private set; }
+        public DateTime DateHourTour { get; set; }
+        public string CustomerName { get; set; }
+        public int QuantityParticipants { get; set; }
+        public string TourNamePasseio { get; set; }
+        public string TourGuidename { get; set; }
+        public string VehicleModel { get; set; }
 
         #endregion
     }

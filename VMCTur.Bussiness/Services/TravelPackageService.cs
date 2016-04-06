@@ -77,13 +77,13 @@ namespace VMCTur.Bussiness.Services
             }
 
             var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, participants, tours, bills,
-                                           travelPackageUpdate.HostLocal, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
-                                           travelPackageUpdate.GuideTourId, travelPackageUpdate.PaymentAmount, 
+                                           travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
+                                           travelPackageUpdate.GuideTourId, travelPackageUpdate.TotalAmount, 
                                            travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments);
 
             travelPackage.Validate();
 
-            _repository.Create(travelPackage);
+            _repository.Update(travelPackage);
         }
 
         public void Delete(int id)

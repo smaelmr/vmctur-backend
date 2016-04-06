@@ -248,6 +248,7 @@
     <Compile Include="Controllers\BillReceiveController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\TourGuideController.cs" />
+    <Compile Include="Controllers\TourScheduleController.cs" />
     <Compile Include="Controllers\TravelPackageController.cs" />
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />

@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using VMCTur.Domain.Entities.TravelPackages;
+
+namespace VMCTur.Domain.Contracts.Services
+{
+    public interface ITourScheduleService : IDisposable
+    {
+        List<TourSchedule> GetNextSevenDays();
+        List<TourSchedule> GetNextFifteenDays();
+        List<TourSchedule> GetNextThirtyDays();
+
+        List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod);
+    }
+}

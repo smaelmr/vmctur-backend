@@ -54,12 +54,14 @@
     <Compile Include="Commands\VehicleCommands\Create\CreateVehicleCommand.cs" />
     <Compile Include="Commands\VehicleCommands\Update\UpdateVehicleCommand.cs" />
     <Compile Include="Contracts\Repositories\IBillReceiveRepository.cs" />
+    <Compile Include="Contracts\Repositories\ITourScheduleRepository.cs" />
     <Compile Include="Contracts\Repositories\ITravelPackageRepository.cs" />
     <Compile Include="Contracts\Repositories\ICustomerRepository.cs" />
     <Compile Include="Contracts\Repositories\IGuideRepository.cs" />
     <Compile Include="Contracts\Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\Repositories\ITourRepository.cs" />
     <Compile Include="Contracts\Repositories\IVehicleRepository.cs" />
+    <Compile Include="Contracts\Services\ITourScheduleService.cs" />
     <Compile Include="Contracts\Services\IBillReceiveService.cs" />
     <Compile Include="Contracts\Services\ITravelPackageService.cs" />
     <Compile Include="Contracts\Services\ICustomerService.cs" />

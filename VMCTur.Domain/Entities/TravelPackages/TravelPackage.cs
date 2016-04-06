@@ -34,11 +34,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string AddictionalReservs { get; private set; }
         public string Comments { get; private set; }
 
-        //public DateTime PayDayFirst { get; private set; }
-        //public double PaymentFirst { get; private set; }
-        //public string PaymentTermsRemaining { get; private set; }
-
-
         #endregion
 
         #region Ctor
@@ -46,7 +41,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         protected TravelPackage() { }
 
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants, 
-                             List<TravelPackageTour> tours, List<BillReceive> Bills, string host, int quantityTickets, 
+                             List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets, 
                              int vehicleUsedId, int guideTourId, double totalAmount, string addictionalReservs, string comments)
         {
             Id = id;
@@ -54,15 +49,13 @@ namespace VMCTur.Domain.Entities.TravelPackages
             CreationDate = DateTime.Now;
             CustomerId = customerId;
             Participants = participants;
-            Tours = tours;            
-            Host = host;
+            Tours = tours;
+            Bills = bills;
+            Host = host;            
             QuantityTickets = quantityTickets;
             VehicleUsedId = vehicleUsedId;
             GuideTourId = guideTourId;
             TotalAmount = totalAmount;
-            //PayDayFirst = payDayFirst;
-            //PaymentFirst = paymentFirst;
-            //PaymentTermsRemaining = paymentTermsRemaining;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
     }

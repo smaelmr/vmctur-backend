@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations.Schema;
-using VMCTur.Domain.Entities.Customers;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
 
 namespace VMCTur.Infra.Data.Map
@@ -14,6 +13,8 @@ namespace VMCTur.Infra.Data.Map
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
+
+            Ignore(x => x.Status);
 
         }
     }

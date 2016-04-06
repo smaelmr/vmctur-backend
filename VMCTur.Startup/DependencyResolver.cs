@@ -34,6 +34,9 @@ namespace VMCTur.Startup
             container.RegisterType<IBillReceiveRepository, BillReceiveRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IBillReceiveService, BillReceiveService>(new HierarchicalLifetimeManager());
 
+            container.RegisterType<ITourScheduleRepository, TourScheduleRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITourScheduleService, TourScheduleService>(new HierarchicalLifetimeManager());
+
         }
     
     }

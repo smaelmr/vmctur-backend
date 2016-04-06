@@ -20,9 +20,6 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Create
         public int GuideTourId { get; set; }
 
         public double TotalAmount { get; set; }
-        public DateTime PayDayFirst { get; set; }
-        public double PaymentFirst { get; set; }
-        public string PaymentTermsRemaining { get; set; }
         public string AddictionalReservs { get; set; }
         public string Comments { get; set; }
     }

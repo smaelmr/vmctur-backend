@@ -121,6 +121,30 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:VMCTur.Api.Controllers.TourScheduleController.GetNextSevenDays">
+            <summary>
+            lista os passeios dos próximos sete dias.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourScheduleController.GetNextFifteenDays">
+            <summary>
+            lista os passeios dos próximos quinze dias.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourScheduleController.GetNextThirtyDays">
+            <summary>
+            lista os passeios dos próximos trinta dias.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.TourScheduleController.Get(System.DateTime,System.DateTime)">
+            <summary>
+            lista os passeios dos próximos trinta dias.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:VMCTur.Api.Controllers.TravelPackageController.Post(VMCTur.Domain.Commands.TravelPackageCommands.Create.CreateTravelPackageCommand)">
             <summary>
             Cria um novo Pacote.

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Entities.TravelPackages;
@@ -37,6 +38,7 @@ namespace VMCTur.Infra.Repositories
         {
             return _context.TravelPackages
                                 .Include("Participants")
+                                .Include("Bills")
                                 .Include("Tours").Include("Tours.Tour")
                                 .Include("VehicleUsed")
                                 .Include("GuideTour")
@@ -53,7 +55,9 @@ namespace VMCTur.Infra.Repositories
         {
             return _context.TravelPackages                                
                                 .OrderBy(x => x.CreationDate).Skip(skip).Take(take).ToList();
-        }               
+        }
+
+        
 
         public void Dispose()
         {
