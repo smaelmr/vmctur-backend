@@ -44,6 +44,36 @@ namespace VMCTur.Infra.Repositories
                                 .Include("GuideTour")
                                 .Include("Customer")
                                 .Where(x => x.Id == id).FirstOrDefault();
+
+            //List<TravelPackage> pack = (from it in _context.TravelPackages
+            // join participant in _context.TravelPackageParticipants on it.Id equals participant.TravelPackageId
+            // join bill in _context.BillReceives on it.Id equals bill.TravelPackageId
+            // join tour in _context.TravelPackageTours on it.Id equals tour.TravelPackageId
+            // join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
+            // join guideTour in _context.TourGuides on it.GuideTourId equals guideTour.Id
+            // join customer in _context.Customers on it.CustomerId equals customer.Id
+            // where it.Id == id
+            // select new TravelPackage(
+            //     it.Id,
+            //     it.CompanyId,
+            //     it.CreationDate,
+            //     it.CustomerId,
+            //     it.Customer,
+            //     it.Participants,
+            //     it.Tours,
+            //     it.Bills,
+            //     it.Host,
+            //     it.QuantityTickets,
+            //     it.VehicleUsedId,
+            //     it.VehicleUsed,
+            //     it.GuideTourId,
+            //     it.GuideTour,
+            //     it.TotalAmount,
+            //     it.AddictionalReservs,
+            //     it.Comments
+            //)).ToList();
+
+            //return pack[0];
         }
 
         public List<TravelPackage> Get(string search)

@@ -40,6 +40,8 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
 
         #region Ctor
 
+        protected BillReceive() {}
+
         public BillReceive(int id, int travelPackageId, decimal amount, decimal amountReceived, string concerning,
                            DateTime dueDate, DateTime? payDay, string comments)
         {

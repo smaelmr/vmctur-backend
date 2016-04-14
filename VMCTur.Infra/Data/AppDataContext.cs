@@ -28,6 +28,7 @@ namespace VMCTur.Infra.Data
         public DbSet<TravelPackage> TravelPackages { get; set; }
         public DbSet<BillReceive> BillReceives { get; set; }
         public DbSet<TravelPackageTour> TravelPackageTours { get; set; }
+        public DbSet<TravelPackageParticipant> TravelPackageParticipants { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

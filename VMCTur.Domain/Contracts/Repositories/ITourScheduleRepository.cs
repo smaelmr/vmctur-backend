@@ -7,7 +7,7 @@ namespace VMCTur.Domain.Contracts.Repositories
     public interface ITourScheduleRepository : IDisposable
     {
         List<TourSchedule> Get(double days);
-
+        List<TourSchedule> GetAll();
         List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod);
     }
 }

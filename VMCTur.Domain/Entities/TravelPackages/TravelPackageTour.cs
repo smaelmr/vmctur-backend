@@ -29,12 +29,14 @@ namespace VMCTur.Domain.Entities.TravelPackages
             }
         }
 
-        //Smael: return just time of tha datetime
+        //Smael: return just time of the datetime
         public TimeSpan HourStart
         {
             get
             {
-                return new TimeSpan(DateHourStart.Hour, DateHourStart.Minute, 0);
+                TimeSpan ts = new TimeSpan(DateHourStart.Hour, DateHourStart.Minute, 0);
+
+                return ts;
             }
         }
 

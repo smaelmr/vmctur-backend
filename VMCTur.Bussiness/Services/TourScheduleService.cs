@@ -38,6 +38,11 @@ namespace VMCTur.Bussiness.Services
             return _repository.Get(30);
         }
 
+        public List<TourSchedule> GetAll()
+        {
+            return _repository.GetAll();
+        }
+
         public void Dispose()
         {
             _repository.Dispose();

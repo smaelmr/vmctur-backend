@@ -15,7 +15,7 @@ namespace VMCTur.Domain.Entities.Tours
         public string Route { get; private set; }
         public TimeSpan OpenHour { get; private set; }
         public TimeSpan CloseHour { get; private set; }
-        public bool Inactive { get; private set; }
+        public bool Available { get; private set; }
         public string Comments { get; private set; }
 
         #endregion
@@ -26,7 +26,7 @@ namespace VMCTur.Domain.Entities.Tours
         { }
 
         public Tour(int id, int empresaId, string nome, string roteiro, TimeSpan horarioAbertura,
-                       TimeSpan horarioFechamento, bool inativo, string obs)
+                       TimeSpan horarioFechamento, bool available, string obs)
         {
             Id = id;
             CompanyId = empresaId;
@@ -34,7 +34,7 @@ namespace VMCTur.Domain.Entities.Tours
             Route = roteiro;
             OpenHour = horarioAbertura;
             CloseHour = horarioFechamento;
-            Inactive = inativo;
+            Available = available;
             Comments = obs;
         }
 

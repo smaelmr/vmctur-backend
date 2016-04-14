@@ -9,7 +9,7 @@ namespace VMCTur.Domain.Contracts.Services
         List<TourSchedule> GetNextSevenDays();
         List<TourSchedule> GetNextFifteenDays();
         List<TourSchedule> GetNextThirtyDays();
-
+        List<TourSchedule> GetAll();
         List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod);
     }
 }

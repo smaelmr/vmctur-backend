@@ -134,5 +134,34 @@ namespace VMCTur.Api.Controllers
             tsc.SetResult(response);
             return tsc.Task;
         }
+
+        /// <summary>
+        /// lista os passeios dos próximos trinta dias.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("getall")]
+        [DeflateCompression]
+        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
+        //[EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
+        public Task<HttpResponseMessage> GetAll()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetAll();
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
     }
 }

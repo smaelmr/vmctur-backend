@@ -17,6 +17,18 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string TourGuidename { get; set; }
         public string VehicleModel { get; set; }
 
+        public TourSchedule() { }
+
+        public TourSchedule(DateTime dateHourTour, string customerName, int quantityParticipants, string tourNamePasseio, string tourGuidename, string vehicleModel)
+        {
+            DateHourTour = dateHourTour;
+            CustomerName = customerName;
+            QuantityParticipants = quantityParticipants;
+            TourNamePasseio = tourNamePasseio;
+            TourGuidename = tourGuidename;
+            VehicleModel = vehicleModel;
+    }
+
         #endregion
     }
 }

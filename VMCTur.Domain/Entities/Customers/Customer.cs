@@ -19,14 +19,6 @@ namespace VMCTur.Domain.Entities.Customers
         public DateTime BirthDate { get; private set; }
         public string Comments { get; private set; }
         public bool Avaliable { get; private set; }
-        public AgeGroup FaixaEtariaCliente
-        {
-            get
-            {
-                return VerificaFaixaEtaria();
-            }
-        
-        }
 
         /// <summary>
         /// Smael: Calcula a idade do cliente a partir da data de nascimento.
@@ -89,18 +81,7 @@ namespace VMCTur.Domain.Entities.Customers
             EmailAssertionConcern.AssertIsValid(this.Email);
             PhoneNumberAssertionConcern.AssertIsValid(this.Phone);
             BirthdayAssertionConcern.AssertIsValid(this.BirthDate);
-        }
-
-        public AgeGroup VerificaFaixaEtaria()
-        {
-            if (Age <= 12)
-                return AgeGroup.Crianca;
-            else if (Age > 12 && Age < 60)
-                return AgeGroup.Adulto;
-            else
-                return AgeGroup.Idoso;            
-            
-        }
+        }        
              
         #endregion
 

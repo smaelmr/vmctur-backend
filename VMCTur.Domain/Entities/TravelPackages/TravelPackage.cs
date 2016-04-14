@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.Customers;
@@ -58,7 +59,30 @@ namespace VMCTur.Domain.Entities.TravelPackages
             TotalAmount = totalAmount;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
-    }
+        }
+
+        public TravelPackage(int id, int companyId, DateTime creationDate, int customerId, Customer customer, List<TravelPackageParticipant> participants,
+                             List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
+                             int vehicleUsedId, Vehicle vehicle, int guideTourId, TourGuide tourGuide, double totalAmount, string addictionalReservs, string comments)
+        {
+            Id = id;
+            CompanyId = companyId;
+            CreationDate = DateTime.Now;
+            CustomerId = customerId;
+            Customer = customer;
+            Participants = participants;
+            Tours = tours;
+            Bills = bills;
+            Host = host;
+            QuantityTickets = quantityTickets;
+            VehicleUsedId = vehicleUsedId;
+            VehicleUsed = vehicle;
+            GuideTourId = guideTourId;
+            GuideTour = tourGuide;
+            TotalAmount = totalAmount;
+            AddictionalReservs = addictionalReservs;
+            Comments = comments;
+        }
 
         #endregion
 
