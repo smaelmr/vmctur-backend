@@ -30,7 +30,7 @@ namespace VMCTur.Api.Controllers
         [Authorize]
         [HttpPost]
         [Route("")]
-        public Task<HttpResponseMessage> Post(CreateTravelPackageCommand package)
+        public Task<HttpResponseMessage> Post(CreateTravelPackageCommand package)   
         {
             HttpResponseMessage response = new HttpResponseMessage();
 

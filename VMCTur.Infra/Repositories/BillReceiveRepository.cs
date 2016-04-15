@@ -34,7 +34,7 @@ namespace VMCTur.Infra.Repositories
         {
             _context.BillReceives.Remove(bill);
             _context.SaveChanges();
-        }        
+        }
 
         public BillReceive Get(int id)
         {
@@ -82,6 +82,8 @@ namespace VMCTur.Infra.Repositories
                     orderby itens.DueDate ascending
                     select itens).ToList<BillReceive>();
         }
+
+        
 
         public void Dispose()
         {

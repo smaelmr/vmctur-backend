@@ -47,7 +47,7 @@ namespace VMCTur.Api.Security
 
                 context.Validated(identity);
             }
-            catch
+            catch(Exception ex)
             {
                 context.SetError("invalid_grant", Errors.InvalidCredentials);
             }

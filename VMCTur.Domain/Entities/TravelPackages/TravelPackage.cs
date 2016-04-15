@@ -39,7 +39,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         #region Ctor
 
-        protected TravelPackage() { }
+        public TravelPackage() { }
 
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants, 
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets, 

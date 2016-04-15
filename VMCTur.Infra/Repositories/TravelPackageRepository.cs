@@ -36,44 +36,21 @@ namespace VMCTur.Infra.Repositories
 
         public TravelPackage Get(int id)
         {
-            return _context.TravelPackages
-                                .Include("Participants")
-                                .Include("Bills")
-                                .Include("Tours").Include("Tours.Tour")
-                                .Include("VehicleUsed")
-                                .Include("GuideTour")
-                                .Include("Customer")
-                                .Where(x => x.Id == id).FirstOrDefault();
+            TravelPackage pk =  _context.TravelPackages
+                                    .Include("Participants")
+                                    .Include("Bills")     
+                                    //.Include("Tours").Include("Tours.Tour")                               
+                                    .Include("VehicleUsed")
+                                    .Include("GuideTour")
+                                    .Include("Customer")
+                                    .Where(x => x.Id == id).FirstOrDefault();
 
-            //List<TravelPackage> pack = (from it in _context.TravelPackages
-            // join participant in _context.TravelPackageParticipants on it.Id equals participant.TravelPackageId
-            // join bill in _context.BillReceives on it.Id equals bill.TravelPackageId
-            // join tour in _context.TravelPackageTours on it.Id equals tour.TravelPackageId
-            // join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
-            // join guideTour in _context.TourGuides on it.GuideTourId equals guideTour.Id
-            // join customer in _context.Customers on it.CustomerId equals customer.Id
-            // where it.Id == id
-            // select new TravelPackage(
-            //     it.Id,
-            //     it.CompanyId,
-            //     it.CreationDate,
-            //     it.CustomerId,
-            //     it.Customer,
-            //     it.Participants,
-            //     it.Tours,
-            //     it.Bills,
-            //     it.Host,
-            //     it.QuantityTickets,
-            //     it.VehicleUsedId,
-            //     it.VehicleUsed,
-            //     it.GuideTourId,
-            //     it.GuideTour,
-            //     it.TotalAmount,
-            //     it.AddictionalReservs,
-            //     it.Comments
-            //)).ToList();
 
-            //return pack[0];
+            List<TravelPackageTour> pkTours = _context.TravelPackageTours
+                .Include("Tour")
+                .Where(y => y.TravelPackageId == id).ToList();
+           
+            return pk;
         }
 
         public List<TravelPackage> Get(string search)
@@ -86,8 +63,6 @@ namespace VMCTur.Infra.Repositories
             return _context.TravelPackages                                
                                 .OrderBy(x => x.CreationDate).Skip(skip).Take(take).ToList();
         }
-
-        
 
         public void Dispose()
         {

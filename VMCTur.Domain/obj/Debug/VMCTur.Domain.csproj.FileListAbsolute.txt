@@ -30,3 +30,11 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\bin\Debug\pt-BR\VM
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.csprojResolveAssemblyReference.cache
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.pdb
+C:\Intel\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Domain.dll
+C:\Intel\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Domain.pdb
+C:\Intel\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Common.dll
+C:\Intel\vmctur-backend\VMCTur.Domain\bin\Debug\VMCTur.Common.pdb
+C:\Intel\vmctur-backend\VMCTur.Domain\bin\Debug\pt-BR\VMCTur.Common.resources.dll
+C:\Intel\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.csprojResolveAssemblyReference.cache
+C:\Intel\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.dll
+C:\Intel\vmctur-backend\VMCTur.Domain\obj\Debug\VMCTur.Domain.pdb

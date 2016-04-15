@@ -42,7 +42,7 @@ namespace VMCTur.Bussiness.Services
 
             foreach (CreateBillReceiveCommand p in travelPackageCreate.Bills)
             {
-                bills.Add(new BillReceive(0, p.TravelPackageId, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
+                bills.Add(new BillReceive(0, p.TravelPackageId, p.Amount, 0, p.Concerning, p.DueDate, null, p.Comments));
             }
 
             var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, participants, tours, bills,

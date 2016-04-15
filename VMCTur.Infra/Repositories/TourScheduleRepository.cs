@@ -19,7 +19,8 @@ namespace VMCTur.Infra.Repositories
         }
 
         public List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod)
-        {
+        {            
+
             List<TourSchedule> schedules = (from it in _context.TravelPackageTours
                                             join travelPackage in _context.TravelPackages on it.TravelPackageId equals travelPackage.Id
                                             join customer in _context.Customers on travelPackage.CustomerId equals customer.Id
@@ -35,7 +36,7 @@ namespace VMCTur.Infra.Repositories
                                                 QuantityParticipants = travelPackage.QuantityTickets,
                                                 TourNamePasseio = tour.Name,
                                                 TourGuidename = tourGuide.Name,
-                                                VehicleModel = vehicle.Model
+                                                VehicleModel = vehicle.Model,                                                
                                             }).ToList();
 
             return schedules;

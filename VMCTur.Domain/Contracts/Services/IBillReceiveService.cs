@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
@@ -19,6 +20,7 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Create(CreateBillReceiveCommand bill);
         void Update(UpdateBillReceiveCommand bill);
+        void Receipt(ReceiptBillReceiveCommand bill);
         void Delete(int id);
     }
 }

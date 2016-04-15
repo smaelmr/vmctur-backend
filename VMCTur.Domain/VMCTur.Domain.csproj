@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BillCommands\BillReceiveCommands\Create\CreateBillReceiveCommand.cs" />
+    <Compile Include="Commands\BillCommands\BillReceiveCommands\ReceiptBillReceiveCommand.cs" />
     <Compile Include="Commands\BillCommands\BillReceiveCommands\Update\UpdateBillReceiveCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTravelPackageCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateParticipantCommand.cs" />

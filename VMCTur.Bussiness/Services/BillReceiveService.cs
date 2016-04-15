@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
 using VMCTur.Domain.Contracts.Repositories;
@@ -23,8 +24,8 @@ namespace VMCTur.Bussiness.Services
         public void Create(CreateBillReceiveCommand bill)
         {
             BillReceive billReceive = new BillReceive(
-                0, bill.TravelPackageId, bill.Amount, bill.AmountReceived, bill.Concerning, 
-                bill.DueDate, bill.PayDay, bill.Comments);
+                0, bill.TravelPackageId, bill.Amount, 0, bill.Concerning, 
+                bill.DueDate, null, bill.Comments);
 
             billReceive.Validate();
 
@@ -47,6 +48,18 @@ namespace VMCTur.Bussiness.Services
             BillReceive billReceive = _repository.Get(id);
 
             _repository.Delete(billReceive);
+        }
+
+        public void Receipt(ReceiptBillReceiveCommand bill)
+        {
+            BillReceive b = _repository.Get(bill.Id);
+
+            b.Receipt(bill.PayDay, bill.AmountReceived);
+
+            b.Validate();
+
+            _repository.Update(b);
+
         }
 
         public BillReceive Get(int id)
@@ -88,5 +101,7 @@ namespace VMCTur.Bussiness.Services
         {
             _repository.Dispose();
         }
+
+        
     }
 }

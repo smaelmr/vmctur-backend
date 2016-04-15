@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using VMCTur.Common.Validation;
-using VMCTur.Domain.Entities.Customers;
 using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Domain.Enums;
 
@@ -15,6 +13,8 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
 
         public TravelPackage TravelPackage { get; private set; }
         public int TravelPackageId { get; private set; }
+
+        public string CustomerName { get; private set; } 
 
         public decimal Amount { get; private set; }
         public decimal AmountReceived { get; private set; }
@@ -59,6 +59,12 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
         #endregion
 
         #region Methods
+
+        public void Receipt(DateTime payDay, decimal amountReceived)
+        {
+            PayDay = payDay;
+            AmountReceived = amountReceived;
+        }
 
         private BillStatus GetStatus()
         {

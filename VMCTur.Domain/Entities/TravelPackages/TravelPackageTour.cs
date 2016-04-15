@@ -48,7 +48,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
             }
         }
 
-
         #endregion
 
         #region Ctor

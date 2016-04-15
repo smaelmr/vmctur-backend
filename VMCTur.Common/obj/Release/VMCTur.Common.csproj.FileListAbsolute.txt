@@ -9,3 +9,15 @@ C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\pt-BR\VMCTur.Common.resources.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.pdb
+C:\Intel\vmctur-backend\VMCTur.Common\bin\Release\VMCTur.Common.dll
+C:\Intel\vmctur-backend\VMCTur.Common\bin\Release\VMCTur.Common.pdb
+C:\Intel\vmctur-backend\VMCTur.Common\bin\Release\pt-BR\VMCTur.Common.resources.dll
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.csprojResolveAssemblyReference.cache
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Errors.resources
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Messages.resources
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Errors.pt-BR.resources
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.Resources.Messages.pt-BR.resources
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.csproj.GenerateResource.Cache
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\pt-BR\VMCTur.Common.resources.dll
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.dll
+C:\Intel\vmctur-backend\VMCTur.Common\obj\Release\VMCTur.Common.pdb
