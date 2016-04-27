@@ -30,10 +30,19 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public virtual Vehicle VehicleUsed { get; private set; }
 
         public int GuideTourId { get; private set; }
-        public TourGuide GuideTour { get; private set; }
-        public double TotalAmount { get; private set; }
+        public virtual TourGuide GuideTour { get; private set; }
+        public decimal TotalAmount { get; private set; }
         public string AddictionalReservs { get; private set; }
         public string Comments { get; private set; }
+
+        public string CustomerName
+        {
+            get
+            {
+                return Customer.Name;
+            }
+        
+        }
 
         #endregion
 
@@ -43,7 +52,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants, 
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets, 
-                             int vehicleUsedId, int guideTourId, double totalAmount, string addictionalReservs, string comments)
+                             int vehicleUsedId, int guideTourId, decimal totalAmount, string addictionalReservs, string comments)
         {
             Id = id;
             CompanyId = companyId;
@@ -63,7 +72,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, DateTime creationDate, int customerId, Customer customer, List<TravelPackageParticipant> participants,
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
-                             int vehicleUsedId, Vehicle vehicle, int guideTourId, TourGuide tourGuide, double totalAmount, string addictionalReservs, string comments)
+                             int vehicleUsedId, Vehicle vehicle, int guideTourId, TourGuide tourGuide, decimal totalAmount, string addictionalReservs, string comments)
         {
             Id = id;
             CompanyId = companyId;

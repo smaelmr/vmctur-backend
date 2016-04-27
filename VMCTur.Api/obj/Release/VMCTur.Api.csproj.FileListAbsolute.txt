@@ -224,3 +224,5 @@ C:\Intel\vmctur-backend\VMCTur.Api\bin\pt-BR\VMCTur.Common.resources.dll
 C:\Intel\vmctur-backend\VMCTur.Api\obj\Release\VMCTur.Api.csprojResolveAssemblyReference.cache
 C:\Intel\vmctur-backend\VMCTur.Api\obj\Release\VMCTur.Api.dll
 C:\Intel\vmctur-backend\VMCTur.Api\obj\Release\VMCTur.Api.pdb
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\itextsharp.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\itextsharp.xml

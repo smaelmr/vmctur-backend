@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
 
 namespace VMCTur.Domain.Contracts.Services

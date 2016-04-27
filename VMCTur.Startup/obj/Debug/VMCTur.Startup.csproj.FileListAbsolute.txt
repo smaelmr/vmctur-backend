@@ -79,3 +79,5 @@ C:\Intel\vmctur-backend\VMCTur.Startup\bin\Debug\pt-BR\VMCTur.Common.resources.d
 C:\Intel\vmctur-backend\VMCTur.Startup\obj\Debug\VMCTur.Startup.csprojResolveAssemblyReference.cache
 C:\Intel\vmctur-backend\VMCTur.Startup\obj\Debug\VMCTur.Startup.dll
 C:\Intel\vmctur-backend\VMCTur.Startup\obj\Debug\VMCTur.Startup.pdb
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Startup\bin\Debug\itextsharp.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Startup\bin\Debug\itextsharp.xml

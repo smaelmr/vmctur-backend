@@ -96,6 +96,11 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         }
 
+        public void SetId(long id)
+        {
+            Id = Int32.Parse(id.ToString());
+        }
+
 
         #endregion
     }

@@ -62,3 +62,5 @@ C:\Intel\vmctur-backend\VMCTur.Bussiness\bin\Debug\pt-BR\VMCTur.Common.resources
 C:\Intel\vmctur-backend\VMCTur.Bussiness\obj\Debug\VMCTur.Bussiness.csprojResolveAssemblyReference.cache
 C:\Intel\vmctur-backend\VMCTur.Bussiness\obj\Debug\VMCTur.Bussiness.dll
 C:\Intel\vmctur-backend\VMCTur.Bussiness\obj\Debug\VMCTur.Bussiness.pdb
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Bussiness\bin\Debug\itextsharp.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Bussiness\bin\Debug\itextsharp.xml

@@ -14,6 +14,7 @@ namespace VMCTur.Infra.Data.Map
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
 
+            HasRequired(x => x.TravelPackage);
             Ignore(x => x.Status);
 
         }

@@ -4,14 +4,14 @@
         <name>VMCTur.Api</name>
     </assembly>
     <members>
-        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Post(VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create.CreateBillReceiveCommand)">
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Post(VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.CreateBillReceiveCommand)">
             <summary>
             Cria uma nova conta a receber.
             </summary>
             <param name="command"></param>
             <returns></returns>
         </member>
-        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Put(VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update.UpdateBillReceiveCommand)">
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.Put(VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.UpdateBillReceiveCommand)">
             <summary>
             Atualiza os dados da conta.
             </summary>

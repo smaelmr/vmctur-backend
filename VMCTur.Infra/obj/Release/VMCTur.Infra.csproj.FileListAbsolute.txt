@@ -32,3 +32,5 @@ C:\Intel\vmctur-backend\VMCTur.Infra\bin\Release\pt-BR\VMCTur.Common.resources.d
 C:\Intel\vmctur-backend\VMCTur.Infra\obj\Release\VMCTur.Infra.csprojResolveAssemblyReference.cache
 C:\Intel\vmctur-backend\VMCTur.Infra\obj\Release\VMCTur.Infra.dll
 C:\Intel\vmctur-backend\VMCTur.Infra\obj\Release\VMCTur.Infra.pdb
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Infra\bin\Release\itextsharp.dll
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Infra\bin\Release\itextsharp.xml

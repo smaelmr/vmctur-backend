@@ -43,19 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\BillCommands\BillReceiveCommands\Create\CreateBillReceiveCommand.cs" />
+    <Compile Include="Commands\BillCommands\BillReceiveCommands\CreateBillReceiveCommand.cs" />
     <Compile Include="Commands\BillCommands\BillReceiveCommands\ReceiptBillReceiveCommand.cs" />
-    <Compile Include="Commands\BillCommands\BillReceiveCommands\Update\UpdateBillReceiveCommand.cs" />
+    <Compile Include="Commands\BillCommands\BillReceiveCommands\UpdateBillReceiveCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTravelPackageCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateParticipantCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTourCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateParticipantCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateTourCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateTravelPackageCommand.cs" />
-    <Compile Include="Commands\VehicleCommands\Create\CreateVehicleCommand.cs" />
-    <Compile Include="Commands\VehicleCommands\Update\UpdateVehicleCommand.cs" />
+    <Compile Include="Commands\VehicleCommands\CreateVehicleCommand.cs" />
+    <Compile Include="Commands\VehicleCommands\UpdateVehicleCommand.cs" />
     <Compile Include="Contracts\Repositories\IBillReceiveRepository.cs" />
     <Compile Include="Contracts\Repositories\ITourScheduleRepository.cs" />
+    <Compile Include="Contracts\Repositories\ITravelPackageTourRepository.cs" />
+    <Compile Include="Contracts\Repositories\ITravelPackageParticipantRepository.cs" />
     <Compile Include="Contracts\Repositories\ITravelPackageRepository.cs" />
     <Compile Include="Contracts\Repositories\ICustomerRepository.cs" />
     <Compile Include="Contracts\Repositories\IGuideRepository.cs" />

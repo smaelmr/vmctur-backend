@@ -11,7 +11,7 @@ namespace VMCTur.Domain.Contracts.Repositories
         List<TravelPackage> Get(int skip, int take);
 
         void Create(TravelPackage package);
-        void Update(TravelPackage package);
+        void Update(TravelPackage package, TravelPackage packageOld);
         void Delete(TravelPackage package);
     }
 }

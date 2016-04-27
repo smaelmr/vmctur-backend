@@ -26,7 +26,7 @@ namespace VMCTur.Startup
             container.RegisterType<IGuideService, TourGuideService>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ITourRepository, TourRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<ITourService, TourService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITourService, TourService>(new HierarchicalLifetimeManager());            
 
             container.RegisterType<ITravelPackageRepository, TravelPackageRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITravelPackageService, TravelPackageService>(new HierarchicalLifetimeManager());
@@ -36,6 +36,9 @@ namespace VMCTur.Startup
 
             container.RegisterType<ITourScheduleRepository, TourScheduleRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITourScheduleService, TourScheduleService>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<ITravelPackageTourRepository, TravelPackageTourRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITravelPackageParticipantRepository, TravelPackageParticipantRepository>(new HierarchicalLifetimeManager());
 
         }
     

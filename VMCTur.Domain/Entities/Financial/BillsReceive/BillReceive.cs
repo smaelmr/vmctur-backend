@@ -35,7 +35,6 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
             }
         }
 
-
         #endregion
 
         #region Ctor

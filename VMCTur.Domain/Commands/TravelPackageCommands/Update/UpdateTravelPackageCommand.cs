@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
+using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
 
 namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
 {
@@ -20,7 +20,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public int VehicleUsedId { get; set; }
         public int GuideTourId { get; set; }
 
-        public double TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
         public string AddictionalReservs { get; set; }
         public string Comments { get; set; }
     }

@@ -4,8 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
+using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
 using VMCTur.Domain.Contracts.Services;
 using WebApi.OutputCache.V2;
 

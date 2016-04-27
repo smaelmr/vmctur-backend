@@ -57,6 +57,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart)
         {
+            Id = id;
             TourId = tourId;
             TravelPackageId = travelPackageId;
             DateHourStart = dateHourStart;
@@ -70,6 +71,11 @@ namespace VMCTur.Domain.Entities.TravelPackages
         {            
             AssertionConcern.AssertIsGreaterThan(this.TourId, 0, "O passeio deve ser informado.");
             AssertionConcern.AssertIsGreaterThan(this.TravelPackageId, 0, "O pacote deve ser informado.");
+        }
+
+        public void SetId(long id)
+        {
+            Id = Int32.Parse(id.ToString());
         }
 
         #endregion

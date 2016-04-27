@@ -71,7 +71,7 @@ namespace VMCTur.Api
         {
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
-                AllowInsecureHttp = false,
+                AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/api/security/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
                 Provider = new AuthorizationServerProvider(service),                               

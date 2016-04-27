@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +8,25 @@ using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
 using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Domain.Commands.TravelPackageCommands.Update;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
+using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
 
 namespace VMCTur.Bussiness.Services
 {
     public class TravelPackageService : ITravelPackageService
     {
-        private ITravelPackageRepository _repository;
+        private ITravelPackageRepository _repositoryPack;
+        private ITravelPackageTourRepository _repositoryTour;
+        private ITravelPackageParticipantRepository _repositoryParticipant;
+        private IBillReceiveRepository _repositoryBill;
 
-        public TravelPackageService(ITravelPackageRepository repository)
+        public TravelPackageService(ITravelPackageRepository repositoryPack, ITravelPackageTourRepository repositoryTour, ITravelPackageParticipantRepository repositoryParticipant, IBillReceiveRepository repositoryBill)
         {
-            _repository = repository;
-        }
+            _repositoryPack = repositoryPack;
+            _repositoryTour = repositoryTour;
+            _repositoryParticipant = repositoryParticipant;
+            _repositoryBill = repositoryBill;
+    }
 
         public void Create(CreateTravelPackageCommand travelPackageCreate)
         {
@@ -52,7 +57,7 @@ namespace VMCTur.Bussiness.Services
 
             travelPackage.Validate();
 
-            _repository.Create(travelPackage);
+            _repositoryPack.Create(travelPackage);
         }
 
         public void Update(UpdateTravelPackageCommand travelPackageUpdate)
@@ -61,20 +66,37 @@ namespace VMCTur.Bussiness.Services
             List<TravelPackageTour> tours = new List<TravelPackageTour>();
             List<BillReceive> bills = new List<BillReceive>();
 
+            ///Smael: busca o registro original.
+            TravelPackage packageOld = GetById(travelPackageUpdate.Id);
+
+            #region Participants
+
             foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)
-                participants.Add(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, p.TravelPackageId));
+            {
+                participants.Add(new TravelPackageParticipant(p.Id, p.Name, p.NumberDocument, p.BirthDate, travelPackageUpdate.Id));
+            }
+
+            #endregion
+
+            #region Tours
 
             foreach (UpdateTourCommand p in travelPackageUpdate.Tours)
             {
                 DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-                tours.Add(new TravelPackageTour(p.Id, p.TourId, p.TravelPackageId, dateHourStart));
+                tours.Add(new TravelPackageTour(p.Id, p.TourId, travelPackageUpdate.Id, dateHourStart));
             }
+
+            #endregion
+
+            #region Bills
 
             foreach (UpdateBillReceiveCommand p in travelPackageUpdate.Bills)
             {
-                bills.Add(new BillReceive(p.Id, p.TravelPackageId, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
+                bills.Add(new BillReceive(p.Id, travelPackageUpdate.Id, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
             }
+
+            #endregion
 
             var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, participants, tours, bills,
                                            travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
@@ -83,40 +105,43 @@ namespace VMCTur.Bussiness.Services
 
             travelPackage.Validate();
 
-            _repository.Update(travelPackage);
+            _repositoryPack.Update(travelPackage, packageOld);
         }
 
         public void Delete(int id)
         {
-            var travelPackage = _repository.Get(id);
+            var travelPackage = _repositoryPack.Get(id);
 
-            _repository.Delete(travelPackage);
+            _repositoryPack.Delete(travelPackage);
         }                
 
         public TravelPackage GetById(int id)
         {
-            var travelPackage = _repository.Get(id);
+            var travelPackage = _repositoryPack.Get(id);
 
             return travelPackage;
         }
 
         public List<TravelPackage> GetByRange(int skip, int take)
         {
-            var travelPackage = _repository.Get(skip, take);
+            var travelPackage = _repositoryPack.Get(skip, take);
 
             return travelPackage;
         }
 
         public List<TravelPackage> GetBySearch(string search)
         {
-            var travelPackage = _repository.Get(search);
+            var travelPackage = _repositoryPack.Get(search);
 
             return travelPackage;
         }        
 
         public void Dispose()
         {
-            _repository.Dispose();
+            _repositoryPack.Dispose();
+            _repositoryParticipant.Dispose();
+            _repositoryTour.Dispose();
+            _repositoryBill.Dispose();
         }
     }
 }

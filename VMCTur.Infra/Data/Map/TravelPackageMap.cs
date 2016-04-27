@@ -31,7 +31,7 @@ namespace VMCTur.Infra.Data.Map
                 .WithRequired(x => x.TravelPackage);
 
             HasMany(x => x.Bills)
-                 .WithRequired(x => x.TravelPackage);
+                 .WithRequired(x => x.TravelPackage);            
 
             HasRequired(x => x.GuideTour);
             HasRequired(x => x.Customer);

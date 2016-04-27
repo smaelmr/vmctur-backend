@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Create;
-using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.Update;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
