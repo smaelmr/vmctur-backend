@@ -422,100 +422,497 @@ namespace VMCTur.Infra.Repositories
             //Smael: carrega o pacote a ser impresso.
             TravelPackage package = Get(id);
 
-            Document doc = new Document(PageSize.A4);
-            doc.SetMargins(40, 40, 40, 80);
-            doc.AddCreationDate();
-            ;
-            string caminho = @System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "PRE_RESERVA.pdf";
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
-
-            doc.Open();
-
-            string dados = "";
-            Paragraph paragrafo = new Paragraph(dados, new Font(Font.NORMAL, 14));
-
-            paragrafo.Alignment = Element.ALIGN_JUSTIFIED;
-
-            paragrafo.Add("A");
-            paragrafo.Add(package.Customer.Name);
-
-            paragrafo.Add("Segue abaixo DADOS PARA EFETUAÇÃO DE RESERVA:");
-
-            paragrafo.Add("Serviços a serem prestados:");
-
-            foreach (TravelPackageTour t in package.Tours)
+            using (var fileStream = new System.IO.FileStream("output.pdf", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
             {
-                paragrafo.Add(t.DateStart.ToShortDateString() + " - " + t.Tour.Name);
+                var document = new iTextSharp.text.Document();
+                var pdfWriter = iTextSharp.text.pdf.PdfWriter.GetInstance(document, fileStream);
+                document.Open();
+
+                //FontFactory.RegisterDirectory("C:\\WINDOWS\\Fonts");
+                var fontCabecalho = FontFactory.GetFont("Times New Roman", 12);
+                var fontNormal = FontFactory.GetFont("Times New Roman", 7);
+                var fontObs = FontFactory.GetFont("Times New Roman", 6);
+
+                float espacamentoNormal = 10;
+                float espacamentoLinhaEmBranco = 16;
+
+                // Figuras geométricas.
+                var contentByte = pdfWriter.DirectContent;
+
+                // Imagem.                
+                var image = iTextSharp.text.Image.GetInstance("Resources\\logo_vmc_pdf.jpg");
+                image.ScaleToFit(150, 75);
+                image.SetAbsolutePosition(20, 760);
+                contentByte.AddImage(image);
+
+                var paragraph = new Paragraph("Fone: (54) 3286 1209 / (54) 8111 9986 (Tim - WhatsApp)", FontFactory.GetFont("Times New Roman", 12, BaseColor.BLUE));
+                paragraph.Alignment = Element.ALIGN_RIGHT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph("Email: vmcturismo@gramadosite.com.br", fontCabecalho);
+                paragraph.Alignment = Element.ALIGN_RIGHT;
+                document.Add(paragraph);
+
+                // cria um novo paragrafo para imprimir um traço e uma linha em branco
+                var ph = new Paragraph();
+
+                // cria um objeto sepatador (um traço)
+                iTextSharp.text.pdf.draw.VerticalPositionMark seperator = new iTextSharp.text.pdf.draw.LineSeparator();
+
+                // adiciona o separador ao paragravo
+                ph.Add(seperator);
+
+                // adiciona a linha em branco(enter) ao paragrafo
+                ph.Add(new Chunk("\n"));
+
+                // imprime o pagagrafo no documento
+                document.Add(ph);
+
+                paragraph = new Paragraph("Gramado, " + DateTime.Today.ToLongDateString(), fontNormal);
+                paragraph.Alignment = Element.ALIGN_CENTER;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "A", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                //Smael: nome do cliente.
+                paragraph = new Paragraph(espacamentoNormal, package.Customer.Name, fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Segue abaixo DADOS PARA EFETUAÇÃO DE RESERVA: ", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Serviços a serem prestados: ", FontFactory.GetFont("Times New Roman", 8, BaseColor.RED));
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                foreach (TravelPackageTour t in package.Tours)
+                {
+                    paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
+                    paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(paragraph);
+                }
+
+                decimal amountPerPerson = package.TotalAmount / package.QuantityTickets;
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total por pessoa R$ " + Math.Round(amountPerPerson, 2, MidpointRounding.AwayFromZero) + "(base " + package.QuantityTickets + " pessoas)", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total da reserva: R$ " + Math.Round(package.TotalAmount, 2, MidpointRounding.AwayFromZero) + " (Um mil oitocentos e setenta e seis reais)", FontFactory.GetFont("Calibri", 7, BaseColor.RED));
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Formas de Pagamento: ", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                //data de vencimento da primeira parcela.
+
+                if (package.Bills.Count > 0)
+                    paragraph = new Paragraph(espacamentoNormal, "Solicitamos depósito antecipado de 30% do total na conta da empresa até a data de " + package.Bills[0].DueDate.ToShortDateString() + " - para confirmação da reserva, e restante pagamento em Gramado no dia da chegada(04 / 04).", fontNormal);
+                else
+                    paragraph = new Paragraph(espacamentoNormal, "Solicitamos depósito antecipado de 30% do total na conta da empresa para confirmação da reserva, e restante pagamento em Gramado no dia da chegada(04 / 04).", fontNormal);
+
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Dados para depósito", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoNormal, "Cristiane Rosa:", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoNormal, "Banco Itaú", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoNormal, "Agência:", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "1606", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Conta Corrente: 01802 - 4", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "CNPJ: 09.396.197 / 0001 - 02", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Favorecido: Cristiane Lúcio da Rosa", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Ou", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Banco do Brasil", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Agencia 0575 - 4", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Conta corrente 115850 - 3", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "CNPJ: 09.396.197 / 0001 - 02", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Favorecido: VMC TURISMO", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Obs: Enviar comprovante via FAX(54 3286 1209, ou via email: vmcturismo@gramadosite.com.br", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Observações Gerais", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "01) No traslado de retorno, saída de Gramado com no mínimo 04 horas de antecedência em relação ao voo, para evitar possíveis atrasos;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "02)	Os passeios poderão sofrer alteração no roteiro ou cancelamentos devido a condições climáticas ou fator de força maior que impeça aquela atividade;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "03)	Os horários dos passeios e transfers serão informados pela agência operadora sempre no dia que antecede o passeio ou o transfer, geralmente à tarde;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "04)	Todos os passeios e transfers envolvem planejamento e alocação de pessoas e equipamentos;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "05)	A agência reserva o direito de utilizar ônibus, micro-ônibus, vans e carros;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "06)	A ordem da execução dos roteiros poderá ser alterada, dependendo da data de chegada;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "07)	A agência não se responsabiliza por pertences deixados nos veículos;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "08)	A não realização de passeios e/ ou traslados não dá direito a restituição de valor, troca ou remuneração para outra data;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "09)	Não haverá tolerância no horário marcado para saída dos passeios e / ou traslados, por isso observar o horário para sua saída do hotel;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "10) O local de encontro é sempre na recepção do hotel e quando não encontrado, a agência se reserva o direito por respeito aos demais clientes, de dar continuidade ao passeio ou transfer;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "11)	Os passeios e ou/ traslados acima é em base regular, ou seja, o valor é correspondente ao serviço realizado em grupo;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "12)	O carro da agência buscará e deixará o passageiro no hotel onde o mesmo se encontra hospedado em Gramado ou Canela;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "13)	Atividade sujeita à alteração de datas, em função da programação interna da agência;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "14)	Referente a cancelamentos:", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "   - Antecedência de 05(cinco) a 20(vinte) dias da viagem, multa de 50 % sobre o valor dos serviços de receptivo;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "   - Antecedência de 04(quatro) ou menos dias da viagem, multa de 100 % sobre o valor dos serviços de receptivo;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "   - Para os períodos compreendidos entre Junho, Julho, Natal Luz, Feriados, Congressos e demais eventos, a multa poderá ser de até 100 % sobre o valor total da reserva, independente de prazo de antecedência.", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "15)	O contratante é obrigado a comunicar no ato da contratação de quaisquer serviços se ha passageiro(s)com necessidades especiais;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "16)	Poderá haver substituição de veículos e Guia / Motorista nos traslados e / ou passeios;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "17)	Os traslados de ida e volta serão realizados com todos juntos conforme contrato, caso houver alteração no voo de 01 ou mais passageiros não haverá reembolso de valores, o(s)passageiro(s) poderá(ão) optar por um ou mais traslados extras com valores à parte;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "18)	Valores com base em 07 pessoas, caso venha diminuir ou aumentar, consultar valores com a agência;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "19)	É expressamente proibido o consumo de bebidas alcoólicas dentro do veículo;", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "20) É OBRIGATÓRIO PORTAR DOCUMENTO DE IDENTIDADE NOS TRASLADOS E / OU PASSEIOS.CRIANÇAS QUE NÃO POSSUÍREM CARTEIRA DE IDENTIDADE DEVERÃO PORTAR SUA CERTIDÃO DE NASCIMENTO.EM CASO DE NÃO ESTAREM PORTANDO SUA IDENTIDADE E O VEÍCULO FOR NOTIFICADO PELO ÓRGÃO DE TRÂNSITO O CONTRATANTE FICA RESPONSÁVEL POR QUAISQUER MULTAS QUE VIREM A SER APLICADAS PELO NÃO CUMPRIMENTO DESTA OBRIGATORIEDADE.", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Atenciosamente", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "VMC Turismo", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Cristiane Rosa", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+
+                document.Close();
+                System.Diagnostics.Process.Start("output.pdf");
             }
 
-            decimal amountPerPerson = package.TotalAmount / package.QuantityTickets;
-
-            paragrafo.Add("Valor total por pessoa R$ " + Math.Round(amountPerPerson, 2, MidpointRounding.AwayFromZero) + "(base " + package.QuantityTickets + " pessoas)");
-
-            paragrafo.Add("Valor total da reserva: R$ " + Math.Round(package.TotalAmount, 2, MidpointRounding.AwayFromZero) + " (Um mil oitocentos e setenta e seis reais)");
-
-            paragrafo.Add("Formas de Pagamento: ");
-            paragrafo.Add("Solicitamos depósito antecipado de 30% do total na conta da empresa até a data de 15 / 02 / 016 - para confirmação da reserva, e restante pagamento em Gramado no dia da chegada(04 / 04).");
-
-            paragrafo.Add("Dados para depósito");
-            paragrafo.Add("Cristiane Rosa:");
-            paragrafo.Add("Banco Itaú");
-            paragrafo.Add("Agência:");
-            paragrafo.Add("1606");
-            paragrafo.Add("Conta Corrente: 01802 - 4");
-            paragrafo.Add("CNPJ: 09.396.197 / 0001 - 02");
-            paragrafo.Add("Favorecido: Cristiane Lúcio da Rosa");
-
-            paragrafo.Add("Ou");
-
-            paragrafo.Add("Banco do Brasil");
-            paragrafo.Add("Agencia 0575 - 4");
-            paragrafo.Add("Conta corrente 115850 - 3");
-            paragrafo.Add("CNPJ: 09.396.197 / 0001 - 02");
-            paragrafo.Add("Favorecido:");
-            paragrafo.Add("VMC TURISMO");
-
-            paragrafo.Add("Obs * Enviar comprovante via FAX(54 3286 1209, ou via email: vmcturismo@gramadosite.com.br");
-
-            paragrafo.Add("OBS *");
-            paragrafo.Add("01) No traslado de retorno, saída de Gramado com no mínimo 04 horas de antecedência em relação ao voo, para evitar possíveis atrasos;");
-            paragrafo.Add("02)	Os passeios poderão sofrer alteração no roteiro ou cancelamentos devido a condições climáticas ou fator de força maior que impeça aquela atividade;");
-            paragrafo.Add("03)	Os horários dos passeios e transfers serão informados pela agência operadora sempre no dia que antecede o passeio ou o transfer, geralmente à tarde;");
-            paragrafo.Add("04)	Todos os passeios e transfers envolvem planejamento e alocação de pessoas e equipamentos;");
-            paragrafo.Add("05)	A agência reserva o direito de utilizar ônibus, micro-ônibus, vans e carros;");
-            paragrafo.Add("06)	A ordem da execução dos roteiros poderá ser alterada, dependendo da data de chegada;");
-            paragrafo.Add("07)	A agência não se responsabiliza por pertences deixados nos veículos;");
-            paragrafo.Add("08)	A não realização de passeios e/ ou traslados não dá direito a restituição de valor, troca ou remuneração para outra data;");
-            paragrafo.Add("09)	Não haverá tolerância no horário marcado para saída dos passeios e / ou traslados, por isso observar o horário para sua saída do hotel;");
-            paragrafo.Add("10) O local de encontro é sempre na recepção do hotel e quando não encontrado, a agência se reserva o direito por respeito aos demais clientes, de dar continuidade ao passeio ou transfer;");
-            paragrafo.Add("11)	Os passeios e ou/ traslados acima é em base regular, ou seja, o valor é correspondente ao serviço realizado em grupo;");
-            paragrafo.Add("12)	O carro da agência buscará e deixará o passageiro no hotel onde o mesmo se encontra hospedado em Gramado ou Canela;");
-            paragrafo.Add("13)	Atividade sujeita à alteração de datas, em função da programação interna da agência;");
-            paragrafo.Add("14)	Referente a cancelamentos:");
-            paragrafo.Add("Antecedência de 05(cinco) a 20(vinte) dias da viagem, multa de 50 % sobre o valor dos serviços de receptivo;");
-            paragrafo.Add("Antecedência de 04(quatro) ou menos dias da viagem, multa de 100 % sobre o valor dos serviços de receptivo;");
-            paragrafo.Add("Para os períodos compreendidos entre Junho, Julho, Natal Luz, Feriados, Congressos e demais eventos, a multa poderá ser de até 100 % sobre o valor total da reserva, independente de prazo de antecedência.");
-            paragrafo.Add("15)	O contratante é obrigado a comunicar no ato da contratação de quaisquer serviços se ha passageiro(s)com necessidades especiais;");
-            paragrafo.Add("16)	Poderá haver substituição de veículos e Guia / Motorista nos traslados e / ou passeios;");
-            paragrafo.Add("17)	Os traslados de ida e volta serão realizados com todos juntos conforme contrato, caso houver alteração no voo de 01 ou mais passageiros não haverá reembolso de valores, o(s)passageiro(s) poderá(ão) optar por um ou mais traslados extras com valores à parte;");
-            paragrafo.Add("18)	Valores com base em 07 pessoas, caso venha diminuir ou aumentar, consultar valores com a agência;");
-            paragrafo.Add("19)	É expressamente proibido o consumo de bebidas alcoólicas dentro do veículo;");
-            paragrafo.Add("20) É OBRIGATÓRIO PORTAR DOCUMENTO DE IDENTIDADE NOS TRASLADOS E / OU PASSEIOS.CRIANÇAS QUE NÃO POSSUÍREM CARTEIRA DE IDENTIDADE DEVERÃO PORTAR SUA CERTIDÃO DE NASCIMENTO.EM CASO DE NÃO ESTAREM PORTANDO SUA IDENTIDADE E O VEÍCULO FOR NOTIFICADO PELO ÓRGÃO DE TRÂNSITO O CONTRATANTE FICA RESPONSÁVEL POR QUAISQUER MULTAS QUE VIREM A SER APLICADAS PELO NÃO CUMPRIMENTO DESTA OBRIGATORIEDADE.");
-
-
-            paragrafo.Add("Atenciosamente");
-            paragrafo.Add("VMC Turismo");
-            paragrafo.Add("Cristiane Rosa");
-
-            doc.Add(paragrafo);
-
-            doc.Close();
-
-            
-
-            return caminho;
+            return "";
         }
-    
+
+        public string BookingConfirmation(int id)
+        {
+            //Smael: carrega o pacote a ser impresso.
+            TravelPackage package = Get(id);
+
+            using (var fileStream = new System.IO.FileStream("output.pdf", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+            {
+                var document = new iTextSharp.text.Document();
+                var pdfWriter = iTextSharp.text.pdf.PdfWriter.GetInstance(document, fileStream);
+                document.Open();
+
+                //FontFactory.RegisterDirectory("C:\\WINDOWS\\Fonts");
+                var fontCabecalho = FontFactory.GetFont("Times New Roman", 12);
+                var fontNormal = FontFactory.GetFont("Times New Roman", 7);
+                var fontObs = FontFactory.GetFont("Times New Roman", 6);
+
+                float espacamentoNormal = 10;
+                float espacamentoLinhaEmBranco = 16;
+
+                // Figuras geométricas.
+                var contentByte = pdfWriter.DirectContent;
+
+                // Imagem.                
+                var image = iTextSharp.text.Image.GetInstance("Resources\\logo_vmc_pdf.jpg");
+                image.ScaleToFit(150, 75);
+                image.SetAbsolutePosition(20, 760);
+                contentByte.AddImage(image);
+
+                var paragraph = new Paragraph("Fone: (54) 3286 1209 / (54) 8111 9986 (Tim - WhatsApp)", FontFactory.GetFont("Times New Roman", 12, BaseColor.BLUE));
+                paragraph.Alignment = Element.ALIGN_RIGHT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph("Email: vmcturismo@gramadosite.com.br", fontCabecalho);
+                paragraph.Alignment = Element.ALIGN_RIGHT;
+                document.Add(paragraph);
+
+                // cria um novo paragrafo para imprimir um traço e uma linha em branco
+                var ph = new Paragraph();
+
+                // cria um objeto sepatador (um traço)
+                iTextSharp.text.pdf.draw.VerticalPositionMark seperator = new iTextSharp.text.pdf.draw.LineSeparator();
+
+                // adiciona o separador ao paragravo
+                ph.Add(seperator);
+
+                // adiciona a linha em branco(enter) ao paragrafo
+                ph.Add(new Chunk("\n"));
+
+                // imprime o pagagrafo no documento
+                document.Add(ph);
+
+                paragraph = new Paragraph("Gramado, " + DateTime.Today.ToLongDateString(), fontNormal);
+                paragraph.Alignment = Element.ALIGN_CENTER;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "A", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                //Smael: nome do cliente.
+                paragraph = new Paragraph(espacamentoNormal, package.Customer.Name, fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Segue abaixo DADOS PARA EFETUAÇÃO DE RESERVA: ", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Serviços a serem prestados: ", FontFactory.GetFont("Times New Roman", 8, BaseColor.RED));
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                foreach (TravelPackageTour t in package.Tours)
+                {
+                    paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
+                    paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(paragraph);
+                }
+
+                decimal amountPerPerson = package.TotalAmount / package.QuantityTickets;
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total por pessoa R$ " + Math.Round(amountPerPerson, 2, MidpointRounding.AwayFromZero) + "(base " + package.QuantityTickets + " pessoas)", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total da reserva: R$ " + Math.Round(package.TotalAmount, 2, MidpointRounding.AwayFromZero) + " (Um mil oitocentos e setenta e seis reais)", FontFactory.GetFont("Calibri", 7, BaseColor.RED));
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Formas de Pagamento: ", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                foreach (BillReceive b in package.Bills)
+                {
+                    paragraph = new Paragraph(espacamentoNormal, b.Concerning + "no valor de R$ " + Math.Round(b.Amount, 2, MidpointRounding.AwayFromZero) + " com vencimento em " + b.DueDate.ToShortDateString() + ". (" + b.Status + ")", fontNormal);
+                    paragraph.Alignment = Element.ALIGN_LEFT;
+                    document.Add(paragraph);
+                }
+
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Dados para depósito", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoNormal, "Cristiane Rosa:", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoNormal, "Banco Itaú", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoNormal, "Agência:", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "1606", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Conta Corrente: 01802 - 4", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "CNPJ: 09.396.197 / 0001 - 02", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Favorecido: Cristiane Lúcio da Rosa", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Ou", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Banco do Brasil", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Agencia 0575 - 4", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Conta corrente 115850 - 3", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "CNPJ: 09.396.197 / 0001 - 02", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Favorecido: VMC TURISMO", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Obs: Enviar comprovante via FAX(54 3286 1209, ou via email: vmcturismo@gramadosite.com.br", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Observações Gerais", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "01) No traslado de retorno, saída de Gramado com no mínimo 04 horas de antecedência em relação ao voo, para evitar possíveis atrasos;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "02)	Os passeios poderão sofrer alteração no roteiro ou cancelamentos devido a condições climáticas ou fator de força maior que impeça aquela atividade;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "03)	Os horários dos passeios e transfers serão informados pela agência operadora sempre no dia que antecede o passeio ou o transfer, geralmente à tarde;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "04)	Todos os passeios e transfers envolvem planejamento e alocação de pessoas e equipamentos;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "05)	A agência reserva o direito de utilizar ônibus, micro-ônibus, vans e carros;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "06)	A ordem da execução dos roteiros poderá ser alterada, dependendo da data de chegada;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "07)	A agência não se responsabiliza por pertences deixados nos veículos;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "08)	A não realização de passeios e/ ou traslados não dá direito a restituição de valor, troca ou remuneração para outra data;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "09)	Não haverá tolerância no horário marcado para saída dos passeios e / ou traslados, por isso observar o horário para sua saída do hotel;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "10) O local de encontro é sempre na recepção do hotel e quando não encontrado, a agência se reserva o direito por respeito aos demais clientes, de dar continuidade ao passeio ou transfer;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "11)	Os passeios e ou/ traslados acima é em base regular, ou seja, o valor é correspondente ao serviço realizado em grupo;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "12)	O carro da agência buscará e deixará o passageiro no hotel onde o mesmo se encontra hospedado em Gramado ou Canela;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "13)	Atividade sujeita à alteração de datas, em função da programação interna da agência;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "14)	Referente a cancelamentos:", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "   - Antecedência de 05(cinco) a 20(vinte) dias da viagem, multa de 50 % sobre o valor dos serviços de receptivo;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "   - Antecedência de 04(quatro) ou menos dias da viagem, multa de 100 % sobre o valor dos serviços de receptivo;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "   - Para os períodos compreendidos entre Junho, Julho, Natal Luz, Feriados, Congressos e demais eventos, a multa poderá ser de até 100 % sobre o valor total da reserva, independente de prazo de antecedência.", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "15)	O contratante é obrigado a comunicar no ato da contratação de quaisquer serviços se ha passageiro(s)com necessidades especiais;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "16)	Poderá haver substituição de veículos e Guia / Motorista nos traslados e / ou passeios;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "17)	Os traslados de ida e volta serão realizados com todos juntos conforme contrato, caso houver alteração no voo de 01 ou mais passageiros não haverá reembolso de valores, o(s)passageiro(s) poderá(ão) optar por um ou mais traslados extras com valores à parte;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "18)	Valores com base em 07 pessoas, caso venha diminuir ou aumentar, consultar valores com a agência;", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "19)	É expressamente proibido o consumo de bebidas alcoólicas dentro do veículo;", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "20) É OBRIGATÓRIO PORTAR DOCUMENTO DE IDENTIDADE NOS TRASLADOS E / OU PASSEIOS.CRIANÇAS QUE NÃO POSSUÍREM CARTEIRA DE IDENTIDADE DEVERÃO PORTAR SUA CERTIDÃO DE NASCIMENTO.EM CASO DE NÃO ESTAREM PORTANDO SUA IDENTIDADE E O VEÍCULO FOR NOTIFICADO PELO ÓRGÃO DE TRÂNSITO O CONTRATANTE FICA RESPONSÁVEL POR QUAISQUER MULTAS QUE VIREM A SER APLICADAS PELO NÃO CUMPRIMENTO DESTA OBRIGATORIEDADE.", fontObs);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Atenciosamente", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "VMC Turismo", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+                paragraph = new Paragraph(espacamentoNormal, "Cristiane Rosa", fontNormal);
+                paragraph.Alignment = Element.ALIGN_LEFT;
+                document.Add(paragraph);
+
+
+                document.Close();
+                System.Diagnostics.Process.Start("output.pdf");
+            }
+
+            return "";
+        }
+
 
         public void Dispose()
         {
