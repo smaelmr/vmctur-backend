@@ -41,7 +41,10 @@ namespace VMCTur.Infra.Repositories
 
         public List<Customer> Get(string search)
         {
-            return _context.Customers.Where(x => x.Name.Contains(search)).ToList();
+            if (!string.IsNullOrEmpty(search))
+                return _context.Customers.Where(x => x.Name.Contains(search)).OrderBy(o => o.Name).ToList();
+            else
+                return _context.Customers.OrderBy(o => o.Name).ToList();
         }
 
         public List<Customer> Get(int skip, int take)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using VMCTur.Domain.Commands.TravelPackageCommands.Create;
 using VMCTur.Domain.Commands.TravelPackageCommands.Update;
 using VMCTur.Domain.Entities.TravelPackages;
@@ -19,6 +20,10 @@ namespace VMCTur.Domain.Contracts.Services
         List<TravelPackage> GetBySearch(string search);
 
         TravelPackage GetById(int id);
+
+        MemoryStream PrintPreBooking(int id, string url);
+        MemoryStream PrintBookingConfirmation(int id, string url);
+        MemoryStream PrintVoucher(int id, string url);
 
     }
 }

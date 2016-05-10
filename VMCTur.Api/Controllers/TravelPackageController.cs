@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -186,6 +187,90 @@ namespace VMCTur.Api.Controllers
 
             var tsc = new TaskCompletionSource<HttpResponseMessage>();
             tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("printprebooking")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> PrintPreBooking(int id)
+        {
+            //Smael: pega o caminho do server.
+            var urlRoot = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Host + ":" + System.Web.HttpContext.Current.Request.Url.Port;
+
+            MemoryStream ms = _service.PrintPreBooking(id, urlRoot);
+
+            var result = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(ms.GetBuffer())
+
+            };
+            result.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("inline")
+            {
+                FileName = "PreReserva.pdf",
+            };
+
+            result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf");
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(result);
+            return tsc.Task;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("printbookingconfirmation")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> PrintBookingConfirmation(int id)
+        {
+            //Smael: pega o caminho do server.
+            var urlRoot = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Host + ":" + System.Web.HttpContext.Current.Request.Url.Port;
+
+            MemoryStream ms = _service.PrintBookingConfirmation(id, urlRoot);
+
+            var result = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(ms.GetBuffer())
+
+            };
+            result.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("inline")
+            {
+                FileName = "ConfirmacaoReserva.pdf",
+            };
+
+            result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf");
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(result);
+            return tsc.Task;
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("printvoucher")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> PrintVoucher(int id)
+        {
+            //Smael: pega o caminho do server.
+            var urlRoot = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Host + ":" + System.Web.HttpContext.Current.Request.Url.Port;
+
+            MemoryStream ms = _service.PrintVoucher(id, urlRoot);
+
+            var result = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(ms.GetBuffer())
+
+            };
+            result.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("inline")
+            {
+                FileName = "Voucher.pdf",
+            };
+
+            result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf");
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(result);
             return tsc.Task;
         }
 

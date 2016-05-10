@@ -10,6 +10,7 @@ using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Domain.Commands.TravelPackageCommands.Update;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
+using System.IO;
 
 namespace VMCTur.Bussiness.Services
 {
@@ -134,7 +135,28 @@ namespace VMCTur.Bussiness.Services
             var travelPackage = _repositoryPack.Get(search);
 
             return travelPackage;
-        }        
+        }
+
+        public MemoryStream PrintPreBooking(int id, string urlRoot)
+        {
+            var package = GetById(id);
+
+            return _repositoryPack.PrintPreBooking(package, urlRoot);
+        }
+
+        public MemoryStream PrintBookingConfirmation(int id, string urlRoot)
+        {
+            var package = GetById(id);
+
+            return _repositoryPack.PrintBookingConfirmation(package, urlRoot);
+        }
+
+        public MemoryStream PrintVoucher(int id, string urlRoot)
+        {
+            var package = GetById(id);
+
+            return _repositoryPack.PrintVoucher(package, urlRoot);
+        }
 
         public void Dispose()
         {
