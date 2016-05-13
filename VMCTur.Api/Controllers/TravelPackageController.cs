@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
 using VMCTur.Domain.Commands.TravelPackageCommands.Create;
@@ -190,16 +191,15 @@ namespace VMCTur.Api.Controllers
             return tsc.Task;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("printprebooking")]
-        [DeflateCompression]
+        //[DeflateCompression]
         public Task<HttpResponseMessage> PrintPreBooking(int id)
         {
-            //Smael: pega o caminho do server.
-            var urlRoot = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Host + ":" + System.Web.HttpContext.Current.Request.Url.Port;
+            var pathRoot = HttpContext.Current.Server.MapPath("~");
 
-            MemoryStream ms = _service.PrintPreBooking(id, urlRoot);
+            MemoryStream ms = _service.PrintPreBooking(id, pathRoot);
 
             var result = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -218,16 +218,15 @@ namespace VMCTur.Api.Controllers
             return tsc.Task;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("printbookingconfirmation")]
-        [DeflateCompression]
+        //[DeflateCompression]
         public Task<HttpResponseMessage> PrintBookingConfirmation(int id)
         {
-            //Smael: pega o caminho do server.
-            var urlRoot = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Host + ":" + System.Web.HttpContext.Current.Request.Url.Port;
+            var pathRoot = HttpContext.Current.Server.MapPath("~");
 
-            MemoryStream ms = _service.PrintBookingConfirmation(id, urlRoot);
+            MemoryStream ms = _service.PrintBookingConfirmation(id, pathRoot);
 
             var result = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -246,16 +245,15 @@ namespace VMCTur.Api.Controllers
             return tsc.Task;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("printvoucher")]
-        [DeflateCompression]
+        //[DeflateCompression]
         public Task<HttpResponseMessage> PrintVoucher(int id)
         {
-            //Smael: pega o caminho do server.
-            var urlRoot = System.Web.HttpContext.Current.Request.Url.Scheme + "://" + System.Web.HttpContext.Current.Request.Url.Host + ":" + System.Web.HttpContext.Current.Request.Url.Port;
+            var pathRoot = HttpContext.Current.Server.MapPath("~");
 
-            MemoryStream ms = _service.PrintVoucher(id, urlRoot);
+            MemoryStream ms = _service.PrintVoucher(id, pathRoot);
 
             var result = new HttpResponseMessage(HttpStatusCode.OK)
             {

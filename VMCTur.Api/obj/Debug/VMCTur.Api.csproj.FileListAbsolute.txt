@@ -430,3 +430,7 @@ C:\Intel\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.dll
 C:\Intel\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.pdb
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\itextsharp.dll
 C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\itextsharp.xml
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Resources\logo_vmc_pdf.jpg
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\bin\Resources\slogan_vmc_pdf.jpg
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.Properties.Resources.resources
+C:\Users\smael\OneDrive\Projetos\vmctur-backend\VMCTur.Api\obj\Debug\VMCTur.Api.csproj.GenerateResource.Cache

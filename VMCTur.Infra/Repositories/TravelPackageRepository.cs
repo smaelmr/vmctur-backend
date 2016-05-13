@@ -443,7 +443,7 @@ namespace VMCTur.Infra.Repositories
                 var contentByte = pdfWriter.DirectContent;
 
                 // Imagem.                
-                var logo = Image.GetInstance(url + @"/Resources/logo_vmc_pdf.jpg");
+                var logo = Image.GetInstance(url + "Resources\\logo_vmc_pdf.jpg");
                 logo.ScaleToFit(150, 75);
                 logo.SetAbsolutePosition(20, 760);
                 contentByte.AddImage(logo);
@@ -689,7 +689,7 @@ namespace VMCTur.Infra.Repositories
                 var contentByte = pdfWriter.DirectContent;
 
                 // Imagem                
-                var logo = Image.GetInstance(url + @"/Resources/logo_vmc_pdf.jpg");
+                var logo = Image.GetInstance(url + "Resources\\logo_vmc_pdf.jpg");
                 logo.ScaleToFit(150, 75);
                 logo.SetAbsolutePosition(20, 760);
                 contentByte.AddImage(logo);
@@ -940,16 +940,15 @@ namespace VMCTur.Infra.Repositories
                 contentByte.SetFontAndSize(bf, 8);
 
                 // Imagem.                
-                var logo = Image.GetInstance(url + @"/Resources/logo_vmc_pdf.jpg");
+                
+                var logo = Image.GetInstance(url + "/Resources/logo_vmc_pdf.jpg");
                 logo.ScaleToFit(180, 80);
                 logo.SetAbsolutePosition(20, 750);
 
-                var slogam = Image.GetInstance(url + @"/Resources/slogan_vmc_pdf.jpg");
+                var slogam = Image.GetInstance(url + "/Resources/slogan_vmc_pdf.jpg");
                 slogam.ScaleToFit(255, 100);
                 slogam.SetAbsolutePosition(300, 750);
-
-
-
+                
                 contentByte.AddImage(logo);
                 contentByte.AddImage(slogam);
 
@@ -1005,7 +1004,7 @@ namespace VMCTur.Infra.Repositories
                 //Quadro 2
 
                 contentByte.SetTextMatrix(37, 648);
-                contentByte.ShowText("Destino: Pousada Vale Verde - Gramado/RS.");
+                contentByte.ShowText("Destino: " + package + ".");
 
                 contentByte.SetTextMatrix(37, 638);
                 contentByte.ShowText("Nº Adultos: 3.");

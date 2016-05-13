@@ -43,7 +43,11 @@ namespace VMCTur.Infra.Repositories
 
         public List<BillReceive> Get(string search)
         {
-            return _context.BillReceives.Where(x => x.Comments.Contains(search)).ToList();
+            if (!string.IsNullOrEmpty(search))
+                return _context.BillReceives.Where(x => x.Comments.Contains(search)).OrderBy(x => x.DueDate).ToList();
+            else
+                return _context.BillReceives.OrderBy(x => x.DueDate).ToList();
+
         }
 
         public List<BillReceive> Get(int skip, int take)

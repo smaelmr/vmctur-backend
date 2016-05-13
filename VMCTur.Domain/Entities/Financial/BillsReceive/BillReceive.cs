@@ -1,4 +1,5 @@
 ﻿using System;
+using VMCTur.Common.Standard;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Domain.Enums;
@@ -32,6 +33,14 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
             get
             {
                 return GetStatus();
+            }
+        }
+
+        public string StatusDisplay
+        {
+            get
+            {
+                return Standard.ObterDescricaoEnum(Status);
             }
         }
 

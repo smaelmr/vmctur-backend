@@ -10,6 +10,7 @@ using WebApi.OutputCache.V2;
 
 namespace VMCTur.Api.Controllers
 {
+    [RoutePrefix("api/conta-receber")]
     public class BillReceiveController : ApiController
     {
         private IBillReceiveService _service;
