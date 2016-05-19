@@ -22,7 +22,7 @@ namespace VMCTur.Bussiness.Services
         public void Create(CreateBillReceiveCommand bill)
         {
             BillReceive billReceive = new BillReceive(
-                0, bill.TravelPackageId, bill.Amount, 0, bill.Concerning, 
+                0, DateTime.Now, bill.TravelPackageId, bill.Amount, 0, bill.Concerning, 
                 bill.DueDate, null, bill.Comments);
 
             billReceive.Validate();
@@ -32,8 +32,12 @@ namespace VMCTur.Bussiness.Services
 
         public void Update(UpdateBillReceiveCommand bill)
         {
+            //Smael: carrega a conta original do banco de dados.
+            BillReceive currentbill = Get(bill.Id);
+
             BillReceive billReceive = new BillReceive(
-                bill.Id, bill.TravelPackageId, bill.Amount, bill.AmountReceived, bill.Concerning,
+                bill.Id, currentbill.CreateDate, currentbill.TravelPackageId, 
+                bill.Amount, bill.AmountReceived, bill.Concerning,
                 bill.DueDate, bill.PayDay, bill.Comments);
 
             billReceive.Validate();

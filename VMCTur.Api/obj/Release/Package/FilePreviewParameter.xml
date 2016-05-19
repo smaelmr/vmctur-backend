@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="onturapi" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Intel\\vmctur-backend\\VMCTur\.Api\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Intel\\vmctur-backend\\VMCTur\.Api\\obj\\Release\\Package\\PackageTmp$" />
+  <parameter name="IIS Web Application Name" description="" value="vmcturapi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\smael\\OneDrive\\Projetos\\vmctur-backend\\VMCTur\.Api\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\smael\\OneDrive\\Projetos\\vmctur-backend\\VMCTur\.Api\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
-  <parameter name="AppConnectionString-Web.config Connection String" description="" value="server=mysql.ontur.com.br;user id=ontur;password=j4b6v0;persistsecurityinfo=True;database=ontur" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Intel\\vmctur-backend\\VMCTur\.Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AppConnectionString']/@connectionString" />
+  <parameter name="AppConnectionString-Web.config Connection String" description="" value="server=br-cdbr-azure-south-a.cloudapp.net;user id=b0e8fe5f76bbee;password=920bac08;persistsecurityinfo=True;database=vmcturdb" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\smael\\OneDrive\\Projetos\\vmctur-backend\\VMCTur\.Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AppConnectionString']/@connectionString" />
   </parameter>
 </parameters>

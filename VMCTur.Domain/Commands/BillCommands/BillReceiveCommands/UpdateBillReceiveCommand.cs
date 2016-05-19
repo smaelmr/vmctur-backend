@@ -8,7 +8,7 @@ namespace VMCTur.Domain.Commands.BillCommands.BillReceiveCommands
 {
     public class UpdateBillReceiveCommand
     {
-        public int Id { get; set; }
+        public int Id { get; set; }        
         public int TravelPackageId { get; set; }
         public decimal Amount { get; set; }
         public decimal AmountReceived { get; set; }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
+using VMCTur.Infra.Conn;
 using VMCTur.Infra.Data;
 
 namespace VMCTur.Infra.Repositories
@@ -43,11 +45,64 @@ namespace VMCTur.Infra.Repositories
 
         public List<BillReceive> Get(string search)
         {
-            if (!string.IsNullOrEmpty(search))
-                return _context.BillReceives.Where(x => x.Comments.Contains(search)).OrderBy(x => x.DueDate).ToList();
-            else
-                return _context.BillReceives.OrderBy(x => x.DueDate).ToList();
+            StringBuilder sql = new StringBuilder();
+            MySqlConn ctx = MySqlConn.GetInstancia();
+            List<BillReceive> bills = new List<BillReceive>();
+            MySqlCommand cmm = new MySqlCommand();
 
+            sql.Append("SELECT BillReceive.Id, ");
+            sql.Append("BillReceive.TravelPackageId, ");
+            sql.Append("BillReceive.Amount, ");
+            sql.Append("BillReceive.AmountReceived, ");
+            sql.Append("BillReceive.Concerning, ");
+            sql.Append("BillReceive.CreateDate, ");
+            sql.Append("BillReceive.DueDate, ");
+            sql.Append("BillReceive.PayDay, ");
+            sql.Append("BillReceive.Comments, ");
+            sql.Append("Customer.Name ");
+            sql.Append("FROM BillReceive ");
+            sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
+            sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                sql.Append("WHERE Customer.Name LIKE @name ");
+                cmm.Parameters.Add("@name", MySqlDbType.VarChar).Value = "%" + search + "%";
+            }
+
+            sql.Append("ORDER BY BillReceive.DueDate DESC;");
+
+            cmm.CommandText = sql.ToString();
+
+            MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
+
+            while (dr.Read())
+            {
+
+                DateTime? auxPayDay = null;
+
+                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
+                    auxPayDay = (DateTime)dr["PayDay"];
+
+                BillReceive bill = new BillReceive(
+                        (int)dr["Id"], 
+                        (DateTime)dr["CreateDate"], 
+                        (int)dr["TravelPackageId"],
+                        (decimal)dr["Amount"], 
+                        (decimal)dr["AmountReceived"], 
+                        (string)dr["Concerning"], 
+                        (DateTime)dr["DueDate"], 
+                        auxPayDay,
+                        dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
+
+                bill.SetCustomerName((string)dr["Name"]);
+
+                bills.Add(bill);
+            }
+
+            dr.Close();
+
+            return bills;
         }
 
         public List<BillReceive> Get(int skip, int take)
@@ -85,9 +140,7 @@ namespace VMCTur.Infra.Repositories
                     where (itens.PayDay == null && itens.DueDate == DateTime.Today)
                     orderby itens.DueDate ascending
                     select itens).ToList<BillReceive>();
-        }
-
-        
+        }        
 
         public void Dispose()
         {

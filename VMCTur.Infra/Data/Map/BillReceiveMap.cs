@@ -16,6 +16,7 @@ namespace VMCTur.Infra.Data.Map
 
             HasRequired(x => x.TravelPackage);
             Ignore(x => x.Status);
+            Ignore(x => x.CustomerName);
 
         }
     }

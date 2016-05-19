@@ -493,11 +493,14 @@ namespace VMCTur.Infra.Repositories
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
 
-                foreach (TravelPackageTour t in package.Tours)
+                if (package.Tours != null)
                 {
-                    paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
-                    paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(paragraph);
+                    foreach (TravelPackageTour t in package.Tours)
+                    {
+                        paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
+                        paragraph.Alignment = Element.ALIGN_LEFT;
+                        document.Add(paragraph);
+                    }
                 }
 
                 decimal amountPerPerson = package.TotalAmount / package.QuantityTickets;
@@ -516,10 +519,13 @@ namespace VMCTur.Infra.Repositories
 
                 //data de vencimento da primeira parcela.
 
-                if (package.Bills.Count > 0)
-                    paragraph = new Paragraph(espacamentoNormal, "Solicitamos depósito antecipado de 30% do total na conta da empresa até a data de " + package.Bills[0].DueDate.ToShortDateString() + " - para confirmação da reserva, e restante pagamento em Gramado no dia da chegada(04 / 04).", fontNormal);
-                else
-                    paragraph = new Paragraph(espacamentoNormal, "Solicitamos depósito antecipado de 30% do total na conta da empresa para confirmação da reserva, e restante pagamento em Gramado no dia da chegada(04 / 04).", fontNormal);
+                if (package.Bills != null)
+                {
+                    if (package.Bills.Count > 0)
+                        paragraph = new Paragraph(espacamentoNormal, "Solicitamos depósito antecipado de 30% do total na conta da empresa até a data de " + package.Bills[0].DueDate.ToShortDateString() + " - para confirmação da reserva, e restante pagamento em Gramado no dia da chegada(04 / 04).", fontNormal);
+                    else
+                        paragraph = new Paragraph(espacamentoNormal, "Solicitamos depósito antecipado de 30% do total na conta da empresa para confirmação da reserva, e restante pagamento em Gramado no dia da chegada(04 / 04).", fontNormal);
+                }
 
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
@@ -739,11 +745,14 @@ namespace VMCTur.Infra.Repositories
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
 
-                foreach (TravelPackageTour t in package.Tours)
+                if (package.Tours != null)
                 {
-                    paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
-                    paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(paragraph);
+                    foreach (TravelPackageTour t in package.Tours)
+                    {
+                        paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
+                        paragraph.Alignment = Element.ALIGN_LEFT;
+                        document.Add(paragraph);
+                    }
                 }
 
                 decimal amountPerPerson = package.TotalAmount / package.QuantityTickets;
@@ -760,11 +769,14 @@ namespace VMCTur.Infra.Repositories
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
 
-                foreach (BillReceive b in package.Bills)
+                if (package.Bills != null)
                 {
-                    paragraph = new Paragraph(espacamentoNormal, b.Concerning + "no valor de R$ " + Math.Round(b.Amount, 2, MidpointRounding.AwayFromZero) + " com vencimento em " + b.DueDate.ToShortDateString() + ". (" + b.Status + ")", fontNormal);
-                    paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(paragraph);
+                    foreach (BillReceive b in package.Bills)
+                    {
+                        paragraph = new Paragraph(espacamentoNormal, b.Concerning + "no valor de R$ " + Math.Round(b.Amount, 2, MidpointRounding.AwayFromZero) + " com vencimento em " + b.DueDate.ToShortDateString() + ". (" + b.Status + ")", fontNormal);
+                        paragraph.Alignment = Element.ALIGN_LEFT;
+                        document.Add(paragraph);
+                    }
                 }
 
                 paragraph.Alignment = Element.ALIGN_LEFT;
@@ -1044,11 +1056,14 @@ namespace VMCTur.Infra.Repositories
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
 
-                foreach (TravelPackageTour t in package.Tours)
+                if (package.Tours != null)
                 {
-                    paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
-                    paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(paragraph);
+                    foreach (TravelPackageTour t in package.Tours)
+                    {
+                        paragraph = new Paragraph(espacamentoNormal, t.DateStart.ToShortDateString() + " - " + t.Tour.Name, fontNormal);
+                        paragraph.Alignment = Element.ALIGN_LEFT;
+                        document.Add(paragraph);
+                    }
                 }
 
                 // cria um novo paragrafo para imprimir um traço e uma linha em branco
@@ -1062,11 +1077,14 @@ namespace VMCTur.Infra.Repositories
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
 
-                foreach (TravelPackageParticipant p in package.Participants)
+                if (package.Participants != null)
                 {
-                    paragraph = new Paragraph(espacamentoNormal, p.Name, fontNormal);
-                    paragraph.Alignment = Element.ALIGN_LEFT;
-                    document.Add(paragraph);
+                    foreach (TravelPackageParticipant p in package.Participants)
+                    {
+                        paragraph = new Paragraph(espacamentoNormal, p.Name, fontNormal);
+                        paragraph.Alignment = Element.ALIGN_LEFT;
+                        document.Add(paragraph);
+                    }
                 }
 
                 // cria um novo paragrafo para imprimir um traço e uma linha em branco

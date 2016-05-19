@@ -50,10 +50,12 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
 
         protected BillReceive() {}
 
-        public BillReceive(int id, int travelPackageId, decimal amount, decimal amountReceived, string concerning,
+        public BillReceive(int id, DateTime createDate, int travelPackageId, decimal amount, 
+                           decimal amountReceived, string concerning,
                            DateTime dueDate, DateTime? payDay, string comments)
         {
             Id = id;
+            CreateDate = createDate;
             TravelPackageId = travelPackageId;
             Amount = amount;
             AmountReceived = amountReceived;
@@ -88,6 +90,11 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
             else
                 return BillStatus.VencendoHoje;
         }    
+
+        public void SetCustomerName(string name)
+        {
+            CustomerName = name;
+        }
 
         public void Validate()
         {            

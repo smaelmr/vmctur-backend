@@ -48,7 +48,7 @@ namespace VMCTur.Bussiness.Services
 
             foreach (CreateBillReceiveCommand p in travelPackageCreate.Bills)
             {
-                bills.Add(new BillReceive(0, p.TravelPackageId, p.Amount, 0, p.Concerning, p.DueDate, null, p.Comments));
+                bills.Add(new BillReceive(0, DateTime.Now, p.TravelPackageId, p.Amount, 0, p.Concerning, p.DueDate, null, p.Comments));
             }
 
             var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, participants, tours, bills,
@@ -94,7 +94,7 @@ namespace VMCTur.Bussiness.Services
 
             foreach (UpdateBillReceiveCommand p in travelPackageUpdate.Bills)
             {
-                bills.Add(new BillReceive(p.Id, travelPackageUpdate.Id, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
+                bills.Add(new BillReceive(p.Id, DateTime.Now, travelPackageUpdate.Id, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
             }
 
             #endregion
