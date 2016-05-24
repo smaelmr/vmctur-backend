@@ -79,7 +79,7 @@ namespace VMCTur.Domain.Entities.Customers
         {
             AssertionConcern.AssertArgumentLength(this.Name, 3, 100, Errors.InvalidName);
             EmailAssertionConcern.AssertIsValid(this.Email);
-            PhoneNumberAssertionConcern.AssertIsValid(this.Phone);
+            //PhoneNumberAssertionConcern.AssertIsValid(this.Phone);
             BirthdayAssertionConcern.AssertIsValid(this.BirthDate);
         }        
              
