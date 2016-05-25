@@ -55,7 +55,7 @@ namespace VMCTur.Infra.Repositories
         public List<Customer> GetBithDayOfMonth()
         {
             return (from itens in _context.Customers
-                    where (itens.BirthDate.Month == DateTime.Today.Month)
+                    where (itens.BirthDate.Value.Month == DateTime.Today.Month)
                     orderby itens.Name ascending
                     select itens).ToList<Customer>();
         }
@@ -63,7 +63,7 @@ namespace VMCTur.Infra.Repositories
         public List<Customer> GetBithDayOfDay()
         {
             return (from itens in _context.Customers
-                    where (itens.BirthDate.Month == DateTime.Today.Month && itens.BirthDate.Day == DateTime.Today.Day)
+                    where (itens.BirthDate.Value.Month == DateTime.Today.Month && itens.BirthDate.Value.Day == DateTime.Today.Day)
                     orderby itens.Name ascending
                     select itens).ToList<Customer>();
         }

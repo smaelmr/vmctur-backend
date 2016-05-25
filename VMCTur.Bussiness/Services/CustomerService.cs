@@ -15,7 +15,7 @@ namespace VMCTur.Bussiness.Services
             _customerRepository = customerRepository;
         }
 
-        public void Create(int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime dataNascimento, string obs)
+        public void Create(int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime? dataNascimento, string obs)
         {
             var customer = new Customer(0, empresaId, nome, email, fone, rg, cpf, dataNascimento, obs);
             customer.Validate();
@@ -23,7 +23,7 @@ namespace VMCTur.Bussiness.Services
             _customerRepository.Create(customer);
         }
 
-        public void Update(int id, int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime dataNascimento, string obs)
+        public void Update(int id, int empresaId, string nome, string email, string fone, string rg, string cpf, DateTime? dataNascimento, string obs)
         {
             var customer = new Customer(id, empresaId, nome, email, fone, rg, cpf, dataNascimento, obs);
             customer.Validate();
