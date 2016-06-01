@@ -1,5 +1,6 @@
 ﻿using System;
 using VMCTur.Common.Resources;
+using VMCTur.Common.Standard;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Enums;
 
@@ -15,15 +16,17 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public DateTime BirthDate { get; private set; }
         public int TravelPackageId { get; private set; }
         public TravelPackage TravelPackage { get; private set; }
+        public AgeGroup AgeGoupBelong { get; private set; }
+        public bool Paying { get; private set; }
 
-        public AgeGroup AgeGoupBelong
+        public string AgeGoupBelongDisplay
         {
             get
             {
-                return VerificaFaixaEtaria();
+                return Standard.ObterDescricaoEnum(AgeGoupBelong);
             }
-
         }
+    
 
         /// <summary>
         /// Smael: Calcula a idade do cliente a partir da data de nascimento.
@@ -63,12 +66,14 @@ namespace VMCTur.Domain.Entities.TravelPackages
         protected TravelPackageParticipant()
         { }
 
-        public TravelPackageParticipant(int id, string name, string numberDocument, DateTime birthDate, int travelPackageId)
+        public TravelPackageParticipant(int id, string name, string numberDocument, DateTime birthDate, AgeGroup ageGroupBelong, bool paying, int travelPackageId)
         {
             Id = id;
             Name = name;
             NumberDocument = numberDocument;
             BirthDate = birthDate;
+            AgeGoupBelong = ageGroupBelong;
+            Paying = paying;
             TravelPackageId = travelPackageId;
         }
        
@@ -79,10 +84,11 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public void Validate()
         {
             AssertionConcern.AssertArgumentLength(this.Name, 3, 100, Errors.InvalidName);
-            BirthdayAssertionConcern.AssertIsValid(this.BirthDate);
             
-            if (this.AgeGoupBelong == AgeGroup.Idoso)
-                AssertionConcern.AssertArgumentNotEmpty(this.NumberDocument, "Número do documento deve ser informado para partipante idoso.");
+            //BirthdayAssertionConcern.AssertIsValid(this.BirthDate);
+            
+            //if (this.AgeGoupBelong == AgeGroup.Idoso)
+            //    AssertionConcern.AssertArgumentNotEmpty(this.NumberDocument, "Número do documento deve ser informado para partipante idoso.");
         }
 
         public AgeGroup VerificaFaixaEtaria()
@@ -100,7 +106,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
         {
             Id = Int32.Parse(id.ToString());
         }
-
 
         #endregion
     }

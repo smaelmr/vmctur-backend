@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Infra.Data;
@@ -36,7 +34,10 @@ namespace VMCTur.Infra.Repositories
                                                 QuantityParticipants = travelPackage.QuantityTickets,
                                                 TourNamePasseio = tour.Name,
                                                 TourGuidename = tourGuide.Name,
-                                                VehicleModel = vehicle.Model,                                                
+                                                VehicleModel = vehicle.Model,
+                                                TourComments = it.Comments,
+                                                Shared = it.Shared
+
                                             }).ToList();
 
             return schedules;
@@ -64,7 +65,9 @@ namespace VMCTur.Infra.Repositories
                                                 QuantityParticipants = travelPackage.QuantityTickets,
                                                 TourNamePasseio = tour.Name,
                                                 TourGuidename = tourGuide.Name,
-                                                VehicleModel = vehicle.Model
+                                                VehicleModel = vehicle.Model,
+                                                TourComments = it.Comments,
+                                                Shared = it.Shared
                                             }).ToList();
 
             return schedules;
@@ -90,7 +93,9 @@ namespace VMCTur.Infra.Repositories
                                                 QuantityParticipants = travelPackage.QuantityTickets,
                                                 TourNamePasseio = tour.Name,
                                                 TourGuidename = tourGuide.Name,
-                                                VehicleModel = vehicle.Model
+                                                VehicleModel = vehicle.Model,
+                                                TourComments = it.Comments,
+                                                Shared = it.Shared
                                             }).ToList();
 
             return schedules;

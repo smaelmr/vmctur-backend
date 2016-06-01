@@ -41,7 +41,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             {
                 return Customer.Name;
             }
-        
+
         }
 
         #endregion
@@ -50,8 +50,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage() { }
 
-        public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants, 
-                             List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets, 
+        public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants,
+                             List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
                              int vehicleUsedId, int guideTourId, decimal totalAmount, string addictionalReservs, string comments)
         {
             Id = id;
@@ -61,7 +61,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             Participants = participants;
             Tours = tours;
             Bills = bills;
-            Host = host;            
+            Host = host;
             QuantityTickets = quantityTickets;
             VehicleUsedId = vehicleUsedId;
             GuideTourId = guideTourId;
@@ -123,6 +123,21 @@ namespace VMCTur.Domain.Entities.TravelPackages
             bill.Validate();
 
             Bills.Add(bill);
+        }
+
+        public int GetQuantityChild()
+        {
+            return 0;
+        }
+       
+        public int GetQuantityElderly()
+        {
+            return 0;
+        }
+
+        public int GetQuantityAdult()
+        {
+            return 0;
         }
 
         #endregion

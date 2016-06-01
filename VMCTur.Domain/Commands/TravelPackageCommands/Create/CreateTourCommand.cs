@@ -8,5 +8,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Create
         public DateTime DateStart { get; set; }
         public TimeSpan HourStart { get; set; }
         public int TravelPackageId { get; set; }
+        public string TourComments { get; set; } 
+        public bool Shared { get; private set; }
     }
 }

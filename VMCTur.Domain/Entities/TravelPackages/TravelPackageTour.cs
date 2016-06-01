@@ -19,6 +19,10 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public DateTime DateHourStart { get; private set; }
         public int TravelPackageId { get; private set; }
         public TravelPackage TravelPackage { get; private set; }
+        public string Comments { get; private set; }
+
+        //Smael: get or set if tour is priavate or shared
+        public bool Shared { get; private set; }
 
         //Smael: return just date of tha datetime
         public DateTime DateStart
@@ -55,12 +59,14 @@ namespace VMCTur.Domain.Entities.TravelPackages
         protected TravelPackageTour()
         { }
 
-        public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart)
+        public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart, string comments, bool shared)
         {
             Id = id;
             TourId = tourId;
             TravelPackageId = travelPackageId;
             DateHourStart = dateHourStart;
+            Comments = comments;
+            Shared = shared;
         }
 
         #endregion
