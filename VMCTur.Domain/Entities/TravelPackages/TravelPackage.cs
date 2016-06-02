@@ -35,6 +35,10 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string AddictionalReservs { get; private set; }
         public string Comments { get; private set; }
 
+        public int QuantityAdult { get; private set; }
+        public int QuantityChild { get; private set; }
+        public int QuantityEderly { get; private set; }
+
         public string CustomerName
         {
             get
@@ -107,8 +111,23 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public void AddParticipant(TravelPackageParticipant participant)
         {
             participant.Validate();
-
+            
             Participants.Add(participant);
+            
+            switch(participant.AgeGoupBelong)
+            {
+                
+                case Domain.Enums.AgeGroup.Crianca:
+                    QuantityChild++;
+                    break;
+                case Domain.Enums.AgeGroup.Idoso:
+                    QuantityEderly++;
+                    break;
+                default:
+                    QuantityAdult++;
+                    break;
+
+            }
         }
 
         public void AddTour(TravelPackageTour tour)
@@ -123,22 +142,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             bill.Validate();
 
             Bills.Add(bill);
-        }
-
-        public int GetQuantityChild()
-        {
-            return 0;
-        }
-       
-        public int GetQuantityElderly()
-        {
-            return 0;
-        }
-
-        public int GetQuantityAdult()
-        {
-            return 0;
-        }
+        }        
 
         #endregion
     }

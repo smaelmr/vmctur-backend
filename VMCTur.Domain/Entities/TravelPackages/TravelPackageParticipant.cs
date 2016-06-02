@@ -27,7 +27,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
             }
         }
     
-
         /// <summary>
         /// Smael: Calcula a idade do cliente a partir da data de nascimento.
         /// </summary>

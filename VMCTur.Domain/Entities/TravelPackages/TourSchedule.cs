@@ -19,6 +19,10 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string TourComments { get; set; }
         public bool Shared { get; set; }
 
+        public int QuantityAdult { get; set; }
+        public int QuantityChild { get; set; }
+        public int QuantityEderly { get; set; }
+
         //Smael: return the color of the day for organize the schedule.
         public string ColorOfDay
         {
@@ -35,7 +39,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public TourSchedule() { }
 
         public TourSchedule(DateTime dateHourTour, string customerName, int quantityParticipants, string tourNamePasseio, 
-                            string tourGuidename, string vehicleModel, string tourComments, bool shared)
+                            string tourGuidename, string vehicleModel, string tourComments, bool shared,
+                            int quantityAdult, int quantityChild, int quantityEderly)
         {
             DateHourTour = dateHourTour;
             CustomerName = customerName;
@@ -45,7 +50,10 @@ namespace VMCTur.Domain.Entities.TravelPackages
             VehicleModel = vehicleModel;
             TourComments = tourComments;
             Shared = shared;
-        }
+            QuantityAdult = quantityAdult;
+            QuantityChild = quantityChild;
+            QuantityEderly = quantityEderly;
+    }
 
         #endregion
 

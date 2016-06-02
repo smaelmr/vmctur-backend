@@ -36,9 +36,12 @@ namespace VMCTur.Infra.Repositories
                                                 TourGuidename = tourGuide.Name,
                                                 VehicleModel = vehicle.Model,
                                                 TourComments = it.Comments,
-                                                Shared = it.Shared
+                                                Shared = it.Shared,
+                                                QuantityAdult = travelPackage.QuantityAdult,
+                                                QuantityChild = travelPackage.QuantityChild,
+                                                QuantityEderly = travelPackage.QuantityEderly
 
-                                            }).ToList();
+        }).ToList();
 
             return schedules;
         }
@@ -67,7 +70,10 @@ namespace VMCTur.Infra.Repositories
                                                 TourGuidename = tourGuide.Name,
                                                 VehicleModel = vehicle.Model,
                                                 TourComments = it.Comments,
-                                                Shared = it.Shared
+                                                Shared = it.Shared,
+                                                QuantityAdult = travelPackage.QuantityAdult,
+                                                QuantityChild = travelPackage.QuantityChild,
+                                                QuantityEderly = travelPackage.QuantityEderly
                                             }).ToList();
 
             return schedules;
@@ -95,7 +101,10 @@ namespace VMCTur.Infra.Repositories
                                                 TourGuidename = tourGuide.Name,
                                                 VehicleModel = vehicle.Model,
                                                 TourComments = it.Comments,
-                                                Shared = it.Shared
+                                                Shared = it.Shared,
+                                                QuantityAdult = travelPackage.QuantityAdult,
+                                                QuantityChild = travelPackage.QuantityChild,
+                                                QuantityEderly = travelPackage.QuantityEderly
                                             }).ToList();
 
             return schedules;
