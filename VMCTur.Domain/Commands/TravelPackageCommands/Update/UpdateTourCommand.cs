@@ -10,7 +10,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public DateTime DateStart { get; set; }
         public TimeSpan HourStart { get; set; }
         public string TourComments { get; set; }
-        public bool Shared { get; private set; }
+        public bool Shared { get; set; }
 
     }
 }

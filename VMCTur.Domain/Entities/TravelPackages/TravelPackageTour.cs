@@ -76,7 +76,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public void Validate()
         {            
             AssertionConcern.AssertIsGreaterThan(this.TourId, 0, "O passeio deve ser informado.");
-            AssertionConcern.AssertIsGreaterThan(this.TravelPackageId, 0, "O pacote deve ser informado.");
+            //AssertionConcern.AssertIsGreaterThan(this.TravelPackageId, 0, "O pacote deve ser informado.");
         }
 
         public void SetId(long id)

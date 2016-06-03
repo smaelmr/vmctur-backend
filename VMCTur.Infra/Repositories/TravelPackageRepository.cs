@@ -36,7 +36,7 @@ namespace VMCTur.Infra.Repositories
             StringBuilder sql = new StringBuilder();
             MySqlConn ctx = MySqlConn.GetInstancia();
 
-            sql.Append("UPDATE travelpackage ");
+            sql.Append("UPDATE TravelPackage ");
             sql.Append("SET ");
             sql.Append("CustomerId = @CustomerId, ");
             sql.Append("Host = @Host, ");
@@ -45,7 +45,10 @@ namespace VMCTur.Infra.Repositories
             sql.Append("GuideTourId = @GuideTourId, ");
             sql.Append("AddictionalReservs = @AddictionalReservs, ");
             sql.Append("Comments = @Comments, ");
-            sql.Append("TotalAmount = @TotalAmount ");
+            sql.Append("TotalAmount = @TotalAmount, ");
+            sql.Append("QuantityChild = @QuantityChild, ");
+            sql.Append("QuantityAdult = @QuantityAdult, ");
+            sql.Append("QuantityEderly = @QuantityEderly ");
             sql.Append("WHERE Id = @Id; ");
 
             MySqlCommand cmm = new MySqlCommand(sql.ToString());
@@ -58,6 +61,10 @@ namespace VMCTur.Infra.Repositories
             cmm.Parameters.Add("@AddictionalReservs", MySqlDbType.Text).Value = package.AddictionalReservs;
             cmm.Parameters.Add("@Comments", MySqlDbType.Text).Value = package.Comments;
             cmm.Parameters.Add("@TotalAmount", MySqlDbType.Decimal).Value = package.TotalAmount;
+
+            cmm.Parameters.Add("@QuantityChild", MySqlDbType.Int32).Value = package.QuantityChild;
+            cmm.Parameters.Add("@QuantityAdult", MySqlDbType.Int32).Value = package.QuantityAdult;
+            cmm.Parameters.Add("@QuantityEderly", MySqlDbType.Int32).Value = package.QuantityEderly;
 
             cmm.Parameters.Add("@Id", MySqlDbType.Int32).Value = packageOld.Id;
 
@@ -128,6 +135,8 @@ namespace VMCTur.Infra.Repositories
                     sqlI.Append("@TravelPackageId, ");
                     sqlI.Append("@Name, ");
                     sqlI.Append("@NumberDocument, ");
+                    sqlI.Append("@AgeGroupBelong, ");
+                    sqlI.Append("@Paying, ");
                     sqlI.Append("@BirthDate); ");
 
                     MySqlCommand cmmI = new MySqlCommand(sqlI.ToString());
@@ -135,6 +144,8 @@ namespace VMCTur.Infra.Repositories
                     cmmI.Parameters.Add("@TravelPackageId", MySqlDbType.Int32).Value = packageOld.Id;
                     cmmI.Parameters.Add("@Name", MySqlDbType.VarChar).Value = x.Name;
                     cmmI.Parameters.Add("@NumberDocument", MySqlDbType.VarChar).Value = x.NumberDocument;
+                    cmmI.Parameters.Add("@AgeGroupBelong", MySqlDbType.Int32).Value = (int)x.AgeGoupBelong;
+                    cmmI.Parameters.Add("@Paying", MySqlDbType.Int16).Value = x.Paying;
                     cmmI.Parameters.Add("@BirthDate", MySqlDbType.Date).Value = x.BirthDate;
 
                     ctx.ExecutaQuery(cmmI);
@@ -198,7 +209,9 @@ namespace VMCTur.Infra.Repositories
                     sqlI.Append("DateHourStart) ");
                     sqlI.Append("VALUES (");
                     sqlI.Append("@TourId, ");
-                    sqlI.Append("@TravelPackageId,");
+                    sqlI.Append("@TravelPackageId, ");
+                    sqlI.Append("@Shared, ");
+                    sqlI.Append("@Comments, ");
                     sqlI.Append("@DateHourStart); ");
 
                     MySqlCommand cmmI = new MySqlCommand(sqlI.ToString());
@@ -206,6 +219,8 @@ namespace VMCTur.Infra.Repositories
                     cmmI.Parameters.Add("@TravelPackageId", MySqlDbType.Int32).Value = x.TravelPackageId;
                     cmmI.Parameters.Add("@TourId", MySqlDbType.Int32).Value = x.TourId;
                     cmmI.Parameters.Add("@DateHourStart", MySqlDbType.DateTime).Value = x.DateHourStart;
+                    cmmI.Parameters.Add("@Shared", MySqlDbType.Int16).Value = x.Shared;
+                    cmmI.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
 
                     ctx.ExecutaQuery(cmmI);
 

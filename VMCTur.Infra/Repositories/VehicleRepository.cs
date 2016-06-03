@@ -40,7 +40,10 @@ namespace VMCTur.Infra.Repositories
 
         public List<Vehicle> Get(string search)
         {
-            return _context.Vehicles.Where(x => x.Model.Contains(search)).ToList();
+            if (!string.IsNullOrEmpty(search))
+                return _context.Vehicles.Where(x => x.Model.Contains(search)).OrderBy(o => o.Model).ToList();
+            else
+                return _context.Vehicles.OrderBy(o => o.Model).ToList();
         }
 
         public List<Vehicle> Get(int skip, int take)

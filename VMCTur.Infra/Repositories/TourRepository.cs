@@ -40,7 +40,11 @@ namespace VMCTur.Infra.Repositories
 
         public List<Tour> Get(string search)
         {
-            return _context.Tours.Where(x => x.Name.Contains(search)).ToList();
+            
+            if (!string.IsNullOrEmpty(search))
+                return _context.Tours.Where(x => x.Name.Contains(search)).OrderBy(o => o.Name).ToList();
+            else
+                return _context.Tours.OrderBy(o => o.Name).ToList();
         }
 
         public List<Tour> Get(int skip, int take)

@@ -5,12 +5,12 @@ namespace VMCTur.Domain.Enums
     public enum AgeGroup
     {
         [Description("Criança")]
-        Crianca,
+        Crianca = 1,
 
         [Description("Adulto")]
-        Adulto,
+        Adulto = 2,
 
         [Description("Idoso")]
-        Idoso
+        Idoso = 3
     }
 }

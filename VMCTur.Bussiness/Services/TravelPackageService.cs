@@ -34,31 +34,33 @@ namespace VMCTur.Bussiness.Services
         {
             List<TravelPackageParticipant> participants = new List<TravelPackageParticipant>();
             List<TravelPackageTour> tours = new List<TravelPackageTour>();
-            List<BillReceive> bills = new List<BillReceive>();
+            List<BillReceive> bills = new List<BillReceive>();            
+
+            var travelPackage = new TravelPackage(
+                                        0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, 
+                                        new List<TravelPackageParticipant>(), new List<TravelPackageTour>(), new List<BillReceive>(), 
+                                        travelPackageCreate.Host, travelPackageCreate.QuantityTickets, travelPackageCreate.VehicleUsedId, 
+                                        travelPackageCreate.GuideTourId, travelPackageCreate.TotalAmount, 
+                                        travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments);
 
             foreach (CreateParticipantCommand p in travelPackageCreate.Participants)
             {
                 AgeGroup ageGoupBelong = (AgeGroup)Enum.Parse(typeof(AgeGroup), p.AgeGoupBelong);
 
-                participants.Add(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, ageGoupBelong, p.Paying, p.TravelPackageId));
+                travelPackage.AddParticipant(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, ageGoupBelong, p.Paying, p.TravelPackageId));
             }
 
             foreach (CreateTourCommand p in travelPackageCreate.Tours)
             {
-                DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);                
+                DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-                tours.Add(new TravelPackageTour(0, p.TourId, p.TravelPackageId, dateHourStart, p.TourComments, p.Shared));
+                travelPackage.AddTour(new TravelPackageTour(0, p.TourId, p.TravelPackageId, dateHourStart, p.TourComments, p.Shared));
             }
 
             foreach (CreateBillReceiveCommand p in travelPackageCreate.Bills)
             {
-                bills.Add(new BillReceive(0, DateTime.Now, p.TravelPackageId, p.Amount, 0, p.Concerning, p.DueDate, null, p.Comments));
+                travelPackage.AddBillReceive(new BillReceive(0, DateTime.Now, p.TravelPackageId, p.Amount, 0, p.Concerning, p.DueDate, null, p.Comments));
             }
-
-            var travelPackage = new TravelPackage(0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, participants, tours, bills,
-                                           travelPackageCreate.Host, travelPackageCreate.QuantityTickets, travelPackageCreate.VehicleUsedId, 
-                                           travelPackageCreate.GuideTourId, travelPackageCreate.TotalAmount, 
-                                           travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments);
 
             travelPackage.Validate();
 
@@ -66,21 +68,22 @@ namespace VMCTur.Bussiness.Services
         }
 
         public void Update(UpdateTravelPackageCommand travelPackageUpdate)
-        {
-            List<TravelPackageParticipant> participants = new List<TravelPackageParticipant>();
-            List<TravelPackageTour> tours = new List<TravelPackageTour>();
-            List<BillReceive> bills = new List<BillReceive>();
-
+        {            
             ///Smael: busca o registro original.
-            TravelPackage packageOld = GetById(travelPackageUpdate.Id);
+            TravelPackage packageOld = GetById(travelPackageUpdate.Id);   
 
+            var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, 
+                                           new List<TravelPackageParticipant>(), new List<TravelPackageTour>(), new List<BillReceive>(),
+                                           travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
+                                           travelPackageUpdate.GuideTourId, travelPackageUpdate.TotalAmount, 
+                                           travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments);
             #region Participants
 
             foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)
             {
                 AgeGroup ageGoupBelong = (AgeGroup)Enum.Parse(typeof(AgeGroup), p.AgeGoupBelong);
 
-                participants.Add(new TravelPackageParticipant(p.Id, p.Name, p.NumberDocument, p.BirthDate, ageGoupBelong, p.Paying, travelPackageUpdate.Id));
+                travelPackage.AddParticipant(new TravelPackageParticipant(p.Id, p.Name, p.NumberDocument, p.BirthDate, ageGoupBelong, p.Paying, travelPackageUpdate.Id));
             }
 
             #endregion
@@ -91,7 +94,7 @@ namespace VMCTur.Bussiness.Services
             {
                 DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-                tours.Add(new TravelPackageTour(p.Id, p.TourId, travelPackageUpdate.Id, dateHourStart, p.TourComments, p.Shared));
+                travelPackage.AddTour(new TravelPackageTour(p.Id, p.TourId, travelPackageUpdate.Id, dateHourStart, p.TourComments, p.Shared));
             }
 
             #endregion
@@ -100,15 +103,10 @@ namespace VMCTur.Bussiness.Services
 
             foreach (UpdateBillReceiveCommand p in travelPackageUpdate.Bills)
             {
-                bills.Add(new BillReceive(p.Id, DateTime.Now, travelPackageUpdate.Id, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
+                travelPackage.AddBillReceive(new BillReceive(p.Id, DateTime.Now, travelPackageUpdate.Id, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
             }
 
             #endregion
-
-            var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, participants, tours, bills,
-                                           travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
-                                           travelPackageUpdate.GuideTourId, travelPackageUpdate.TotalAmount, 
-                                           travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments);
 
             travelPackage.Validate();
 
