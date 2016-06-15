@@ -79,13 +79,14 @@ namespace VMCTur.Infra.Repositories
                 #region Delete
 
                 ///Smael: para cada item na lista old que não existe na lista new, exclui-se.
-                foreach (TravelPackageParticipant p in packageOld.Participants)
-                {
-                    if (!package.Participants.Exists(c => c.Id == p.Id))
+                if (packageOld.Participants != null)
+                    foreach (TravelPackageParticipant p in packageOld.Participants)
                     {
-                        ctx.ExecutaQuery("DELETE FROM TravelPackageParticipant WHERE Id = " + p.Id);
+                        if (!package.Participants.Exists(c => c.Id == p.Id))
+                        {
+                            ctx.ExecutaQuery("DELETE FROM TravelPackageParticipant WHERE Id = " + p.Id);
+                        }
                     }
-                }
 
                 #endregion
 
@@ -130,6 +131,8 @@ namespace VMCTur.Infra.Repositories
                     sqlI.Append("TravelPackageId, ");
                     sqlI.Append("Name, ");
                     sqlI.Append("NumberDocument, ");
+                    sqlI.Append("AgeGroupBelong, ");
+                    sqlI.Append("Paying, ");
                     sqlI.Append("BirthDate) ");
                     sqlI.Append("VALUES (");
                     sqlI.Append("@TravelPackageId, ");
@@ -160,13 +163,14 @@ namespace VMCTur.Infra.Repositories
 
                 #region Delete
 
-                foreach (TravelPackageTour pi in packageOld.Tours)
-                {
-                    if (!package.Tours.Exists(c => c.Id == pi.Id))
+                if (packageOld.Tours != null)
+                    foreach (TravelPackageTour pi in packageOld.Tours)
                     {
-                        ctx.ExecutaQuery("DELETE FROM TravelPackageTour WHERE Id = " + pi.Id);
+                        if (!package.Tours.Exists(c => c.Id == pi.Id))
+                        {
+                            ctx.ExecutaQuery("DELETE FROM TravelPackageTour WHERE Id = " + pi.Id);
+                        }
                     }
-                }
 
                 #endregion
 
@@ -205,7 +209,9 @@ namespace VMCTur.Infra.Repositories
 
                     sqlI.Append("INSERT INTO TravelPackageTour (");
                     sqlI.Append("TourId, ");
-                    sqlI.Append("TravelPackageId,");
+                    sqlI.Append("TravelPackageId, ");
+                    sqlI.Append("Shared, ");
+                    sqlI.Append("Comments, ");
                     sqlI.Append("DateHourStart) ");
                     sqlI.Append("VALUES (");
                     sqlI.Append("@TourId, ");
@@ -235,6 +241,7 @@ namespace VMCTur.Infra.Repositories
                 #region Delete
 
                 ///Smael: para cada item na lista old que não existe na lista new, exclui-se.
+                if (packageOld.Bills != null)
                 foreach (BillReceive i in packageOld.Bills)
                 {
                     if (!package.Bills.Exists(c => c.Id == i.Id))
@@ -247,35 +254,35 @@ namespace VMCTur.Infra.Repositories
 
                 #region Update
 
-                //lista de updates
-                List<BillReceive> updateBills = package.Bills.FindAll(i => i.Id > 0);
+                ////lista de updates
+                //List<BillReceive> updateBills = package.Bills.FindAll(i => i.Id > 0);
 
-                updateBills.ToList().ForEach(x =>
-                {
-                    StringBuilder sqlU = new StringBuilder();
+                //updateBills.ToList().ForEach(x =>
+                //{
+                //    StringBuilder sqlU = new StringBuilder();
 
-                    sqlU.Append("UPDATE BillReceive ");
-                    sqlU.Append("SET ");
-                    sqlU.Append("Amount = @Amount, ");
-                    sqlU.Append("AmountReceived = @AmountReceived, ");
-                    sqlU.Append("Concerning = @Concerning, ");
-                    sqlU.Append("DueDate = @DueDate, ");
-                    sqlU.Append("PayDay = @PayDay, ");
-                    sqlU.Append("Comments = @Comments ");
-                    sqlU.Append("WHERE Id = @Id;");
+                //    sqlU.Append("UPDATE BillReceive ");
+                //    sqlU.Append("SET ");
+                //    sqlU.Append("Amount = @Amount, ");
+                //    sqlU.Append("AmountReceived = @AmountReceived, ");
+                //    sqlU.Append("Concerning = @Concerning, ");
+                //    sqlU.Append("DueDate = @DueDate, ");
+                //    sqlU.Append("PayDay = @PayDay, ");
+                //    sqlU.Append("Comments = @Comments ");
+                //    sqlU.Append("WHERE Id = @Id;");
 
-                    MySqlCommand cmmU = new MySqlCommand(sqlU.ToString());
+                //    MySqlCommand cmmU = new MySqlCommand(sqlU.ToString());
 
-                    cmmU.Parameters.Add("@Amount", MySqlDbType.Decimal).Value = x.Amount;
-                    cmmU.Parameters.Add("@AmountReceived", MySqlDbType.Decimal).Value = x.AmountReceived;
-                    cmmU.Parameters.Add("@Concerning", MySqlDbType.Text).Value = x.Concerning;
-                    cmmU.Parameters.Add("@DueDate", MySqlDbType.Date).Value = x.DueDate;
-                    cmmU.Parameters.Add("@PayDay", MySqlDbType.Date).Value = x.PayDay;
-                    cmmU.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
-                    cmmU.Parameters.Add("@Id", MySqlDbType.Int32).Value = x.Id;
+                //    cmmU.Parameters.Add("@Amount", MySqlDbType.Decimal).Value = x.Amount;
+                //    cmmU.Parameters.Add("@AmountReceived", MySqlDbType.Decimal).Value = x.AmountReceived;
+                //    cmmU.Parameters.Add("@Concerning", MySqlDbType.Text).Value = x.Concerning;
+                //    cmmU.Parameters.Add("@DueDate", MySqlDbType.Date).Value = x.DueDate;
+                //    cmmU.Parameters.Add("@PayDay", MySqlDbType.Date).Value = x.PayDay;
+                //    cmmU.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
+                //    cmmU.Parameters.Add("@Id", MySqlDbType.Int32).Value = x.Id;
 
-                    ctx.ExecutaQuery(cmmU);
-                });
+                //    ctx.ExecutaQuery(cmmU);
+                //});
 
                 #endregion
 
@@ -379,6 +386,13 @@ namespace VMCTur.Infra.Repositories
             sql.Append("TravelPackage.AddictionalReservs, ");
             sql.Append("TravelPackage.Comments, ");
             sql.Append("TravelPackage.TotalAmount, ");
+            sql.Append("TravelPackage.ArrivalDate, ");
+            sql.Append("TravelPackage.LeaveDate, ");
+            sql.Append("TravelPackage.DescServices, ");
+            sql.Append("TravelPackage.PayForms, ");
+            sql.Append("TravelPackage.AmountAdult, ");
+            sql.Append("TravelPackage.AmountEderly, ");
+            sql.Append("TravelPackage.AmountChild, ");
             sql.Append("Customer.Name ");
             sql.Append("FROM TravelPackage ");
             sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
@@ -397,6 +411,16 @@ namespace VMCTur.Infra.Repositories
 
             while (dr.Read())
             {
+                DateTime? auxArrivalDate = null;
+
+                if (!dr.IsDBNull(dr.GetOrdinal("ArrivalDate")))
+                    auxArrivalDate = (DateTime)dr["ArrivalDate"];
+
+                DateTime? auxLeaveDate = null;
+
+                if (!dr.IsDBNull(dr.GetOrdinal("LeaveDate")))
+                    auxLeaveDate = (DateTime)dr["LeaveDate"];
+
                 packages.Add(new TravelPackage(
                     (int)dr["Id"],
                     (int)dr["CompanyId"],
@@ -423,7 +447,14 @@ namespace VMCTur.Infra.Repositories
                     null,
                     (decimal)dr["TotalAmount"],
                     dr.IsDBNull(dr.GetOrdinal("AddictionalReservs")) ? "" : (string)dr["AddictionalReservs"],
-                    dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]));
+                    dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"],
+                    auxArrivalDate,
+                    auxLeaveDate,
+                    (decimal)dr["AmountAdult"],
+                    (decimal)dr["AmountEderly"],
+                    (decimal)dr["AmountChild"],
+                    dr.IsDBNull(dr.GetOrdinal("DescServices")) ? "" : (string)dr["DescServices"],
+                    dr.IsDBNull(dr.GetOrdinal("PayForms")) ? "" : (string)dr["PayForms"]));
             }
 
             dr.Close();

@@ -48,7 +48,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         {
             get
             {
-                return Tour.Name;
+                return Tour != null ? Tour.Name : "";
             }
         }
 

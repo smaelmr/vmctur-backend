@@ -23,5 +23,15 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public decimal TotalAmount { get; set; }
         public string AddictionalReservs { get; set; }
         public string Comments { get; set; }
+
+        public DateTime? ArrivalDate { get; set; }
+        public DateTime? LeaveDate { get; set; }
+
+        public decimal AmountForAdult { get; set; }
+        public decimal AmountForEderly { get; set; }
+        public decimal AmountForChild { get; set; }
+
+        public string DescServices { get; set; }
+        public string PayForms { get; set; }
     }
 }

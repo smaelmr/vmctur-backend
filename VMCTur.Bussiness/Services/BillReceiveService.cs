@@ -19,16 +19,16 @@ namespace VMCTur.Bussiness.Services
             _repository = repository;
         }
 
-        public void Create(CreateBillReceiveCommand bill)
-        {
-            BillReceive billReceive = new BillReceive(
-                0, DateTime.Now, bill.TravelPackageId, bill.Amount, 0, bill.Concerning, 
-                bill.DueDate, null, bill.Comments);
+        //public void Create(CreateBillReceiveCommand bill)
+        //{
+        //    BillReceive billReceive = new BillReceive(
+        //        0, DateTime.Now, bill.TravelPackageId, bill.Amount, 0, bill.Concerning, 
+        //        bill.DueDate, null, bill.Comments);
 
-            billReceive.Validate();
+        //    billReceive.Validate();
 
-            _repository.Create(billReceive);
-        }
+        //    _repository.Create(billReceive);
+        //}
 
         public void Update(UpdateBillReceiveCommand bill)
         {
@@ -37,12 +37,12 @@ namespace VMCTur.Bussiness.Services
 
             BillReceive billReceive = new BillReceive(
                 bill.Id, currentbill.CreateDate, currentbill.TravelPackageId, 
-                bill.Amount, bill.AmountReceived, bill.Concerning,
-                bill.DueDate, bill.PayDay, bill.Comments);
+                bill.Amount, 0, bill.Concerning,
+                bill.DueDate, null, bill.Comments);
 
             billReceive.Validate();
 
-            _repository.Create(billReceive);
+            _repository.Update(billReceive);
         }
 
         public void Delete(int id)

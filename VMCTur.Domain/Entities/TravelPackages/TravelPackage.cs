@@ -31,13 +31,24 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public int GuideTourId { get; private set; }
         public virtual TourGuide GuideTour { get; private set; }
-        public decimal TotalAmount { get; private set; }
+        public decimal TotalAmount { get; private set; }        
+
         public string AddictionalReservs { get; private set; }
         public string Comments { get; private set; }
 
         public int QuantityAdult { get; private set; }
         public int QuantityChild { get; private set; }
         public int QuantityEderly { get; private set; }
+
+        public DateTime? ArrivalDate { get; private set; }
+        public DateTime? LeaveDate { get; private set; }
+
+        public decimal AmountForAdult { get; private set; }
+        public decimal AmountForEderly { get; private set; }
+        public decimal AmountForChild { get; private set; }
+
+        public string DescServices { get; private set; }
+        public string PayForms { get; private set; }
 
         public string CustomerName
         {
@@ -56,7 +67,9 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants,
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
-                             int vehicleUsedId, int guideTourId, decimal totalAmount, string addictionalReservs, string comments)
+                             int vehicleUsedId, int guideTourId, decimal totalAmount, string addictionalReservs, string comments,
+                             DateTime? arrivalDate, DateTime? leaveDate, decimal amountForAdult, decimal amountForEderly,
+                             decimal amountForChild, string descServices, string payForms)
         {
             Id = id;
             CompanyId = companyId;
@@ -72,11 +85,22 @@ namespace VMCTur.Domain.Entities.TravelPackages
             TotalAmount = totalAmount;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
-        }
+
+            ArrivalDate = arrivalDate;
+            LeaveDate = leaveDate;
+
+            AmountForAdult = amountForAdult;
+            AmountForEderly = amountForEderly;
+            AmountForChild = amountForChild;
+            DescServices = descServices;
+            PayForms = payForms;
+    }
 
         public TravelPackage(int id, int companyId, DateTime creationDate, int customerId, Customer customer, List<TravelPackageParticipant> participants,
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
-                             int vehicleUsedId, Vehicle vehicle, int guideTourId, TourGuide tourGuide, decimal totalAmount, string addictionalReservs, string comments)
+                             int vehicleUsedId, Vehicle vehicle, int guideTourId, TourGuide tourGuide, decimal totalAmount, 
+                             string addictionalReservs, string comments, DateTime? arrivalDate, DateTime? leaveDate, 
+                             decimal amountForAdult, decimal amountForEderly, decimal amountForChild, string descServices, string payForms)
         {
             Id = id;
             CompanyId = companyId;
@@ -95,6 +119,15 @@ namespace VMCTur.Domain.Entities.TravelPackages
             TotalAmount = totalAmount;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
+
+            ArrivalDate = arrivalDate;
+            LeaveDate = leaveDate;
+
+            AmountForAdult = amountForAdult;
+            AmountForEderly = amountForEderly;
+            AmountForChild = amountForChild;
+            DescServices = descServices;
+            PayForms = payForms;
         }
 
         #endregion

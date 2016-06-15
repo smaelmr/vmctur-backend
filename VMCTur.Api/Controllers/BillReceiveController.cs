@@ -20,32 +20,32 @@ namespace VMCTur.Api.Controllers
             this._service = service;
         }
 
-        /// <summary>
-        /// Cria uma nova conta a receber.
-        /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost]
-        [Route("")]
-        public Task<HttpResponseMessage> Post(CreateBillReceiveCommand command)
-        {
-            HttpResponseMessage response = new HttpResponseMessage();
+        ///// <summary>
+        ///// Cria uma nova conta a receber.
+        ///// </summary>
+        ///// <param name="command"></param>
+        ///// <returns></returns>
+        //[Authorize]
+        //[HttpPost]
+        //[Route("")]
+        //public Task<HttpResponseMessage> Post(CreateBillReceiveCommand command)
+        //{
+        //    HttpResponseMessage response = new HttpResponseMessage();
 
-            try
-            {
-                _service.Create(command);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { name = "Conta inserida com sucesso." });
-            }
-            catch (Exception ex)
-            {
-                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
+        //    try
+        //    {
+        //        _service.Create(command);
+        //        response = Request.CreateResponse(HttpStatusCode.OK, new { name = "Conta inserida com sucesso." });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+        //    }
 
-            var tsc = new TaskCompletionSource<HttpResponseMessage>();
-            tsc.SetResult(response);
-            return tsc.Task;
-        }
+        //    var tsc = new TaskCompletionSource<HttpResponseMessage>();
+        //    tsc.SetResult(response);
+        //    return tsc.Task;
+        //}
 
         /// <summary>
         /// Atualiza os dados da conta.
@@ -90,6 +90,33 @@ namespace VMCTur.Api.Controllers
             {
                 _service.Delete(id);
                 response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Faz o recebimento da conta.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost]
+        [Route("receipt")]
+        public Task<HttpResponseMessage> Receipt(ReceiptBillReceiveCommand command)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                _service.Receipt(command);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = "Conta quitada com sucesso." });
             }
             catch (Exception ex)
             {

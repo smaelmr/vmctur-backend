@@ -41,7 +41,10 @@ namespace VMCTur.Bussiness.Services
                                         new List<TravelPackageParticipant>(), new List<TravelPackageTour>(), new List<BillReceive>(), 
                                         travelPackageCreate.Host, travelPackageCreate.QuantityTickets, travelPackageCreate.VehicleUsedId, 
                                         travelPackageCreate.GuideTourId, travelPackageCreate.TotalAmount, 
-                                        travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments);
+                                        travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments,
+                                        travelPackageCreate.ArrivalDate, travelPackageCreate.LeaveDate, travelPackageCreate.AmountForAdult,
+                                        travelPackageCreate.AmountForEderly, travelPackageCreate.AmountForChild, travelPackageCreate.DescServices,
+                                        travelPackageCreate.PayForms);
 
             foreach (CreateParticipantCommand p in travelPackageCreate.Participants)
             {
@@ -54,7 +57,7 @@ namespace VMCTur.Bussiness.Services
             {
                 DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-                travelPackage.AddTour(new TravelPackageTour(0, p.TourId, p.TravelPackageId, dateHourStart, p.TourComments, p.Shared));
+                travelPackage.AddTour(new TravelPackageTour(0, p.TourId, p.TravelPackageId, dateHourStart, p.Comments, p.Shared));
             }
 
             foreach (CreateBillReceiveCommand p in travelPackageCreate.Bills)
@@ -76,7 +79,10 @@ namespace VMCTur.Bussiness.Services
                                            new List<TravelPackageParticipant>(), new List<TravelPackageTour>(), new List<BillReceive>(),
                                            travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
                                            travelPackageUpdate.GuideTourId, travelPackageUpdate.TotalAmount, 
-                                           travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments);
+                                           travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments,
+                                           travelPackageUpdate.ArrivalDate, travelPackageUpdate.LeaveDate, travelPackageUpdate.AmountForAdult,
+                                           travelPackageUpdate.AmountForEderly, travelPackageUpdate.AmountForChild, travelPackageUpdate.DescServices,
+                                           travelPackageUpdate.PayForms);
             #region Participants
 
             foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)
@@ -94,7 +100,7 @@ namespace VMCTur.Bussiness.Services
             {
                 DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-                travelPackage.AddTour(new TravelPackageTour(p.Id, p.TourId, travelPackageUpdate.Id, dateHourStart, p.TourComments, p.Shared));
+                travelPackage.AddTour(new TravelPackageTour(p.Id, p.TourId, travelPackageUpdate.Id, dateHourStart, p.Comments, p.Shared));
             }
 
             #endregion
@@ -103,7 +109,7 @@ namespace VMCTur.Bussiness.Services
 
             foreach (UpdateBillReceiveCommand p in travelPackageUpdate.Bills)
             {
-                travelPackage.AddBillReceive(new BillReceive(p.Id, DateTime.Now, travelPackageUpdate.Id, p.Amount, p.AmountReceived, p.Concerning, p.DueDate, p.PayDay, p.Comments));
+                travelPackage.AddBillReceive(new BillReceive(p.Id, DateTime.Now, travelPackageUpdate.Id, p.Amount, 0, p.Concerning, p.DueDate, null, p.Comments));
             }
 
             #endregion

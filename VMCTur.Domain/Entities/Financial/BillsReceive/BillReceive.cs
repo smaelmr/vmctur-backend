@@ -98,7 +98,7 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
 
         public void Validate()
         {            
-            AssertionConcern.AssertIsGreaterOrEqualThan(DueDate, CreateDate, "A data de vencimento deve ser maior ou igual a data de lançamento.");
+            //AssertionConcern.AssertIsGreaterOrEqualThan(DueDate, CreateDate, "A data de vencimento deve ser maior ou igual a data de lançamento.");
             AssertionConcern.AssertIsGreaterThan(Amount, 0, "O valor do lançamento deve ser maior que zero.");
         }
 

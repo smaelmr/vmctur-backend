@@ -147,16 +147,10 @@ namespace VMCTur.Common.Validation
             if (!(value1 > value2))
                 throw new InvalidOperationException(message);
         }
-
-        /// <summary>
-        /// Smael: if createtion date is great due date, return error.
-        /// </summary>
-        /// <param name="value1"></param>
-        /// <param name="value2"></param>
-        /// <param name="message"></param>
+     
         public static void AssertIsGreaterOrEqualThan(DateTime value1, DateTime value2, string message)
         {
-            if (value2 > value1)
+            if (!(value1 > value2))
                 throw new InvalidOperationException(message);
         }
 
