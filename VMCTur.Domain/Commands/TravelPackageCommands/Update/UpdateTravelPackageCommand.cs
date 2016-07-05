@@ -16,10 +16,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
 
         public string Host { get; set; }
         public int QuantityTickets { get; set; }
-
-        public int VehicleUsedId { get; set; }
-        public int GuideTourId { get; set; }
-
+        
         public decimal TotalAmount { get; set; }
         public string AddictionalReservs { get; set; }
         public string Comments { get; set; }

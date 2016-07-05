@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VMCTur.Common.Validation;
+using VMCTur.Domain.Entities.TourGuides;
 using VMCTur.Domain.Entities.Tours;
+using VMCTur.Domain.Entities.Vehicles;
 
 namespace VMCTur.Domain.Entities.TravelPackages
 {
@@ -20,6 +22,12 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public int TravelPackageId { get; private set; }
         public TravelPackage TravelPackage { get; private set; }
         public string Comments { get; private set; }
+
+        public int VehicleUsedId { get; private set; }
+        public virtual Vehicle VehicleUsed { get; private set; }
+
+        public int GuideTourId { get; private set; }
+        public virtual TourGuide GuideTour { get; private set; }
 
         //Smael: get or set if tour is priavate or shared
         public bool Shared { get; private set; }
@@ -59,7 +67,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         protected TravelPackageTour()
         { }
 
-        public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart, string comments, bool shared)
+        public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart, string comments, bool shared, int vehicleUsedId, int guideTourId)
         {
             Id = id;
             TourId = tourId;
@@ -67,6 +75,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
             DateHourStart = dateHourStart;
             Comments = comments;
             Shared = shared;
+            VehicleUsedId = vehicleUsedId;
+            GuideTourId = guideTourId;
         }
 
         #endregion
@@ -76,6 +86,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public void Validate()
         {            
             AssertionConcern.AssertIsGreaterThan(this.TourId, 0, "O passeio deve ser informado.");
+            AssertionConcern.AssertIsGreaterThan(VehicleUsedId, 0, "Veículo inválido.");
+            AssertionConcern.AssertIsGreaterThan(GuideTourId, 0, "Guia inválido.");
             //AssertionConcern.AssertIsGreaterThan(this.TravelPackageId, 0, "O pacote deve ser informado.");
         }
 

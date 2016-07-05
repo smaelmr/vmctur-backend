@@ -39,8 +39,7 @@ namespace VMCTur.Bussiness.Services
             var travelPackage = new TravelPackage(
                                         0, travelPackageCreate.CompanyId, travelPackageCreate.CustomerId, 
                                         new List<TravelPackageParticipant>(), new List<TravelPackageTour>(), new List<BillReceive>(), 
-                                        travelPackageCreate.Host, travelPackageCreate.QuantityTickets, travelPackageCreate.VehicleUsedId, 
-                                        travelPackageCreate.GuideTourId, travelPackageCreate.TotalAmount, 
+                                        travelPackageCreate.Host, travelPackageCreate.QuantityTickets, travelPackageCreate.TotalAmount, 
                                         travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments,
                                         travelPackageCreate.ArrivalDate, travelPackageCreate.LeaveDate, travelPackageCreate.AmountForAdult,
                                         travelPackageCreate.AmountForEderly, travelPackageCreate.AmountForChild, travelPackageCreate.DescServices,
@@ -48,16 +47,16 @@ namespace VMCTur.Bussiness.Services
 
             foreach (CreateParticipantCommand p in travelPackageCreate.Participants)
             {
-                AgeGroup ageGoupBelong = (AgeGroup)Enum.Parse(typeof(AgeGroup), p.AgeGoupBelong);
+                AgeGroup ageGroupBelong = (AgeGroup)Enum.Parse(typeof(AgeGroup), p.AgeGroupBelong);
 
-                travelPackage.AddParticipant(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, ageGoupBelong, p.Paying, p.TravelPackageId));
+                travelPackage.AddParticipant(new TravelPackageParticipant(0, p.Name, p.NumberDocument, p.BirthDate, ageGroupBelong, p.Paying, p.TravelPackageId));
             }
 
             foreach (CreateTourCommand p in travelPackageCreate.Tours)
             {
                 DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-                travelPackage.AddTour(new TravelPackageTour(0, p.TourId, p.TravelPackageId, dateHourStart, p.Comments, p.Shared));
+                travelPackage.AddTour(new TravelPackageTour(0, p.TourId, p.TravelPackageId, dateHourStart, p.Comments, p.Shared, p.VehicleUsedId, p.GuideTourId));
             }
 
             foreach (CreateBillReceiveCommand p in travelPackageCreate.Bills)
@@ -77,8 +76,7 @@ namespace VMCTur.Bussiness.Services
 
             var travelPackage = new TravelPackage(travelPackageUpdate.Id, travelPackageUpdate.CompanyId, travelPackageUpdate.CustomerId, 
                                            new List<TravelPackageParticipant>(), new List<TravelPackageTour>(), new List<BillReceive>(),
-                                           travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.VehicleUsedId, 
-                                           travelPackageUpdate.GuideTourId, travelPackageUpdate.TotalAmount, 
+                                           travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.TotalAmount, 
                                            travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments,
                                            travelPackageUpdate.ArrivalDate, travelPackageUpdate.LeaveDate, travelPackageUpdate.AmountForAdult,
                                            travelPackageUpdate.AmountForEderly, travelPackageUpdate.AmountForChild, travelPackageUpdate.DescServices,
@@ -86,10 +84,10 @@ namespace VMCTur.Bussiness.Services
             #region Participants
 
             foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)
-            {
-                AgeGroup ageGoupBelong = (AgeGroup)Enum.Parse(typeof(AgeGroup), p.AgeGoupBelong);
+            {                
+                AgeGroup ageGroupBelong = (AgeGroup)Enum.Parse(typeof(AgeGroup), p.AgeGroupBelong);               
 
-                travelPackage.AddParticipant(new TravelPackageParticipant(p.Id, p.Name, p.NumberDocument, p.BirthDate, ageGoupBelong, p.Paying, travelPackageUpdate.Id));
+                travelPackage.AddParticipant(new TravelPackageParticipant(p.Id, p.Name, p.NumberDocument, p.BirthDate, ageGroupBelong, p.Paying, travelPackageUpdate.Id));
             }
 
             #endregion
@@ -100,7 +98,7 @@ namespace VMCTur.Bussiness.Services
             {
                 DateTime dateHourStart = new DateTime(p.DateStart.Year, p.DateStart.Month, p.DateStart.Day, p.HourStart.Hours, p.HourStart.Minutes, 0);
 
-                travelPackage.AddTour(new TravelPackageTour(p.Id, p.TourId, travelPackageUpdate.Id, dateHourStart, p.Comments, p.Shared));
+                travelPackage.AddTour(new TravelPackageTour(p.Id, p.TourId, travelPackageUpdate.Id, dateHourStart, p.Comments, p.Shared, p.VehicleUsedId, p.GuideTourId));
             }
 
             #endregion

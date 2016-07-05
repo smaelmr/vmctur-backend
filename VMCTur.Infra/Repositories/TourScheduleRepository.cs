@@ -22,8 +22,8 @@ namespace VMCTur.Infra.Repositories
             List<TourSchedule> schedules = (from it in _context.TravelPackageTours
                                             join travelPackage in _context.TravelPackages on it.TravelPackageId equals travelPackage.Id
                                             join customer in _context.Customers on travelPackage.CustomerId equals customer.Id
-                                            join tourGuide in _context.TourGuides on travelPackage.GuideTourId equals tourGuide.Id
-                                            join vehicle in _context.Vehicles on travelPackage.VehicleUsedId equals vehicle.Id
+                                            join tourGuide in _context.TourGuides on it.GuideTourId equals tourGuide.Id
+                                            join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
                                             join tour in _context.Tours on it.TourId equals tour.Id
                                             where it.DateHourStart >= startPeriod && it.DateHourStart <= finishPeriod
                                             orderby it.DateHourStart
@@ -56,8 +56,8 @@ namespace VMCTur.Infra.Repositories
             List<TourSchedule> schedules = (from it in _context.TravelPackageTours
                                             join travelPackage in _context.TravelPackages on it.TravelPackageId equals travelPackage.Id
                                             join customer in _context.Customers on travelPackage.CustomerId equals customer.Id
-                                            join tourGuide in _context.TourGuides on travelPackage.GuideTourId equals tourGuide.Id
-                                            join vehicle in _context.Vehicles on travelPackage.VehicleUsedId equals vehicle.Id
+                                            join tourGuide in _context.TourGuides on it.GuideTourId equals tourGuide.Id
+                                            join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
                                             join tour in _context.Tours on it.TourId equals tour.Id
                                             where it.DateHourStart >= DateTime.Now
                                             orderby it.DateHourStart
@@ -87,8 +87,8 @@ namespace VMCTur.Infra.Repositories
             List<TourSchedule> schedules = (from it in _context.TravelPackageTours
                                             join travelPackage in _context.TravelPackages on it.TravelPackageId equals travelPackage.Id
                                             join customer in _context.Customers on travelPackage.CustomerId equals customer.Id
-                                            join tourGuide in _context.TourGuides on travelPackage.GuideTourId equals tourGuide.Id
-                                            join vehicle in _context.Vehicles on travelPackage.VehicleUsedId equals vehicle.Id
+                                            join tourGuide in _context.TourGuides on it.GuideTourId equals tourGuide.Id
+                                            join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
                                             join tour in _context.Tours on it.TourId equals tour.Id                                            
                                             where it.DateHourStart >= DateTime.Now && it.DateHourStart <= nextDate
                                             orderby it.DateHourStart

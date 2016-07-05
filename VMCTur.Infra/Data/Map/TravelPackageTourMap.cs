@@ -15,9 +15,18 @@ namespace VMCTur.Infra.Data.Map
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
 
+            Property(x => x.GuideTourId)
+               .IsRequired();
+
+            Property(x => x.VehicleUsedId)
+                .IsRequired();
+
             Ignore(x => x.TourName);
             Ignore(x => x.DateStart);
             Ignore(x => x.HourStart);
+
+            HasRequired(x => x.VehicleUsed);
+            HasRequired(x => x.GuideTour);
         }
     }
 }

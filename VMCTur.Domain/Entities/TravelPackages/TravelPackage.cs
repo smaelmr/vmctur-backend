@@ -11,7 +11,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 {
     public class TravelPackage
     {
-        #region Properties
+        #region Properties 
 
         public int Id { get; private set; }
         public int CompanyId { get; private set; }
@@ -25,12 +25,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public string Host { get; private set; }
         public int QuantityTickets { get; private set; }
-
-        public int VehicleUsedId { get; private set; }
-        public virtual Vehicle VehicleUsed { get; private set; }
-
-        public int GuideTourId { get; private set; }
-        public virtual TourGuide GuideTour { get; private set; }
+        
         public decimal TotalAmount { get; private set; }        
 
         public string AddictionalReservs { get; private set; }
@@ -50,6 +45,12 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string DescServices { get; private set; }
         public string PayForms { get; private set; }
 
+        public int VehicleUsedId { get; private set; }
+        public virtual Vehicle VehicleUsed { get; private set; }
+
+        public int GuideTourId { get; private set; }
+        public virtual TourGuide GuideTour { get; private set; }
+
         public string CustomerName
         {
             get
@@ -67,7 +68,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants,
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
-                             int vehicleUsedId, int guideTourId, decimal totalAmount, string addictionalReservs, string comments,
+                             decimal totalAmount, string addictionalReservs, string comments,
                              DateTime? arrivalDate, DateTime? leaveDate, decimal amountForAdult, decimal amountForEderly,
                              decimal amountForChild, string descServices, string payForms)
         {
@@ -79,9 +80,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             Tours = tours;
             Bills = bills;
             Host = host;
-            QuantityTickets = quantityTickets;
-            VehicleUsedId = vehicleUsedId;
-            GuideTourId = guideTourId;
+            QuantityTickets = quantityTickets;            
             TotalAmount = totalAmount;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
@@ -98,8 +97,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, DateTime creationDate, int customerId, Customer customer, List<TravelPackageParticipant> participants,
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
-                             int vehicleUsedId, Vehicle vehicle, int guideTourId, TourGuide tourGuide, decimal totalAmount, 
-                             string addictionalReservs, string comments, DateTime? arrivalDate, DateTime? leaveDate, 
+                             decimal totalAmount, string addictionalReservs, string comments, DateTime? arrivalDate, DateTime? leaveDate, 
                              decimal amountForAdult, decimal amountForEderly, decimal amountForChild, string descServices, string payForms)
         {
             Id = id;
@@ -111,11 +109,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             Tours = tours;
             Bills = bills;
             Host = host;
-            QuantityTickets = quantityTickets;
-            VehicleUsedId = vehicleUsedId;
-            VehicleUsed = vehicle;
-            GuideTourId = guideTourId;
-            GuideTour = tourGuide;
+            QuantityTickets = quantityTickets;            
             TotalAmount = totalAmount;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
@@ -136,9 +130,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public void Validate()
         {
-            AssertionConcern.AssertIsGreaterThan(CustomerId, 0, "Cliente inválido.");
-            AssertionConcern.AssertIsGreaterThan(VehicleUsedId, 0, "Veículo inválido.");
-            AssertionConcern.AssertIsGreaterThan(GuideTourId, 0, "Guia inválido.");
+            AssertionConcern.AssertIsGreaterThan(CustomerId, 0, "Cliente inválido.");            
         }
 
         public void AddParticipant(TravelPackageParticipant participant)
@@ -147,7 +139,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             
             Participants.Add(participant);
             
-            switch(participant.AgeGoupBelong)
+            switch(participant.AgeGroupBelong)
             {
                 
                 case Domain.Enums.AgeGroup.Crianca:

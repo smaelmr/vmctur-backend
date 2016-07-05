@@ -14,10 +14,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Create
         public List<CreateBillReceiveCommand> Bills { get; set; }
 
         public string Host { get; set; }
-        public int QuantityTickets { get; set; }
-
-        public int VehicleUsedId { get; set; }
-        public int GuideTourId { get; set; }
+        public int QuantityTickets { get; set; }       
 
         public decimal TotalAmount { get; set; }
         public string AddictionalReservs { get; set; }

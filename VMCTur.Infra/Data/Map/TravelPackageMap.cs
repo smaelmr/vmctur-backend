@@ -8,17 +8,17 @@ namespace VMCTur.Infra.Data.Map
     {
         public TravelPackageMap()
         {
-            
+
             ToTable("TravelPackage");
 
             Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
 
-            Property(x => x.CustomerId)                
+            Property(x => x.CustomerId)
                 .IsRequired();
 
-            Property(x => x.GuideTourId)              
+            Property(x => x.GuideTourId)
                 .IsRequired();
 
             Property(x => x.VehicleUsedId)
@@ -31,13 +31,12 @@ namespace VMCTur.Infra.Data.Map
                 .WithRequired(x => x.TravelPackage);
 
             HasMany(x => x.Bills)
-                 .WithRequired(x => x.TravelPackage);            
+                 .WithRequired(x => x.TravelPackage);
 
             HasRequired(x => x.GuideTour);
             HasRequired(x => x.Customer);
             HasRequired(x => x.VehicleUsed);
 
-            
         }
     }
 }

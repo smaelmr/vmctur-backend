@@ -16,14 +16,14 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public DateTime? BirthDate { get; private set; }
         public int TravelPackageId { get; private set; }
         public TravelPackage TravelPackage { get; private set; }
-        public AgeGroup AgeGoupBelong { get; private set; }
+        public AgeGroup AgeGroupBelong { get; private set; }
         public bool Paying { get; private set; }
 
         public string AgeGoupBelongDisplay
         {
             get
             {
-                return Standard.ObterDescricaoEnum(AgeGoupBelong);
+                return Standard.ObterDescricaoEnum(AgeGroupBelong);
             }
         }
     
@@ -75,7 +75,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             Name = name;
             NumberDocument = numberDocument;
             BirthDate = birthDate;
-            AgeGoupBelong = ageGroupBelong;
+            AgeGroupBelong = ageGroupBelong;
             Paying = paying;
             TravelPackageId = travelPackageId;
         }
@@ -90,7 +90,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             
             //BirthdayAssertionConcern.AssertIsValid(this.BirthDate);
             
-            //if (this.AgeGoupBelong == AgeGroup.Idoso)
+            //if (this.AgeGroupBelong == AgeGroup.Idoso)
             //    AssertionConcern.AssertArgumentNotEmpty(this.NumberDocument, "Número do documento deve ser informado para partipante idoso.");
         }
 

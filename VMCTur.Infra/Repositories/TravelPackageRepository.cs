@@ -40,24 +40,29 @@ namespace VMCTur.Infra.Repositories
             sql.Append("SET ");
             sql.Append("CustomerId = @CustomerId, ");
             sql.Append("Host = @Host, ");
-            sql.Append("QuantityTickets = @QuantityTickets, ");
-            sql.Append("VehicleUsedId = @VehicleUsedId, ");
-            sql.Append("GuideTourId = @GuideTourId, ");
+            sql.Append("QuantityTickets = @QuantityTickets, ");            
             sql.Append("AddictionalReservs = @AddictionalReservs, ");
             sql.Append("Comments = @Comments, ");
             sql.Append("TotalAmount = @TotalAmount, ");
             sql.Append("QuantityChild = @QuantityChild, ");
             sql.Append("QuantityAdult = @QuantityAdult, ");
-            sql.Append("QuantityEderly = @QuantityEderly ");
+            sql.Append("QuantityEderly = @QuantityEderly, ");
+
+            sql.Append("ArrivalDate = @ArrivalDate, ");
+            sql.Append("LeaveDate = @LeaveDate, ");
+            sql.Append("DescServices = @DescServices, ");
+            sql.Append("PayForms = @PayForms, ");
+            sql.Append("AmountForAdult = @AmountForAdult, ");
+            sql.Append("AmountForEderly = @AmountForEderly, ");
+            sql.Append("AmountForChild = @AmountForChild ");
+
             sql.Append("WHERE Id = @Id; ");
 
             MySqlCommand cmm = new MySqlCommand(sql.ToString());
 
             cmm.Parameters.Add("@CustomerId", MySqlDbType.Int32).Value = package.CustomerId;
             cmm.Parameters.Add("@Host", MySqlDbType.Text).Value = package.Host;
-            cmm.Parameters.Add("@QuantityTickets", MySqlDbType.Int32).Value = package.QuantityTickets;
-            cmm.Parameters.Add("@VehicleUsedId", MySqlDbType.Int32).Value = package.VehicleUsedId;
-            cmm.Parameters.Add("@GuideTourId", MySqlDbType.Int32).Value = package.GuideTourId;
+            cmm.Parameters.Add("@QuantityTickets", MySqlDbType.Int32).Value = package.QuantityTickets;            
             cmm.Parameters.Add("@AddictionalReservs", MySqlDbType.Text).Value = package.AddictionalReservs;
             cmm.Parameters.Add("@Comments", MySqlDbType.Text).Value = package.Comments;
             cmm.Parameters.Add("@TotalAmount", MySqlDbType.Decimal).Value = package.TotalAmount;
@@ -65,6 +70,22 @@ namespace VMCTur.Infra.Repositories
             cmm.Parameters.Add("@QuantityChild", MySqlDbType.Int32).Value = package.QuantityChild;
             cmm.Parameters.Add("@QuantityAdult", MySqlDbType.Int32).Value = package.QuantityAdult;
             cmm.Parameters.Add("@QuantityEderly", MySqlDbType.Int32).Value = package.QuantityEderly;
+
+            if (package.ArrivalDate.HasValue)
+                cmm.Parameters.Add("ArrivalDate", MySqlDbType.DateTime).Value = package.ArrivalDate.Value;
+            else
+                cmm.Parameters.Add("ArrivalDate", MySqlDbType.DateTime);
+
+            if (package.LeaveDate.HasValue)
+                cmm.Parameters.Add("LeaveDate", MySqlDbType.DateTime).Value = package.LeaveDate.Value;
+            else
+                cmm.Parameters.Add("LeaveDate", MySqlDbType.DateTime);
+
+            cmm.Parameters.Add("DescServices", MySqlDbType.Text).Value = package.DescServices;
+            cmm.Parameters.Add("PayForms", MySqlDbType.Text).Value = package.PayForms;
+            cmm.Parameters.Add("AmountForAdult", MySqlDbType.Decimal).Value = package.AmountForAdult;
+            cmm.Parameters.Add("AmountForEderly", MySqlDbType.Decimal).Value = package.AmountForEderly;
+            cmm.Parameters.Add("AmountForChild", MySqlDbType.Decimal).Value = package.AmountForChild;
 
             cmm.Parameters.Add("@Id", MySqlDbType.Int32).Value = packageOld.Id;
 
@@ -147,7 +168,7 @@ namespace VMCTur.Infra.Repositories
                     cmmI.Parameters.Add("@TravelPackageId", MySqlDbType.Int32).Value = packageOld.Id;
                     cmmI.Parameters.Add("@Name", MySqlDbType.VarChar).Value = x.Name;
                     cmmI.Parameters.Add("@NumberDocument", MySqlDbType.VarChar).Value = x.NumberDocument;
-                    cmmI.Parameters.Add("@AgeGroupBelong", MySqlDbType.Int32).Value = (int)x.AgeGoupBelong;
+                    cmmI.Parameters.Add("@AgeGroupBelong", MySqlDbType.Int32).Value = (int)x.AgeGroupBelong;
                     cmmI.Parameters.Add("@Paying", MySqlDbType.Int16).Value = x.Paying;
                     cmmI.Parameters.Add("@BirthDate", MySqlDbType.Date).Value = x.BirthDate;
 
@@ -212,11 +233,15 @@ namespace VMCTur.Infra.Repositories
                     sqlI.Append("TravelPackageId, ");
                     sqlI.Append("Shared, ");
                     sqlI.Append("Comments, ");
+                    sqlI.Append("VehicleUsedId, ");
+                    sqlI.Append("GuideTourId, ");
                     sqlI.Append("DateHourStart) ");
                     sqlI.Append("VALUES (");
                     sqlI.Append("@TourId, ");
                     sqlI.Append("@TravelPackageId, ");
                     sqlI.Append("@Shared, ");
+                    sqlI.Append("@VehicleUsedId, ");
+                    sqlI.Append("@GuideTourId, ");
                     sqlI.Append("@Comments, ");
                     sqlI.Append("@DateHourStart); ");
 
@@ -226,6 +251,8 @@ namespace VMCTur.Infra.Repositories
                     cmmI.Parameters.Add("@TourId", MySqlDbType.Int32).Value = x.TourId;
                     cmmI.Parameters.Add("@DateHourStart", MySqlDbType.DateTime).Value = x.DateHourStart;
                     cmmI.Parameters.Add("@Shared", MySqlDbType.Int16).Value = x.Shared;
+                    cmmI.Parameters.Add("@VehicleUsedId", MySqlDbType.Int32).Value = x.VehicleUsedId;
+                    cmmI.Parameters.Add("@GuideTourId", MySqlDbType.Int32).Value = x.GuideTourId;
                     cmmI.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
 
                     ctx.ExecutaQuery(cmmI);
@@ -353,16 +380,15 @@ namespace VMCTur.Infra.Repositories
         {
             TravelPackage pk = _context.TravelPackages
                                     .Include("Participants")
-                                    .Include("Bills")
-                                    //.Include("Tours").Include("Tours.Tour")                               
-                                    .Include("VehicleUsed")
-                                    .Include("GuideTour")
+                                    .Include("Bills")                                                                                                 
                                     .Include("Customer")
                                     .Where(x => x.Id == id).FirstOrDefault();
 
 
             List<TravelPackageTour> pkTours = _context.TravelPackageTours
                 .Include("Tour")
+                .Include("VehicleUsed")
+                .Include("GuideTour")
                 .Where(y => y.TravelPackageId == id).ToList();
 
             return pk;
@@ -380,9 +406,7 @@ namespace VMCTur.Infra.Repositories
             sql.Append("TravelPackage.CreationDate, ");
             sql.Append("TravelPackage.CustomerId, ");
             sql.Append("TravelPackage.Host, ");
-            sql.Append("TravelPackage.QuantityTickets, ");
-            sql.Append("TravelPackage.VehicleUsedId, ");
-            sql.Append("TravelPackage.GuideTourId, ");
+            sql.Append("TravelPackage.QuantityTickets, ");            
             sql.Append("TravelPackage.AddictionalReservs, ");
             sql.Append("TravelPackage.Comments, ");
             sql.Append("TravelPackage.TotalAmount, ");
@@ -390,9 +414,9 @@ namespace VMCTur.Infra.Repositories
             sql.Append("TravelPackage.LeaveDate, ");
             sql.Append("TravelPackage.DescServices, ");
             sql.Append("TravelPackage.PayForms, ");
-            sql.Append("TravelPackage.AmountAdult, ");
-            sql.Append("TravelPackage.AmountEderly, ");
-            sql.Append("TravelPackage.AmountChild, ");
+            sql.Append("TravelPackage.AmountForAdult, ");
+            sql.Append("TravelPackage.AmountForEderly, ");
+            sql.Append("TravelPackage.AmountForChild, ");
             sql.Append("Customer.Name ");
             sql.Append("FROM TravelPackage ");
             sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
@@ -440,19 +464,15 @@ namespace VMCTur.Infra.Repositories
                     new List<TravelPackageTour>(),
                     new List<BillReceive>(),
                     dr.IsDBNull(dr.GetOrdinal("Host")) ? "" : (string)dr["Host"],
-                    (int)dr["QuantityTickets"],
-                    (int)dr["VehicleUsedId"],
-                    null,
-                    (int)dr["GuideTourId"],
-                    null,
+                    (int)dr["QuantityTickets"],                   
                     (decimal)dr["TotalAmount"],
                     dr.IsDBNull(dr.GetOrdinal("AddictionalReservs")) ? "" : (string)dr["AddictionalReservs"],
                     dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"],
                     auxArrivalDate,
                     auxLeaveDate,
-                    (decimal)dr["AmountAdult"],
-                    (decimal)dr["AmountEderly"],
-                    (decimal)dr["AmountChild"],
+                    (decimal)dr["AmountForAdult"],
+                    (decimal)dr["AmountForEderly"],
+                    (decimal)dr["AmountForChild"],
                     dr.IsDBNull(dr.GetOrdinal("DescServices")) ? "" : (string)dr["DescServices"],
                     dr.IsDBNull(dr.GetOrdinal("PayForms")) ? "" : (string)dr["PayForms"]));
             }

@@ -6,6 +6,8 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
     {
         public int Id { get; set; }
         public int TourId { get; set; }
+        public int VehicleUsedId { get; set; }
+        public int GuideTourId { get; set; }
         public int TravelPackageId { get; set; }
         public DateTime DateStart { get; set; }
         public TimeSpan HourStart { get; set; }
