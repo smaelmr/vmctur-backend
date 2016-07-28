@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="AppConnectionString-Web.config Connection String" description="AppConnectionString Connection String used in web.config by the application to access the database." defaultValue="server=mysql.smr.kinghost.net;user id=ontur01;password=u3e5b6;persistsecurityinfo=True;database=ontur01" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\smael\\OneDrive\\Projetos\\vmctur-backend\\VMCTur\.Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AppConnectionString']/@connectionString" />
-  </parameter>
-</parameters>

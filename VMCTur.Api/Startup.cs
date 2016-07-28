@@ -1,10 +1,13 @@
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
+using System.Threading.Tasks;
+using System.Web.Cors;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using VMCTur.Api.Helpers;
@@ -19,8 +22,9 @@ namespace VMCTur.Api
         public void Configuration(IAppBuilder app)
         {
 
-            HttpConfiguration config = new HttpConfiguration();            
+            HttpConfiguration config = new HttpConfiguration();
 
+            
             // Configure Dependency Injection
             var container = new UnityContainer();
             DependencyResolver.Resolve(container);
@@ -29,20 +33,52 @@ namespace VMCTur.Api
             // Swagger
             SwaggerConfig.Register(config);
 
+            // Habilitando CORS com politica global
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+
             ConfigureWebApi(config);
-            ConfigureOAuth(app, container.Resolve<IUserService>());
-           
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
+            // Habiliando o cors do OWIN
+            app.UseCors(CorsOptions.AllowAll);
+
+            ConfigureOAuth(app, container.Resolve<IUserService>());                       
+
+            //ConfigureCors(app);
 
             app.UseWebApi(config);
         }
 
+        private void ConfigureCors(IAppBuilder app)
+        {
+            var politica = new CorsPolicy();
+
+            politica.AllowAnyHeader = true;
+            politica.AllowAnyMethod = true;
+            politica.AllowAnyOrigin = true;
+
+            politica.Origins.Add("http://app.ontur.com.br");
+            politica.Origins.Add("http://app-homologacao.ontur.com.br");
+
+            politica.Methods.Add("GET");
+            politica.Methods.Add("POST");
+
+            var corsOptions = new CorsOptions
+            {
+                PolicyProvider = new CorsPolicyProvider
+                {
+                    PolicyResolver = context => Task.FromResult(politica)                    
+                }
+            };
+
+            app.UseCors(corsOptions);
+        }
+
         public static void ConfigureWebApi(HttpConfiguration config)
         {            
-            var corsAttr = new EnableCorsAttribute("*",
-                                                   "Origin, Content-Type, Accept",
-                                                   "GET, PUT, POST, DELETE, OPTIONS");
-            config.EnableCors(corsAttr);
+            //var corsAttr = new EnableCorsAttribute("*",
+                                                   //"Origin, Content-Type, Accept",
+                                                   //"GET, PUT, POST, DELETE, OPTIONS");
+            //config.EnableCors(corsAttr);
             //config.EnableCors();
 
             // Remove o XML
