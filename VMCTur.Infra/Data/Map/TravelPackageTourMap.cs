@@ -21,6 +21,8 @@ namespace VMCTur.Infra.Data.Map
             Property(x => x.VehicleUsedId)
                 .IsRequired();
 
+            Ignore(x => x.VehicleModel);
+            Ignore(x => x.TourGuideName);
             Ignore(x => x.TourName);
             Ignore(x => x.DateStart);
             Ignore(x => x.HourStart);

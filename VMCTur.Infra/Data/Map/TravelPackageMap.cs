@@ -17,13 +17,7 @@ namespace VMCTur.Infra.Data.Map
 
             Property(x => x.CustomerId)
                 .IsRequired();
-
-            Property(x => x.GuideTourId)
-                .IsRequired();
-
-            Property(x => x.VehicleUsedId)
-                .IsRequired();
-
+            
             HasMany(x => x.Participants)
                 .WithRequired(x => x.TravelPackage);
 
@@ -32,10 +26,8 @@ namespace VMCTur.Infra.Data.Map
 
             HasMany(x => x.Bills)
                  .WithRequired(x => x.TravelPackage);
-
-            HasRequired(x => x.GuideTour);
-            HasRequired(x => x.Customer);
-            HasRequired(x => x.VehicleUsed);
+            
+            HasRequired(x => x.Customer);            
 
         }
     }

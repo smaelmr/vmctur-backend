@@ -45,11 +45,11 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string DescServices { get; private set; }
         public string PayForms { get; private set; }
 
-        public int VehicleUsedId { get; private set; }
-        public virtual Vehicle VehicleUsed { get; private set; }
+        //public int VehicleUsedId { get; private set; }
+        //public virtual Vehicle VehicleUsed { get; private set; }
 
-        public int GuideTourId { get; private set; }
-        public virtual TourGuide GuideTour { get; private set; }
+        //public int GuideTourId { get; private set; }
+        //public virtual TourGuide GuideTour { get; private set; }
 
         public string CustomerName
         {

@@ -26,8 +26,24 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public int VehicleUsedId { get; private set; }
         public virtual Vehicle VehicleUsed { get; private set; }
 
+        public string VehicleModel
+        {
+            get
+            {
+                return VehicleUsed != null ? VehicleUsed.Model : "";
+            }
+        }
+
         public int GuideTourId { get; private set; }
         public virtual TourGuide GuideTour { get; private set; }
+
+        public string TourGuideName
+        {
+            get
+            {
+                return GuideTour != null ? GuideTour.Name : "";
+            }
+        }
 
         //Smael: get or set if tour is priavate or shared
         public bool Shared { get; private set; }
@@ -67,7 +83,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
         protected TravelPackageTour()
         { }
 
-        public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart, string comments, bool shared, int vehicleUsedId, int guideTourId)
+        public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart, 
+                                 string comments, bool shared, int vehicleUsedId, int guideTourId)
         {
             Id = id;
             TourId = tourId;

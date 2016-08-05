@@ -206,12 +206,21 @@ namespace VMCTur.Infra.Repositories
 
                     sqlU.Append("UPDATE TravelPackageTour ");
                     sqlU.Append("SET ");
+                    sqlU.Append("Shared = @Shared, ");
+                    sqlU.Append("Comments = @Comments, ");
+                    sqlU.Append("VehicleUsedId = @VehicleUsedId, ");
+                    sqlU.Append("GuideTourId = @GuideTourId, ");
                     sqlU.Append("DateHourStart = @DateHourStart ");
                     sqlU.Append("WHERE Id = @Id");
 
                     MySqlCommand cmmU = new MySqlCommand(sqlU.ToString());
 
-                    cmmU.Parameters.Add("@DateHourStart", MySqlDbType.Date).Value = x.DateHourStart;
+                    cmmU.Parameters.Add("@TourId", MySqlDbType.Int32).Value = x.TourId;
+                    cmmU.Parameters.Add("@Shared", MySqlDbType.Int16).Value = x.Shared;
+                    cmmU.Parameters.Add("@VehicleUsedId", MySqlDbType.Int32).Value = x.VehicleUsedId;
+                    cmmU.Parameters.Add("@GuideTourId", MySqlDbType.Int32).Value = x.GuideTourId;
+                    cmmU.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
+                    cmmU.Parameters.Add("@DateHourStart", MySqlDbType.DateTime).Value = x.DateHourStart;
 
                     cmmU.Parameters.Add("@Id", MySqlDbType.Int32).Value = x.Id;
 

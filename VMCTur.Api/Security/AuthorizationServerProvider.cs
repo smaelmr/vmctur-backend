@@ -49,7 +49,7 @@ namespace VMCTur.Api.Security
             }
             catch(Exception ex)
             {
-                context.SetError("invalid_grant", Errors.InvalidCredentials);
+                context.SetError("invalid_grant \n " + ex.Message, Errors.InvalidCredentials);
             }
         }
     }
