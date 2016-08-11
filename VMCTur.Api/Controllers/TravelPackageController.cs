@@ -111,7 +111,7 @@ namespace VMCTur.Api.Controllers
         /// Busca o pacote conforme id.
         /// </summary>
         /// <returns></returns>
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("getbyid")]
         [DeflateCompression]
