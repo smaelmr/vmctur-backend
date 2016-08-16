@@ -14,7 +14,8 @@ namespace VMCTur.Domain.Contracts.Repositories
         List<BillReceive> GetToWinBills();
         List<BillReceive> GetWinningTodayBills();
         List<BillReceive> GetReceivedBills();
-        
+        List<BillReceive> GetReceivedBills(DateTime startPeriod, DateTime finishPeriod);
+
         //void Create(BillReceive bill);
         void Update(BillReceive bill);
         void Delete(BillReceive bill);

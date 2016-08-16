@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMCTur.Domain", "VMCTur.Domain\VMCTur.Domain.csproj", "{8BDEBF43-F211-4BAC-820E-15A294590F93}"
 EndProject
@@ -14,6 +14,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMCTur.Bussiness", "VMCTur.Bussiness\VMCTur.Bussiness.csproj", "{9EBE4D5E-980B-41FF-8A3D-E99763295FF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMCTur.Api", "VMCTur.Api\VMCTur.Api.csproj", "{791402BB-EA05-41C7-B015-2F3561965767}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E79E105-33C5-42A9-8A73-29F6C2DBDA75}"
+	ProjectSection(SolutionItems) = preProject
+		Anotations.txt = Anotations.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

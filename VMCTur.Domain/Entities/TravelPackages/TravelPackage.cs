@@ -45,12 +45,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string DescServices { get; private set; }
         public string PayForms { get; private set; }
 
-        //public int VehicleUsedId { get; private set; }
-        //public virtual Vehicle VehicleUsed { get; private set; }
-
-        //public int GuideTourId { get; private set; }
-        //public virtual TourGuide GuideTour { get; private set; }
-
         public string CustomerName
         {
             get
@@ -68,13 +62,13 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants,
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
-                             decimal totalAmount, string addictionalReservs, string comments,
-                             DateTime? arrivalDate, DateTime? leaveDate, decimal amountForAdult, decimal amountForEderly,
-                             decimal amountForChild, string descServices, string payForms)
+                             decimal totalAmount, string addictionalReservs, string comments, DateTime? arrivalDate, 
+                             DateTime? leaveDate, decimal amountForAdult, decimal amountForEderly, decimal amountForChild, 
+                             string descServices, string payForms, DateTime creationDate)
         {
             Id = id;
             CompanyId = companyId;
-            CreationDate = DateTime.Now;
+            CreationDate = creationDate;
             CustomerId = customerId;
             Participants = participants;
             Tours = tours;
@@ -95,14 +89,15 @@ namespace VMCTur.Domain.Entities.TravelPackages
             PayForms = payForms;
     }
 
-        public TravelPackage(int id, int companyId, DateTime creationDate, int customerId, Customer customer, List<TravelPackageParticipant> participants,
-                             List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
-                             decimal totalAmount, string addictionalReservs, string comments, DateTime? arrivalDate, DateTime? leaveDate, 
-                             decimal amountForAdult, decimal amountForEderly, decimal amountForChild, string descServices, string payForms)
+        public TravelPackage(int id, int companyId, DateTime creationDate, int customerId, 
+                             Customer customer, List<TravelPackageParticipant> participants, List<TravelPackageTour> tours, List<BillReceive> bills, 
+                             string host, int quantityTickets, decimal totalAmount, string addictionalReservs, 
+                             string comments, DateTime? arrivalDate, DateTime? leaveDate, decimal amountForAdult, 
+                             decimal amountForEderly, decimal amountForChild, string descServices, string payForms)
         {
             Id = id;
             CompanyId = companyId;
-            CreationDate = DateTime.Now;
+            CreationDate = creationDate;
             CustomerId = customerId;
             Customer = customer;
             Participants = participants;

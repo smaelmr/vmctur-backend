@@ -1,0 +1,20 @@
+Controle de Bugs
+
+1 -	O sistema quando inativo por algum tempo, da erro de conexão e temos que sair e voltar para poder utilizar o cadastro
+ 
+2 - Quando editamos um passeio/evento em um pacote a data automaticamente altera o mês do passeio
+ 
+3 - Quando adicionamos o passeio/evento no pacote e colocamos como compartilhado, automaticamente ele aparece privado na programação, só quando editamos é que conseguimos arrumar para compartilhado.
+ 
+4 - Em clientes e pacotes todos estão aparecendo com datas iguais
+ 
+5 - Não consigo puxa as finanças só do mês de setembro
+ 
+6 - Na visualização e edição dos pacotes os dados data de chegada e retorno aparecem errados ou não aparecem, 
+
+7 - Na visualização dos pacotes aparece os campos veículo utilizado e guia responsável em branco sem utilização.
+ 
+8- Quando editamos um passeio/evento o motorista e guia somem.
+ 
+9 - Não é possível na edição de passeios/eventos trocar o passeio/evento
+

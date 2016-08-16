@@ -89,6 +89,11 @@ namespace VMCTur.Bussiness.Services
             return _repository.GetReceivedBills();
         }
 
+        public List<BillReceive> GetReceivedBills(DateTime startPeriod, DateTime finishPeriod)
+        {
+            return _repository.GetReceivedBills(startPeriod, finishPeriod);
+        }
+
         public List<BillReceive> GetToWinBills()
         {
             return _repository.GetToWinBills();

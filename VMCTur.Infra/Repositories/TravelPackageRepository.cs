@@ -206,6 +206,7 @@ namespace VMCTur.Infra.Repositories
 
                     sqlU.Append("UPDATE TravelPackageTour ");
                     sqlU.Append("SET ");
+                    sqlU.Append("TourId = @TourId, ");
                     sqlU.Append("Shared = @Shared, ");
                     sqlU.Append("Comments = @Comments, ");
                     sqlU.Append("VehicleUsedId = @VehicleUsedId, ");
@@ -249,20 +250,21 @@ namespace VMCTur.Infra.Repositories
                     sqlI.Append("@TourId, ");
                     sqlI.Append("@TravelPackageId, ");
                     sqlI.Append("@Shared, ");
-                    sqlI.Append("@VehicleUsedId, ");
-                    sqlI.Append("@GuideTourId, ");
                     sqlI.Append("@Comments, ");
+                    sqlI.Append("@VehicleUsedId, ");
+                    sqlI.Append("@GuideTourId, ");                    
                     sqlI.Append("@DateHourStart); ");
 
                     MySqlCommand cmmI = new MySqlCommand(sqlI.ToString());
-
-                    cmmI.Parameters.Add("@TravelPackageId", MySqlDbType.Int32).Value = x.TravelPackageId;
+                    
                     cmmI.Parameters.Add("@TourId", MySqlDbType.Int32).Value = x.TourId;
                     cmmI.Parameters.Add("@DateHourStart", MySqlDbType.DateTime).Value = x.DateHourStart;
                     cmmI.Parameters.Add("@Shared", MySqlDbType.Int16).Value = x.Shared;
                     cmmI.Parameters.Add("@VehicleUsedId", MySqlDbType.Int32).Value = x.VehicleUsedId;
                     cmmI.Parameters.Add("@GuideTourId", MySqlDbType.Int32).Value = x.GuideTourId;
                     cmmI.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
+
+                    cmmI.Parameters.Add("@TravelPackageId", MySqlDbType.Int32).Value = x.TravelPackageId;
 
                     ctx.ExecutaQuery(cmmI);
 

@@ -212,6 +212,60 @@ namespace VMCTur.Api.Controllers
             return tsc.Task;
         }
 
+        /// <summary>
+        /// Busca as contas recebidas passando um periodo por parametro, filtra pela data de recebimento.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("getrecevedbillsperiod")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> GetReceivedBills(DateTime startPeriod, DateTime finishPeriod)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetReceivedBills(startPeriod, finishPeriod);
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Busca todas as contas recebidas.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("getrecevedbills")]
+        [DeflateCompression]        
+        public Task<HttpResponseMessage> GetReceivedBills()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetReceivedBills();
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();

@@ -109,7 +109,7 @@ namespace VMCTur.Api
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/api/security/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(12),
                 Provider = new AuthorizationServerProvider(service),                               
             };
 

@@ -43,6 +43,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetReceivedBills(System.DateTime,System.DateTime)">
+            <summary>
+            Busca as contas recebidas passando um periodo por parametro, filtra pela data de recebimento.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetReceivedBills">
+            <summary>
+            Busca todas as contas recebidas.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:VMCTur.Api.Controllers.CustomerController.Post(VMCTur.Api.Models.Clientes.CreateClienteModel)">
             <summary>
             Cria um novo Cliente.

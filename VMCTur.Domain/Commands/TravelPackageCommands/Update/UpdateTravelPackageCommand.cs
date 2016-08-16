@@ -10,6 +10,8 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public int CompanyId { get; set; }
         public int CustomerId { get; set; }
 
+        public DateTime CreationDate { get; set; }
+
         public List<UpdateParticipantCommand> Participants { get; set; }
         public List<UpdateTourCommand> Tours { get; set; }
         public List<UpdateBillReceiveCommand> Bills { get; set; }
