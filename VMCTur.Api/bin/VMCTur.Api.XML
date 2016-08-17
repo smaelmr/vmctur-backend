@@ -43,16 +43,44 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetReceivedBills(System.DateTime,System.DateTime)">
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetRecevedBills(System.DateTime,System.DateTime)">
             <summary>
             Busca as contas recebidas passando um periodo por parametro, filtra pela data de recebimento.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetReceivedBills">
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetAll(System.DateTime,System.DateTime)">
             <summary>
-            Busca todas as contas recebidas.
+            Smael: lista todas as contas independente de status conforme o período informado.
             </summary>
+            <param name="startPeriod"></param>
+            <param name="finishPeriod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetWinningTodayBills">
+            <summary>
+            Smael: lista as contas vencendo hoje.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetToWinBills">
+            <summary>
+            Smael: lista as contas a vencer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetOverdueBills">
+            <summary>
+            Smael: lista as contas vencidas.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillReceiveController.GetOpenBills(System.DateTime,System.DateTime)">
+            <summary>
+            Smael: listas as contas em aberto (que ainda não foram pagas independente de estarem vencidas ou não) conforme periodo informado.
+            </summary>
+            <param name="startPeriod"></param>
+            <param name="finishPeriod"></param>
             <returns></returns>
         </member>
         <member name="M:VMCTur.Api.Controllers.CustomerController.Post(VMCTur.Api.Models.Clientes.CreateClienteModel)">

@@ -80,7 +80,7 @@ namespace VMCTur.Bussiness.Services
                                            travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments,
                                            travelPackageUpdate.ArrivalDate, travelPackageUpdate.LeaveDate, travelPackageUpdate.AmountForAdult,
                                            travelPackageUpdate.AmountForEderly, travelPackageUpdate.AmountForChild, travelPackageUpdate.DescServices,
-                                           travelPackageUpdate.PayForms, travelPackageUpdate.CreationDate);
+                                           travelPackageUpdate.PayForms, packageOld.CreationDate);
             #region Participants
 
             foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)

@@ -79,19 +79,19 @@ namespace VMCTur.Bussiness.Services
             return _repository.Get(skip, take);
         }
 
+        public void Dispose()
+        {
+            _repository.Dispose();
+        }
+
+        public List<BillReceive> GetAll(DateTime startPeriod, DateTime finishPeriod)
+        {
+            return _repository.Get(startPeriod, finishPeriod);
+        }
+
         public List<BillReceive> GetOverdueBills()
         {
             return _repository.GetOverdueBills();
-        }
-
-        public List<BillReceive> GetReceivedBills()
-        {
-            return _repository.GetReceivedBills();
-        }
-
-        public List<BillReceive> GetReceivedBills(DateTime startPeriod, DateTime finishPeriod)
-        {
-            return _repository.GetReceivedBills(startPeriod, finishPeriod);
         }
 
         public List<BillReceive> GetToWinBills()
@@ -102,13 +102,16 @@ namespace VMCTur.Bussiness.Services
         public List<BillReceive> GetWinningTodayBills()
         {
             return _repository.GetWinningTodayBills();
-        }        
-
-        public void Dispose()
-        {
-            _repository.Dispose();
         }
 
-        
+        public List<BillReceive> GetReceivedBills(DateTime startPeriod, DateTime finishPeriod)
+        {
+            return _repository.GetReceivedBills(startPeriod, finishPeriod);
+        }
+
+        public List<BillReceive> GetOpenBills(DateTime startPeriod, DateTime finishPeriod)
+        {
+            return _repository.GetOpenBills(startPeriod, finishPeriod);
+        }
     }
 }

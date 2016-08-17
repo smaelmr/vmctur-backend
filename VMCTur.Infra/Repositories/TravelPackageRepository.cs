@@ -9,7 +9,6 @@ using VMCTur.Domain.Entities.Financial.BillsReceive;
 using VMCTur.Domain.Entities.TravelPackages;
 using VMCTur.Infra.Conn;
 using VMCTur.Infra.Data;
-using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
@@ -486,7 +485,7 @@ namespace VMCTur.Infra.Repositories
                     (decimal)dr["AmountForChild"],
                     dr.IsDBNull(dr.GetOrdinal("DescServices")) ? "" : (string)dr["DescServices"],
                     dr.IsDBNull(dr.GetOrdinal("PayForms")) ? "" : (string)dr["PayForms"]));
-            }
+            }   
 
             dr.Close();
 

@@ -122,7 +122,7 @@ namespace VMCTur.Infra.Repositories
                 cmm.Parameters.Add("@name", MySqlDbType.VarChar).Value = "%" + search + "%";
             }
 
-            sql.Append("ORDER BY BillReceive.DueDate DESC;");
+            sql.Append("ORDER BY BillReceive.DueDate ASC;");
 
             cmm.CommandText = sql.ToString();
 
@@ -157,40 +157,7 @@ namespace VMCTur.Infra.Repositories
             return bills;
         }
 
-        public List<BillReceive> Get(int skip, int take)
-        {
-            return _context.BillReceives.OrderBy(x => x.DueDate).Skip(skip).Take(take).ToList();
-        }
-
-        public List<BillReceive> GetOverdueBills()
-        {
-            return (from itens in _context.BillReceives
-                        where (itens.PayDay == null && itens.DueDate < DateTime.Today)
-                        orderby itens.DueDate ascending
-                    select itens).ToList<BillReceive>();
-        }
-        
-        public List<BillReceive> GetToWinBills()
-        {
-            return (from itens in _context.BillReceives
-                    where (itens.PayDay == null && itens.DueDate >= DateTime.Today)
-                    orderby itens.DueDate ascending
-                    select itens).ToList<BillReceive>();
-        }
-
-        public List<BillReceive> GetWinningTodayBills()
-        {
-            return (from itens in _context.BillReceives
-                    where (itens.PayDay == null && itens.DueDate == DateTime.Today)
-                    orderby itens.DueDate ascending
-                    select itens).ToList<BillReceive>();
-        }
-
-        /// <summary>
-        /// Smael: get all bills receveds.
-        /// </summary>        
-        /// <returns></returns>
-        public List<BillReceive> GetReceivedBills()
+        public List<BillReceive> Get(DateTime startPeriod, DateTime finishPeriod)
         {
             StringBuilder sql = new StringBuilder();
             MySqlConn ctx = MySqlConn.GetInstancia();
@@ -211,13 +178,12 @@ namespace VMCTur.Infra.Repositories
             sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
             sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
 
-            //sql.Append("WHERE BillReceive.PayDay IS NOT NULL ");
-            //sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+            sql.Append("WHERE BillReceive.DueDate BETWEEN @startPeriod AND @finishPeriod ");            
 
-            sql.Append("ORDER BY BillReceive.PayDay DESC;");
+            sql.Append("ORDER BY BillReceive.DueDate ASC;");
 
-            //cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
-            //cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+            cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
+            cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
 
             cmm.CommandText = sql.ToString();
 
@@ -226,10 +192,10 @@ namespace VMCTur.Infra.Repositories
             while (dr.Read())
             {
 
-                //DateTime? auxPayDay = null;
+                DateTime? auxPayDay = null;
 
-                //if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
-                //    auxPayDay = (DateTime)dr["PayDay"];
+                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
+                    auxPayDay = (DateTime)dr["PayDay"];
 
                 BillReceive bill = new BillReceive(
                         (int)dr["Id"],
@@ -239,13 +205,269 @@ namespace VMCTur.Infra.Repositories
                         (decimal)dr["AmountReceived"],
                         (string)dr["Concerning"],
                         (DateTime)dr["DueDate"],
-                        (DateTime)dr["PayDay"],
+                        auxPayDay,
                         dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
 
                 bill.SetCustomerName((string)dr["Name"]);
 
                 bills.Add(bill);
             }
+
+            dr.Close();
+
+            return bills;
+        }        
+
+        public List<BillReceive> GetOpenBills(DateTime startPeriod, DateTime finishPeriod)
+        {
+            StringBuilder sql = new StringBuilder();
+            MySqlConn ctx = MySqlConn.GetInstancia();
+            List<BillReceive> bills = new List<BillReceive>();
+            MySqlCommand cmm = new MySqlCommand();
+
+            sql.Append("SELECT BillReceive.Id, ");
+            sql.Append("BillReceive.TravelPackageId, ");
+            sql.Append("BillReceive.Amount, ");
+            sql.Append("BillReceive.AmountReceived, ");
+            sql.Append("BillReceive.Concerning, ");
+            sql.Append("BillReceive.CreateDate, ");
+            sql.Append("BillReceive.DueDate, ");
+            sql.Append("BillReceive.PayDay, ");
+            sql.Append("BillReceive.Comments, ");
+            sql.Append("Customer.Name ");
+            sql.Append("FROM BillReceive ");
+            sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
+            sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
+
+            sql.Append("WHERE BillReceive.PayDay IS NULL ");
+            sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+
+            cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
+            cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+
+
+            sql.Append("ORDER BY BillReceive.DueDate ASC;");
+
+            cmm.CommandText = sql.ToString();
+
+            MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
+
+            while (dr.Read())
+            {
+
+                DateTime? auxPayDay = null;
+
+                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
+                    auxPayDay = (DateTime)dr["PayDay"];
+
+                BillReceive bill = new BillReceive(
+                        (int)dr["Id"],
+                        (DateTime)dr["CreateDate"],
+                        (int)dr["TravelPackageId"],
+                        (decimal)dr["Amount"],
+                        (decimal)dr["AmountReceived"],
+                        (string)dr["Concerning"],
+                        (DateTime)dr["DueDate"],
+                        auxPayDay,
+                        dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
+
+                bill.SetCustomerName((string)dr["Name"]);
+
+                bills.Add(bill);
+            }
+
+            dr.Close();
+
+            return bills;
+
+        }
+
+        public List<BillReceive> GetOverdueBills()
+        {
+            StringBuilder sql = new StringBuilder();
+            MySqlConn ctx = MySqlConn.GetInstancia();
+            List<BillReceive> bills = new List<BillReceive>();
+            MySqlCommand cmm = new MySqlCommand();
+
+            sql.Append("SELECT BillReceive.Id, ");
+            sql.Append("BillReceive.TravelPackageId, ");
+            sql.Append("BillReceive.Amount, ");
+            sql.Append("BillReceive.AmountReceived, ");
+            sql.Append("BillReceive.Concerning, ");
+            sql.Append("BillReceive.CreateDate, ");
+            sql.Append("BillReceive.DueDate, ");
+            sql.Append("BillReceive.PayDay, ");
+            sql.Append("BillReceive.Comments, ");
+            sql.Append("Customer.Name ");
+            sql.Append("FROM BillReceive ");
+            sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
+            sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
+
+            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate < DateTime.Today ");
+            //sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+
+            //cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
+            //cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+
+
+            sql.Append("ORDER BY BillReceive.DueDate ASC;");
+
+            cmm.CommandText = sql.ToString();
+
+            MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
+
+            while (dr.Read())
+            {
+
+                DateTime? auxPayDay = null;
+
+                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
+                    auxPayDay = (DateTime)dr["PayDay"];
+
+                BillReceive bill = new BillReceive(
+                        (int)dr["Id"],
+                        (DateTime)dr["CreateDate"],
+                        (int)dr["TravelPackageId"],
+                        (decimal)dr["Amount"],
+                        (decimal)dr["AmountReceived"],
+                        (string)dr["Concerning"],
+                        (DateTime)dr["DueDate"],
+                        auxPayDay,
+                        dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
+
+                bill.SetCustomerName((string)dr["Name"]);
+
+                bills.Add(bill);
+            }
+
+            dr.Close();
+
+            return bills;
+
+        }
+        
+        public List<BillReceive> GetToWinBills()
+        {
+            StringBuilder sql = new StringBuilder();
+            MySqlConn ctx = MySqlConn.GetInstancia();
+            List<BillReceive> bills = new List<BillReceive>();
+            MySqlCommand cmm = new MySqlCommand();
+
+            sql.Append("SELECT BillReceive.Id, ");
+            sql.Append("BillReceive.TravelPackageId, ");
+            sql.Append("BillReceive.Amount, ");
+            sql.Append("BillReceive.AmountReceived, ");
+            sql.Append("BillReceive.Concerning, ");
+            sql.Append("BillReceive.CreateDate, ");
+            sql.Append("BillReceive.DueDate, ");
+            sql.Append("BillReceive.PayDay, ");
+            sql.Append("BillReceive.Comments, ");
+            sql.Append("Customer.Name ");
+            sql.Append("FROM BillReceive ");
+            sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
+            sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");            
+
+            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate >= DateTime.Today ");
+            //sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+
+            //cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
+            //cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+
+
+            sql.Append("ORDER BY BillReceive.DueDate ASC;");
+
+            cmm.CommandText = sql.ToString();
+
+            MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
+
+            while (dr.Read())
+            {
+
+                DateTime? auxPayDay = null;
+
+                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
+                    auxPayDay = (DateTime)dr["PayDay"];
+
+                BillReceive bill = new BillReceive(
+                        (int)dr["Id"],
+                        (DateTime)dr["CreateDate"],
+                        (int)dr["TravelPackageId"],
+                        (decimal)dr["Amount"],
+                        (decimal)dr["AmountReceived"],
+                        (string)dr["Concerning"],
+                        (DateTime)dr["DueDate"],
+                        auxPayDay,
+                        dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
+
+                bill.SetCustomerName((string)dr["Name"]);
+
+                bills.Add(bill);
+            }
+
+            dr.Close();
+
+            return bills;
+        }
+
+        public List<BillReceive> GetWinningTodayBills()
+        {
+            StringBuilder sql = new StringBuilder();
+            MySqlConn ctx = MySqlConn.GetInstancia();
+            List<BillReceive> bills = new List<BillReceive>();
+            MySqlCommand cmm = new MySqlCommand();
+
+            sql.Append("SELECT BillReceive.Id, ");
+            sql.Append("BillReceive.TravelPackageId, ");
+            sql.Append("BillReceive.Amount, ");
+            sql.Append("BillReceive.AmountReceived, ");
+            sql.Append("BillReceive.Concerning, ");
+            sql.Append("BillReceive.CreateDate, ");
+            sql.Append("BillReceive.DueDate, ");
+            sql.Append("BillReceive.PayDay, ");
+            sql.Append("BillReceive.Comments, ");
+            sql.Append("Customer.Name ");
+            sql.Append("FROM BillReceive ");
+            sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
+            sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
+
+            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate = DateTime.Today ");
+            //sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+
+            //cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
+            //cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+
+
+            sql.Append("ORDER BY BillReceive.DueDate ASC;");
+
+            cmm.CommandText = sql.ToString();
+
+            MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
+
+            while (dr.Read())
+            {
+
+                DateTime? auxPayDay = null;
+
+                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
+                    auxPayDay = (DateTime)dr["PayDay"];
+
+                BillReceive bill = new BillReceive(
+                        (int)dr["Id"],
+                        (DateTime)dr["CreateDate"],
+                        (int)dr["TravelPackageId"],
+                        (decimal)dr["Amount"],
+                        (decimal)dr["AmountReceived"],
+                        (string)dr["Concerning"],
+                        (DateTime)dr["DueDate"],
+                        auxPayDay,
+                        dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
+
+                bill.SetCustomerName((string)dr["Name"]);
+
+                bills.Add(bill);
+            }
+
+            dr.Close();
 
             return bills;
         }
@@ -290,13 +512,7 @@ namespace VMCTur.Infra.Repositories
             MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
 
             while (dr.Read())
-            {
-
-                //DateTime? auxPayDay = null;
-
-                //if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
-                //    auxPayDay = (DateTime)dr["PayDay"];
-
+            {               
                 BillReceive bill = new BillReceive(
                         (int)dr["Id"],
                         (DateTime)dr["CreateDate"],
@@ -313,6 +529,8 @@ namespace VMCTur.Infra.Repositories
                 bills.Add(bill);
             }
 
+            dr.Close();
+
             return bills;
         }
 
@@ -320,5 +538,67 @@ namespace VMCTur.Infra.Repositories
         {
             _context.Dispose();
         }
+
+        public List<BillReceive> Get(int skip, int take)
+        {
+            return _context.BillReceives.OrderBy(x => x.DueDate).Skip(skip).Take(take).ToList();
+        }
+
+        /// <summary>
+        /// Smael: get all bills receveds.
+        /// </summary>        
+        /// <returns></returns>
+        //public List<BillReceive> GetReceivedBills()
+        //{
+        //    StringBuilder sql = new StringBuilder();
+        //    MySqlConn ctx = MySqlConn.GetInstancia();
+        //    List<BillReceive> bills = new List<BillReceive>();
+        //    MySqlCommand cmm = new MySqlCommand();
+
+        //    sql.Append("SELECT BillReceive.Id, ");
+        //    sql.Append("BillReceive.TravelPackageId, ");
+        //    sql.Append("BillReceive.Amount, ");
+        //    sql.Append("BillReceive.AmountReceived, ");
+        //    sql.Append("BillReceive.Concerning, ");
+        //    sql.Append("BillReceive.CreateDate, ");
+        //    sql.Append("BillReceive.DueDate, ");
+        //    sql.Append("BillReceive.PayDay, ");
+        //    sql.Append("BillReceive.Comments, ");
+        //    sql.Append("Customer.Name ");
+        //    sql.Append("FROM BillReceive ");
+        //    sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
+        //    sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
+
+        //    sql.Append("WHERE BillReceive.PayDay IS NOT NULL ");
+
+        //    sql.Append("ORDER BY BillReceive.PayDay DESC;");
+
+        //    cmm.CommandText = sql.ToString();
+
+        //    MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
+
+        //    while (dr.Read())
+        //    {
+
+        //        BillReceive bill = new BillReceive(
+        //                (int)dr["Id"],
+        //                (DateTime)dr["CreateDate"],
+        //                (int)dr["TravelPackageId"],
+        //                (decimal)dr["Amount"],
+        //                (decimal)dr["AmountReceived"],
+        //                (string)dr["Concerning"],
+        //                (DateTime)dr["DueDate"],
+        //                (DateTime)dr["PayDay"],
+        //                dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
+
+        //        bill.SetCustomerName((string)dr["Name"]);
+
+        //        bills.Add(bill);
+        //    }
+
+        //    dr.Close();
+
+        //    return bills;
+        //}
     }
 }

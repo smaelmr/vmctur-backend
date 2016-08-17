@@ -218,9 +218,9 @@ namespace VMCTur.Api.Controllers
         /// <returns></returns>
         [Authorize]
         [HttpGet]
-        [Route("getrecevedbillsperiod")]
+        [Route("getrecevedbills")]
         [DeflateCompression]
-        public Task<HttpResponseMessage> GetReceivedBills(DateTime startPeriod, DateTime finishPeriod)
+        public Task<HttpResponseMessage> GetRecevedBills(DateTime startPeriod, DateTime finishPeriod)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
@@ -240,20 +240,132 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Busca todas as contas recebidas.
+        /// Smael: lista todas as contas independente de status conforme o período informado.
         /// </summary>
+        /// <param name="startPeriod"></param>
+        /// <param name="finishPeriod"></param>
         /// <returns></returns>
         [Authorize]
         [HttpGet]
-        [Route("getrecevedbills")]
-        [DeflateCompression]        
-        public Task<HttpResponseMessage> GetReceivedBills()
+        [Route("getall")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> GetAll(DateTime startPeriod, DateTime finishPeriod)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                var result = _service.GetReceivedBills();
+                var result = _service.GetAll(startPeriod, finishPeriod);
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Smael: lista as contas vencendo hoje.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("getwinningtodaybills")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> GetWinningTodayBills()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetWinningTodayBills();
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Smael: lista as contas a vencer.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("gettowinbills")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> GetToWinBills()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetToWinBills();
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Smael: lista as contas vencidas.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("getoverduebills")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> GetOverdueBills()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetOverdueBills();
+                response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+
+        /// <summary>
+        /// Smael: listas as contas em aberto (que ainda não foram pagas independente de estarem vencidas ou não) conforme periodo informado.
+        /// </summary>
+        /// <param name="startPeriod"></param>
+        /// <param name="finishPeriod"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("getopenbills")]
+        [DeflateCompression]
+        public Task<HttpResponseMessage> GetOpenBills(DateTime startPeriod, DateTime finishPeriod)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var result = _service.GetOpenBills(startPeriod, finishPeriod);
                 response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
