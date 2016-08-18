@@ -71,19 +71,19 @@ namespace VMCTur.Infra.Repositories
             cmm.Parameters.Add("@QuantityEderly", MySqlDbType.Int32).Value = package.QuantityEderly;
 
             if (package.ArrivalDate.HasValue)
-                cmm.Parameters.Add("ArrivalDate", MySqlDbType.DateTime).Value = package.ArrivalDate.Value;
+                cmm.Parameters.Add("@ArrivalDate", MySqlDbType.DateTime).Value = package.ArrivalDate.Value;
             else
-                cmm.Parameters.Add("ArrivalDate", MySqlDbType.DateTime);
+                cmm.Parameters.Add("@ArrivalDate", MySqlDbType.DateTime);
 
             if (package.LeaveDate.HasValue)
-                cmm.Parameters.Add("LeaveDate", MySqlDbType.DateTime).Value = package.LeaveDate.Value;
+                cmm.Parameters.Add("@LeaveDate", MySqlDbType.DateTime).Value = package.LeaveDate.Value;
             else
-                cmm.Parameters.Add("LeaveDate", MySqlDbType.DateTime);
+                cmm.Parameters.Add("@LeaveDate", MySqlDbType.DateTime);
 
-            cmm.Parameters.Add("DescServices", MySqlDbType.Text).Value = package.DescServices;
-            cmm.Parameters.Add("PayForms", MySqlDbType.Text).Value = package.PayForms;
-            cmm.Parameters.Add("AmountForAdult", MySqlDbType.Decimal).Value = package.AmountForAdult;
-            cmm.Parameters.Add("AmountForEderly", MySqlDbType.Decimal).Value = package.AmountForEderly;
+            cmm.Parameters.Add("@DescServices", MySqlDbType.Text).Value = package.DescServices;
+            cmm.Parameters.Add("@PayForms", MySqlDbType.Text).Value = package.PayForms;
+            cmm.Parameters.Add("@AmountForAdult", MySqlDbType.Decimal).Value = package.AmountForAdult;
+            cmm.Parameters.Add("@AmountForEderly", MySqlDbType.Decimal).Value = package.AmountForEderly;
             cmm.Parameters.Add("AmountForChild", MySqlDbType.Decimal).Value = package.AmountForChild;
 
             cmm.Parameters.Add("@Id", MySqlDbType.Int32).Value = packageOld.Id;
