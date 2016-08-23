@@ -33,13 +33,13 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public int QuantityAdult { get; private set; }
         public int QuantityChild { get; private set; }
-        public int QuantityEderly { get; private set; }
+        public int QuantityElderly { get; private set; }
 
         public DateTime? ArrivalDate { get; private set; }
         public DateTime? LeaveDate { get; private set; }
 
         public decimal AmountForAdult { get; private set; }
-        public decimal AmountForEderly { get; private set; }
+        public decimal AmountForElderly { get; private set; }
         public decimal AmountForChild { get; private set; }
 
         public string DescServices { get; private set; }
@@ -63,7 +63,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants,
                              List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
                              decimal totalAmount, string addictionalReservs, string comments, DateTime? arrivalDate, 
-                             DateTime? leaveDate, decimal amountForAdult, decimal amountForEderly, decimal amountForChild, 
+                             DateTime? leaveDate, decimal amountForAdult, decimal amountForElderly, decimal amountForChild, 
                              string descServices, string payForms, DateTime creationDate)
         {
             Id = id;
@@ -83,7 +83,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             LeaveDate = leaveDate;
 
             AmountForAdult = amountForAdult;
-            AmountForEderly = amountForEderly;
+            AmountForElderly = amountForElderly;
             AmountForChild = amountForChild;
             DescServices = descServices;
             PayForms = payForms;
@@ -93,7 +93,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
                              Customer customer, List<TravelPackageParticipant> participants, List<TravelPackageTour> tours, List<BillReceive> bills, 
                              string host, int quantityTickets, decimal totalAmount, string addictionalReservs, 
                              string comments, DateTime? arrivalDate, DateTime? leaveDate, decimal amountForAdult, 
-                             decimal amountForEderly, decimal amountForChild, string descServices, string payForms)
+                             decimal amountForElderly, decimal amountForChild, string descServices, string payForms)
         {
             Id = id;
             CompanyId = companyId;
@@ -113,7 +113,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
             LeaveDate = leaveDate;
 
             AmountForAdult = amountForAdult;
-            AmountForEderly = amountForEderly;
+            AmountForElderly = amountForElderly;
             AmountForChild = amountForChild;
             DescServices = descServices;
             PayForms = payForms;
@@ -141,7 +141,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
                     QuantityChild++;
                     break;
                 case Domain.Enums.AgeGroup.Idoso:
-                    QuantityEderly++;
+                    QuantityElderly++;
                     break;
                 default:
                     QuantityAdult++;

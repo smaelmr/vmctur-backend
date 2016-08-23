@@ -42,7 +42,7 @@ namespace VMCTur.Bussiness.Services
                                         travelPackageCreate.Host, travelPackageCreate.QuantityTickets, travelPackageCreate.TotalAmount, 
                                         travelPackageCreate.AddictionalReservs, travelPackageCreate.Comments,
                                         travelPackageCreate.ArrivalDate, travelPackageCreate.LeaveDate, travelPackageCreate.AmountForAdult,
-                                        travelPackageCreate.AmountForEderly, travelPackageCreate.AmountForChild, travelPackageCreate.DescServices,
+                                        travelPackageCreate.AmountForElderly, travelPackageCreate.AmountForChild, travelPackageCreate.DescServices,
                                         travelPackageCreate.PayForms, DateTime.Now);
 
             foreach (CreateParticipantCommand p in travelPackageCreate.Participants)
@@ -78,9 +78,9 @@ namespace VMCTur.Bussiness.Services
                                            new List<TravelPackageParticipant>(), new List<TravelPackageTour>(), new List<BillReceive>(),
                                            travelPackageUpdate.Host, travelPackageUpdate.QuantityTickets, travelPackageUpdate.TotalAmount, 
                                            travelPackageUpdate.AddictionalReservs, travelPackageUpdate.Comments,
-                                           travelPackageUpdate.ArrivalDate, travelPackageUpdate.LeaveDate, travelPackageUpdate.AmountForAdult,
-                                           travelPackageUpdate.AmountForEderly, travelPackageUpdate.AmountForChild, travelPackageUpdate.DescServices,
-                                           travelPackageUpdate.PayForms, packageOld.CreationDate);
+                                           travelPackageUpdate.ArrivalDate, travelPackageUpdate.LeaveDate, 
+                                           travelPackageUpdate.AmountForAdult, travelPackageUpdate.AmountForElderly, travelPackageUpdate.AmountForChild, 
+                                           travelPackageUpdate.DescServices, travelPackageUpdate.PayForms, packageOld.CreationDate);
             #region Participants
 
             foreach (UpdateParticipantCommand p in travelPackageUpdate.Participants)

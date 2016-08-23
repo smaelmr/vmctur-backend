@@ -27,7 +27,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public DateTime? LeaveDate { get; set; }
 
         public decimal AmountForAdult { get; set; }
-        public decimal AmountForEderly { get; set; }
+        public decimal AmountForElderly { get; set; }
         public decimal AmountForChild { get; set; }
 
         public string DescServices { get; set; }

@@ -45,14 +45,14 @@ namespace VMCTur.Infra.Repositories
             sql.Append("TotalAmount = @TotalAmount, ");
             sql.Append("QuantityChild = @QuantityChild, ");
             sql.Append("QuantityAdult = @QuantityAdult, ");
-            sql.Append("QuantityEderly = @QuantityEderly, ");
+            sql.Append("QuantityElderly = @QuantityElderly, ");
 
             sql.Append("ArrivalDate = @ArrivalDate, ");
             sql.Append("LeaveDate = @LeaveDate, ");
             sql.Append("DescServices = @DescServices, ");
             sql.Append("PayForms = @PayForms, ");
             sql.Append("AmountForAdult = @AmountForAdult, ");
-            sql.Append("AmountForEderly = @AmountForEderly, ");
+            sql.Append("AmountForElderly = @AmountForElderly, ");
             sql.Append("AmountForChild = @AmountForChild ");
 
             sql.Append("WHERE Id = @Id; ");
@@ -68,7 +68,7 @@ namespace VMCTur.Infra.Repositories
 
             cmm.Parameters.Add("@QuantityChild", MySqlDbType.Int32).Value = package.QuantityChild;
             cmm.Parameters.Add("@QuantityAdult", MySqlDbType.Int32).Value = package.QuantityAdult;
-            cmm.Parameters.Add("@QuantityEderly", MySqlDbType.Int32).Value = package.QuantityEderly;
+            cmm.Parameters.Add("@QuantityElderly", MySqlDbType.Int32).Value = package.QuantityElderly;
 
             if (package.ArrivalDate.HasValue)
                 cmm.Parameters.Add("@ArrivalDate", MySqlDbType.DateTime).Value = package.ArrivalDate.Value;
@@ -83,7 +83,7 @@ namespace VMCTur.Infra.Repositories
             cmm.Parameters.Add("@DescServices", MySqlDbType.Text).Value = package.DescServices;
             cmm.Parameters.Add("@PayForms", MySqlDbType.Text).Value = package.PayForms;
             cmm.Parameters.Add("@AmountForAdult", MySqlDbType.Decimal).Value = package.AmountForAdult;
-            cmm.Parameters.Add("@AmountForEderly", MySqlDbType.Decimal).Value = package.AmountForEderly;
+            cmm.Parameters.Add("@AmountForElderly", MySqlDbType.Decimal).Value = package.AmountForElderly;
             cmm.Parameters.Add("AmountForChild", MySqlDbType.Decimal).Value = package.AmountForChild;
 
             cmm.Parameters.Add("@Id", MySqlDbType.Int32).Value = packageOld.Id;
@@ -425,7 +425,7 @@ namespace VMCTur.Infra.Repositories
             sql.Append("TravelPackage.DescServices, ");
             sql.Append("TravelPackage.PayForms, ");
             sql.Append("TravelPackage.AmountForAdult, ");
-            sql.Append("TravelPackage.AmountForEderly, ");
+            sql.Append("TravelPackage.AmountForElderly, ");
             sql.Append("TravelPackage.AmountForChild, ");
             sql.Append("Customer.Name ");
             sql.Append("FROM TravelPackage ");
@@ -481,7 +481,7 @@ namespace VMCTur.Infra.Repositories
                     auxArrivalDate,
                     auxLeaveDate,
                     (decimal)dr["AmountForAdult"],
-                    (decimal)dr["AmountForEderly"],
+                    (decimal)dr["AmountForElderly"],
                     (decimal)dr["AmountForChild"],
                     dr.IsDBNull(dr.GetOrdinal("DescServices")) ? "" : (string)dr["DescServices"],
                     dr.IsDBNull(dr.GetOrdinal("PayForms")) ? "" : (string)dr["PayForms"]));

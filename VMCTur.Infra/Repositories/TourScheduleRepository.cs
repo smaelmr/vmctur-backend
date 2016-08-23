@@ -39,7 +39,7 @@ namespace VMCTur.Infra.Repositories
                                                 Shared = it.Shared,
                                                 QuantityAdult = travelPackage.QuantityAdult,
                                                 QuantityChild = travelPackage.QuantityChild,
-                                                QuantityEderly = travelPackage.QuantityEderly
+                                                QuantityElderly = travelPackage.QuantityElderly
 
         }).ToList();
 
@@ -73,7 +73,7 @@ namespace VMCTur.Infra.Repositories
                                                 Shared = it.Shared,
                                                 QuantityAdult = travelPackage.QuantityAdult,
                                                 QuantityChild = travelPackage.QuantityChild,
-                                                QuantityEderly = travelPackage.QuantityEderly
+                                                QuantityElderly = travelPackage.QuantityElderly
                                             }).ToList();
 
             return schedules;
@@ -104,7 +104,7 @@ namespace VMCTur.Infra.Repositories
                                                 Shared = it.Shared,
                                                 QuantityAdult = travelPackage.QuantityAdult,
                                                 QuantityChild = travelPackage.QuantityChild,
-                                                QuantityEderly = travelPackage.QuantityEderly
+                                                QuantityElderly = travelPackage.QuantityElderly
                                             }).ToList();
 
             return schedules;

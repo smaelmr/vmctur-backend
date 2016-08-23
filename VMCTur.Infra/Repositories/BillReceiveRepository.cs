@@ -240,7 +240,7 @@ namespace VMCTur.Infra.Repositories
             sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
 
             sql.Append("WHERE BillReceive.PayDay IS NULL ");
-            sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+            sql.Append("AND BillReceive.DueDate BETWEEN @startPeriod AND @finishPeriod ");
 
             cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
             cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
@@ -303,11 +303,9 @@ namespace VMCTur.Infra.Repositories
             sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
             sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
 
-            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate < DateTime.Today ");
-            //sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate < @today ");
 
-            //cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
-            //cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+            cmm.Parameters.Add("@today", MySqlDbType.DateTime).Value = DateTime.Today;
 
 
             sql.Append("ORDER BY BillReceive.DueDate ASC;");
@@ -367,11 +365,9 @@ namespace VMCTur.Infra.Repositories
             sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
             sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");            
 
-            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate >= DateTime.Today ");
-            //sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
+            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate >= @today ");
 
-            //cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
-            //cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+            cmm.Parameters.Add("@today", MySqlDbType.DateTime).Value = DateTime.Today;
 
 
             sql.Append("ORDER BY BillReceive.DueDate ASC;");
@@ -430,11 +426,9 @@ namespace VMCTur.Infra.Repositories
             sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
             sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
 
-            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate = DateTime.Today ");
-            //sql.Append("AND BillReceive.PayDay BETWEEN @startPeriod AND @finishPeriod ");
-
-            //cmm.Parameters.Add("@startPeriod", MySqlDbType.DateTime).Value = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
-            //cmm.Parameters.Add("@finishPeriod", MySqlDbType.DateTime).Value = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate = @today ");
+            
+            cmm.Parameters.Add("@today", MySqlDbType.DateTime).Value = DateTime.Today;            
 
 
             sql.Append("ORDER BY BillReceive.DueDate ASC;");
