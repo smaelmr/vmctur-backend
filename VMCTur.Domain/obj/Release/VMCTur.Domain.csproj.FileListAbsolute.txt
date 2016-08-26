@@ -30,3 +30,11 @@ C:\Users\smael\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Release\pt-BR\VMCTu
 C:\Users\smael\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Release\VMCTur.Domain.csprojResolveAssemblyReference.cache
 C:\Users\smael\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Release\VMCTur.Domain.dll
 C:\Users\smael\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Release\VMCTur.Domain.pdb
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Release\VMCTur.Domain.dll
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Release\VMCTur.Domain.pdb
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Release\VMCTur.Common.dll
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Release\VMCTur.Common.pdb
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\bin\Release\pt-BR\VMCTur.Common.resources.dll
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Release\VMCTur.Domain.csprojResolveAssemblyReference.cache
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Release\VMCTur.Domain.dll
+C:\Users\smunari\Documents\Source\Repos\vmctur-backend\VMCTur.Domain\obj\Release\VMCTur.Domain.pdb

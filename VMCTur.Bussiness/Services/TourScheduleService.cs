@@ -20,7 +20,10 @@ namespace VMCTur.Bussiness.Services
 
         public List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod)
         {
-            return _repository.Get(startPeriod, finishPeriod);
+            DateTime start = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
+            DateTime finish = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
+
+            return _repository.Get(start, finish);
         }
         
         public List<TourSchedule> GetNextSevenDays()
