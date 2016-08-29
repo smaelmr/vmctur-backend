@@ -9,7 +9,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Create
         public string NumberDocument { get; set; }
         public DateTime? BirthDate { get; set; }
         public string AgeGroupBelong { get; set; }
-        public bool Paying { get; private set; }
+        public bool Paying { get; set; }
         public int TravelPackageId { get; set; }        
     }
 }

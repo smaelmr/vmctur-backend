@@ -56,7 +56,7 @@ namespace VMCTur.Bussiness.Services
         {
             BillReceive b = _repository.Get(bill.Id);
 
-            b.Receipt(bill.PayDay, bill.AmountReceived);
+            b.Receipt(bill.PayDay, bill.AmountReceived, bill.Comments);
 
             b.Validate();
 

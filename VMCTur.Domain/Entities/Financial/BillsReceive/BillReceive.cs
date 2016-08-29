@@ -70,10 +70,11 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
 
         #region Methods
 
-        public void Receipt(DateTime payDay, decimal amountReceived)
+        public void Receipt(DateTime payDay, decimal amountReceived, string comments)
         {
             PayDay = payDay;
             AmountReceived = amountReceived;
+            Comments = comments;
         }
 
         private BillStatus GetStatus()

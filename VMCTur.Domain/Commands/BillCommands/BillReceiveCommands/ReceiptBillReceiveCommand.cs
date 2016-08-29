@@ -11,5 +11,7 @@ namespace VMCTur.Domain.Commands.BillCommands.BillReceiveCommands
         public int Id { get; set; }
         public DateTime PayDay { get; set; }
         public decimal AmountReceived { get; set; }
+        public string Comments { get; set; }
+
     }
 }

@@ -123,6 +123,8 @@ namespace VMCTur.Infra.Repositories
                     sqlU.Append("SET ");
                     sqlU.Append("Name = @Name, ");
                     sqlU.Append("NumberDocument = @NumberDocument, ");
+                    sqlU.Append("Paying = @Paying, ");
+                    sqlU.Append("AgeGroupBelong = @AgeGroupBelong, ");
                     sqlU.Append("BirthDate = @BirthDate ");
                     sqlU.Append("WHERE Id = @Id;");
 
@@ -130,6 +132,8 @@ namespace VMCTur.Infra.Repositories
 
                     cmmU.Parameters.Add("@Name", MySqlDbType.VarChar).Value = x.Name;
                     cmmU.Parameters.Add("@NumberDocument", MySqlDbType.VarChar).Value = x.NumberDocument;
+                    cmmU.Parameters.Add("@Paying", MySqlDbType.Int16).Value = x.Paying;
+                    cmmU.Parameters.Add("@AgeGroupBelong", MySqlDbType.Int32).Value = (int)x.AgeGroupBelong;
                     cmmU.Parameters.Add("@BirthDate", MySqlDbType.Date).Value = x.BirthDate;
 
                     cmmU.Parameters.Add("@Id", MySqlDbType.Int32).Value = x.Id;
