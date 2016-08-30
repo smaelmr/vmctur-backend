@@ -24,7 +24,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public List<BillReceive> Bills { get; private set; }
 
         public string Host { get; private set; }
-        public int QuantityTickets { get; private set; }
+        //public int QuantityTickets { get; private set; }
         
         public decimal TotalAmount { get; private set; }        
 
@@ -61,7 +61,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public TravelPackage() { }
 
         public TravelPackage(int id, int companyId, int customerId, List<TravelPackageParticipant> participants,
-                             List<TravelPackageTour> tours, List<BillReceive> bills, string host, int quantityTickets,
+                             List<TravelPackageTour> tours, List<BillReceive> bills, string host,
                              decimal totalAmount, string addictionalReservs, string comments, DateTime? arrivalDate, 
                              DateTime? leaveDate, decimal amountForAdult, decimal amountForElderly, decimal amountForChild, 
                              string descServices, string payForms, DateTime creationDate)
@@ -74,7 +74,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
             Tours = tours;
             Bills = bills;
             Host = host;
-            QuantityTickets = quantityTickets;            
             TotalAmount = totalAmount;
             AddictionalReservs = addictionalReservs;
             Comments = comments;
@@ -91,7 +90,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TravelPackage(int id, int companyId, DateTime creationDate, int customerId, 
                              Customer customer, List<TravelPackageParticipant> participants, List<TravelPackageTour> tours, List<BillReceive> bills, 
-                             string host, int quantityTickets, decimal totalAmount, string addictionalReservs, 
+                             string host, decimal totalAmount, string addictionalReservs, 
                              string comments, DateTime? arrivalDate, DateTime? leaveDate, decimal amountForAdult, 
                              decimal amountForElderly, decimal amountForChild, string descServices, string payForms)
         {
@@ -104,7 +103,6 @@ namespace VMCTur.Domain.Entities.TravelPackages
             Tours = tours;
             Bills = bills;
             Host = host;
-            QuantityTickets = quantityTickets;            
             TotalAmount = totalAmount;
             AddictionalReservs = addictionalReservs;
             Comments = comments;

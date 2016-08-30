@@ -7,6 +7,8 @@ using VMCTur.Domain.Entities.Users;
 using VMCTur.Domain.Entities.Vehicles;
 using VMCTur.Infra.Data.Map;
 using VMCTur.Domain.Entities.Financial.BillsReceive;
+using VMCTur.Domain.Entities.Financial.BillsPay;
+using VMCTur.Domain.Entities.Reservations;
 
 namespace VMCTur.Infra.Data
 {
@@ -27,8 +29,10 @@ namespace VMCTur.Infra.Data
         public DbSet<Tour> Tours { get; set; }
         public DbSet<TravelPackage> TravelPackages { get; set; }
         public DbSet<BillReceive> BillReceives { get; set; }
+        public DbSet<BillPay> BillPays { get; set; }
         public DbSet<TravelPackageTour> TravelPackageTours { get; set; }
         public DbSet<TravelPackageParticipant> TravelPackageParticipants { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -41,6 +45,8 @@ namespace VMCTur.Infra.Data
             modelBuilder.Configurations.Add(new TravelPackageTourMap());
             modelBuilder.Configurations.Add(new TravelPackageParticipantMap());
             modelBuilder.Configurations.Add(new BillReceiveMap());
+            modelBuilder.Configurations.Add(new BillPayMap());
+            modelBuilder.Configurations.Add(new ReservationMap());
         }
     }
 }

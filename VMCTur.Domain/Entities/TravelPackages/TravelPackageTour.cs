@@ -76,6 +76,10 @@ namespace VMCTur.Domain.Entities.TravelPackages
             }
         }
 
+        public int QuantityTickets { get; private set; }
+
+        public string ContractNumber { get; private set; }
+
         #endregion
 
         #region Ctor
@@ -84,7 +88,8 @@ namespace VMCTur.Domain.Entities.TravelPackages
         { }
 
         public TravelPackageTour(int id, int tourId, int travelPackageId, DateTime dateHourStart, 
-                                 string comments, bool shared, int vehicleUsedId, int guideTourId)
+                                 string comments, bool shared, int vehicleUsedId, int guideTourId,
+                                 int quantityTickets, string contractNumber)
         {
             Id = id;
             TourId = tourId;
@@ -94,6 +99,9 @@ namespace VMCTur.Domain.Entities.TravelPackages
             Shared = shared;
             VehicleUsedId = vehicleUsedId;
             GuideTourId = guideTourId;
+            QuantityTickets = quantityTickets;
+            ContractNumber = contractNumber;
+
         }
 
         #endregion
@@ -102,7 +110,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public void Validate()
         {            
-            AssertionConcern.AssertIsGreaterThan(this.TourId, 0, "O passeio deve ser informado.");
+            AssertionConcern.AssertIsGreaterThan(TourId, 0, "O passeio deve ser informado.");
             AssertionConcern.AssertIsGreaterThan(VehicleUsedId, 0, "Veículo inválido.");
             AssertionConcern.AssertIsGreaterThan(GuideTourId, 0, "Guia inválido.");
             //AssertionConcern.AssertIsGreaterThan(this.TravelPackageId, 0, "O pacote deve ser informado.");

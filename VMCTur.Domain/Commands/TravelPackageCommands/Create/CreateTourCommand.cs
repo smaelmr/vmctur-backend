@@ -12,5 +12,7 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Create
         public int TravelPackageId { get; set; }
         public string Comments { get; set; } 
         public bool Shared { get; set; }
+        public int QuantityTickets { get; set; }
+        public string ContractNumber { get; set; }
     }
 }

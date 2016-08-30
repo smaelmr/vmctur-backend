@@ -67,7 +67,9 @@
   <ItemGroup>
     <Compile Include="Conn\MySqlConn.cs" />
     <Compile Include="Data\AppDataContext.cs" />
+    <Compile Include="Data\Map\BillPayMap.cs" />
     <Compile Include="Data\Map\BillReceiveMap.cs" />
+    <Compile Include="Data\Map\ReservationMap.cs" />
     <Compile Include="Data\Map\TravelPackageParticipantMap.cs" />
     <Compile Include="Data\Map\TravelPackageTourMap.cs" />
     <Compile Include="Data\Map\TravelPackageMap.cs" />
@@ -78,7 +80,9 @@
     <Compile Include="Data\Map\VehicleMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BillPayRepository.cs" />
     <Compile Include="Repositories\BillReceiveRepository.cs" />
+    <Compile Include="Repositories\ReservationRepository.cs" />
     <Compile Include="Repositories\TourGuideRepository.cs" />
     <Compile Include="Repositories\TourRepository.cs" />
     <Compile Include="Repositories\TourScheduleRepository.cs" />

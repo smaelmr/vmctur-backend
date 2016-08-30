@@ -43,9 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BillCommands\BillPayCommands\CreateBillPayCommand.cs" />
+    <Compile Include="Commands\BillCommands\BillPayCommands\ReceiptBillPayCommand.cs" />
+    <Compile Include="Commands\BillCommands\BillPayCommands\UpdateBillPayCommand.cs" />
     <Compile Include="Commands\BillCommands\BillReceiveCommands\CreateBillReceiveCommand.cs" />
     <Compile Include="Commands\BillCommands\BillReceiveCommands\ReceiptBillReceiveCommand.cs" />
     <Compile Include="Commands\BillCommands\BillReceiveCommands\UpdateBillReceiveCommand.cs" />
+    <Compile Include="Commands\ReservationCommands\CreateReservationCommand.cs" />
+    <Compile Include="Commands\ReservationCommands\UpdateReservationCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTravelPackageCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateParticipantCommand.cs" />
     <Compile Include="Commands\TravelPackageCommands\Create\CreateTourCommand.cs" />
@@ -54,7 +59,9 @@
     <Compile Include="Commands\TravelPackageCommands\Update\UpdateTravelPackageCommand.cs" />
     <Compile Include="Commands\VehicleCommands\CreateVehicleCommand.cs" />
     <Compile Include="Commands\VehicleCommands\UpdateVehicleCommand.cs" />
+    <Compile Include="Contracts\Repositories\IBillPayRepository.cs" />
     <Compile Include="Contracts\Repositories\IBillReceiveRepository.cs" />
+    <Compile Include="Contracts\Repositories\IReservationRepository.cs" />
     <Compile Include="Contracts\Repositories\ITourScheduleRepository.cs" />
     <Compile Include="Contracts\Repositories\ITravelPackageTourRepository.cs" />
     <Compile Include="Contracts\Repositories\ITravelPackageParticipantRepository.cs" />
@@ -64,6 +71,8 @@
     <Compile Include="Contracts\Repositories\IUserRepository.cs" />
     <Compile Include="Contracts\Repositories\ITourRepository.cs" />
     <Compile Include="Contracts\Repositories\IVehicleRepository.cs" />
+    <Compile Include="Contracts\Services\IBillPayService.cs" />
+    <Compile Include="Contracts\Services\IReservationServices.cs" />
     <Compile Include="Contracts\Services\ITourScheduleService.cs" />
     <Compile Include="Contracts\Services\IBillReceiveService.cs" />
     <Compile Include="Contracts\Services\ITravelPackageService.cs" />

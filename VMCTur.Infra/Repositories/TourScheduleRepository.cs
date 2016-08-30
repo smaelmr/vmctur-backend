@@ -30,8 +30,7 @@ namespace VMCTur.Infra.Repositories
                                             select new TourSchedule()
                                             {
                                                 DateHourTour = it.DateHourStart,
-                                                CustomerName = customer.Name,
-                                                QuantityParticipants = travelPackage.QuantityTickets,
+                                                CustomerName = customer.Name,                                                
                                                 TourNamePasseio = tour.Name,
                                                 TourGuidename = tourGuide.Name,
                                                 VehicleModel = vehicle.Model,
@@ -64,8 +63,7 @@ namespace VMCTur.Infra.Repositories
                                             select new TourSchedule()
                                             {
                                                 DateHourTour = it.DateHourStart,
-                                                CustomerName = customer.Name,
-                                                QuantityParticipants = travelPackage.QuantityTickets,
+                                                CustomerName = customer.Name,                                                
                                                 TourNamePasseio = tour.Name,
                                                 TourGuidename = tourGuide.Name,
                                                 VehicleModel = vehicle.Model,
@@ -95,8 +93,7 @@ namespace VMCTur.Infra.Repositories
                                             select new TourSchedule()
                                             {
                                                 DateHourTour = it.DateHourStart,
-                                                CustomerName = customer.Name,
-                                                QuantityParticipants = travelPackage.QuantityTickets,
+                                                CustomerName = customer.Name,                                                
                                                 TourNamePasseio = tour.Name,
                                                 TourGuidename = tourGuide.Name,
                                                 VehicleModel = vehicle.Model,

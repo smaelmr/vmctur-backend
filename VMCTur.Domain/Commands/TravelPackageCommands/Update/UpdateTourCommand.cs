@@ -13,6 +13,8 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public TimeSpan HourStart { get; set; }
         public string Comments { get; set; }
         public bool Shared { get; set; }
+        public int QuantityTickets { get; set; }
+        public string ContractNumber { get; set; }
 
     }
 }

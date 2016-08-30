@@ -17,7 +17,6 @@ namespace VMCTur.Domain.Commands.TravelPackageCommands.Update
         public List<UpdateBillReceiveCommand> Bills { get; set; }
 
         public string Host { get; set; }
-        public int QuantityTickets { get; set; }
         
         public decimal TotalAmount { get; set; }
         public string AddictionalReservs { get; set; }

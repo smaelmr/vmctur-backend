@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VMCTur.Domain.Entities.Customers;
+using VMCTur.Domain.Entities.Financial.BillsPay;
 
 namespace VMCTur.Domain.Entities.Reservations
 {
@@ -11,6 +13,10 @@ namespace VMCTur.Domain.Entities.Reservations
         #region Properties
 
         public int Id { get; private set; }
+
+        public Customer Customer { get; private set; }
+        public int CustomerId { get; private set; }
+
         public DateTime DateReservation { get; private set; }
         public int QuantityTickets { get; private set; }
         public string DeparturePlace { get; private set; }  //local de partida (Bento ou Carlos Barbosa)
@@ -20,9 +26,34 @@ namespace VMCTur.Domain.Entities.Reservations
         public string ContractNumber { get; private set; }
         public string Status { get; private set; } //(Cancelado, efetivado)
 
-        //DATA SINAL = data que deve ser pago o sinal 
+        public string CustomerName
+        {
+            get
+            {
+                return Customer.Name;
+            }
 
-        //Lista de contas a receber.
+        }
+
+        public List<BillPay> Bills { get; private set; }
+
+        #endregion
+
+        #region Ctor
+
+        public Reservation(int id, Customer customer, int customerId, DateTime dateReservation, int quantityTickets, string departurePlace, string notification, string contractNumber, string status, List<BillPay> bills)
+        {
+            Id = id;
+            Customer = customer;
+            CustomerId = customerId;
+            DateReservation = dateReservation;
+            QuantityTickets = quantityTickets;
+            DeparturePlace = departurePlace;
+            Notification = notification;
+            ContractNumber = contractNumber;
+            Status = status;
+            Bills = bills;
+    }
 
         #endregion
     }

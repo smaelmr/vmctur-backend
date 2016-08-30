@@ -38,8 +38,7 @@ namespace VMCTur.Infra.Repositories
             sql.Append("UPDATE TravelPackage ");
             sql.Append("SET ");
             sql.Append("CustomerId = @CustomerId, ");
-            sql.Append("Host = @Host, ");
-            sql.Append("QuantityTickets = @QuantityTickets, ");            
+            sql.Append("Host = @Host, ");            
             sql.Append("AddictionalReservs = @AddictionalReservs, ");
             sql.Append("Comments = @Comments, ");
             sql.Append("TotalAmount = @TotalAmount, ");
@@ -60,8 +59,7 @@ namespace VMCTur.Infra.Repositories
             MySqlCommand cmm = new MySqlCommand(sql.ToString());
 
             cmm.Parameters.Add("@CustomerId", MySqlDbType.Int32).Value = package.CustomerId;
-            cmm.Parameters.Add("@Host", MySqlDbType.Text).Value = package.Host;
-            cmm.Parameters.Add("@QuantityTickets", MySqlDbType.Int32).Value = package.QuantityTickets;            
+            cmm.Parameters.Add("@Host", MySqlDbType.Text).Value = package.Host;            
             cmm.Parameters.Add("@AddictionalReservs", MySqlDbType.Text).Value = package.AddictionalReservs;
             cmm.Parameters.Add("@Comments", MySqlDbType.Text).Value = package.Comments;
             cmm.Parameters.Add("@TotalAmount", MySqlDbType.Decimal).Value = package.TotalAmount;
@@ -214,7 +212,9 @@ namespace VMCTur.Infra.Repositories
                     sqlU.Append("Comments = @Comments, ");
                     sqlU.Append("VehicleUsedId = @VehicleUsedId, ");
                     sqlU.Append("GuideTourId = @GuideTourId, ");
-                    sqlU.Append("DateHourStart = @DateHourStart ");
+                    sqlU.Append("DateHourStart = @DateHourStart, ");
+                    sqlU.Append("QuantityTickets = @QuantityTickets, ");
+                    sqlU.Append("ContractNumber = @ContractNumber ");
                     sqlU.Append("WHERE Id = @Id");
 
                     MySqlCommand cmmU = new MySqlCommand(sqlU.ToString());
@@ -225,6 +225,8 @@ namespace VMCTur.Infra.Repositories
                     cmmU.Parameters.Add("@GuideTourId", MySqlDbType.Int32).Value = x.GuideTourId;
                     cmmU.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
                     cmmU.Parameters.Add("@DateHourStart", MySqlDbType.DateTime).Value = x.DateHourStart;
+                    cmmU.Parameters.Add("@QuantityTickets", MySqlDbType.Int32).Value = x.QuantityTickets;
+                    cmmU.Parameters.Add("@ContractNumber", MySqlDbType.Text).Value = x.ContractNumber;
 
                     cmmU.Parameters.Add("@Id", MySqlDbType.Int32).Value = x.Id;
 
@@ -248,6 +250,8 @@ namespace VMCTur.Infra.Repositories
                     sqlI.Append("Comments, ");
                     sqlI.Append("VehicleUsedId, ");
                     sqlI.Append("GuideTourId, ");
+                    sqlI.Append("QuantityTickets, ");
+                    sqlI.Append("ContractNumber, ");
                     sqlI.Append("DateHourStart) ");
                     sqlI.Append("VALUES (");
                     sqlI.Append("@TourId, ");
@@ -255,7 +259,9 @@ namespace VMCTur.Infra.Repositories
                     sqlI.Append("@Shared, ");
                     sqlI.Append("@Comments, ");
                     sqlI.Append("@VehicleUsedId, ");
-                    sqlI.Append("@GuideTourId, ");                    
+                    sqlI.Append("@GuideTourId, ");
+                    sqlI.Append("@QuantityTickets, ");
+                    sqlI.Append("@ContractNumber, ");
                     sqlI.Append("@DateHourStart); ");
 
                     MySqlCommand cmmI = new MySqlCommand(sqlI.ToString());
@@ -266,6 +272,8 @@ namespace VMCTur.Infra.Repositories
                     cmmI.Parameters.Add("@VehicleUsedId", MySqlDbType.Int32).Value = x.VehicleUsedId;
                     cmmI.Parameters.Add("@GuideTourId", MySqlDbType.Int32).Value = x.GuideTourId;
                     cmmI.Parameters.Add("@Comments", MySqlDbType.Text).Value = x.Comments;
+                    cmmI.Parameters.Add("@QuantityTickets", MySqlDbType.Int32).Value = x.QuantityTickets;
+                    cmmI.Parameters.Add("@ContractNumber", MySqlDbType.Text).Value = x.ContractNumber;
 
                     cmmI.Parameters.Add("@TravelPackageId", MySqlDbType.Int32).Value = x.TravelPackageId;
 
@@ -420,7 +428,6 @@ namespace VMCTur.Infra.Repositories
             sql.Append("TravelPackage.CreationDate, ");
             sql.Append("TravelPackage.CustomerId, ");
             sql.Append("TravelPackage.Host, ");
-            sql.Append("TravelPackage.QuantityTickets, ");            
             sql.Append("TravelPackage.AddictionalReservs, ");
             sql.Append("TravelPackage.Comments, ");
             sql.Append("TravelPackage.TotalAmount, ");
@@ -477,8 +484,7 @@ namespace VMCTur.Infra.Repositories
                     new List<TravelPackageParticipant>(),
                     new List<TravelPackageTour>(),
                     new List<BillReceive>(),
-                    dr.IsDBNull(dr.GetOrdinal("Host")) ? "" : (string)dr["Host"],
-                    (int)dr["QuantityTickets"],                   
+                    dr.IsDBNull(dr.GetOrdinal("Host")) ? "" : (string)dr["Host"],                    
                     (decimal)dr["TotalAmount"],
                     dr.IsDBNull(dr.GetOrdinal("AddictionalReservs")) ? "" : (string)dr["AddictionalReservs"],
                     dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"],
@@ -583,9 +589,9 @@ namespace VMCTur.Infra.Repositories
                     }
                 }
 
-                decimal amountPerPerson = package.TotalAmount / package.QuantityTickets;
+                decimal amountPerPerson = package.TotalAmount;
 
-                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total por pessoa R$ " + Math.Round(amountPerPerson, 2, MidpointRounding.AwayFromZero) + "(base " + package.QuantityTickets + " pessoas)", fontNormal);
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total por pessoa R$ " + Math.Round(amountPerPerson, 2, MidpointRounding.AwayFromZero) + "(base pessoas)", fontNormal);
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
 
@@ -835,9 +841,9 @@ namespace VMCTur.Infra.Repositories
                     }
                 }
 
-                decimal amountPerPerson = package.TotalAmount / package.QuantityTickets;
+                decimal amountPerPerson = package.TotalAmount;
 
-                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total por pessoa R$ " + Math.Round(amountPerPerson, 2, MidpointRounding.AwayFromZero) + "(base " + package.QuantityTickets + " pessoas)", fontNormal);
+                paragraph = new Paragraph(espacamentoLinhaEmBranco, "Valor total por pessoa R$ " + Math.Round(amountPerPerson, 2, MidpointRounding.AwayFromZero) + "(base pessoas)", fontNormal);
                 paragraph.Alignment = Element.ALIGN_LEFT;
                 document.Add(paragraph);
 
