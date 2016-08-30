@@ -73,7 +73,9 @@
     <Compile Include="Contracts\Services\IUserService.cs" />
     <Compile Include="Contracts\Services\ITourService.cs" />
     <Compile Include="Contracts\Services\IVehicleService.cs" />
+    <Compile Include="Entities\Financial\BillsPay\BillPay.cs" />
     <Compile Include="Entities\Financial\BillsReceive\BillReceive.cs" />
+    <Compile Include="Entities\Reservations\Reservation.cs" />
     <Compile Include="Entities\TourGuide\TourGuide.cs" />
     <Compile Include="Entities\TravelPackages\TourSchedule.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackageTour.cs" />
