@@ -448,7 +448,7 @@ namespace VMCTur.Infra.Repositories
                 cmm.Parameters.Add("@name", MySqlDbType.VarChar).Value = "%" + search + "%";
             }
 
-            sql.Append("ORDER BY TravelPackage.CreationDate DESC;");
+            sql.Append("ORDER BY TravelPackage.ArrivalDate DESC;");
 
             cmm.CommandText = sql.ToString();
 
