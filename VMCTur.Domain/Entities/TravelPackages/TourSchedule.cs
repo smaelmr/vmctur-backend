@@ -23,6 +23,25 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public int QuantityChild { get; set; }
         public int QuantityElderly { get; set; }
 
+        public string QuantityParticipantsDetails
+        {
+            get
+            {
+                string aux = string.Empty;
+
+                if (QuantityAdult > 0)
+                    aux += " Adultos: " + QuantityAdult;
+
+                if (QuantityChild > 0)
+                    aux += " Crianças: " + QuantityChild;
+
+                if (QuantityElderly > 0)
+                    aux += " Idosos: " + QuantityElderly;
+
+                return aux;
+            }
+        }
+
         //Smael: return the color of the day for organize the schedule.
         public string ColorOfDay
         {

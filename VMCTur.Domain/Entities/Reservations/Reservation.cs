@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.Customers;
 using VMCTur.Domain.Entities.Financial.BillsPay;
 
@@ -54,6 +55,22 @@ namespace VMCTur.Domain.Entities.Reservations
             Status = status;
             Bills = bills;
     }
+
+        #endregion
+
+        #region Methods
+
+        public void Validate()
+        {
+            AssertionConcern.AssertIsGreaterThan(CustomerId, 0, "Cliente inválido.");
+        }
+
+        public void AddBillPay(BillPay bill)
+        {
+            bill.Validate();
+
+            Bills.Add(bill);
+        }
 
         #endregion
     }

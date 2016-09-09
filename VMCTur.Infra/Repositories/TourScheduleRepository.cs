@@ -38,9 +38,9 @@ namespace VMCTur.Infra.Repositories
                                                 Shared = it.Shared,
                                                 QuantityAdult = travelPackage.QuantityAdult,
                                                 QuantityChild = travelPackage.QuantityChild,
-                                                QuantityElderly = travelPackage.QuantityElderly
+                                                QuantityElderly = travelPackage.QuantityElderly                                                
 
-        }).ToList();
+                                            }).ToList();
 
             return schedules;
         }

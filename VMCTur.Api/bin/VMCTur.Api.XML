@@ -4,6 +4,85 @@
         <name>VMCTur.Api</name>
     </assembly>
     <members>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.Put(VMCTur.Domain.Commands.BillCommands.BillPayCommands.UpdateBillPayCommand)">
+            <summary>
+            Atualiza os dados da conta.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.Delete(System.Int32)">
+            <summary>
+            Delete conta.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.Receipt(VMCTur.Domain.Commands.BillCommands.BillPayCommands.ReceiptBillPayCommand)">
+            <summary>
+            Faz o recebimento da conta.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetById(System.Int32)">
+            <summary>
+            Busca a conta conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetByRange(System.Int32,System.Int32)">
+            <summary>
+            Busca as contas passando parametros de paginação.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.Get(System.String)">
+            <summary>
+            Busca as contas passando um valor para pesquisa, pesquisando pelo status.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetPaidBills(System.DateTime,System.DateTime)">
+            <summary>
+            Busca as contas recebidas passando um periodo por parametro, filtra pela data de recebimento.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetAll(System.DateTime,System.DateTime)">
+            <summary>
+            Smael: lista todas as contas independente de status conforme o período informado.
+            </summary>
+            <param name="startPeriod"></param>
+            <param name="finishPeriod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetWinningTodayBills">
+            <summary>
+            Smael: lista as contas vencendo hoje.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetToWinBills">
+            <summary>
+            Smael: lista as contas a vencer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetOverdueBills">
+            <summary>
+            Smael: lista as contas vencidas.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.BillPayController.GetOpenBills(System.DateTime,System.DateTime)">
+            <summary>
+            Smael: listas as contas em aberto (que ainda não foram pagas independente de estarem vencidas ou não) conforme periodo informado.
+            </summary>
+            <param name="startPeriod"></param>
+            <param name="finishPeriod"></param>
+            <returns></returns>
+        </member>
         <member name="M:VMCTur.Api.Controllers.BillReceiveController.Put(VMCTur.Domain.Commands.BillCommands.BillReceiveCommands.UpdateBillReceiveCommand)">
             <summary>
             Atualiza os dados da conta.
@@ -119,6 +198,39 @@
         <member name="M:VMCTur.Api.Controllers.CustomerController.Get(System.String)">
             <summary>
             Busca os clientes passando campo para pesquisa, no momento somente pelo nome.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.ReservationController.Post(VMCTur.Domain.Commands.ReservationCommands.CreateReservationCommand)">
+            <summary>
+            Cria uma nova reserva.
+            </summary>
+            <param name="reserve"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.ReservationController.Put(VMCTur.Domain.Commands.ReservationCommands.UpdateReservationCommand)">
+            <summary>
+            Atualiza os dados da reserva.
+            </summary>
+            <param name="reserve"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.ReservationController.Delete(System.Int32)">
+            <summary>
+            Deleta a reserva.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.ReservationController.GetById(System.Int32)">
+            <summary>
+            Busca o pacote conforme id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMCTur.Api.Controllers.ReservationController.Get(System.String)">
+            <summary>
+            Busca as reservas passando campo para pesquisa, no momento somente pelo nome.
             </summary>
             <returns></returns>
         </member>

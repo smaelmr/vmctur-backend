@@ -5,7 +5,7 @@ using VMCTur.Domain.Entities.Reservations;
 
 namespace VMCTur.Domain.Contracts.Services
 {
-    public interface IReservationServices : IDisposable
+    public interface IReservationService : IDisposable
     {
         void Create(CreateReservationCommand reserve);
         void Update(UpdateReservationCommand reserve);

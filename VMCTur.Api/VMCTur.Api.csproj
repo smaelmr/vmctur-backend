@@ -243,8 +243,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BillPayController.cs" />
     <Compile Include="Controllers\BillReceiveController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\TourGuideController.cs" />
     <Compile Include="Controllers\TourScheduleController.cs" />
     <Compile Include="Controllers\TravelPackageController.cs" />
@@ -313,7 +315,9 @@
       <Name>VMCTur.Startup</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Reservation\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

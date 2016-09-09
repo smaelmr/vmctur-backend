@@ -241,7 +241,10 @@ namespace VMCTur.Infra.Repositories
                     null));
             }
 
-            return reserves;
+            if (reserves.Count == 0)
+                return null;
+            else
+                return reserves;
 
         }
 
