@@ -42,6 +42,11 @@ namespace VMCTur.Domain.Entities.Reservations
 
         #region Ctor
 
+        public Reservation()
+        {
+         
+        }
+
         public Reservation(int id, Customer customer, int customerId, DateTime dateReservation, int quantityTickets, string departurePlace, string notification, string contractNumber, string status, List<BillPay> bills)
         {
             Id = id;

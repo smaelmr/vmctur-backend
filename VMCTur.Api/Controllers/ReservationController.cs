@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using VMCTur.Api.Attributes;
-using VMCTur.Bussiness.Services;
 using VMCTur.Domain.Commands.ReservationCommands;
 using VMCTur.Domain.Contracts.Services;
 
@@ -114,7 +110,6 @@ namespace VMCTur.Api.Controllers
         [HttpGet]
         [Route("getbyid")]
         [DeflateCompression]
-        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
         public Task<HttpResponseMessage> GetById(int id)
         {
             HttpResponseMessage response = new HttpResponseMessage();

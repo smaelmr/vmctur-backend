@@ -34,11 +34,17 @@ namespace VMCTur.Startup
             container.RegisterType<IBillReceiveRepository, BillReceiveRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IBillReceiveService, BillReceiveService>(new HierarchicalLifetimeManager());
 
+            container.RegisterType<IBillPayRepository, BillPayRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IBillPayService, BillPayService>(new HierarchicalLifetimeManager());
+
             container.RegisterType<ITourScheduleRepository, TourScheduleRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITourScheduleService, TourScheduleService>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ITravelPackageTourRepository, TravelPackageTourRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITravelPackageParticipantRepository, TravelPackageParticipantRepository>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IReservationRepository, ReservationRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IReservationService, ReservationService>(new HierarchicalLifetimeManager());
 
         }
     

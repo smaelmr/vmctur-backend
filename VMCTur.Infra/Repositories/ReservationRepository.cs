@@ -186,21 +186,21 @@ namespace VMCTur.Infra.Repositories
 
         public List<Reservation> Get(string search)
         {
+
             StringBuilder sql = new StringBuilder();
             MySqlConn ctx = MySqlConn.GetInstancia();
             List<Reservation> reserves = new List<Reservation>();
             MySqlCommand cmm = new MySqlCommand();
 
             sql.Append("SELECT ");
-            sql.Append("Id, ");
-            sql.Append("CustomerId, ");
-            sql.Append("DateReservation, ");
-            sql.Append("QuantityTickets, ");
-            sql.Append("DeparturePlace, ");
-            sql.Append("Notification, ");
-            sql.Append("ContractNumber, ");
-            sql.Append("Status ");
-            sql.Append("FROM Reservation ");
+            sql.Append("Reservation.Id, ");
+            sql.Append("Reservation.CustomerId, ");
+            sql.Append("Reservation.DateReservation, ");
+            sql.Append("Reservation.QuantityTickets, ");
+            sql.Append("Reservation.DeparturePlace, ");
+            sql.Append("Reservation.Notification, ");
+            sql.Append("Reservation.ContractNumber, ");
+            sql.Append("Reservation.Status, ");
             sql.Append("Customer.Name ");
             sql.Append("FROM Reservation ");
             sql.Append("INNER JOIN Customer ON Reservation.CustomerId = Customer.Id ");
@@ -211,7 +211,7 @@ namespace VMCTur.Infra.Repositories
                 cmm.Parameters.Add("@name", MySqlDbType.VarChar).Value = "%" + search + "%";
             }
 
-            sql.Append("ORDER BY TravelPackage.CreationDate DESC;");
+            sql.Append("ORDER BY Reservation.DateReservation DESC;");
 
             cmm.CommandText = sql.ToString();
 
@@ -235,16 +235,15 @@ namespace VMCTur.Infra.Repositories
                     (DateTime)dr["DateReservation"],
                     (int)dr["QuantityTickets"],
                     (string)dr["DeparturePlace"],
-                    (string)dr["notification"],
+                    dr.IsDBNull(dr.GetOrdinal("Notification")) ? "" : (string)dr["Notification"],
                     (string)dr["ContractNumber"],
-                    (string)dr["status"],
+                    (string)dr["Status"],
                     null));
             }
 
-            if (reserves.Count == 0)
-                return null;
-            else
-                return reserves;
+            dr.Close();
+
+            return reserves;
 
         }
 
@@ -255,7 +254,7 @@ namespace VMCTur.Infra.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }
