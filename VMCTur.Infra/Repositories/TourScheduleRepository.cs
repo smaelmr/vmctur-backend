@@ -17,7 +17,9 @@ namespace VMCTur.Infra.Repositories
         }
 
         public List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod)
-        {            
+        {
+            DateTime start = new DateTime(startPeriod.Year, startPeriod.Month, startPeriod.Day, 0, 0, 0);
+            DateTime finish = new DateTime(finishPeriod.Year, finishPeriod.Month, finishPeriod.Day, 23, 59, 59);
 
             List<TourSchedule> schedules = (from it in _context.TravelPackageTours
                                             join travelPackage in _context.TravelPackages on it.TravelPackageId equals travelPackage.Id
@@ -25,7 +27,7 @@ namespace VMCTur.Infra.Repositories
                                             join tourGuide in _context.TourGuides on it.GuideTourId equals tourGuide.Id
                                             join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
                                             join tour in _context.Tours on it.TourId equals tour.Id
-                                            where it.DateHourStart >= startPeriod && it.DateHourStart <= finishPeriod
+                                            where it.DateHourStart >= start && it.DateHourStart <= finish
                                             orderby it.DateHourStart
                                             select new TourSchedule()
                                             {
@@ -58,7 +60,7 @@ namespace VMCTur.Infra.Repositories
                                             join tourGuide in _context.TourGuides on it.GuideTourId equals tourGuide.Id
                                             join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
                                             join tour in _context.Tours on it.TourId equals tour.Id
-                                            where it.DateHourStart >= DateTime.Now
+                                            where it.DateHourStart >= DateTime.Today
                                             orderby it.DateHourStart
                                             select new TourSchedule()
                                             {
