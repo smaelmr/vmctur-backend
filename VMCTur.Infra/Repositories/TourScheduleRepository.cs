@@ -110,6 +110,36 @@ namespace VMCTur.Infra.Repositories
 
         }
 
+        public List<TourSchedule> GetToursByContractNumber(string contractNumber)
+        {
+
+            List<TourSchedule> schedules = (from it in _context.TravelPackageTours
+                                            join travelPackage in _context.TravelPackages on it.TravelPackageId equals travelPackage.Id
+                                            join customer in _context.Customers on travelPackage.CustomerId equals customer.Id
+                                            join tourGuide in _context.TourGuides on it.GuideTourId equals tourGuide.Id
+                                            join vehicle in _context.Vehicles on it.VehicleUsedId equals vehicle.Id
+                                            join tour in _context.Tours on it.TourId equals tour.Id
+                                            where it.ContractNumber == contractNumber
+                                            orderby it.DateHourStart
+                                            select new TourSchedule()
+                                            {
+                                                DateHourTour = it.DateHourStart,
+                                                CustomerName = customer.Name,
+                                                TourNamePasseio = tour.Name,
+                                                TourGuidename = tourGuide.Name,
+                                                VehicleModel = vehicle.Model,
+                                                TourComments = it.Comments,
+                                                Shared = it.Shared,
+                                                QuantityTickets = it.QuantityTickets,
+                                                QuantityAdult = travelPackage.QuantityAdult,
+                                                QuantityChild = travelPackage.QuantityChild,
+                                                QuantityElderly = travelPackage.QuantityElderly
+                                            }).ToList();
+
+            return schedules;
+
+        }
+
         public void Dispose()
         {
             _context.Dispose();

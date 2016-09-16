@@ -13,10 +13,11 @@ namespace VMCTur.Api
         {
             config.EnableSwagger(c =>
                 {
-                    c.SingleApiVersion("v1", "VmcTur.Api");
+                    c.SingleApiVersion("v1", "VmcTur.Api");					
                 })
             .EnableSwaggerUi(c =>
                 {
+					
                 });
         }
     }

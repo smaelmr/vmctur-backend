@@ -9,5 +9,7 @@ namespace VMCTur.Domain.Contracts.Repositories
         List<TourSchedule> Get(double days);
         List<TourSchedule> GetAll();
         List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod);
+
+        List<TourSchedule> GetToursByContractNumber(string contractNumber);
     }
 }

@@ -18,7 +18,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
         public string VehicleModel { get; set; }
         public string TourComments { get; set; }
         public bool Shared { get; set; }
-
+        public int QuantityTickets { set; get; }
         public int QuantityAdult { get; set; }
         public int QuantityChild { get; set; }
         public int QuantityElderly { get; set; }
@@ -59,7 +59,7 @@ namespace VMCTur.Domain.Entities.TravelPackages
 
         public TourSchedule(DateTime dateHourTour, string customerName, int quantityParticipants, string tourNamePasseio, 
                             string tourGuidename, string vehicleModel, string tourComments, bool shared,
-                            int quantityAdult, int quantityChild, int quantityElderly)
+                             int QuantityTickets, int quantityAdult, int quantityChild, int quantityElderly)
         {
             DateHourTour = dateHourTour;
             CustomerName = customerName;

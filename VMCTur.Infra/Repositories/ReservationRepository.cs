@@ -41,7 +41,7 @@ namespace VMCTur.Infra.Repositories
             sql.Append("DeparturePlace = @departurePlace, ");
             sql.Append("Notification = @notification, ");
             sql.Append("ContractNumber = @ContractNumber, ");
-            sql.Append("Status = @status, ");
+            sql.Append("Status = @status ");
 
             sql.Append("WHERE Id = @Id; ");
 
@@ -52,8 +52,8 @@ namespace VMCTur.Infra.Repositories
             cmm.Parameters.Add("@QuantityTickets", MySqlDbType.Int32).Value = reserve.QuantityTickets;
             cmm.Parameters.Add("@DeparturePlace", MySqlDbType.Text).Value = reserve.DeparturePlace;
             cmm.Parameters.Add("@Notification", MySqlDbType.Text).Value = reserve.Notification;
-            cmm.Parameters.Add("@ContractNumber", MySqlDbType.Decimal).Value = reserve.ContractNumber;
-            cmm.Parameters.Add("@Status", MySqlDbType.Int32).Value = reserve.Status;
+            cmm.Parameters.Add("@ContractNumber", MySqlDbType.Text).Value = reserve.ContractNumber;
+            cmm.Parameters.Add("@Status", MySqlDbType.Text).Value = reserve.Status;
             
             cmm.Parameters.Add("@Id", MySqlDbType.Int32).Value = reserveOld.Id;
 
