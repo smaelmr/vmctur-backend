@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VMCTur.Common.Validation;
 using VMCTur.Domain.Entities.Customers;
 using VMCTur.Domain.Entities.Financial.BillsPay;
+using VMCTur.Domain.Entities.TravelPackages;
 
 namespace VMCTur.Domain.Entities.Reservations
 {
@@ -37,6 +38,8 @@ namespace VMCTur.Domain.Entities.Reservations
         }
 
         public List<BillPay> Bills { get; private set; }
+
+        public List<TourSchedule> Tours { get; private set; }
 
         #endregion
 
@@ -75,6 +78,11 @@ namespace VMCTur.Domain.Entities.Reservations
             bill.Validate();
 
             Bills.Add(bill);
+        }
+
+        public void AddTour(TourSchedule tour)
+        {
+            Tours.Add(tour);
         }
 
         #endregion

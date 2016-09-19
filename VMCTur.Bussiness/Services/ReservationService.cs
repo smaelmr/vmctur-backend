@@ -9,16 +9,19 @@ using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Contracts.Services;
 using VMCTur.Domain.Entities.Financial.BillsPay;
 using VMCTur.Domain.Entities.Reservations;
+using VMCTur.Domain.Entities.TravelPackages;
 
 namespace VMCTur.Bussiness.Services
 {
     public class ReservationService : IReservationService
     {
-        private IReservationRepository _repository;
+        private IReservationRepository _reserveRepository;
+        private ITourScheduleRepository _tourScheduleRepository;
 
-        public ReservationService(IReservationRepository repository)
+        public ReservationService(IReservationRepository reserveRepository, ITourScheduleRepository tourScheduleRepository)
         {
-            _repository = repository;
+            _reserveRepository = reserveRepository;
+            _tourScheduleRepository = tourScheduleRepository;
         }
 
         public void Create(CreateReservationCommand reserveCreate)
@@ -34,7 +37,7 @@ namespace VMCTur.Bussiness.Services
 
             reserve.Validate();
 
-            _repository.Create(reserve);
+            _reserveRepository.Create(reserve);
         }
 
         public void Update(UpdateReservationCommand reserveUpdate)
@@ -57,26 +60,33 @@ namespace VMCTur.Bussiness.Services
 
             reserve.Validate();
 
-            _repository.Update(reserve, reserveOld);
+            _reserveRepository.Update(reserve, reserveOld);
         }
 
         public void Delete(int id)
         {
-            var reserve = _repository.Get(id);
+            var reserve = _reserveRepository.Get(id);
 
-            _repository.Delete(reserve);
+            _reserveRepository.Delete(reserve);
         }
         
         public Reservation Get(int id)
         {
-           var reserve = _repository.Get(id);
+            var reserve = _reserveRepository.Get(id);
+
+            ///Smael: busca os passeios vinculados a esta reserva.
+            List<TourSchedule> tours = _tourScheduleRepository.GetToursByContractNumber(reserve.ContractNumber);
+
+            //Smael: carrega os passeios encontrados para o obj reserva.
+            foreach (var it in tours)
+                reserve.AddTour(it);
 
             return reserve;
         }
 
         public List<Reservation> Get(string search)
         {
-            var reserve = _repository.Get(search);
+            var reserve = _reserveRepository.Get(search);
 
             return reserve;
         }
@@ -88,7 +98,7 @@ namespace VMCTur.Bussiness.Services
 
         public void Dispose()
         {
-            _repository.Dispose();
+            _reserveRepository.Dispose();
         }
     }
 }
