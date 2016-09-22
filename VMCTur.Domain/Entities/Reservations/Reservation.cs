@@ -47,7 +47,7 @@ namespace VMCTur.Domain.Entities.Reservations
 
         public Reservation()
         {
-         
+            Tours = new List<TourSchedule>();
         }
 
         public Reservation(int id, Customer customer, int customerId, DateTime dateReservation, int quantityTickets, string departurePlace, string notification, string contractNumber, string status, List<BillPay> bills)

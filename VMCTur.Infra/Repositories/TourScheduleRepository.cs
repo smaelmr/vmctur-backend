@@ -47,6 +47,67 @@ namespace VMCTur.Infra.Repositories
             return schedules;
         }
 
+        public string ExportExcel(DateTime startPeriod, DateTime finishPeriod)
+        {
+            var items = Get(startPeriod, finishPeriod);
+
+            System.Text.StringBuilder html = new System.Text.StringBuilder();
+
+            html.AppendLine("<HTML>");
+
+            html.AppendLine("<style>");
+            html.AppendLine("table, td, th, tfoot {border: solid 1px #000; padding:5px;}");
+            html.AppendLine("th {background-color:#999;}");
+            html.AppendLine("caption {font-size:x-large;}");
+            html.AppendLine("colgroup {background:#F60;}");
+            html.AppendLine(".coluna1 {");
+            html.AppendLine("background:#F66;}");
+            html.AppendLine(".coluna2  {");
+            html.AppendLine("background:#F33;}");
+            html.AppendLine(".coluna3  {");
+            html.AppendLine("background:#F99;}");
+            html.AppendLine("</style>");
+
+
+            html.AppendLine("<TABLE>");
+            html.AppendLine("<caption>VMC TURISMO</caption>");
+            html.AppendLine("<thead>");
+            html.AppendFormat("<tr><th colspan=\"8\">PROGRAMACAO DE PASSEIOS DE {0} a {1} </th></tr>", startPeriod.ToShortDateString(), finishPeriod.ToShortDateString());
+            html.AppendLine("<tr>");
+            html.AppendLine("<th>Data/Hora</th>");
+            html.AppendLine("<th>Cliente</th>");
+            html.AppendLine("<th>Participantes</th>");
+            html.AppendLine("<th>Passeio</th>");
+            html.AppendLine("<th>Guia</th>");
+            html.AppendLine("<th>Veículo</th>");
+            html.AppendLine("<th>Tipo</th>");
+            html.AppendLine("<th>Obs</th>");
+
+            html.AppendLine("</tr>");
+            html.AppendLine("</thead>");
+            html.AppendLine("<tbody>");
+
+            foreach (var it in items)
+            {
+                html.AppendFormat("<tr bgcolor=\"{0}\">", it.ColorOfDay);
+                html.AppendFormat("<td>{0}</td>", it.DateHourTour);
+                html.AppendFormat("<td>{0}</td>", it.CustomerName);
+                html.AppendFormat("<td>{0}</td>", it.QuantityParticipantsDetails);
+                html.AppendFormat("<td>{0}</td>", it.TourNamePasseio);
+                html.AppendFormat("<td>{0}</td>", it.TourGuidename);
+                html.AppendFormat("<td>{0}</td>", it.VehicleModel);
+                html.AppendFormat("<td>{0}</td>", it.Shared ? "Compartilhado" : "Privado");
+                html.AppendFormat("<td>{0}</td>", it.TourComments);
+                html.AppendFormat("</tr>");
+            }
+
+            html.AppendLine("</tbody>");
+            html.AppendLine("</TABLE>");
+            html.AppendLine("</HTML>");
+            
+            return html.ToString();
+        }
+
         /// <summary>
         /// Get just schedules this day on.
         /// </summary>

@@ -22,7 +22,12 @@ namespace VMCTur.Bussiness.Services
         {            
             return _repository.Get(startPeriod, finishPeriod);
         }
-        
+
+        public string ExportExcel(DateTime startPeriod, DateTime finishPeriod)
+        {
+            return _repository.ExportExcel(startPeriod, finishPeriod);
+        }
+
         public List<TourSchedule> GetNextSevenDays()
         {
             return _repository.Get(7);
@@ -47,5 +52,7 @@ namespace VMCTur.Bussiness.Services
         {
             _repository.Dispose();
         }
+
+        
     }
 }

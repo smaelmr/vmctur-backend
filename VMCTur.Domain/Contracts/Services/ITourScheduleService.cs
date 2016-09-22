@@ -11,5 +11,6 @@ namespace VMCTur.Domain.Contracts.Services
         List<TourSchedule> GetNextThirtyDays();
         List<TourSchedule> GetAll();
         List<TourSchedule> Get(DateTime startPeriod, DateTime finishPeriod);
+        string ExportExcel(DateTime startPeriod, DateTime finishPeriod);
     }
 }

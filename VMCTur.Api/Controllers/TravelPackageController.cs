@@ -260,6 +260,7 @@ namespace VMCTur.Api.Controllers
                 Content = new ByteArrayContent(ms.GetBuffer())
 
             };
+
             result.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("inline")
             {
                 FileName = "Voucher.pdf",

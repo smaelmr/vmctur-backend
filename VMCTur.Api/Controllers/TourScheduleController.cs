@@ -163,5 +163,34 @@ namespace VMCTur.Api.Controllers
             tsc.SetResult(response);
             return tsc.Task;
         }
+
+        [HttpGet]
+        [Route("exportexcel")]
+        public Task<HttpResponseMessage> ExportExcel(DateTime startPeriod, DateTime finishPeriod)
+        {
+            string exportData = string.Empty;
+
+            exportData = _service.ExportExcel(startPeriod, finishPeriod);
+
+            
+
+            var result = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(exportData, System.Text.Encoding.UTF8)
+            };
+
+
+            result.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("inline")
+            {
+                FileName = "Programcao.html",
+            };
+
+            result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(result);
+            return tsc.Task;
+
+        } 
     }
 }
