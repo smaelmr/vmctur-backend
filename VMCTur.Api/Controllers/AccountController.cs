@@ -22,10 +22,12 @@ namespace VMCTur.Api.Controllers
         }
 
         /// <summary>
-        /// Registra um novo usuário na aplicação.
+        /// Register a new user on application
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">New user to register</param>
+        /// <remarks>Adds new user to application and grant access</remarks>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("")]
         //[EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]

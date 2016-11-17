@@ -66,6 +66,23 @@ namespace VMCTur.Domain.Entities.Financial.BillsReceive
             Comments = comments;
         }
 
+        public BillReceive(int id, DateTime createDate, int travelPackageId, decimal amount,
+                   decimal amountReceived, string concerning, string customerName,
+                   DateTime dueDate, DateTime? payDay, string comments)
+        {
+            Id = id;
+            CreateDate = createDate;
+            TravelPackageId = travelPackageId;
+            Amount = amount;
+            AmountReceived = amountReceived;
+            Concerning = concerning;
+            CustomerName = customerName;
+            CreateDate = DateTime.Now;
+            DueDate = dueDate;
+            PayDay = payDay;
+            Comments = comments;
+        }
+
         #endregion
 
         #region Methods

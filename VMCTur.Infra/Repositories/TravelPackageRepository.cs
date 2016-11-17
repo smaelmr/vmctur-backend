@@ -450,7 +450,7 @@ namespace VMCTur.Infra.Repositories
             else //Se o filtro vir em branco lista apenas os pacotes atuais (de agora em diante)
             {
                 sql.Append("WHERE TravelPackage.ArrivalDate > @date OR TravelPackage.ArrivalDate IS NULL ");
-                cmm.Parameters.Add("@date", MySqlDbType.DateTime).Value = DateTime.Now.AddDays(-15);
+                cmm.Parameters.Add("@date", MySqlDbType.DateTime).Value = DateTime.Now.AddDays(-5);
             }
 
             sql.Append("ORDER BY TravelPackage.ArrivalDate ASC;");

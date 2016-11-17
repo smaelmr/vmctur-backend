@@ -407,63 +407,27 @@ namespace VMCTur.Infra.Repositories
 
         public List<BillReceive> GetWinningTodayBills()
         {
-            StringBuilder sql = new StringBuilder();
-            MySqlConn ctx = MySqlConn.GetInstancia();
-            List<BillReceive> bills = new List<BillReceive>();
-            MySqlCommand cmm = new MySqlCommand();
+            var query = from it in _context.BillReceives
+                        join travel in _context.TravelPackages on it.TravelPackageId equals travel.Id
+                        join customer in _context.Customers on travel.CustomerId equals customer.Id
+                        where it.PayDay == null && it.DueDate == DateTime.Today
+                        orderby customer.Name
+                        select new
+                        {
+                            it.Id,
+                            it.CreateDate,
+                            it.TravelPackageId,
+                            it.Amount,
+                            it.AmountReceived,
+                            it.Concerning,
+                            customer.Name,
+                            it.DueDate,
+                            it.PayDay,
+                            it.Comments
+                        };
 
-            sql.Append("SELECT BillReceive.Id, ");
-            sql.Append("BillReceive.TravelPackageId, ");
-            sql.Append("BillReceive.Amount, ");
-            sql.Append("BillReceive.AmountReceived, ");
-            sql.Append("BillReceive.Concerning, ");
-            sql.Append("BillReceive.CreateDate, ");
-            sql.Append("BillReceive.DueDate, ");
-            sql.Append("BillReceive.PayDay, ");
-            sql.Append("BillReceive.Comments, ");
-            sql.Append("Customer.Name ");
-            sql.Append("FROM BillReceive ");
-            sql.Append("INNER JOIN TravelPackage ON BillReceive.TravelPackageId = TravelPackage.Id ");
-            sql.Append("INNER JOIN Customer ON TravelPackage.CustomerId = Customer.Id ");
-
-            sql.Append("WHERE BillReceive.PayDay IS NULL AND BillReceive.DueDate = @today ");
-            
-            cmm.Parameters.Add("@today", MySqlDbType.DateTime).Value = DateTime.Today;            
-
-
-            sql.Append("ORDER BY BillReceive.DueDate ASC;");
-
-            cmm.CommandText = sql.ToString();
-
-            MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
-
-            while (dr.Read())
-            {
-
-                DateTime? auxPayDay = null;
-
-                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
-                    auxPayDay = (DateTime)dr["PayDay"];
-
-                BillReceive bill = new BillReceive(
-                        (int)dr["Id"],
-                        (DateTime)dr["CreateDate"],
-                        (int)dr["TravelPackageId"],
-                        (decimal)dr["Amount"],
-                        (decimal)dr["AmountReceived"],
-                        (string)dr["Concerning"],
-                        (DateTime)dr["DueDate"],
-                        auxPayDay,
-                        dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
-
-                bill.SetCustomerName((string)dr["Name"]);
-
-                bills.Add(bill);
-            }
-
-            dr.Close();
-
-            return bills;
+            //Smael: isso é feito para manter o set das propriedades privadas, pois para carregar o objeto direto na query as propriedades teriam quer ser publicas para que o valor fosse atribuido a elas.
+            return query.ToList().Select(r => new BillReceive(r.Id, r.CreateDate, r.TravelPackageId, r.Amount, r.AmountReceived, r.Concerning, r.Name, r.DueDate, r.PayDay, r.Comments)).ToList<BillReceive>();
         }
 
         /// <summary>

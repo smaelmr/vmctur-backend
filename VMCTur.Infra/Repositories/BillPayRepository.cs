@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using VMCTur.Domain.Contracts.Repositories;
@@ -406,63 +407,28 @@ namespace VMCTur.Infra.Repositories
 
         public List<BillPay> GetWinningTodayBills()
         {
-            StringBuilder sql = new StringBuilder();
-            MySqlConn ctx = MySqlConn.GetInstancia();
-            List<BillPay> bills = new List<BillPay>();
-            MySqlCommand cmm = new MySqlCommand();
+            var query = from it in _context.BillPays
+                        join reservation in _context.Reservations on it.ReservationId equals reservation.Id
+                        join customer in _context.Customers on reservation.CustomerId equals customer.Id
+                        where it.PayDay == null && it.DueDate == DateTime.Today
+                        orderby customer.Name
+                        select new
+                        {
+                            it.Id,
+                            it.CreateDate,
+                            it.ReservationId,
+                            it.Amount,
+                            it.AmountPaid,
+                            it.Concerning,
+                            customer.Name,
+                            it.DueDate,
+                            it.PayDay,
+                            it.Comments
+                        };
 
-            sql.Append("SELECT BillPay.Id, ");
-            sql.Append("BillPay.ReservationId, ");
-            sql.Append("BillPay.Amount, ");
-            sql.Append("BillPay.AmountPaid, ");
-            sql.Append("BillPay.Concerning, ");
-            sql.Append("BillPay.CreateDate, ");
-            sql.Append("BillPay.DueDate, ");
-            sql.Append("BillPay.PayDay, ");
-            sql.Append("BillPay.Comments, ");
-            sql.Append("Customer.Name ");
-            sql.Append("FROM BillPay ");
-            sql.Append("INNER JOIN Reservation ON BillPay.ReservationId = Reservation.Id ");
-            sql.Append("INNER JOIN Customer ON Reservation.CustomerId = Customer.Id ");
+            //Smael: isso é feito para manter o set das propriedades privadas, pois para carregar o objeto direto na query as propriedades teriam quer ser publicas para que o valor fosse atribuido a elas.
+            return query.ToList().Select(r => new BillPay(r.Id, r.CreateDate, r.ReservationId, r.Amount, r.AmountPaid, r.Concerning, r.Name, r.DueDate, r.PayDay, r.Comments)).ToList<BillPay>();
 
-            sql.Append("WHERE BillPay.PayDay IS NULL AND BillPay.DueDate = @today ");
-            
-            cmm.Parameters.Add("@today", MySqlDbType.DateTime).Value = DateTime.Today;            
-
-
-            sql.Append("ORDER BY BillPay.DueDate ASC;");
-
-            cmm.CommandText = sql.ToString();
-
-            MySqlDataReader dr = ctx.ExecutaQueryComLeitura(cmm);
-
-            while (dr.Read())
-            {
-
-                DateTime? auxPayDay = null;
-
-                if (!dr.IsDBNull(dr.GetOrdinal("PayDay")))
-                    auxPayDay = (DateTime)dr["PayDay"];
-
-                BillPay bill = new BillPay(
-                        (int)dr["Id"],
-                        (DateTime)dr["CreateDate"],
-                        (int)dr["ReservationId"],
-                        (decimal)dr["Amount"],
-                        (decimal)dr["AmountPaid"],
-                        (string)dr["Concerning"],
-                        (DateTime)dr["DueDate"],
-                        auxPayDay,
-                        dr.IsDBNull(dr.GetOrdinal("Comments")) ? "" : (string)dr["Comments"]);
-
-                bill.SetCustomerName((string)dr["Name"]);
-
-                bills.Add(bill);
-            }
-
-            dr.Close();
-
-            return bills;
         }
 
         /// <summary>

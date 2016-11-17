@@ -144,7 +144,7 @@ namespace VMCTur.Infra.Repositories
 
                     cmmI.Parameters.Add("@ReservationId", MySqlDbType.Int32).Value = reserveOld.Id;
                     cmmI.Parameters.Add("@Amount", MySqlDbType.Decimal).Value = x.Amount;
-                    cmmI.Parameters.Add("@AmountReceived", MySqlDbType.Decimal).Value = x.AmountPaid;
+                    cmmI.Parameters.Add("@AmountPaid", MySqlDbType.Decimal).Value = x.AmountPaid;
                     cmmI.Parameters.Add("@Concerning", MySqlDbType.Text).Value = x.Concerning;
                     cmmI.Parameters.Add("@CreateDate", MySqlDbType.Date).Value = x.CreateDate;
                     cmmI.Parameters.Add("@DueDate", MySqlDbType.Date).Value = x.DueDate;

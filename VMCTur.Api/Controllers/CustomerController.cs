@@ -187,10 +187,9 @@ namespace VMCTur.Api.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("")]
+        [Route("getbithdayofday")]
         [DeflateCompression]
-        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
-        //[EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
+        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2        
         public Task<HttpResponseMessage> GetBithDayOfDay()
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -212,10 +211,9 @@ namespace VMCTur.Api.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("")]
+        [Route("getbithdayofmonth")]
         [DeflateCompression]
-        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2
-        //[EnableCors(origins: "http://vmctur.azurewebsites.net", headers: "*", methods: "*")]
+        //[CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)] //Install-Package Strathweb.CacheOutput.WebApi2        
         public Task<HttpResponseMessage> GetBithDayOfMonth()
         {
             HttpResponseMessage response = new HttpResponseMessage();

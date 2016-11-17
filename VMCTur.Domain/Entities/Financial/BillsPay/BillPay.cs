@@ -14,6 +14,7 @@ namespace VMCTur.Domain.Entities.Financial.BillsPay
         public int Id { get; private set; }
 
         public Reservation Reservation { get; private set; }
+
         public int ReservationId { get; private set; }
 
         public string CustomerName { get; private set; } 
@@ -67,6 +68,24 @@ namespace VMCTur.Domain.Entities.Financial.BillsPay
             Comments = comments;
         }
 
+
+        public BillPay(int id, DateTime createDate, int reservationId, decimal amount,
+                           decimal amountPaid, string concerning, string customerName,
+                           DateTime dueDate, DateTime? payDay, string comments)
+        {
+            Id = id;
+            CreateDate = createDate;
+            ReservationId = reservationId;
+            Amount = amount;
+            AmountPaid = amountPaid;
+            Concerning = concerning;
+            CustomerName = customerName;
+            CreateDate = DateTime.Now;
+            DueDate = dueDate;
+            PayDay = payDay;
+            Comments = comments;
+        }
+
         #endregion
 
         #region Methods
@@ -95,7 +114,7 @@ namespace VMCTur.Domain.Entities.Financial.BillsPay
 
         public void SetCustomerName(string name)
         {
-            CustomerName = name;
+            this.CustomerName = name;
         }
 
         public void Validate()
