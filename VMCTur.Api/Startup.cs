@@ -41,9 +41,7 @@ namespace VMCTur.Api
             // Habiliando o cors do OWIN
             app.UseCors(CorsOptions.AllowAll);
 
-            ConfigureOAuth(app, container.Resolve<IUserService>());                       
-
-            //ConfigureCors(app);
+            ConfigureOAuth(app, container.Resolve<IUserService>());
 
             app.UseWebApi(config);
         }
@@ -75,11 +73,6 @@ namespace VMCTur.Api
 
         public static void ConfigureWebApi(HttpConfiguration config)
         {            
-            //var corsAttr = new EnableCorsAttribute("*",
-                                                   //"Origin, Content-Type, Accept",
-                                                   //"GET, PUT, POST, DELETE, OPTIONS");
-            //config.EnableCors(corsAttr);
-            //config.EnableCors();
 
             // Remove o XML
             var formatters = config.Formatters;

@@ -6,6 +6,7 @@ namespace VMCTur.Domain.Contracts.Services
 {
     public interface ITourScheduleService : IDisposable
     {
+        List<TourSchedule> GetNextDays();
         List<TourSchedule> GetNextSevenDays();
         List<TourSchedule> GetNextFifteenDays();
         List<TourSchedule> GetNextThirtyDays();

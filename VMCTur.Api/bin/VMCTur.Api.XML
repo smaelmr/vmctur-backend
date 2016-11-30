@@ -273,6 +273,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:VMCTur.Api.Controllers.TourScheduleController.GetNextDays">
+            <summary>
+            lista os passeios dos próximos sete dias.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:VMCTur.Api.Controllers.TourScheduleController.GetNextSevenDays">
             <summary>
             lista os passeios dos próximos sete dias.

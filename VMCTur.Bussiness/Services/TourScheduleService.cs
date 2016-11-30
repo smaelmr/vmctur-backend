@@ -28,6 +28,11 @@ namespace VMCTur.Bussiness.Services
             return _repository.ExportExcel(startPeriod, finishPeriod);
         }
 
+        public List<TourSchedule> GetNextDays()
+        {
+            return _repository.Get(1);
+        }
+
         public List<TourSchedule> GetNextSevenDays()
         {
             return _repository.Get(7);
