@@ -14,6 +14,7 @@ namespace VMCTur.Startup
             container.RegisterType<AppDataContext, AppDataContext>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserLogRepository, UserLogRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ICustomerRepository, CustomerRepository>(new HierarchicalLifetimeManager());

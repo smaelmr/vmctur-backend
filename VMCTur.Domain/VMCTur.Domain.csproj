@@ -79,6 +79,7 @@
     <Compile Include="Contracts\Services\ICustomerService.cs" />
     <Compile Include="Contracts\Services\IGuideService.cs" />
     <Compile Include="Contracts\Services\INotification.cs" />
+    <Compile Include="Contracts\Repositories\IUserLogRepository.cs" />
     <Compile Include="Contracts\Services\IUserService.cs" />
     <Compile Include="Contracts\Services\ITourService.cs" />
     <Compile Include="Contracts\Services\IVehicleService.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Entities\TravelPackages\TravelPackage.cs" />
     <Compile Include="Entities\TravelPackages\TravelPackageParticipant.cs" />
     <Compile Include="Entities\Tours\Tour.cs" />
+    <Compile Include="Entities\Users\UserLog.cs" />
     <Compile Include="Enums\BillStatus.cs" />
     <Compile Include="Enums\TypeBondGuide.cs" />
     <Compile Include="Enums\TypeAcquisitionVehicle.cs" />

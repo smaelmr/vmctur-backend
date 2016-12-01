@@ -75,6 +75,7 @@
     <Compile Include="Data\Map\TravelPackageMap.cs" />
     <Compile Include="Data\Map\CustomerMap.cs" />
     <Compile Include="Data\Map\TourGuideMap.cs" />
+    <Compile Include="Data\Map\UserLogMap.cs" />
     <Compile Include="Data\Map\UserMap.cs" />
     <Compile Include="Data\Map\TourMap.cs" />
     <Compile Include="Data\Map\VehicleMap.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Repositories\TravelPackageParticipantRepository.cs" />
     <Compile Include="Repositories\TravelPackageTourRepository.cs" />
     <Compile Include="Repositories\TravelPackageRepository.cs" />
+    <Compile Include="Repositories\UserLogRepository.cs" />
     <Compile Include="Repositories\VehicleRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

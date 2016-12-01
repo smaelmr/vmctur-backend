@@ -12,6 +12,7 @@ namespace VMCTur.Domain.Contracts.Services
 
         void Register(int companyId, string name, string email, string password, string confirmPassword);
 
+        
         void ChangeInformation(string email, string name);
 
         void ChangePassword(string email, string password, string newPassword, string confirmNewPassword);

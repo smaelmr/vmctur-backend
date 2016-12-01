@@ -12,6 +12,7 @@ using VMCTur.Domain.Entities.Financial.BillsReceive;
 using VMCTur.Domain.Commands.BillCommands.BillReceiveCommands;
 using System.IO;
 using VMCTur.Domain.Enums;
+using VMCTur.Domain.Entities.Users;
 
 namespace VMCTur.Bussiness.Services
 {
@@ -22,13 +23,16 @@ namespace VMCTur.Bussiness.Services
         private ITravelPackageParticipantRepository _repositoryParticipant;
         private IBillReceiveRepository _repositoryBill;
 
-        public TravelPackageService(ITravelPackageRepository repositoryPack, ITravelPackageTourRepository repositoryTour, ITravelPackageParticipantRepository repositoryParticipant, IBillReceiveRepository repositoryBill)
+        public TravelPackageService(ITravelPackageRepository repositoryPack, 
+                ITravelPackageTourRepository repositoryTour, 
+                ITravelPackageParticipantRepository repositoryParticipant, 
+                IBillReceiveRepository repositoryBill)
         {
             _repositoryPack = repositoryPack;
             _repositoryTour = repositoryTour;
             _repositoryParticipant = repositoryParticipant;
             _repositoryBill = repositoryBill;
-    }
+        }
 
         public void Create(CreateTravelPackageCommand travelPackageCreate)
         {
@@ -67,6 +71,7 @@ namespace VMCTur.Bussiness.Services
             travelPackage.Validate();
 
             _repositoryPack.Create(travelPackage);
+
         }
 
         public void Update(UpdateTravelPackageCommand travelPackageUpdate)

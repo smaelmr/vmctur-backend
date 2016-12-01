@@ -33,6 +33,7 @@ namespace VMCTur.Infra.Data
         public DbSet<TravelPackageTour> TravelPackageTours { get; set; }
         public DbSet<TravelPackageParticipant> TravelPackageParticipants { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<UserLog> UserLog { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,6 +48,7 @@ namespace VMCTur.Infra.Data
             modelBuilder.Configurations.Add(new BillReceiveMap());
             modelBuilder.Configurations.Add(new BillPayMap());
             modelBuilder.Configurations.Add(new ReservationMap());
+            modelBuilder.Configurations.Add(new UserLogMap());
         }
     }
 }

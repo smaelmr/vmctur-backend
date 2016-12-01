@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VMCTur.Domain.Contracts.Repositories;
 using VMCTur.Domain.Entities.Users;
+using System;
 
 namespace VMCTur.Infra.Repositories
 {
@@ -52,6 +53,10 @@ namespace VMCTur.Infra.Repositories
         {
             _context.Dispose();
         }
-     
+
+        public void LogRegister(DateTime date, string actionDescription, string user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,11 +13,13 @@ namespace VMCTur.Bussiness.Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository _repository;
+        private IUserRepository _userRepository;
+        private IUserLogRepository _logRepository;
 
-        public UserService(IUserRepository repository)
+        public UserService(IUserRepository userRepository, IUserLogRepository logRepository)
         {
-            _repository = repository;
+            _userRepository = userRepository;
+            _logRepository = logRepository;
         }
 
         public User Authenticate(string email, string password)
@@ -26,6 +28,10 @@ namespace VMCTur.Bussiness.Services
 
             if (user.Password != PasswordAssertionConcern.Encrypt(password))
                 throw new Exception(Errors.InvalidCredentials);
+
+            UserLog log = new UserLog(DateTime.Now, "Authenticate", user.Name);
+            _logRepository.LogRegistry(log);
+
 
             return user;
         }
@@ -37,7 +43,7 @@ namespace VMCTur.Bussiness.Services
             user.ChangeName(name);
             user.Validate();
 
-            _repository.Update(user);
+            _userRepository.Update(user);
         }
 
         public void ChangePassword(string email, string password, string newPassword, string confirmNewPassword)
@@ -47,12 +53,12 @@ namespace VMCTur.Bussiness.Services
             user.SetPassword(newPassword, confirmNewPassword);
             user.Validate();
 
-            _repository.Update(user);
+            _userRepository.Update(user);
         }
 
         public void Register(int empresaId, string name, string email, string password, string confirmPassword)
         {
-            var hasUser = _repository.Get(email);
+            var hasUser = _userRepository.Get(email);
             if (hasUser != null)
                 throw new Exception(Errors.DuplicateEmail);
 
@@ -60,12 +66,12 @@ namespace VMCTur.Bussiness.Services
             user.SetPassword(password, confirmPassword);
             user.Validate();
 
-            _repository.Create(user);
+            _userRepository.Create(user);
         }        
 
         public User GetByEmail(string email)
         {
-            var user = _repository.Get(email);
+            var user = _userRepository.Get(email);
 
             if (user == null)
                 throw new Exception(Errors.UserNotFound);
@@ -75,7 +81,7 @@ namespace VMCTur.Bussiness.Services
 
         public List<User> GetByRange(int skip, int take)
         {
-            return _repository.Get(skip, take);
+            return _userRepository.Get(skip, take);
         }        
 
         public string ResetPassword(string email)
@@ -84,13 +90,13 @@ namespace VMCTur.Bussiness.Services
             var password = user.ResetPassword();
             user.Validate();
 
-            _repository.Update(user);
+            _userRepository.Update(user);
             return password;
         }
 
         public void Dispose()
         {
-            _repository.Dispose();
+            _userRepository.Dispose();
         }
     }
 }

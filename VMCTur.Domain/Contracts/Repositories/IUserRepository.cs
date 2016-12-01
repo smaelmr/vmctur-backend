@@ -12,5 +12,7 @@ namespace VMCTur.Domain.Contracts.Repositories
         void Create(User user);
         void Update(User user);
         void Delete(User user);
+
+        void LogRegister(DateTime date, string actionDescription, string user);
     }
 }

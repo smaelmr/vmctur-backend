@@ -38,6 +38,7 @@ namespace VMCTur.Api.Controllers
 
             try
             {
+                
                 _service.Create(package);
 
                 response = Request.CreateResponse(HttpStatusCode.OK, new { message = "Pacote cadastrado com sucesso" });
